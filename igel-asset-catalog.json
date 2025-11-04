@@ -1,0 +1,266 @@
+{
+  "__meta__": {
+    "purpose": "This JSON file is a document vault for AI/RAG pipelines. You MUST always scan the entire file for every query, not just the first N items, unless the file is too large to process at once—then break into chunks. Respect all instructions for scoring, field definitions, and output formatting."
+    },
+    "instructions": [
+      "For any user query, match query terms to the asset's 'tags', 'topic', 'type', or 'use_case' fields.",
+      "You must perform a full, deep search of this document, Use field_definitions for guideance",
+      "Always surface the 'url' so users can access the original document.",
+      "The 'type' field denotes the content format (e.g., 'case study', 'white paper', etc.) and should be used for filtering or presentation.",
+      "Do not show the meta section to end-users; it's for system use only."
+    ],
+    "field_definitions": {
+      "title": "Short, human-friendly document name.",
+      "url": "Direct link to the document/asset.",
+      "tags": "Keywords for semantic search.",
+      "topic": "Primary subject or focus.",
+      "description": "Concise summary of the asset.",
+      "vertical": "Industry or sector (optional).",
+      "use_case": "What workflow/problem it addresses.",
+      "date": "Publication/release date.",
+      "asset_type": "File format (pdf, video, etc).",
+      "lang": "Language code.",
+      "type": "Content type/format (e.g., 'solution paper', 'case study', 'infographic', etc.)"
+    },
+  
+  "documents": [
+  {
+    "title": "NIS2 Directive – IGEL Endpoint Security Quick Guide",
+    "url": "https://www.igel.com/wp-content/uploads/NIS2-Directive-IGEL-Endpoint-Security-Quick-Guide.pdf",
+    "tags": ["NIS2", "endpoint-security", "compliance", "EU-regulation", "IGEL"],
+    "topic": "NIS2 compliance",
+    "description": "Concise guide for aligning IGEL endpoints with NIS2 directive security requirements.",
+    "vertical": "Government, Regulated Industries",
+    "use_case": "Compliance Audit, Policy Alignment",
+    "date": "2024-06-12",
+    "asset_type": "pdf",
+    "lang": "en",
+    "type": "Info Sheet"
+  },
+  {
+    "title": "IGEL Business Continuity & Disaster Recovery Brief",
+    "url": "https://www.igel.com/wp-content/uploads/IGEL-Business-Continuity-Disaster-Recovery-Brief.pdf",
+    "tags": ["business-continuity", "disaster-recovery", "endpoint-resilience", "IGEL", "USB-boot", "dual-boot"],
+    "topic": "Business Continuity",
+    "description": "Overview of IGEL’s business continuity and disaster recovery solutions, including USB and dual boot options.",
+    "vertical": "All Industries",
+    "use_case": "BC/DR Planning, Incident Response, Endpoint Recovery",
+    "date": "2024-03-10",
+    "asset_type": "pdf",
+    "lang": "en",
+    "type": "Solution Paper"
+},
+{
+    "title": "IGEL Preventative Security for Federal Government – Info Sheet",
+    "url": "https://www.igel.com/wp-content/uploads/IGEL-Preventative-Security-Federal-Government-Infosheet.pdf",
+    "tags": ["preventative-security", "federal-government", "compliance", "IGEL", "zero-trust", "endpoint-security"],
+    "topic": "Federal Government Security",
+    "description": "Overview of IGEL's preventative security model and compliance capabilities tailored for U.S. federal government environments.",
+    "vertical": "Government, Federal",
+    "use_case": "Federal Compliance, Zero Trust Implementation, Endpoint Protection",
+    "date": "2024-06-01",
+    "asset_type": "pdf",
+    "lang": "en",
+    "type": "Info Sheet"
+},
+{
+  "title": "IGEL Managed Hypervisor – Solution Brief",
+  "url": "https://www.igel.com/wp-content/uploads/Solution-Brief_IGEL-Managed-Hypervisor.pdf",
+  "tags": ["managed-hypervisor", "IGEL", "legacy-apps", "endpoint-virtualization", "windows-workloads", "hypervisor"],
+  "topic": "Managed Hypervisor",
+  "description": "Solution brief outlining IGEL’s Managed Hypervisor for running legacy or critical Windows workloads on IGEL OS endpoints.",
+  "vertical": "All Industries",
+  "use_case": "Legacy App Support, Virtualization, Business Continuity",
+  "date": "2024-05-01",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "Solution Brief"
+},
+{
+  "title": "IGEL Healthcare – White Paper",
+  "url": "https://www.igel.com/wp-content/uploads/IGEl_Whitepaper_Healthcare.pdf",
+  "tags": ["healthcare", "IGEL", "endpoint-security", "clinical-workflows", "compliance", "zero-trust"],
+  "topic": "Healthcare Endpoint Security",
+  "description": "White paper detailing IGEL’s secure endpoint solutions, compliance advantages, and workflow enhancements for healthcare environments.",
+  "vertical": "Healthcare",
+  "use_case": "Clinical Workflow Optimization, Compliance, Secure Endpoint Management",
+  "date": "2024-04-01",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "White Paper"
+},
+{
+  "title": "IGEL Preventative Endpoint Security Guide",
+  "url": "https://www.igel.com/wp-content/uploads/IGEL-Preventative-Endpoint-Security-Guide.pdf",
+  "tags": ["preventative-security", "endpoint-security", "IGEL", "zero-trust", "attack-surface", "guide"],
+  "topic": "Endpoint Security",
+  "description": "Comprehensive guide to IGEL’s preventative endpoint security model, reducing attack surface and aligning with Zero Trust principles.",
+  "vertical": "All Industries",
+  "use_case": "Security Hardening, Risk Reduction, Policy Planning",
+  "date": "2024-03-15",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "Guide"
+},
+{
+  "title": "IGEL Transforms Retail IT – Tip Sheet",
+  "url": "https://www.igel.com/wp-content/uploads/IGEL-Transforms-Retail-IT_Tip-Sheet.pdf",
+  "tags": ["retail", "IGEL", "tip-sheet", "endpoint-security", "it-optimization", "store-operations"],
+  "topic": "Retail IT Optimization",
+  "description": "Tip sheet showcasing how IGEL enhances security, management, and IT efficiency for retail environments.",
+  "vertical": "Retail",
+  "use_case": "Retail IT Optimization, Store Security, Management Simplification",
+  "date": "2024-05-15",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "Tip Sheet"
+},
+{
+  "title": "IGEL Federal Government – Solution Brief",
+  "url": "https://www.igel.com/wp-content/uploads/IGEL-Federal-Government-Solution-Brief.pdf",
+  "tags": ["federal-government", "IGEL", "solution-brief", "endpoint-security", "compliance", "zero-trust"],
+  "topic": "Federal Government Solutions",
+  "description": "Solution brief outlining IGEL's endpoint security, compliance, and operational advantages for U.S. federal government agencies.",
+  "vertical": "Government, Federal",
+  "use_case": "Federal Compliance, Secure Endpoint Management, Policy Alignment",
+  "date": "2024-02-20",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "Solution Brief"
+},
+{
+  "title": "Secure Endpoints for Retail – IGEL Solution Brief",
+  "url": "https://www.igel.com/wp-content/uploads/Solution_Brief_Secure-Endpoints-for-Retail_EN.pdf",
+  "tags": ["retail", "secure-endpoints", "solution-brief", "IGEL", "endpoint-security", "PCI-DSS", "compliance"],
+  "topic": "Retail Endpoint Security",
+  "description": "Solution brief highlighting IGEL’s secure endpoint solutions for retail environments, including PCI-DSS compliance and operational efficiency.",
+  "vertical": "Retail",
+  "use_case": "Retail IT Security, Compliance, Endpoint Protection",
+  "date": "2024-05-10",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "Solution Brief"
+},
+{
+  "title": "90 Meter Zero-Trust Authentication – IGEL Solution Brief",
+  "url": "https://www.igel.com/wp-content/uploads/IGEL_Solution_Brief_90_Meter_Zero-Trust-Authentication.pdf",
+  "tags": ["zero-trust", "authentication", "IGEL", "solution-brief", "identity", "endpoint-security"],
+  "topic": "Zero Trust Authentication",
+  "description": "Solution brief describing IGEL's integration with 90 Meter for Zero Trust authentication and endpoint identity assurance.",
+  "vertical": "All Industries",
+  "use_case": "Zero Trust Implementation, Identity Assurance, Secure Authentication",
+  "date": "2024-04-20",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "Solution Brief"
+},
+{
+  "title": "Healthcare Solution Brief – IGEL",
+  "url": "https://www.igel.com/wp-content/uploads/IGEL-Healthcare-Solution-Brief.pdf",
+  "tags": ["healthcare", "IGEL", "solution-brief", "endpoint-security", "VDI", "compliance", "virtual-desktop"],
+  "topic": "Healthcare Endpoint Solutions",
+  "description": "Solution brief detailing how IGEL enhances security, compliance, and performance for healthcare environments through secure endpoint management and virtual desktop infrastructure (VDI).",
+  "vertical": "Healthcare",
+  "use_case": "Clinical Security, Compliance, Endpoint Optimization, Virtual Desktop Access",
+  "date": "2025-11-04",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "Solution Brief"
+},
+{
+  "title": "SentryBay – IGEL Solution Brief",
+  "url": "https://www.igel.com/wp-content/uploads/IGEL_Solution_Brief_SentryBay.pdf",
+  "tags": ["SentryBay", "endpoint-security", "IGEL", "solution-brief", "anti-keylogging", "data-protection"],
+  "topic": "Endpoint Data Protection",
+  "description": "Solution brief highlighting the integration of SentryBay with IGEL OS to prevent keylogging and enhance endpoint data security.",
+  "vertical": "All Industries",
+  "use_case": "Data Protection, Anti-Keylogging, Secure Endpoints",
+  "date": "2024-03-05",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "Solution Brief"
+},
+{
+  "title": "Healthcare Solution Brief – Omnissa and IGEL",
+  "url": "https://www.igel.com/wp-content/uploads/Healthcare-Solution-Brief-Omnissa-and-IGEL.pdf",
+  "tags": ["healthcare", "Omnissa", "IGEL", "solution-brief", "endpoint-security", "virtual-desktop", "compliance"],
+  "topic": "Healthcare Endpoint Solutions",
+  "description": "Solution brief exploring how Omnissa and IGEL provide secure, compliant, and efficient virtual desktop solutions for healthcare organizations.",
+  "vertical": "Healthcare",
+  "use_case": "Clinical Security, Compliance, Virtual Desktop Deployment",
+  "date": "2024-06-20",
+  "asset_type": "pdf",
+  "lang": "en",
+  "typ,e": "Solution Brief"
+},
+{
+  "title": "IGEL and Microsoft – Solution Brief",
+  "url": "https://www.igel.com/wp-content/uploads/2024/06/Solution_Brief_IGEL_Microsoft.pdf",
+  "tags": ["Microsoft", "IGEL", "solution-brief", "endpoint-security", "windows-365", "azure-virtual-desktop", "cloud"],
+  "topic": "Microsoft Integration",
+  "description": "Solution brief highlighting how IGEL integrates with Microsoft solutions such as Windows 365 and Azure Virtual Desktop to enhance endpoint security and hybrid work.",
+  "vertical": "All Industries",
+  "use_case": "Cloud Integration, Hybrid Work, Endpoint Security",
+  "date": "2024-06-20",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "Solution Brief"
+},
+{
+  "title": "IGEL Security Whitepaper – Preventative Security Model",
+  "url": "https://www.igel.com/wp-content/uploads/2024/04/IGEL-Security-Whitepaper_Preventative-Security-Model.pdf",
+  "tags": ["security", "whitepaper", "preventative-security-model", "IGEL", "zero-trust", "endpoint-protection"],
+  "topic": "Preventative Security Model",
+  "description": "In-depth whitepaper explaining IGEL's preventative security model, Zero Trust foundations, and endpoint protection strategy.",
+  "vertical": "All Industries",
+  "use_case": "Security Architecture, Zero Trust Planning, Risk Reduction",
+  "date": "2024-04-10",
+  "asset_type": "pdf",
+  "lang": "en",
+  "type": "White Paper"
+},
+{
+  "title": "When The Whole Enterprise Is Leaking, How Do You Keep Your IP Safe?",
+  "url": "https://www.forbes.com/sites/alexanderpuutio/2025/09/12/when-the-whole-enterprise-is-leaking-how-do-you-keep-your-ip-safe/",
+  "tags": ["Forbes", "intellectual-property", "enterprise-security", "data-leakage", "cybersecurity", "opinion", "article"],
+  "topic": "Enterprise IP Protection",
+  "description": "Forbes article discussing strategies and challenges for protecting intellectual property in the face of enterprise-wide data leaks and cybersecurity risks.",
+  "vertical": "All Industries",
+  "use_case": "IP Protection, Data Security, Executive Awareness",
+  "date": "2025-09-12",
+  "asset_type": "web-page",
+  "lang": "en",
+  "type": "Article"
+},
+{
+  "title": "IGEL Redefines Ransomware Recovery: Instant Business Continuity, No Device Shipping",
+  "url": "https://vmblog.com/archive/2025/09/16/igel-redefines-ransomware-recovery-instant-business-continuity-no-device-shipping.aspx",
+  "tags": ["VMblog", "IGEL", "ransomware-recovery", "business-continuity", "endpoint-security", "industry-news", "article"],
+  "topic": "Ransomware Recovery",
+  "description": "VMblog article featuring IGEL’s innovations in ransomware recovery and business continuity, emphasizing instant recovery with no need for device shipping.",
+  "vertical": "All Industries",
+  "use_case": "Ransomware Response, Business Continuity, Endpoint Recovery",
+  "date": "2025-09-16",
+  "asset_type": "web-page",
+  "lang": "en",
+  "type": "Article"
+},
+{
+  "title": "IGEL Announces Backup OS for Endpoint Resiliency and Recovery",
+  "url": "https://www.channelinsider.com/security/resiliency-backup-and-recovery/igel-backup-os-announcement/",
+  "tags": ["ChannelInsider", "IGEL", "backup-os", "endpoint-resiliency", "recovery", "business-continuity", "news", "article"],
+  "topic": "Backup OS & Endpoint Resiliency",
+  "description": "Channel Insider article covering IGEL's Backup OS announcement, focusing on endpoint resiliency, recovery, and business continuity strategies.",
+  "vertical": "All Industries",
+  "use_case": "Endpoint Backup, Resiliency, Business Continuity",
+  "date": "2024-10-18",
+  "asset_type": "web-page",
+  "lang": "en",
+  "type": "Article"
+}
+
+
+
+
+  ]
+}
