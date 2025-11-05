@@ -1,0 +1,319 @@
+openapi: 3.1.0
+info:
+  title: IGEL Multi-Vector Search
+  version: 1.3.2
+  description: >
+    Provides direct access to IGEL vector databases using OpenAI’s Vector Store API.
+    Includes separate paths for knowledge, case studies, documents, and auto-routing.
+
+servers:
+  - url: https://api.openai.com
+
+components:
+  schemas:
+    IgelDocumentMetadata:
+      type: object
+      description: Metadata fields for IGEL Documents vector store assets.
+      properties:
+        title:
+          type: string
+          description: Short, human-friendly document name.
+        url:
+          type: string
+          format: uri
+          description: Direct link to the document/asset.
+        tags:
+          type: array
+          items: { type: string }
+          description: Keywords for semantic search.
+        topic:
+          type: string
+          description: Primary subject or focus.
+        description:
+          type: string
+          description: Concise summary of the asset.
+        vertical:
+          type: string
+          description: Industry or sector (optional).
+        use_case:
+          type: string
+          description: What workflow/problem it addresses.
+        date:
+          type: string
+          format: date
+          description: Publication or release date (YYYY-MM-DD).
+        asset_type:
+          type: string
+          description: File format (e.g., pdf, web-page, video).
+          enum: [pdf, web-page, video]
+        lang:
+          type: string
+          description: Language code (e.g., en).
+        type:
+          type: string
+          description: Content type or format (e.g., solution paper, case study, infographic, etc.).
+
+    IgelCaseStudyOrganizationSize:
+      type: object
+      properties:
+        raw:
+          type: string
+          description: Raw size or scale description (e.g., "15,000 managed devices").
+        category:
+          type: string
+          description: Size category code (e.g., ERM, FSM, CAM).
+
+    IgelCaseStudyContact:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Contact's full name.
+        role:
+          type: string
+          description: Contact's professional title or role.
+
+    IgelCaseStudyMetadata:
+      type: object
+      description: Metadata fields for IGEL Case Study assets.
+      properties:
+        company_name:
+          type: string
+          description: Name of the customer or organization.
+        vertical:
+          type: array
+          items: { type: string }
+          description: Industry sector(s) (e.g., Healthcare, Financial Services).
+        asset_type:
+          type: array
+          items: { type: string }
+          description: Asset formats (e.g., Web Page, PDF, Video).
+        case_study_title:
+          type: string
+          description: Title of the case study.
+        main_challenge:
+          type: string
+          description: The main IT/business challenge addressed.
+        organization_size:
+          $ref: "#/components/schemas/IgelCaseStudyOrganizationSize"
+        igel_ready_partner:
+          type: string
+          description: IGEL technology or channel partner (if applicable).
+        igel_channel_partner:
+          type: string
+          description: IGEL channel partner, if different (optional).
+        date_of_publication:
+          type: string
+          format: date
+          description: Publication date (YYYY-MM-DD).
+        why_chose_igl:
+          type: string
+          description: Why the customer chose IGEL.
+        category:
+          type: array
+          items: { type: string }
+          description: Category tags (e.g., VDI, DAS).
+        igel_use_cases:
+          type: array
+          items: { type: string }
+          description: Business or IT use cases addressed.
+        country:
+          type: string
+          description: Country of customer.
+        state_province:
+          type: string
+          description: State or province of customer (if applicable).
+        url:
+          type: string
+          format: uri
+          description: Link to the case study page.
+        Video_url:
+          type: string
+          format: uri
+          description: Link to related video, if available.
+        additional_notes:
+          type: string
+        customer_quote:
+          type: string
+        outcome_metrics:
+          type: string
+          description: Key results or metrics from the case study.
+        solution:
+          type: array
+          items: { type: string }
+          description: Products/technologies used in the solution.
+        reference_status:
+          type: string
+          description: Reference status (e.g., Public, Private).
+        summary:
+          type: string
+          description: Brief summary of the case.
+        logo_url:
+          type: string
+          format: uri
+          description: URL for the company or project logo.
+        main_contacts:
+          type: array
+          items:
+            $ref: "#/components/schemas/IgelCaseStudyContact"
+
+paths:
+  /v1/vector_stores/vs_67b4fd37caec8191baf3cb6bb625f6a0/search:
+    post:
+      summary: Search IGEL Knowledge Base
+      operationId: searchIgelKnowledge
+      description: >
+        Search the IGEL Knowledge Base vector store for general product and internal information.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query:
+                  type: string
+                  description: The natural-language query to search.
+                  example: "Explain how IGEL OS integrates with Citrix Workspace."
+                top_k:
+                  type: integer
+                  default: 5
+      responses:
+        "200":
+          description: Successful search
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        score: { type: number }
+                        text: { type: string }
+                        metadata: { type: object }
+
+  /v1/vector_stores/vs_690a9eba8b408191a5d74366b7b10d80/search:
+    post:
+      summary: Search IGEL Case Studies
+      operationId: searchIgelCaseStudies
+      description: >
+        Search the IGEL Case Studies vector store for customer success stories and industry use cases.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query:
+                  type: string
+                  description: The natural-language query to search.
+                  example: "Show IGEL case studies in the healthcare sector."
+                top_k:
+                  type: integer
+                  default: 5
+      responses:
+        "200":
+          description: Successful search
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        score: { type: number }
+                        text: { type: string }
+                        metadata:
+                          $ref: "#/components/schemas/IgelCaseStudyMetadata"
+
+  /v1/vector_stores/vs_690ab1484a9081919fa1ced4cf3261d0/search:
+    post:
+      summary: Search IGEL Documents and assets
+      operationId: searchIgelDocuments
+      description: >
+        Search the IGEL Documents vector store for technical manuals, product documentation, and whitepapers.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query:
+                  type: string
+                  description: The natural-language query to search.
+                  example: "Find the setup guide for IGEL Edge OS."
+                top_k:
+                  type: integer
+                  default: 5
+      responses:
+        "200":
+          description: Successful search
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        score: { type: number }
+                        text: { type: string }
+                        metadata:
+                          $ref: "#/components/schemas/IgelDocumentMetadata"
+
+  /v1/vector_stores/auto/search:
+    post:
+      summary: Auto-route vector search
+      operationId: searchIgelAuto
+      description: >
+        Automatically routes the query to the most relevant IGEL vector store(s)
+        — Knowledge, Case Studies, or Documents — using the model’s understanding of the query.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query:
+                  type: string
+                  description: The natural-language query.
+                  example: "Find customer success stories in healthcare and related documentation."
+                top_k:
+                  type: integer
+                  default: 5
+      responses:
+        "200":
+          description: Successful auto search
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        store_name: { type: string }
+                        id: { type: string }
+                        score: { type: number }
+                        text: { type: string }
+                        metadata: { type: object }
