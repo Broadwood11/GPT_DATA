@@ -1,427 +1,1008 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IGEL BC&DR — Endpoint Continuity Infographic</title>
+  <title>IGEL BC&DR – Reseller Battlecard (2025)</title>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Google Font: Manrope -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-  <!-- BRAND + THEMER + TOYS -->
   <style>
-    body { font-family: 'Manrope', sans-serif; background: #F7F7F7; color: #141414; }
+    :root {
+      --igel-yellow: #ffd101;
+      --igel-black: #141414;
+      --igel-white: #ffffff;
+    }
 
-    /* ==== IGEL BRAND CARDS ==== */
+    body {
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #303030 0, #050505 40%, #000000 100%);
+    }
+
     .section-card {
-      background: #FFFFFF;
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 3rem;
-      border: 1px solid #E4E4E4;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      transition: all 150ms ease-out;
+      background: radial-gradient(circle at top left, rgba(255, 209, 1, 0.04), rgba(31, 31, 31, 1));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.25rem;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(14px);
     }
-    .section-card:hover {
+
+    .section-card-border {
+      border-image: linear-gradient(135deg, rgba(255, 209, 1, 0.5), rgba(255, 255, 255, 0.08)) 1;
+    }
+
+    .chip {
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(20, 20, 20, 0.9);
+    }
+
+    .chip-strong {
+      background: linear-gradient(135deg, #ffd101, #f3b300);
+      color: #141414;
+      border: none;
+    }
+
+    .glow-hover {
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background 0.18s ease-out;
+    }
+
+    .glow-hover:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(0,0,0,0.10);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.8);
+      border-color: rgba(255, 209, 1, 0.7);
+      background: radial-gradient(circle at top left, rgba(255, 209, 1, 0.08), rgba(31, 31, 31, 1));
     }
 
-    /* Header accent bar */
-    .section-card h2 {
-      position: relative;
-      padding-left: 1rem;
-      font-weight: 700;
+    .nav-pill {
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(14px);
     }
-    .section-card h2::before {
+
+    .nav-pill a {
+      position: relative;
+    }
+
+    .nav-pill a::after {
       content: "";
       position: absolute;
-      left: 0;
-      top: 0.3rem;
-      width: 6px;
-      height: 80%;
-      border-radius: 4px;
-      background-color: #FFD101;
-    }
-
-    header img {
-      filter: drop-shadow(0 0 6px rgba(0,0,0,0.15));
-    }
-
-    /* === TABLE STYLING === */
-    table {
-      border-radius: 8px;
-      overflow: hidden;
-      width: 100%;
-    }
-    table thead {
-      background-color: #F7F7F7;
-    }
-    table td, table th {
-      border-color: #DDDDDD;
-      padding: 0.75rem;
-    }
-
-    /* === TOYS === */
-
-    /* Insight Capsules */
-    .insight-hidden {
-      display: none;
-      margin-top: 0.5rem;
-      padding: 0.75rem;
-      background: #FFF7D1;
-      border-left: 4px solid #FFD101;
-      border-radius: 6px;
-      color: #141414;
-    }
-    .insight-trigger {
-      cursor: pointer;
-      font-weight: 600;
-      color: #141414;
-      padding: 0.5rem 0.75rem;
-      border-radius: 6px;
-      background: #F4F4F4;
-      transition: all 150ms ease-out;
-      display: inline-block;
-      margin-top: 0.5rem;
-    }
-    .insight-trigger:hover {
-      background: #EAEAEA;
-    }
-
-    /* Toggle Switch */
-    .toggle-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .toggle-switch {
-      width: 42px;
-      height: 22px;
-      background: #DDDDDD;
-      border-radius: 11px;
-      position: relative;
-      cursor: pointer;
-      transition: background 150ms ease-out;
-    }
-    .toggle-switch::after {
-      content: "";
-      width: 18px;
-      height: 18px;
-      background: #FFFFFF;
-      border-radius: 50%;
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      transition: all 150ms ease-out;
-    }
-    .toggle-switch.active {
-      background: #FFD101;
-    }
-    .toggle-switch.active::after {
-      transform: translateX(20px);
-    }
-
-    /* Expand Panel */
-    .expand-panel {
-      margin-top: 1rem;
-      display: none;
-      padding: 1rem;
-      border-left: 4px solid #141414;
-      background: #FAFAFA;
-      border-radius: 8px;
-    }
-
-    /* Table Hotspots */
-    .table-hotspot {
-      position: relative;
-      cursor: help;
-    }
-    .hotspot-tooltip {
+      inset: auto 0 -0.15rem 0;
+      margin-inline: auto;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #ffd101, transparent);
       opacity: 0;
-      transform: translateY(4px);
-      transition: all 150ms ease-out;
-      position: absolute;
-      left: 0;
-      bottom: 100%;
-      background: #141414;
-      color: #FFFFFF;
-      padding: 0.5rem 0.75rem;
-      border-radius: 6px;
-      white-space: nowrap;
-      font-size: 0.8rem;
-      z-index: 50;
-    }
-    .table-hotspot:hover .hotspot-tooltip,
-    .table-hotspot:focus .hotspot-tooltip {
-      opacity: 1;
-      transform: translateY(0);
+      transition: width 0.18s ease-out, opacity 0.18s ease-out;
     }
 
-    /* Sticky Navigation */
-    #sticky-nav {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #FFFFFF;
-      border: 1px solid #E4E4E4;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      display: none;
-      z-index: 999;
+    .nav-pill a:hover::after {
+      width: 70%;
+      opacity: 1;
     }
-    #sticky-nav a {
-      display: block;
-      margin-bottom: 6px;
-      color: #141414;
-      font-weight: 600;
-      font-size: 0.85rem;
+
+    .spark-orbit {
+      position: absolute;
+      inset: -120px;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image:
+        radial-gradient(circle at 20% 10%, rgba(255, 209, 1, 0.18) 0, transparent 55%),
+        radial-gradient(circle at 80% 90%, rgba(255, 255, 255, 0.06) 0, transparent 55%);
     }
-    #sticky-nav a:hover {
-      color: #FFD101;
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
+<body class="min-h-screen text-slate-50">
+  <div class="relative">
+    <div class="spark-orbit"></div>
 
-<body>
+    <!-- Shell -->
+    <div class="relative max-w-6xl mx-auto px-4 lg:px-6 py-6 lg:py-10 space-y-8 lg:space-y-10">
 
-  <!-- Sticky Nav -->
-  <div id="sticky-nav">
-    <a href="#introduction">Intro</a>
-    <a href="#elevator">Pitch</a>
-    <a href="#advantages">Advantages</a>
-    <a href="#questions">Questions</a>
-    <a href="#problems">Problems</a>
-    <a href="#critical">Critical</a>
-    <a href="#slides">Slides</a>
-    <a href="#chart">Chart</a>
+      <!-- Top Bar -->
+      <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="bg-neutral-900/80 border border-neutral-700/60 rounded-2xl px-3.5 py-2 flex items-center gap-2 shadow-lg">
+            <img
+              src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+              alt="IGEL Logo"
+              class="h-7 w-auto"
+            />
+            <div class="h-7 w-px bg-neutral-700/70"></div>
+            <p class="text-xs font-medium tracking-[0.16em] uppercase text-neutral-300">
+              BC&amp;DR • Reseller Battlecard • 2025
+            </p>
+          </div>
+        </div>
+
+        <nav class="nav-pill px-3 py-1.5 flex flex-wrap gap-2 text-xs sm:text-[0.68rem] uppercase tracking-[0.16em] text-neutral-300">
+          <a href="#elevator" class="px-2 py-1">Pitch</a>
+          <a href="#pain" class="px-2 py-1">Pain</a>
+          <a href="#features" class="px-2 py-1">Features</a>
+          <a href="#value" class="px-2 py-1">Value</a>
+          <a href="#charts" class="px-2 py-1">Charts</a>
+          <a href="#faq" class="px-2 py-1">FAQ</a>
+          <a href="#next-steps" class="px-2 py-1">Next Steps</a>
+        </nav>
+      </header>
+
+      <!-- HERO -->
+      <section class="section-card section-card-border overflow-hidden relative">
+        <div class="absolute -top-20 -right-24 w-72 h-72 rounded-full border border-[rgba(255,209,1,0.25)] blur-2xl opacity-60"></div>
+        <div class="absolute top-10 -left-12 w-40 h-40 rounded-full border border-[rgba(255,255,255,0.12)] opacity-70"></div>
+
+        <div class="relative px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 flex flex-col lg:flex-row gap-7 lg:gap-10">
+          <!-- Left -->
+          <div class="flex-1 space-y-5 lg:space-y-6">
+            <div class="inline-flex items-center gap-2 chip px-3 py-1 text-xs font-medium text-neutral-200 uppercase tracking-[0.16em]">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--igel-yellow)]"></span>
+              IGEL BC&amp;DR · Endpoint Continuity
+            </div>
+
+            <div>
+              <h1 class="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white">
+                IGEL BC&amp;DR – Reseller Positioning Battlecard
+              </h1>
+              <p class="mt-2 text-sm sm:text-base text-neutral-200 max-w-xl">
+                <span class="font-semibold text-[var(--igel-yellow)]">Rapid Endpoint Recovery. Immutable Continuity.</span>
+                Give customers confidence in every reboot — even under active attack.
+              </p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-3 text-xs sm:text-[0.8rem] text-neutral-200">
+              <div class="chip px-3 py-2 flex flex-col gap-1">
+                <span class="text-[0.68rem] uppercase tracking-[0.14em] text-neutral-400">Primary Outcome</span>
+                <span class="font-medium text-sm">Endpoints back online in &lt;10 minutes.</span>
+              </div>
+              <div class="chip px-3 py-2 flex flex-col gap-1">
+                <span class="text-[0.68rem] uppercase tracking-[0.14em] text-neutral-400">Core Mechanism</span>
+                <span class="font-medium text-sm">Reboot into secure, immutable IGEL OS.</span>
+              </div>
+              <div class="chip px-3 py-2 flex flex-col gap-1">
+                <span class="text-[0.68rem] uppercase tracking-[0.14em] text-neutral-400">Story Angle</span>
+                <span class="font-medium text-sm">From outage panic to controlled recovery.</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-3 items-center">
+              <button
+                type="button"
+                class="chip-strong px-4 py-2 text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase shadow-lg shadow-[rgba(255,209,1,0.4)]"
+              >
+                Book a 10-minute Recovery Demo
+              </button>
+              <button
+                type="button"
+                class="chip px-3 py-2 text-xs sm:text-sm font-medium flex items-center gap-1.5"
+              >
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                Ready-to-use with existing endpoints
+              </button>
+            </div>
+
+            <p class="text-[0.75rem] text-neutral-400 max-w-xl">
+              When cyberattacks or system failures hit, IGEL BC&amp;DR lets businesses reboot endpoints into a secure, immutable IGEL environment within minutes —
+              bypassing compromised Windows partitions, restoring SaaS, VDI, and collaboration access fast.
+            </p>
+          </div>
+
+          <!-- Right: Quick battle snapshot -->
+          <aside class="w-full lg:w-80 xl:w-96 space-y-4">
+            <div class="chip px-4 pt-3.5 pb-3 space-y-2">
+              <p class="text-[0.68rem] uppercase tracking-[0.16em] text-neutral-400">
+                Battle Snapshot · Use This Line
+              </p>
+              <p class="text-sm text-neutral-100">
+                <span class="font-semibold text-[var(--igel-yellow)]">“Where others rebuild from the ashes, IGEL lets you bypass the fire.”</span>
+                Use this as your opener when talking about endpoint recovery.
+              </p>
+            </div>
+
+            <div class="chip px-4 py-3 space-y-3 text-xs text-neutral-200">
+              <div class="flex items-center justify-between">
+                <span class="text-[0.68rem] uppercase tracking-[0.16em] text-neutral-400">Who to Target</span>
+                <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[0.65rem] font-semibold uppercase tracking-[0.16em]">
+                  High Fit
+                </span>
+              </div>
+              <ul class="space-y-1.5 list-disc list-inside">
+                <li>CIO / CISO under NIS2 / DORA / HIPAA pressure</li>
+                <li>BC&DR owners with strict 48–72 hour RTO</li>
+                <li>Organizations burned by slow reimaging cycles</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Elevator Pitch -->
+      <section id="elevator" class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-7 lg:py-8 glow-hover">
+        <div class="flex flex-col lg:flex-row gap-6 items-start">
+          <div class="flex-1 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="h-1.5 w-8 rounded-full bg-[var(--igel-yellow)]"></span>
+              <h2 class="text-sm sm:text-base font-semibold tracking-[0.16em] uppercase text-neutral-200">
+                🎯 Elevator Pitch
+              </h2>
+            </div>
+            <p class="text-sm sm:text-[0.95rem] text-neutral-100 leading-relaxed">
+              When cyberattacks or system failures hit, <span class="font-semibold text-[var(--igel-yellow)]">IGEL BC&amp;DR</span> lets businesses reboot endpoints
+              into a secure, immutable IGEL environment within minutes – bypassing compromised Windows partitions and restoring access to critical SaaS, VDI,
+              and collaboration tools. It’s the fastest way to turn disruption into continuity.
+            </p>
+          </div>
+
+          <!-- View toggle toy -->
+          <div class="w-full lg:w-72 xl:w-80 chip px-3.5 py-3 space-y-2 text-xs text-neutral-100">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[0.68rem] uppercase tracking-[0.16em] text-neutral-400">Talk Track Lens</span>
+              <div class="inline-flex items-center gap-1 bg-black/40 rounded-full p-0.5">
+                <button
+                  type="button"
+                  class="lens-toggle px-2.5 py-1 rounded-full text-[0.65rem] font-semibold uppercase tracking-[0.14em] bg-[var(--igel-yellow)] text-[var(--igel-black)]"
+                  data-lens="reseller"
+                >
+                  Reseller
+                </button>
+                <button
+                  type="button"
+                  class="lens-toggle px-2.5 py-1 rounded-full text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-neutral-300"
+                  data-lens="customer"
+                >
+                  Customer
+                </button>
+              </div>
+            </div>
+            <div id="lens-reseller" class="space-y-1">
+              <p class="font-semibold text-[0.8rem] text-neutral-50">How to pitch it as a reseller:</p>
+              <p>
+                “We give your users a clean, centrally managed IGEL workspace they can reboot into in minutes — no reimaging,
+                no panic rebuilds, and no fresh hardware spend.”
+              </p>
+            </div>
+            <div id="lens-customer" class="space-y-1 hidden">
+              <p class="font-semibold text-[0.8rem] text-neutral-50">How it lands with customers:</p>
+              <p>
+                “If Windows is compromised, your users flip into a hardened IGEL workspace and keep working — while your teams safely investigate the breach.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pain Points -->
+      <section id="pain" class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-7 lg:py-8">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="h-1.5 w-8 rounded-full bg-[var(--igel-yellow)]"></span>
+          <h2 class="text-sm sm:text-base font-semibold tracking-[0.16em] uppercase text-neutral-200">
+            ⚡ Customer Pain Points → IGEL Responses
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 lg:gap-5 text-sm text-neutral-100">
+          <!-- Pain cards -->
+          <article class="glow-hover border border-neutral-700/80 rounded-2xl p-4 flex flex-col gap-2 bg-black/40">
+            <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">Pain</p>
+            <p class="font-semibold">Endpoint Downtime</p>
+            <p class="text-xs text-neutral-300">
+              When Windows endpoints are compromised, users lose access for days — productivity halts, tickets explode, and BC plans stall at the endpoint.
+            </p>
+            <div class="mt-1 text-xs text-emerald-300/90">
+              → <span class="font-semibold">IGEL BC&amp;DR</span> restores secure access in minutes via Dual Boot or USB Boot.
+            </div>
+          </article>
+
+          <article class="glow-hover border border-neutral-700/80 rounded-2xl p-4 flex flex-col gap-2 bg-black/40">
+            <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">Pain</p>
+            <p class="font-semibold">Ransomware Re-infection Risk</p>
+            <p class="text-xs text-neutral-300">
+              Traditional reimaging can drag hidden threats forward into the rebuilt device and reintroduce malware into the environment.
+            </p>
+            <div class="mt-1 text-xs text-emerald-300/90">
+              → <span class="font-semibold">Immutable IGEL OS</span> is read-only, preventing malware persistence or re-entry.
+            </div>
+          </article>
+
+          <article class="glow-hover border border-neutral-700/80 rounded-2xl p-4 flex flex-col gap-2 bg-black/40">
+            <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">Pain</p>
+            <p class="font-semibold">Compliance Pressures (NIS2, DORA, HIPAA)</p>
+            <p class="text-xs text-neutral-300">
+              Regulators expect 48–72-hour recovery across critical services. Endpoint outages can be the hidden weak link in that RTO.
+            </p>
+            <div class="mt-1 text-xs text-emerald-300/90">
+              → <span class="font-semibold">IGEL BC&amp;DR</span> is designed to meet recovery objectives at the endpoint layer.
+            </div>
+          </article>
+
+          <article class="glow-hover border border-neutral-700/80 rounded-2xl p-4 flex flex-col gap-2 bg-black/40">
+            <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">Pain</p>
+            <p class="font-semibold">Costly Hardware Replacement</p>
+            <p class="text-xs text-neutral-300">
+              Rip-and-replace or mass rebuild projects consume budget, logistics, and time — and still don’t guarantee clean recovery.
+            </p>
+            <div class="mt-1 text-xs text-emerald-300/90">
+              → Reboot into <span class="font-semibold">IGEL OS on existing hardware or USB</span>; no device replacement required.
+            </div>
+          </article>
+
+          <article class="glow-hover border border-neutral-700/80 rounded-2xl p-4 flex flex-col gap-2 bg-black/40 md:col-span-2">
+            <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">Pain</p>
+            <p class="font-semibold">Forensic Disruption</p>
+            <p class="text-xs text-neutral-300">
+              Traditional cleanup often wipes the compromised Windows environment — deleting the evidence security teams need to understand the root cause.
+            </p>
+            <div class="mt-1 text-xs text-emerald-300/90">
+              → <span class="font-semibold">Windows partitions stay intact for post-incident analysis</span>, while users continue in the clean IGEL environment.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Core Features -->
+      <section id="features" class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-7 lg:py-8">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="flex-1 space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="h-1.5 w-8 rounded-full bg-[var(--igel-yellow)]"></span>
+              <h2 class="text-sm sm:text-base font-semibold tracking-[0.16em] uppercase text-neutral-200">
+                🔑 Core Features – What You’re Really Selling
+              </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 text-sm text-neutral-100">
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold text-[0.9rem] mb-1">Dual Boot</p>
+                <p class="text-xs text-neutral-300">
+                  IGEL BC&amp;DR installs alongside Windows. If Windows is compromised, users reboot into a clean, policy-controlled IGEL OS.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold text-[0.9rem] mb-1">USB Boot</p>
+                <p class="text-xs text-neutral-300">
+                  For devices that can’t run a dual-boot setup, USB Boot provides portable, secure IGEL recovery without touching the disk.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold text-[0.9rem] mb-1">Immutable OS</p>
+                <p class="text-xs text-neutral-300">
+                  Read-only design means endpoints can’t be permanently altered by malware. On reboot, they return to a known-good state.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold text-[0.9rem] mb-1">Universal Management Suite (UMS)</p>
+                <p class="text-xs text-neutral-300">
+                  Centrally manage policies, configurations, and updates for every IGEL recovery endpoint, on-prem or in the cloud.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold text-[0.9rem] mb-1">Cloud or On-Prem Management</p>
+                <p class="text-xs text-neutral-300">
+                  Meet customer architecture and regulatory requirements with flexible deployment models.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold text-[0.9rem] mb-1">Specialist Recovery Services</p>
+                <p class="text-xs text-neutral-300">
+                  IGEL experts help design, test, and simulate BC&amp;DR scenarios so customers know recovery will work when it counts.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Compliance Toy -->
+          <aside class="w-full md:w-72 xl:w-80 chip px-4 py-4 space-y-3 text-xs text-neutral-100">
+            <div class="flex items-center justify-between gap-2">
+              <div>
+                <p class="text-[0.68rem] uppercase tracking-[0.16em] text-neutral-400">Regulatory Confidence Capsule</p>
+                <p class="text-[0.8rem] text-neutral-100">Tap to reveal talking points.</p>
+              </div>
+              <button
+                type="button"
+                class="chip-strong px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em]"
+                data-toggle-target="#compliance-details"
+              >
+                Show
+              </button>
+            </div>
+            <div id="compliance-details" class="space-y-2 hidden">
+              <ul class="list-disc list-inside space-y-1 text-[0.78rem] text-neutral-200">
+                <li>Aligns endpoint recovery with 48–72-hour RTO expectations.</li>
+                <li>Supports NIS2, DORA, HIPAA by protecting critical user access pathways.</li>
+                <li>Demonstrates layered, preventative security architecture at the endpoint.</li>
+              </ul>
+              <p class="text-[0.7rem] text-neutral-400">
+                Use this when security or compliance leaders ask how BC&amp;DR maps to regulations.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Charts + Value Prop -->
+      <section id="charts" class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-7 lg:py-8 space-y-7">
+        <div class="flex items-center gap-2">
+          <span class="h-1.5 w-8 rounded-full bg-[var(--igel-yellow)]"></span>
+          <h2 class="text-sm sm:text-base font-semibold tracking-[0.16em] uppercase text-neutral-200">
+            📊 Endpoint Continuity in Numbers (Illustrative)
+          </h2>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
+          <!-- Chart 1 -->
+          <article class="space-y-3 text-sm text-neutral-100">
+            <p class="font-semibold text-[0.95rem]">
+              Recovery Time: Traditional Endpoint Rebuild vs IGEL BC&amp;DR
+            </p>
+            <p class="text-xs text-neutral-300">
+              Illustrative comparison of typical time to restore user access after a major Windows compromise.
+            </p>
+            <div class="bg-black/40 border border-neutral-700/80 rounded-2xl px-3 py-3">
+              <canvas id="recoveryTimeChart" aria-label="Recovery time comparison chart" role="img"></canvas>
+            </div>
+            <p class="text-[0.75rem] text-neutral-400">
+              This chart shows how IGEL BC&amp;DR can reduce endpoint recovery from
+              <span class="font-semibold">days</span> to <span class="font-semibold">minutes</span>, supporting aggressive RTO targets.
+            </p>
+            <p class="text-[0.68rem] text-neutral-500">
+              Data shown is illustrative only; adjust values to match your customer’s environment.
+            </p>
+          </article>
+
+          <!-- Chart 2 -->
+          <article class="space-y-3 text-sm text-neutral-100">
+            <p class="font-semibold text-[0.95rem]">
+              Risk &amp; Cost Profile: Traditional vs IGEL BC&amp;DR
+            </p>
+            <p class="text-xs text-neutral-300">
+              Normalized scores (1–5) comparing risk and cost dimensions between traditional endpoint reimaging and IGEL’s immutable BC&amp;DR approach.
+            </p>
+            <div class="bg-black/40 border border-neutral-700/80 rounded-2xl px-3 py-3">
+              <canvas id="riskCostChart" aria-label="Risk and cost comparison chart" role="img"></canvas>
+            </div>
+            <p class="text-[0.75rem] text-neutral-400">
+              This chart highlights how IGEL BC&amp;DR reduces both <span class="font-semibold">re-infection risk</span> and
+              <span class="font-semibold">hardware / rebuild costs</span> while improving compliance posture.
+            </p>
+            <p class="text-[0.68rem] text-neutral-500">
+              Data is illustrative. Use it as a storytelling aid when discussing TCO and risk reduction.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Value Proposition + USP -->
+      <section id="value" class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-7 lg:py-8 space-y-6">
+        <div class="flex flex-col lg:flex-row gap-6">
+          <!-- Value Props -->
+          <div class="flex-1 space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="h-1.5 w-8 rounded-full bg-[var(--igel-yellow)]"></span>
+              <h2 class="text-sm sm:text-base font-semibold tracking-[0.16em] uppercase text-neutral-200">
+                💎 Value Proposition – Why Customers Buy
+              </h2>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4 text-sm text-neutral-100">
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold text-[0.92rem] mb-1">Instant Continuity</p>
+                <p class="text-xs text-neutral-300">
+                  Reboot into IGEL’s secure environment in minutes rather than waiting days for rebuilds.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold text-[0.92rem] mb-1">Immutable Security</p>
+                <p class="text-xs text-neutral-300">
+                  Read-only OS design eliminates malware persistence and dramatically reduces re-infection risk.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold text-[0.92rem] mb-1">Cost Efficiency</p>
+                <p class="text-xs text-neutral-300">
+                  Reuse existing hardware and endpoints instead of triggering emergency replacement programs.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold text-[0.92rem] mb-1">Forensic Integrity</p>
+                <p class="text-xs text-neutral-300">
+                  Preserve compromised Windows partitions for investigation while users continue working safely.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40 sm:col-span-2">
+                <p class="font-semibold text-[0.92rem] mb-1">Regulatory Confidence</p>
+                <p class="text-xs text-neutral-300">
+                  Built to align with RTO expectations under NIS2, DORA, and HIPAA by extending BC&amp;DR all the way to the endpoint.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- USP Column -->
+          <div class="w-full lg:w-80 xl:w-88 space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="h-1.5 w-8 rounded-full bg-[var(--igel-yellow)]"></span>
+              <h2 class="text-sm sm:text-base font-semibold tracking-[0.16em] uppercase text-neutral-200">
+                🚀 Unique Selling Proposition (USP)
+              </h2>
+            </div>
+            <div class="space-y-3 text-xs sm:text-sm text-neutral-100">
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold mb-1">Preventative Security Model</p>
+                <p class="text-xs text-neutral-300">
+                  Continuity begins before recovery. Immutable endpoints reduce the likelihood and blast radius of successful attacks.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold mb-1">Dual Boot &amp; USB Options</p>
+                <p class="text-xs text-neutral-300">
+                  Two paths to instant recovery for almost any endpoint footprint or usage scenario.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold mb-1">Centralized Recovery Control</p>
+                <p class="text-xs text-neutral-300">
+                  UMS gives admins one console for policies, updates, and recovery reporting.
+                </p>
+              </div>
+              <div class="glow-hover border border-neutral-700/80 rounded-2xl p-3.5 bg-black/40">
+                <p class="font-semibold mb-1">Specialist BC&amp;DR Services</p>
+                <p class="text-xs text-neutral-300">
+                  Guided setup, testing, and simulation to prove endpoint continuity before an incident hits.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-7 lg:py-8 space-y-4">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="h-1.5 w-8 rounded-full bg-[var(--igel-yellow)]"></span>
+          <h2 class="text-sm sm:text-base font-semibold tracking-[0.16em] uppercase text-neutral-200">
+            💬 Battle-Ready FAQ
+          </h2>
+        </div>
+        <p class="text-[0.82rem] text-neutral-300 mb-2">
+          Tap a question to reveal the answer. Use these as your default responses in discovery and evaluation calls.
+        </p>
+
+        <div class="space-y-2" id="faq-accordion">
+          <!-- Q1 -->
+          <div class="border border-neutral-700/80 rounded-2xl bg-black/40 overflow-hidden">
+            <button
+              type="button"
+              class="w-full flex items-center justify-between text-left px-4 py-3 text-sm text-neutral-100 accordion-trigger"
+              data-accordion-target="#faq-a1"
+            >
+              <span>Does IGEL BC&amp;DR replace Windows?</span>
+              <span class="text-xs text-neutral-400">Tap to toggle</span>
+            </button>
+            <div id="faq-a1" class="px-4 pb-3 text-xs text-neutral-300 hidden">
+              <p>
+                No. IGEL BC&amp;DR sits <span class="font-semibold">alongside Windows</span> to offer a clean, secure recovery boot.
+                Windows remains available for analysis and, once remediated, for standard operations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="border border-neutral-700/80 rounded-2xl bg-black/40 overflow-hidden">
+            <button
+              type="button"
+              class="w-full flex items-center justify-between text-left px-4 py-3 text-sm text-neutral-100 accordion-trigger"
+              data-accordion-target="#faq-a2"
+            >
+              <span>How fast can endpoints be restored?</span>
+              <span class="text-xs text-neutral-400">Tap to toggle</span>
+            </button>
+            <div id="faq-a2" class="px-4 pb-3 text-xs text-neutral-300 hidden">
+              <p>
+                Most users are back online in <span class="font-semibold">&lt;10 minutes</span> via Dual Boot or USB Boot, depending
+                on device and environment — versus days for rebuilds.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="border border-neutral-700/80 rounded-2xl bg-black/40 overflow-hidden">
+            <button
+              type="button"
+              class="w-full flex items-center justify-between text-left px-4 py-3 text-sm text-neutral-100 accordion-trigger"
+              data-accordion-target="#faq-a3"
+            >
+              <span>Can this work on existing hardware?</span>
+              <span class="text-xs text-neutral-400">Tap to toggle</span>
+            </button>
+            <div id="faq-a3" class="px-4 pb-3 text-xs text-neutral-300 hidden">
+              <p>
+                Yes. IGEL is a <span class="font-semibold">no rip-and-replace</span> solution. Any compatible endpoint can be converted
+                to run IGEL OS and participate in BC&amp;DR.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="border border-neutral-700/80 rounded-2xl bg-black/40 overflow-hidden">
+            <button
+              type="button"
+              class="w-full flex items-center justify-between text-left px-4 py-3 text-sm text-neutral-100 accordion-trigger"
+              data-accordion-target="#faq-a4"
+            >
+              <span>How does it support compliance (NIS2, DORA, HIPAA)?</span>
+              <span class="text-xs text-neutral-400">Tap to toggle</span>
+            </button>
+            <div id="faq-a4" class="px-4 pb-3 text-xs text-neutral-300 hidden">
+              <p>
+                By enabling fast, verifiable endpoint recovery, IGEL BC&amp;DR helps organizations meet 48–72-hour RTO mandates and demonstrate
+                layered, preventative endpoint security under NIS2, DORA, and HIPAA.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="border border-neutral-700/80 rounded-2xl bg-black/40 overflow-hidden">
+            <button
+              type="button"
+              class="w-full flex items-center justify-between text-left px-4 py-3 text-sm text-neutral-100 accordion-trigger"
+              data-accordion-target="#faq-a5"
+            >
+              <span>What’s managed where?</span>
+              <span class="text-xs text-neutral-400">Tap to toggle</span>
+            </button>
+            <div id="faq-a5" class="px-4 pb-3 text-xs text-neutral-300 hidden">
+              <p>
+                The <span class="font-semibold">Universal Management Suite (UMS)</span> controls every IGEL recovery endpoint — on-prem or cloud-hosted —
+                including configurations, policies, updates, and reporting.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Next Steps -->
+      <section id="next-steps" class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-7 lg:py-8 space-y-6">
+        <div class="flex items-center gap-2">
+          <span class="h-1.5 w-8 rounded-full bg-[var(--igel-yellow)]"></span>
+          <h2 class="text-sm sm:text-base font-semibold tracking-[0.16em] uppercase text-neutral-200">
+            🧭 Next Steps for Resellers
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5 text-sm text-neutral-100">
+          <div class="glow-hover border border-neutral-700/80 rounded-2xl p-4 bg-black/40">
+            <p class="font-semibold text-[0.98rem] mb-1">1. Book a Demo</p>
+            <p class="text-xs text-neutral-300 mb-2">
+              Show clients a live 10-minute endpoint recovery using Dual Boot or USB Boot.
+            </p>
+            <ul class="list-disc list-inside text-xs text-neutral-300 space-y-1">
+              <li>Start from “compromised Windows” scenario.</li>
+              <li>Reboot into IGEL and launch Microsoft 365 / VDI quickly.</li>
+              <li>Highlight that Windows remains intact for forensics.</li>
+            </ul>
+          </div>
+
+          <div class="glow-hover border border-neutral-700/80 rounded-2xl p-4 bg-black/40">
+            <p class="font-semibold text-[0.98rem] mb-1">2. Position BC&amp;DR as Operational Insurance</p>
+            <p class="text-xs text-neutral-300 mb-2">
+              Frame IGEL as resilience, not replacement: a controllable fallback for the worst day.
+            </p>
+            <ul class="list-disc list-inside text-xs text-neutral-300 space-y-1">
+              <li>Focus on uptime, RTO, and risk containment.</li>
+              <li>Connect to existing compliance and cyber insurance language.</li>
+            </ul>
+          </div>
+
+          <div class="glow-hover border border-neutral-700/80 rounded-2xl p-4 bg-black/40">
+            <p class="font-semibold text-[0.98rem] mb-1">3. Bundle with IGEL OS Enterprise Edition</p>
+            <p class="text-xs text-neutral-300 mb-2">
+              Offer customers a full endpoint protection and recovery story in a single package.
+            </p>
+            <ul class="list-disc list-inside text-xs text-neutral-300 space-y-1">
+              <li>Standardize endpoint OS, then layer BC&amp;DR on top.</li>
+              <li>Promote simplified management through UMS.</li>
+            </ul>
+          </div>
+
+          <div class="glow-hover border border-neutral-700/80 rounded-2xl p-4 bg-black/40">
+            <p class="font-semibold text-[0.98rem] mb-1">4. Engage IGEL Specialists</p>
+            <p class="text-xs text-neutral-300 mb-2">
+              Use IGEL’s co-selling and enablement support to win and deliver BC&amp;DR deals.
+            </p>
+            <ul class="list-disc list-inside text-xs text-neutral-300 space-y-1">
+              <li>Schedule joint customer workshops.</li>
+              <li>Co-design BC&amp;DR playbooks for target verticals (healthcare, finance, OT, etc.).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-2 chip px-4 py-3 text-[0.8rem] text-neutral-200 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+          <p>
+            🎓 <span class="font-semibold">Education meets resilience:</span> teach your clients not to fear outages, but to master recovery.
+            IGEL BC&amp;DR makes every reboot a return to business.
+          </p>
+        </div>
+      </section>
+
+      <!-- Optional Explorations -->
+      <section class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-6 lg:py-7 mb-4">
+        <div class="flex flex-col md:flex-row gap-5 items-start md:items-center">
+          <div class="flex-1 space-y-2">
+            <p class="text-[0.75rem] uppercase tracking-[0.16em] text-neutral-400">
+              Optional Enablement Paths – Pick Your Next Move
+            </p>
+            <p class="text-sm text-neutral-100">
+              Use this battlecard as the spine for deeper reseller training, storytelling, and customer-facing content.
+            </p>
+          </div>
+          <div class="grid sm:grid-cols-3 gap-2 text-[0.75rem] text-neutral-200">
+            <button class="chip px-3 py-2">
+              A. Training module on endpoint continuity storytelling
+            </button>
+            <button class="chip px-3 py-2">
+              B. Visual flowchart: IGEL dual-boot recovery
+            </button>
+            <button class="chip px-3 py-2">
+              C. Explainer video script: “Mastering recovery with IGEL BC&amp;DR”
+            </button>
+            <button class="chip px-3 py-2">
+              D. One-page: IGEL vs traditional reimaging
+            </button>
+            <button class="chip px-3 py-2">
+              E. Teaching brief: Preventative Security Model
+            </button>
+            <button class="chip px-3 py-2">
+              F. Sector map: BC&amp;DR use cases by industry
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="pb-6 pt-2 text-[0.7rem] text-neutral-500 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+        <p>IGEL BC&amp;DR Reseller Battlecard · 2025 Edition · Endpoint Continuity &amp; Immutable Recovery</p>
+        <p>Design language: IGEL Cyber-Sentinel · Dark mode · IGEL Yellow accent</p>
+      </footer>
+    </div>
   </div>
 
-  <!-- HEADER -->
-  <header class="py-10 px-6 text-center">
-    <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" class="mx-auto mb-4 w-24" />
-    <h1 class="text-4xl font-bold">IGEL Business Continuity & Disaster Recovery (BC&DR)</h1>
-    <p class="text-lg mt-4 max-w-2xl mx-auto text-gray-700">
-      Instant, secure endpoint recovery that keeps users productive — even when Windows fails.
-    </p>
-  </header>
-
-  <main class="px-6 max-w-4xl mx-auto">
-
-    <!-- INTRO -->
-    <section id="introduction" class="section-card">
-      <h2>Introduction</h2>
-      <p class="text-gray-700">
-        Ransomware and OS failures can halt operations instantly. Most continuity plans focus on servers and cloud services — leaving endpoints offline for days. IGEL BC&DR fixes the blind spot by enabling compromised devices to reboot into a secure, immutable IGEL OS within minutes.
-      </p>
-      <p class="mt-4 text-gray-700">
-        IT teams avoid costly reimaging, preserve forensic evidence, and maintain user productivity while investigations proceed.
-      </p>
-    </section>
-
-    <!-- ELEVATOR PITCH -->
-    <section id="elevator" class="section-card">
-      <h2>Elevator Pitch</h2>
-      <div class="grid md:grid-cols-3 gap-6 mt-4">
-        <div><h3 class="font-semibold mb-2">For CISOs</h3><p>Resilience without exposure or forensic loss.</p></div>
-        <div><h3 class="font-semibold mb-2">For IT Managers</h3><p>Instant recovery without reimaging.</p></div>
-        <div><h3 class="font-semibold mb-2">For CTOs</h3><p>Continuous operations without downtime.</p></div>
-      </div>
-    </section>
-
-    <!-- ADVANTAGES -->
-    <section id="advantages" class="section-card">
-      <h2>Key Advantages</h2>
-      <ul class="list-disc pl-6 space-y-2 mt-4">
-        <li>Dual Boot for instant recovery</li>
-        <li>USB Boot for hardware-agnostic fallback</li>
-        <li>Centralized control via UMS</li>
-        <li>Immutable OS preserves forensics</li>
-        <li>Aligns with NIS2, DORA, HIPAA</li>
-      </ul>
-    </section>
-
-    <!-- QUESTIONS -->
-    <section id="questions" class="section-card">
-      <h2>Questions to Ask</h2>
-      <p class="mt-4"><strong>Main Question:</strong> How long are users offline after ransomware or Windows failure?</p>
-      <ul class="list-disc pl-6 mt-2">
-        <li>Impact on SLAs</li>
-        <li>Cost of reimaging</li>
-        <li>Alignment with 48–72h mandates</li>
-        <li>Who owns endpoint resilience?</li>
-      </ul>
-    </section>
-
-    <!-- PROBLEMS TABLE + HOTSPOTS -->
-    <section id="problems" class="section-card">
-      <h2>Problems & Solutions</h2>
-
-      <div class="overflow-x-auto mt-6">
-        <table class="border border-gray-300">
-          <thead>
-            <tr>
-              <th>Problem</th>
-              <th>How IGEL Helps</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="table-hotspot">
-                Endpoints offline after attack
-                <div class="hotspot-tooltip">Typical downtime: 24–72h.</div>
-              </td>
-              <td>Boot into IGEL in minutes</td>
-            </tr>
-            <tr>
-              <td class="table-hotspot">
-                Lost productivity
-                <div class="hotspot-tooltip">User productivity drops up to 97%.</div>
-              </td>
-              <td>Instant SaaS/VDI access</td>
-            </tr>
-            <tr>
-              <td>Costly reimaging</td><td>Clean-boot eliminates reimage cycles</td>
-            </tr>
-            <tr>
-              <td class="table-hotspot">
-                Forensic evidence destroyed
-                <div class="hotspot-tooltip">Reimaging wipes critical logs.</div>
-              </td>
-              <td>Preserves compromised partitions</td>
-            </tr>
-            <tr><td>Reinfection risk</td><td>Immutable OS prevents persistence</td></tr>
-            <tr><td>Compliance gaps</td><td>Meets regulatory mandates</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- CRITICAL TOPICS + INSIGHT CAPSULES -->
-    <section id="critical" class="section-card">
-      <h2>Critical Topics</h2>
-
-      <h3 class="font-semibold mt-4">1. Endpoint Downtime & Reinfection</h3>
-      <p class="text-gray-700 mt-2">Reimaging is slow and risky.</p>
-
-      <div class="insight-trigger" data-insight="ins1">Tap to reveal deeper insight</div>
-      <div id="ins1" class="insight-hidden">
-        IGEL’s immutable OS eliminates local persistence, even if malware still exists on Windows.
-      </div>
-
-      <h3 class="font-semibold mt-6">2. Compliance Alignment</h3>
-      <p class="text-gray-700 mt-2">Manual recovery fails 48–72h mandates.</p>
-
-      <!-- Compliance Toggle -->
-      <div class="toggle-wrap mt-4">
-        <span class="font-semibold">Compliance Mode:</span>
-        <div class="toggle-switch" id="complianceToggle"></div>
-        <span id="complianceLabel">NIS2</span>
-      </div>
-    </section>
-
-    <!-- SLIDES -->
-    <section id="slides" class="section-card">
-      <h2>Slide Formats</h2>
-
-      <h3 class="font-semibold mt-4">Instant Endpoint Recovery</h3>
-      <ul class="list-disc pl-6 mt-2">
-        <li>Minutes, not days</li>
-        <li>Immutable OS</li>
-        <li>Dual Boot bypass</li>
-      </ul>
-
-      <h3 class="font-semibold mt-6">Forensics & Security Preservation</h3>
-      <button id="forensicsBtn" class="insight-trigger mt-2">
-        Show forensic integrity details
-      </button>
-      <div id="forensicsPanel" class="expand-panel">
-        IGEL never modifies the compromised Windows partition, preserving chain-of-custody evidence.
-      </div>
-    </section>
-
-    <!-- CHART -->
-    <section id="chart" class="section-card">
-      <h2>Recovery Time Comparison</h2>
-      <p class="text-sm text-gray-600 mt-2">Illustrative data</p>
-      <canvas id="rtChart" width="400" height="200"></canvas>
-    </section>
-
-  </main>
-
-  <footer class="text-center py-10 text-sm text-gray-600">
-    IGEL BC&DR Infographic — Built with Nova 🦔✨
-  </footer>
-
-  <!-- JAVASCRIPT FOR TOYS -->
   <script>
-    // === Insight Capsules ===
-    document.querySelectorAll('.insight-trigger').forEach(trigger => {
-      const id = trigger.dataset.insight;
-      if (!id) return;
-      trigger.addEventListener('click', () => {
-        const panel = document.getElementById(id);
-        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    // Lens toggle (Reseller / Customer)
+    (function () {
+      const buttons = document.querySelectorAll(".lens-toggle");
+      const resellerBlock = document.getElementById("lens-reseller");
+      const customerBlock = document.getElementById("lens-customer");
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const lens = btn.getAttribute("data-lens");
+
+          buttons.forEach((b) => {
+            b.classList.remove("bg-[var(--igel-yellow)]", "text-[var(--igel-black)]");
+            b.classList.add("text-neutral-300");
+          });
+
+          btn.classList.add("bg-[var(--igel-yellow)]", "text-[var(--igel-black)]");
+          btn.classList.remove("text-neutral-300");
+
+          if (lens === "reseller") {
+            resellerBlock.classList.remove("hidden");
+            customerBlock.classList.add("hidden");
+          } else {
+            resellerBlock.classList.add("hidden");
+            customerBlock.classList.remove("hidden");
+          }
+        });
       });
-    });
+    })();
 
-    // === Compliance Toggle ===
-    const compToggle = document.getElementById('complianceToggle');
-    const compLabel = document.getElementById('complianceLabel');
-    let modes = ['NIS2', 'DORA', 'HIPAA'];
-    let idx = 0;
-    compToggle.addEventListener('click', () => {
-      compToggle.classList.toggle('active');
-      idx = (idx + 1) % modes.length;
-      compLabel.textContent = modes[idx];
-    });
+    // Generic toggle toy (e.g., compliance details)
+    (function () {
+      const toggleButtons = document.querySelectorAll("[data-toggle-target]");
 
-    // === Forensics Expand ===
-    document.getElementById('forensicsBtn').addEventListener('click', () => {
-      const p = document.getElementById('forensicsPanel');
-      p.style.display = p.style.display === 'block' ? 'none' : 'block';
-    });
+      toggleButtons.forEach((btn) => {
+        const targetSelector = btn.getAttribute("data-toggle-target");
+        const targetEl = document.querySelector(targetSelector);
 
-    // === Sticky Nav ===
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('sticky-nav');
-      nav.style.display = window.scrollY > 400 ? 'block' : 'none';
-    });
+        if (!targetEl) return;
 
-    // === Chart.js ===
-    const ctx = document.getElementById('rtChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Traditional Reimaging', 'IGEL Dual Boot'],
-        datasets: [{
-          label: 'Recovery Time (hours)',
-          data: [48, 0.5],
-          backgroundColor: ['#141414', '#FFD101'],
-          borderRadius: 6
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            grid: { color: 'rgba(20,20,20,0.08)' }
+        btn.addEventListener("click", () => {
+          const isHidden = targetEl.classList.contains("hidden");
+          if (isHidden) {
+            targetEl.classList.remove("hidden");
+            btn.textContent = "Hide";
+          } else {
+            targetEl.classList.add("hidden");
+            btn.textContent = "Show";
           }
-        },
-        plugins: {
-          legend: {
-            labels: { font: { family: 'Manrope' }, color: '#141414' }
+        });
+      });
+    })();
+
+    // FAQ accordion
+    (function () {
+      const triggers = document.querySelectorAll(".accordion-trigger");
+
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          const targetSelector = trigger.getAttribute("data-accordion-target");
+          const targetEl = document.querySelector(targetSelector);
+
+          if (!targetEl) return;
+
+          const isHidden = targetEl.classList.contains("hidden");
+
+          // Close all others
+          triggers.forEach((t) => {
+            const sel = t.getAttribute("data-accordion-target");
+            const el = document.querySelector(sel);
+            if (el && el !== targetEl) {
+              el.classList.add("hidden");
+            }
+          });
+
+          if (isHidden) {
+            targetEl.classList.remove("hidden");
+          } else {
+            targetEl.classList.add("hidden");
           }
-        }
+        });
+      });
+    })();
+
+    // Charts (illustrative data)
+    (function () {
+      const recoveryCtx = document.getElementById("recoveryTimeChart");
+      const riskCostCtx = document.getElementById("riskCostChart");
+
+      if (recoveryCtx) {
+        // Illustrative hours to recovery
+        new Chart(recoveryCtx, {
+          type: "bar",
+          data: {
+            labels: ["Traditional Endpoint Rebuild", "IGEL BC&DR"],
+            datasets: [
+              {
+                label: "Typical Recovery Time (hours)",
+                data: [72, 0.17], // 72 hours vs 10 minutes (~0.17 hours)
+                backgroundColor: ["rgba(148, 163, 184, 0.9)", "rgba(255, 209, 1, 0.95)"],
+                borderColor: ["rgba(148, 163, 184, 1)", "rgba(255, 209, 1, 1)"],
+                borderWidth: 1.5,
+                borderRadius: 8
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  color: "rgba(75, 85, 99, 0.4)"
+                },
+                ticks: {
+                  color: "rgba(209, 213, 219, 0.9)",
+                  font: { size: 10 }
+                },
+                title: {
+                  display: true,
+                  text: "Hours to Endpoint Recovery (Illustrative)",
+                  color: "rgba(229, 231, 235, 0.9)",
+                  font: { size: 11, weight: "500" }
+                }
+              },
+              x: {
+                grid: {
+                  display: false
+                },
+                ticks: {
+                  color: "rgba(209, 213, 219, 0.9)",
+                  font: { size: 10 }
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                labels: {
+                  color: "rgba(229, 231, 235, 0.9)",
+                  font: { size: 11 }
+                }
+              },
+              tooltip: {
+                backgroundColor: "rgba(17, 24, 39, 0.95)",
+                borderColor: "rgba(255, 209, 1, 0.7)",
+                borderWidth: 1,
+                titleColor: "#f9fafb",
+                bodyColor: "#e5e7eb"
+              }
+            }
+          }
+        });
       }
-    });
+
+      if (riskCostCtx) {
+        // Normalized 1–5 scale for comparative view
+        new Chart(riskCostCtx, {
+          type: "radar",
+          data: {
+            labels: ["Re-infection Risk", "Hardware Cost", "Recovery Time", "Compliance Fit", "Operational Complexity"],
+            datasets: [
+              {
+                label: "Traditional Reimaging",
+                data: [5, 4, 4, 2, 4],
+                backgroundColor: "rgba(148, 163, 184, 0.25)",
+                borderColor: "rgba(148, 163, 184, 1)",
+                borderWidth: 1.5,
+                pointBackgroundColor: "rgba(148, 163, 184, 1)"
+              },
+              {
+                label: "IGEL BC&DR",
+                data: [1, 2, 1, 4, 2],
+                backgroundColor: "rgba(255, 209, 1, 0.18)",
+                borderColor: "rgba(255, 209, 1, 1)",
+                borderWidth: 1.5,
+                pointBackgroundColor: "rgba(255, 209, 1, 1)"
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              r: {
+                beginAtZero: true,
+                min: 0,
+                max: 5,
+                ticks: {
+                  display: false
+                },
+                grid: {
+                  color: "rgba(55, 65, 81, 0.6)"
+                },
+                angleLines: {
+                  color: "rgba(55, 65, 81, 0.7)"
+                },
+                pointLabels: {
+                  color: "rgba(229, 231, 235, 0.9)",
+                  font: { size: 10 }
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: {
+                  color: "rgba(229, 231, 235, 0.9)",
+                  font: { size: 11 }
+                }
+              },
+              tooltip: {
+                backgroundColor: "rgba(17, 24, 39, 0.95)",
+                borderColor: "rgba(255, 209, 1, 0.7)",
+                borderWidth: 1,
+                titleColor: "#f9fafb",
+                bodyColor: "#e5e7eb"
+              }
+            }
+          }
+        });
+      }
+    })();
   </script>
 </body>
 </html>
