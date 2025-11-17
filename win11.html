@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1} :contentReference[oaicite:2]{index=2} -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IGEL × Omnissa — Windows 11 Migration Battle Card</title>
+
+  <!-- Manrope font (IGEL primary) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            igelYellow: '#FFD101',
+            igelBlack: '#141414',
+            igelWhite: '#FFFFFF',
+            omnissaBlue: '#001C99',
+            slateSoft: '#1F2933',
+            cardBorder: 'rgba(255,255,255,0.08)',
+            accentSoft: 'rgba(255,209,1,0.08)'
+          },
+          boxShadow: {
+            'spark-soft': '0 18px 45px rgba(0,0,0,0.45)',
+            'spark-subtle': '0 10px 30px rgba(0,0,0,0.35)'
+          },
+          borderRadius: {
+            '2xl': '1.25rem',
+            '3xl': '1.75rem'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #FFD10122 0, #141414 40%, #050509 100%);
+      color: #F9FAFB;
+    }
+
+    .section-card {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: radial-gradient(circle at top left, rgba(255,209,1,0.05) 0, rgba(15,23,42,0.85) 45%, rgba(15,23,42,0.98) 100%);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.6);
+    }
+
+    .spark-band {
+      position: relative;
+      overflow: hidden;
+    }
+    .spark-band::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,209,1,0.17) 0, transparent 55%),
+        radial-gradient(circle at 90% 10%, rgba(0,28,153,0.15) 0, transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0, transparent 60%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .pill-toggle {
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.95));
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      transition: all 0.18s ease-out;
+    }
+    .pill-toggle:hover {
+      border-color: rgba(255,209,1,0.6);
+      transform: translateY(-1px);
+    }
+    .pill-toggle.active {
+      background: linear-gradient(135deg, #FFD101, #FFEA7A);
+      color: #141414;
+      border-color: transparent;
+      box-shadow: 0 0 0 1px rgba(15,23,42,0.6), 0 12px 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-chip {
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(15,23,42,0.8);
+      cursor: pointer;
+      transition: all 0.18s ease-out;
+    }
+    .nav-chip:hover {
+      border-color: rgba(255,209,1,0.7);
+      transform: translateY(-1px);
+    }
+
+    .market-card-active {
+      border-color: #FFD101;
+      box-shadow: 0 0 0 1px rgba(255,209,1,0.4);
+      background: radial-gradient(circle at top left, rgba(255,209,1,0.18) 0, rgba(15,23,42,1) 48%, rgba(15,23,42,1) 100%);
+    }
+
+    .accordion-panel {
+      transition: max-height 0.2s ease-out;
+    }
+
+    .cta-glow {
+      box-shadow: 0 0 0 1px rgba(255,209,1,0.4), 0 0 45px rgba(255,209,1,0.4);
+    }
+
+    .spark-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background: #FFD101;
+      box-shadow:
+        0 0 0 1px rgba(20,20,20,0.8),
+        0 0 18px rgba(255,209,1,0.8);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen text-slate-50">
+  <div class="relative min-h-screen">
+    <!-- Background spark orbits -->
+    <div class="pointer-events-none fixed inset-0 opacity-40">
+      <div class="absolute -top-24 -left-24 w-64 h-64 rounded-full border border-igelYellow/20"></div>
+      <div class="absolute top-40 -right-40 w-80 h-80 rounded-full border border-igelYellow/10"></div>
+      <div class="absolute bottom-10 left-10 w-40 h-40 rounded-full border border-omnissaBlue/25"></div>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 space-y-10 lg:space-y-12">
+      <!-- HERO / HEADER -->
+      <header class="section-card spark-band relative overflow-hidden">
+        <div class="relative z-10 px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-8">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+            <div class="space-y-5 max-w-2xl">
+              <div class="flex flex-wrap items-center gap-4">
+                <div class="flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
+                  <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+                       alt="IGEL logo"
+                       class="h-6 w-auto" />
+                  <span class="spark-dot"></span>
+                  <span class="text-xs font-semibold tracking-wide uppercase text-igelYellow">× Omnissa</span>
+                </div>
+                <span class="text-[11px] sm:text-xs uppercase tracking-[0.2em] bg-white/5 border border-white/10 rounded-full px-3 py-1 text-slate-200">
+                  For Omnissa Sellers & Channel Partners
+                </span>
+              </div>
+
+              <div>
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white">
+                  Turn Windows 11 migration from a hardware refresh crisis<br class="hidden md:block" />
+                  <span class="text-igelYellow">into a modernization opportunity.</span>
+                </h1>
+                <p class="mt-3 text-sm sm:text-base text-slate-200 max-w-xl">
+                  IGEL + Omnissa deliver a <span class="font-semibold text-white">secure, cloud-ready, sustainable</span> path to Windows 11 —
+                  <span class="text-igelYellow font-medium">without mass endpoint replacement</span> or disruption for your customers.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-2.5">
+                <div class="flex items-center gap-2 bg-black/50 px-3 py-1.5 rounded-full border border-white/8 text-xs">
+                  <span class="spark-dot"></span>
+                  <span>Windows 11 Migrations</span>
+                </div>
+                <div class="flex items-center gap-2 bg-black/50 px-3 py-1.5 rounded-full border border-white/8 text-xs">
+                  <span class="spark-dot"></span>
+                  <span>Zero Trust & Hybrid Work</span>
+                </div>
+                <div class="flex items-center gap-2 bg-black/50 px-3 py-1.5 rounded-full border border-white/8 text-xs">
+                  <span class="spark-dot"></span>
+                  <span>Cost & Sustainability</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick nav chips -->
+            <nav aria-label="Section navigation" class="md:pt-1">
+              <div class="flex md:flex-col gap-2">
+                <button class="nav-chip flex items-center gap-2 px-3 py-1.5 text-xs text-slate-100"
+                        data-scroll-target="#why-now">
+                  <span class="spark-dot"></span><span>Why now</span>
+                </button>
+                <button class="nav-chip flex items-center gap-2 px-3 py-1.5 text-xs text-slate-100"
+                        data-scroll-target="#joint-value">
+                  <span class="spark-dot"></span><span>Joint value</span>
+                </button>
+                <button class="nav-chip flex items-center gap-2 px-3 py-1.5 text-xs text-slate-100"
+                        data-scroll-target="#features">
+                  <span class="spark-dot"></span><span>Differentiators</span>
+                </button>
+                <button class="nav-chip flex items-center gap-2 px-3 py-1.5 text-xs text-slate-100"
+                        data-scroll-target="#plays">
+                  <span class="spark-dot"></span><span>Sales plays</span>
+                </button>
+                <button class="nav-chip flex items-center gap-2 px-3 py-1.5 text-xs text-igelYellow"
+                        data-scroll-target="#cta">
+                  <span class="spark-dot"></span><span>30-day pilot</span>
+                </button>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main class="space-y-8 lg:space-y-10">
+        <!-- WHY IT MATTERS NOW -->
+        <section id="why-now" class="section-card relative overflow-hidden">
+          <div class="relative z-10 px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-8">
+            <div class="flex flex-col lg:flex-row gap-8 lg:gap-10">
+              <div class="lg:w-5/12 space-y-3">
+                <h2 class="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                  <span class="spark-dot"></span>
+                  Why Windows 11 migrations are a seller moment
+                </h2>
+                <p class="text-sm sm:text-base text-slate-200">
+                  The Windows 11 hardware cliff is forcing customers to make decisions fast.
+                  IGEL + Omnissa reposition that pain as a <span class="font-semibold text-white">modern workspace upgrade</span> instead of a
+                  simple hardware refresh.
+                </p>
+                <p class="text-xs sm:text-[13px] text-slate-300/90">
+                  Tap a trigger on the right to see how to steer the conversation.
+                </p>
+
+                <div class="mt-4 grid grid-cols-1 gap-2 text-[11px] sm:text-xs text-slate-200">
+                  <div class="flex items-start gap-2">
+                    <span class="spark-dot mt-1"></span>
+                    <p><strong>Trigger → Motion → Close:</strong> Each market trigger can be turned into a modernization story, not a cost-only debate.</p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="spark-dot mt-1"></span>
+                    <p><strong>Position IGEL OS</strong> as the secure, immutable layer on aging PCs; <strong>position Omnissa</strong> as the control plane and experience fabric.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:w-7/12">
+                <div class="grid sm:grid-cols-3 gap-3 mb-4">
+                  <!-- Market Trigger Cards (expand-on-tap toy) -->
+                  <button type="button"
+                          class="market-card group relative text-left border border-white/10 bg-black/40 rounded-2xl px-4 py-3 flex flex-col gap-1.5 hover:border-igelYellow/70 hover:bg-accentSoft transition-colors"
+                          data-market-card="hardware">
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-[11px] font-semibold uppercase tracking-[0.16em] text-igelYellow">
+                        Trigger #1
+                      </span>
+                      <span class="text-[11px] text-slate-300 group-hover:text-igelYellow/90">Tap to expand</span>
+                    </div>
+                    <p class="text-xs sm:text-[13px] font-medium text-white">
+                      Windows 11 hardware requirements
+                    </p>
+                    <p class="text-[11px] text-slate-300 leading-snug">
+                      TPM 2.0 &amp; strict CPU lists cut off millions of enterprise PCs.
+                    </p>
+                    <p class="mt-2 text-[11px] text-slate-200 hidden market-card-detail">
+                      <span class="font-semibold text-igelYellow">Seller angle:</span>
+                      Propose IGEL OS on non-compliant devices + Omnissa Horizon Cloud / Windows 365 access
+                      instead of wholesale device replacement.
+                    </p>
+                  </button>
+
+                  <button type="button"
+                          class="market-card group relative text-left border border-white/10 bg-black/40 rounded-2xl px-4 py-3 flex flex-col gap-1.5 hover:border-igelYellow/70 hover:bg-accentSoft transition-colors"
+                          data-market-card="hybrid">
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-[11px] font-semibold uppercase tracking-[0.16em] text-igelYellow">
+                        Trigger #2
+                      </span>
+                      <span class="text-[11px] text-slate-300 group-hover:text-igelYellow/90">Tap to expand</span>
+                    </div>
+                    <p class="text-xs sm:text-[13px] font-medium text-white">
+                      Hybrid work &amp; Zero Trust mandates
+                    </p>
+                    <p class="text-[11px] text-slate-300 leading-snug">
+                      Boards want least-privilege &amp; policy-driven workspaces across all devices.
+                    </p>
+                    <p class="mt-2 text-[11px] text-slate-200 hidden market-card-detail">
+                      <span class="font-semibold text-igelYellow">Seller angle:</span>
+                      Bundle IGEL OS endpoints visible in Workspace ONE UEM with Horizon to show one Zero Trust plane
+                      across Windows, macOS, mobile, and repurposed PCs.
+                    </p>
+                  </button>
+
+                  <button type="button"
+                          class="market-card group relative text-left border border-white/10 bg-black/40 rounded-2xl px-4 py-3 flex flex-col gap-1.5 hover:border-igelYellow/70 hover:bg-accentSoft transition-colors"
+                          data-market-card="sustainability">
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-[11px] font-semibold uppercase tracking-[0.16em] text-igelYellow">
+                        Trigger #3
+                      </span>
+                      <span class="text-[11px] text-slate-300 group-hover:text-igelYellow/90">Tap to expand</span>
+                    </div>
+                    <p class="text-xs sm:text-[13px] font-medium text-white">
+                      Cost &amp; sustainability pressure
+                    </p>
+                    <p class="text-[11px] text-slate-300 leading-snug">
+                      CFOs and CSOs must cut spend and carbon at the same time.
+                    </p>
+                    <p class="mt-2 text-[11px] text-slate-200 hidden market-card-detail">
+                      <span class="font-semibold text-igelYellow">Seller angle:</span>
+                      Use the IGEL Sustainability calculator + Horizon TCO to show 2–3 extra years of device life
+                      and 60–70% TCO savings vs. refresh.
+                    </p>
+                  </button>
+                </div>
+
+                <div class="border border-white/10 bg-black/40 rounded-2xl px-4 py-4 sm:px-5 sm:py-4 text-xs sm:text-[13px] text-slate-100">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="spark-dot"></span>
+                    <span class="uppercase tracking-[0.18em] text-[11px] text-slate-300">What it means for sellers</span>
+                  </div>
+                  <p id="market-explainer" class="text-slate-100">
+                    Use the Windows 11 deadline as an entry point. Lead with
+                    <span class="font-semibold">“reuse, secure, and modernize”</span> instead of
+                    “rip-and-replace PCs.” Every trigger can route to an IGEL OS + Omnissa Horizon Cloud win.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- JOINT VALUE PROPOSITION -->
+        <section id="joint-value" class="section-card relative overflow-hidden">
+          <div class="relative z-10 px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-8 space-y-6">
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+              <div>
+                <h2 class="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                  <span class="spark-dot"></span>
+                  IGEL + Omnissa = Adaptive Secure Desktop
+                </h2>
+                <p class="mt-1 text-sm sm:text-base text-slate-200 max-w-2xl">
+                  Omnissa provides the <span class="font-semibold text-white">digital workspace fabric</span>
+                  (Workspace ONE UEM + Horizon Cloud). IGEL delivers the
+                  <span class="font-semibold text-white">secure endpoint layer</span> (Immutable OS 12 + Managed Hypervisor).
+                  Together, they form an <span class="text-igelYellow font-semibold">Adaptive Secure Desktop</span> for Windows 11.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2 text-[11px] sm:text-xs">
+                <span class="px-3 py-1 rounded-full border border-white/10 bg-black/40 text-slate-100">
+                  NIST 800-207-aligned Zero Trust
+                </span>
+                <span class="px-3 py-1 rounded-full border border-white/10 bg-black/40 text-slate-100">
+                  Workspace ONE UEM certified
+                </span>
+              </div>
+            </div>
+
+            <!-- Layer tabs toy -->
+            <div class="border border-white/10 bg-black/40 rounded-3xl p-4 sm:p-5 lg:p-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <button type="button"
+                        class="pill-toggle text-xs sm:text-[13px] px-3 py-1.5 active"
+                        data-layer-tab="omnissa">
+                  Omnissa workspace fabric
+                </button>
+                <button type="button"
+                        class="pill-toggle text-xs sm:text-[13px] px-3 py-1.5"
+                        data-layer-tab="igel">
+                  IGEL endpoint layer
+                </button>
+                <button type="button"
+                        class="pill-toggle text-xs sm:text-[13px] px-3 py-1.5"
+                        data-layer-tab="adaptive">
+                  Adaptive Secure Desktop (together)
+                </button>
+              </div>
+
+              <div class="grid lg:grid-cols-3 gap-5 items-stretch">
+                <!-- Omnissa panel -->
+                <article class="rounded-2xl border border-white/10 bg-slate-900/70 p-4 sm:p-5 space-y-3 layer-panel"
+                         data-layer-panel="omnissa">
+                  <header class="flex items-center justify-between gap-2">
+                    <div>
+                      <h3 class="text-sm font-semibold text-omnissaBlue">Omnissa</h3>
+                      <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Workspace fabric</p>
+                    </div>
+                    <div class="flex items-center gap-1 text-[11px] text-slate-300">
+                      <span class="spark-dot"></span>
+                      <span>Workspace ONE UEM + Horizon Cloud</span>
+                    </div>
+                  </header>
+                  <ul class="space-y-2 text-xs sm:text-[13px] text-slate-100">
+                    <li>• Unifies policy, identity, and experience across Windows, macOS, mobile, and IGEL OS devices.</li>
+                    <li>• Delivers Horizon Cloud and Windows 11 sessions from Azure / AWS / vSphere with flexible deployment.</li>
+                    <li>• Provides DEX analytics, conditional access, and app performance monitoring.</li>
+                  </ul>
+                </article>
+
+                <!-- IGEL panel -->
+                <article class="rounded-2xl border border-white/10 bg-slate-900/40 p-4 sm:p-5 space-y-3 opacity-80 layer-panel hidden"
+                         data-layer-panel="igel">
+                  <header class="flex items-center justify-between gap-2">
+                    <div>
+                      <h3 class="text-sm font-semibold text-igelYellow">IGEL</h3>
+                      <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Secure endpoint layer</p>
+                    </div>
+                    <div class="flex items-center gap-1 text-[11px] text-slate-300">
+                      <span class="spark-dot"></span>
+                      <span>Immutable OS 12 + Managed Hypervisor</span>
+                    </div>
+                  </header>
+                  <ul class="space-y-2 text-xs sm:text-[13px] text-slate-100">
+                    <li>• Re-images non-compliant PCs into read-only IGEL OS endpoints, with no local data persistence.</li>
+                    <li>• Uses TPM-based root of trust, policy-driven control, and central management at scale.</li>
+                    <li>• Supports Horizon, Windows 365, Citrix, and SaaS apps from a hardened endpoint surface.</li>
+                  </ul>
+                </article>
+
+                <!-- Adaptive Secure Desktop panel -->
+                <article class="rounded-2xl border border-igelYellow/40 bg-gradient-to-br from-igelYellow/10 via-omnissaBlue/10 to-black/60 p-4 sm:p-5 space-y-3 layer-panel hidden"
+                         data-layer-panel="adaptive">
+                  <header class="flex items-center justify-between gap-2">
+                    <div>
+                      <h3 class="text-sm font-semibold text-igelYellow">Adaptive Secure Desktop</h3>
+                      <p class="text-[11px] uppercase tracking-[0.18em] text-slate-200">What they do together</p>
+                    </div>
+                    <div class="flex items-center gap-1 text-[11px] text-slate-200">
+                      <span class="spark-dot"></span>
+                      <span>Zero Trust from device to cloud</span>
+                    </div>
+                  </header>
+                  <ul class="space-y-2 text-xs sm:text-[13px] text-slate-100">
+                    <li>• <span class="font-semibold">No-risk migration path:</span> any x86-64 device can reach Windows 11 via Horizon or W365 cloud, even if it fails local requirements.</li>
+                    <li>• <span class="font-semibold">Unified management:</span> IGEL endpoints appear in Workspace ONE alongside laptops and mobiles for one console governance.</li>
+                    <li>• <span class="font-semibold">Business continuity:</span> Dual Boot / USB Boot provides rollback safety and an immutable recovery lane during rollout.</li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FEATURES & DIFFERENTIATORS + CHART -->
+        <section id="features" class="section-card relative overflow-hidden">
+          <div class="relative z-10 px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-8 space-y-6">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+              <div>
+                <h2 class="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                  <span class="spark-dot"></span>
+                  Key differentiators vs. legacy Windows endpoints
+                </h2>
+                <p class="mt-1 text-sm sm:text-base text-slate-200 max-w-2xl">
+                  Use these points to contrast Omnissa + IGEL with Citrix-only or traditional Windows endpoint strategies.
+                  Tap a category to see the advantage story.
+                </p>
+              </div>
+              <p class="text-[11px] sm:text-xs text-slate-300 max-w-xs">
+                Pro tip: Start from the customer’s stress. If it’s compliance, lead with security. If it’s cost, lead with TCO.
+              </p>
+            </div>
+
+            <div class="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1.3fr)] gap-6 lg:gap-8 items-start">
+              <!-- Interactive comparison toy -->
+              <div class="border border-white/10 bg-black/40 rounded-3xl p-4 sm:p-5 space-y-4">
+                <div class="flex flex-wrap gap-2">
+                  <button type="button" class="pill-toggle text-xs sm:text-[13px] px-3 py-1.5 active"
+                          data-feature-category="migration">
+                    Windows 11 migration
+                  </button>
+                  <button type="button" class="pill-toggle text-xs sm:text-[13px] px-3 py-1.5"
+                          data-feature-category="management">
+                    Management
+                  </button>
+                  <button type="button" class="pill-toggle text-xs sm:text-[13px] px-3 py-1.5"
+                          data-feature-category="security">
+                    Security model
+                  </button>
+                  <button type="button" class="pill-toggle text-xs sm:text-[13px] px-3 py-1.5"
+                          data-feature-category="cost">
+                    Cost & sustainability
+                  </button>
+                  <button type="button" class="pill-toggle text-xs sm:text-[13px] px-3 py-1.5"
+                          data-feature-category="ux">
+                    User experience
+                  </button>
+                </div>
+
+                <!-- Cards for each category -->
+                <div class="space-y-4">
+                  <!-- Migration -->
+                  <article class="feature-panel" data-feature-panel="migration">
+                    <header class="flex items-center justify-between gap-3">
+                      <h3 class="text-sm font-semibold text-igelYellow">Windows 11 Migration</h3>
+                      <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Upgrade without refresh</span>
+                    </header>
+                    <div class="mt-2 grid sm:grid-cols-2 gap-3 text-xs sm:text-[13px]">
+                      <div class="rounded-2xl border border-igelYellow/40 bg-igelYellow/10 p-3 space-y-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-igelYellow">Omnissa + IGEL</p>
+                        <p class="text-slate-100">
+                          Reuse non-compliant PCs by installing IGEL OS and brokering Windows 11 via Horizon or Windows 365.
+                        </p>
+                      </div>
+                      <div class="rounded-2xl border border-white/12 bg-black/50 p-3 space-y-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">Citrix / Legacy</p>
+                        <p class="text-slate-200">
+                          Forces costly refresh or risky in-place Windows 11 upgrades on endpoints.
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- Management -->
+                  <article class="feature-panel hidden" data-feature-panel="management">
+                    <header class="flex items-center justify-between gap-3">
+                      <h3 class="text-sm font-semibold text-igelYellow">Unified Management</h3>
+                      <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400">One console</span>
+                    </header>
+                    <div class="mt-2 grid sm:grid-cols-2 gap-3 text-xs sm:text-[13px]">
+                      <div class="rounded-2xl border border-igelYellow/40 bg-igelYellow/10 p-3 space-y-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-igelYellow">Omnissa + IGEL</p>
+                        <p class="text-slate-100">
+                          Workspace ONE UEM manages Windows, macOS, mobile, and IGEL OS from a single pane of glass.
+                        </p>
+                      </div>
+                      <div class="rounded-2xl border border-white/12 bg-black/50 p-3 space-y-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">Citrix / Legacy</p>
+                        <p class="text-slate-200">
+                          Fragmented consoles (Intune + Citrix Studio + SCCM) increase admin overhead and blind spots.
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- Security -->
+                  <article class="feature-panel hidden" data-feature-panel="security">
+                    <header class="flex items-center justify-between gap-3">
+                      <h3 class="text-sm font-semibold text-igelYellow">Preventative Security Model</h3>
+                      <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Zero Trust-aligned</span>
+                    </header>
+                    <div class="mt-2 grid sm:grid-cols-2 gap-3 text-xs sm:text-[13px]">
+                      <div class="rounded-2xl border border-igelYellow/40 bg-igelYellow/10 p-3 space-y-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-igelYellow">Omnissa + IGEL</p>
+                        <p class="text-slate-100">
+                          Read-only IGEL OS with no local data, TPM root of trust, and conditional access via Workspace ONE Access.
+                        </p>
+                      </div>
+                      <div class="rounded-2xl border border-white/12 bg-black/50 p-3 space-y-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">Citrix / Legacy</p>
+                        <p class="text-slate-200">
+                          Full Windows stack on endpoints increases attack surface and patching burden.
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- Cost -->
+                  <article class="feature-panel hidden" data-feature-panel="cost">
+                    <header class="flex items-center justify-between gap-3">
+                      <h3 class="text-sm font-semibold text-igelYellow">Cost & Sustainability</h3>
+                      <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Do more with less</span>
+                    </header>
+                    <div class="mt-2 grid sm:grid-cols-2 gap-3 text-xs sm:text-[13px]">
+                      <div class="rounded-2xl border border-igelYellow/40 bg-igelYellow/10 p-3 space-y-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-igelYellow">Omnissa + IGEL</p>
+                        <p class="text-slate-100">
+                          60–70% lower TCO, extended device life by 2–3 years, and measurable CO₂ reduction via IGEL calculator.
+                        </p>
+                      </div>
+                      <div class="rounded-2xl border border-white/12 bg-black/50 p-3 space-y-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">Citrix / Legacy</p>
+                        <p class="text-slate-200">
+                          Frequent hardware refreshes and full Windows licensing costs increase CAPEX and emissions.
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- UX -->
+                  <article class="feature-panel hidden" data-feature-panel="ux">
+                    <header class="flex items-center justify-between gap-3">
+                      <h3 class="text-sm font-semibold text-igelYellow">User Experience</h3>
+                      <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Fast & frictionless</span>
+                    </header>
+                    <div class="mt-2 grid sm:grid-cols-2 gap-3 text-xs sm:text-[13px]">
+                      <div class="rounded-2xl border border-igelYellow/40 bg-igelYellow/10 p-3 space-y-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-igelYellow">Omnissa + IGEL</p>
+                        <p class="text-slate-100">
+                          IGEL OS boots in &lt; 10 seconds into Horizon Cloud desktops with tap-and-go auth via Workspace ONE Access / Imprivata.
+                        </p>
+                      </div>
+                      <div class="rounded-2xl border border-white/12 bg-black/50 p-3 space-y-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">Citrix / Legacy</p>
+                        <p class="text-slate-200">
+                          Slower logins, inconsistent UX, and device drift on fat clients.
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+
+              <!-- TCO & Helpdesk Chart -->
+              <div class="border border-white/10 bg-black/50 rounded-3xl p-4 sm:p-5 lg:p-6 space-y-3 shadow-spark-subtle">
+                <header class="flex items-center justify-between gap-3">
+                  <div>
+                    <h3 class="text-sm font-semibold text-white">Illustrative impact: TCO & helpdesk load</h3>
+                    <p class="text-[11px] text-slate-300">
+                      Example of how Omnissa + IGEL shifts cost & operations vs. legacy endpoints.
+                    </p>
+                  </div>
+                  <div class="hidden sm:flex items-center gap-2 text-[11px] text-slate-400">
+                    <span class="w-2 h-2 rounded-full bg-igelYellow inline-block"></span><span>Omnissa + IGEL</span>
+                    <span class="w-2 h-2 rounded-full bg-slate-500 inline-block"></span><span>Legacy</span>
+                  </div>
+                </header>
+                <div class="h-44 sm:h-52">
+                  <canvas id="tcoChart" aria-label="Relative TCO and helpdesk tickets for legacy vs Omnissa + IGEL" role="img"></canvas>
+                </div>
+                <p class="text-[11px] text-slate-400">
+                  Chart uses illustrative values only. Customers typically report up to
+                  <span class="text-igelYellow font-semibold">30% TCO reduction</span> and
+                  <span class="text-igelYellow font-semibold">70% fewer helpdesk calls</span> after deploying IGEL with Omnissa.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SALES PLAYS -->
+        <section id="plays" class="section-card relative overflow-hidden">
+          <div class="relative z-10 px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-8 space-y-6">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+              <div>
+                <h2 class="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                  <span class="spark-dot"></span>
+                  Sales plays that close Windows 11 deals
+                </h2>
+                <p class="mt-1 text-sm sm:text-base text-slate-200 max-w-2xl">
+                  Start with one of these patterns, then tailor it with vertical stories and your customer’s hardware reality.
+                </p>
+              </div>
+              <p class="text-[11px] sm:text-xs text-slate-300 max-w-xs">
+                Tap each card to see talking points and proof steps for your next call.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+              <!-- Play 1 -->
+              <article class="border border-white/10 bg-black/40 rounded-3xl p-4 sm:p-5 sales-play-card cursor-pointer"
+                       data-play-card="play1">
+                <header class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full bg-igelYellow text-igelBlack flex items-center justify-center text-xs font-bold">
+                      1
+                    </div>
+                    <h3 class="text-sm font-semibold text-white">Windows 11 Migration Accelerator</h3>
+                  </div>
+                  <span class="text-[11px] text-slate-300">Pilot-first motion</span>
+                </header>
+                <p class="mt-2 text-xs sm:text-[13px] text-slate-200">
+                  Offer a <span class="font-semibold text-igelYellow">low-risk IGEL OS + Horizon Cloud pilot</span> on 10–20 PCs.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-[11px] sm:text-xs text-slate-200 hidden sales-play-details" data-play-details="play1">
+                  <li>• Reimage non-compliant PCs using IGEL USB Boot.</li>
+                  <li>• Connect to Omnissa Horizon Cloud Windows 11 sessions.</li>
+                  <li>• Measure helpdesk tickets, login times, and user satisfaction.</li>
+                  <li>• Show $300+ per device savings vs. full replacement.</li>
+                </ul>
+                <p class="mt-2 text-[11px] text-igelYellow/90">Tap to reveal pilot steps.</p>
+              </article>
+
+              <!-- Play 2 -->
+              <article class="border border-white/10 bg-black/40 rounded-3xl p-4 sm:p-5 sales-play-card cursor-pointer"
+                       data-play-card="play2">
+                <header class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full bg-igelYellow text-igelBlack flex items-center justify-center text-xs font-bold">
+                      2
+                    </div>
+                    <h3 class="text-sm font-semibold text-white">Secure Frontline Workspaces</h3>
+                  </div>
+                  <span class="text-[11px] text-slate-300">Healthcare / retail</span>
+                </header>
+                <p class="mt-2 text-xs sm:text-[13px] text-slate-200">
+                  Target call centers, nurses’ stations, or point-of-sale devices with
+                  <span class="font-semibold text-igelYellow">tap-and-go Horizon desktops</span>.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-[11px] sm:text-xs text-slate-200 hidden sales-play-details" data-play-details="play2">
+                  <li>• Combine IGEL OS with Imprivata tap-and-go for fast, shared logins.</li>
+                  <li>• Use Omnissa Experience Management to monitor DEX scores on frontline devices.</li>
+                  <li>• Prove security and uptime where every second of downtime is visible.</li>
+                </ul>
+                <p class="mt-2 text-[11px] text-igelYellow/90">Tap to reveal frontline proof points.</p>
+              </article>
+
+              <!-- Play 3 -->
+              <article class="border border-white/10 bg-black/40 rounded-3xl p-4 sm:p-5 sales-play-card cursor-pointer"
+                       data-play-card="play3">
+                <header class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full bg-igelYellow text-igelBlack flex items-center justify-center text-xs font-bold">
+                      3
+                    </div>
+                    <h3 class="text-sm font-semibold text-white">Sustainability Campaign</h3>
+                  </div>
+                  <span class="text-[11px] text-slate-300">CFO + ESG angle</span>
+                </header>
+                <p class="mt-2 text-xs sm:text-[13px] text-slate-200">
+                  Quantify carbon and energy savings from extending device life with IGEL + Omnissa.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-[11px] sm:text-xs text-slate-200 hidden sales-play-details" data-play-details="play3">
+                  <li>• Run the IGEL Sustainability calculator on the target hardware estate.</li>
+                  <li>• Attach CO₂ and energy metrics to your TCO model for Horizon.</li>
+                  <li>• Position the project as both a cost and ESG win for the board.</li>
+                </ul>
+                <p class="mt-2 text-[11px] text-igelYellow/90">Tap to reveal ESG talk-track.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- OBJECTIONS & REBUTTALS -->
+        <section class="section-card relative overflow-hidden">
+          <div class="relative z-10 px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-8 space-y-6">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+              <div>
+                <h2 class="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                  <span class="spark-dot"></span>
+                  Objections you’ll hear (and how to flip them)
+                </h2>
+                <p class="mt-1 text-sm sm:text-base text-slate-200 max-w-2xl">
+                  Treat objections as signals that the customer is interested. Use this
+                  <span class="font-semibold text-igelYellow">“Objection → Reframe → Close”</span> structure.
+                </p>
+              </div>
+              <p class="text-[11px] sm:text-xs text-slate-300 max-w-xs">
+                Tap each objection to reveal an IGEL + Omnissa-aligned response.
+              </p>
+            </div>
+
+            <div class="space-y-2.5" role="list">
+              <!-- Accordion item -->
+              <div class="border border-white/10 bg-black/40 rounded-2xl overflow-hidden" role="listitem">
+                <button type="button"
+                        class="w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 text-left accordion-trigger"
+                        aria-expanded="false"
+                        aria-controls="objection1">
+                  <div>
+                    <p class="text-xs sm:text-[13px] font-semibold text-white">
+                      “We’re locked into Citrix.”
+                    </p>
+                    <p class="text-[11px] text-slate-400">Use Horizon Cloud flexibility + IGEL multi-stack support.</p>
+                  </div>
+                  <span class="text-igelYellow text-lg font-semibold">+</span>
+                </button>
+                <div id="objection1"
+                     class="accordion-panel max-h-0 overflow-hidden border-t border-white/5">
+                  <div class="px-4 sm:px-5 py-3 text-[11px] sm:text-xs text-slate-100 space-y-1.5">
+                    <p><span class="font-semibold text-igelYellow">Reframe:</span> “You’re not locked in — you’re staged for choice.”</p>
+                    <p>Horizon Cloud can run on Azure, AWS, or vSphere. IGEL OS also supports Citrix, so you can
+                      <span class="font-semibold">pilot Omnissa + IGEL alongside existing Citrix</span> and migrate at your pace.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border border-white/10 bg-black/40 rounded-2xl overflow-hidden" role="listitem">
+                <button type="button"
+                        class="w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 text-left accordion-trigger"
+                        aria-expanded="false"
+                        aria-controls="objection2">
+                  <div>
+                    <p class="text-xs sm:text-[13px] font-semibold text-white">
+                      “We can just use Intune and Windows 365.”
+                    </p>
+                    <p class="text-[11px] text-slate-400">Extend beyond compliant Windows devices.</p>
+                  </div>
+                  <span class="text-igelYellow text-lg font-semibold">+</span>
+                </button>
+                <div id="objection2"
+                     class="accordion-panel max-h-0 overflow-hidden border-t border-white/5">
+                  <div class="px-4 sm:px-5 py-3 text-[11px] sm:text-xs text-slate-100 space-y-1.5">
+                    <p><span class="font-semibold text-igelYellow">Reframe:</span> “Intune is powerful — it just doesn’t reach your legacy hardware.”</p>
+                    <p>IGEL makes non-compliant PCs useful again as secure Horizon or W365 clients, adding a
+                      <span class="font-semibold">Zero Trust-aligned edge</span> for hybrid fleets where not everything can run full Windows 11.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border border-white/10 bg-black/40 rounded-2xl overflow-hidden" role="listitem">
+                <button type="button"
+                        class="w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 text-left accordion-trigger"
+                        aria-expanded="false"
+                        aria-controls="objection3">
+                  <div>
+                    <p class="text-xs sm:text-[13px] font-semibold text-white">
+                      “Our devices don’t meet Windows 11 requirements.”
+                    </p>
+                    <p class="text-[11px] text-slate-400">That’s the opportunity, not a blocker.</p>
+                  </div>
+                  <span class="text-igelYellow text-lg font-semibold">+</span>
+                </button>
+                <div id="objection3"
+                     class="accordion-panel max-h-0 overflow-hidden border-t border-white/5">
+                  <div class="px-4 sm:px-5 py-3 text-[11px] sm:text-xs text-slate-100 space-y-1.5">
+                    <p><span class="font-semibold text-igelYellow">Reframe:</span> “Perfect — that’s exactly where IGEL wins.”</p>
+                    <p>IGEL repurposes these devices as hardened Horizon clients, so you can deliver Windows 11 sessions from the cloud
+                      <span class="font-semibold">without buying new laptops</span>.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border border-white/10 bg-black/40 rounded-2xl overflow-hidden" role="listitem">
+                <button type="button"
+                        class="w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 text-left accordion-trigger"
+                        aria-expanded="false"
+                        aria-controls="objection4">
+                  <div>
+                    <p class="text-xs sm:text-[13px] font-semibold text-white">
+                      “Citrix offers better session controls.”
+                    </p>
+                    <p class="text-[11px] text-slate-400">Lean on Workspace ONE Access and DEX analytics.</p>
+                  </div>
+                  <span class="text-igelYellow text-lg font-semibold">+</span>
+                </button>
+                <div id="objection4"
+                     class="accordion-panel max-h-0 overflow-hidden border-t border-white/5">
+                  <div class="px-4 sm:px-5 py-3 text-[11px] sm:text-xs text-slate-100 space-y-1.5">
+                    <p><span class="font-semibold text-igelYellow">Reframe:</span> “Controls plus intelligence beats controls alone.”</p>
+                    <p>Omnissa + Workspace ONE Access deliver <span class="font-semibold">dynamic conditional access and rich DEX analytics</span>
+                      across all device types, not just virtual sessions.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- QUICK FACTS -->
+        <section class="section-card relative overflow-hidden">
+          <div class="relative z-10 px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-8 space-y-5">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+              <div>
+                <h2 class="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                  <span class="spark-dot"></span>
+                  Quick facts for sellers
+                </h2>
+                <p class="mt-1 text-sm sm:text-base text-slate-200">
+                  Drop these stats into your decks, emails, and discovery calls.
+                </p>
+              </div>
+              <p class="text-[11px] sm:text-xs text-slate-300 max-w-xs">
+                Keep one slide with these bullets as your “battle card” summary.
+              </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+              <div class="border border-white/10 bg-black/50 rounded-2xl p-3.5 hover:border-igelYellow/70 hover:bg-igelYellow/10 transition-colors">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Analyst validation</p>
+                <p class="mt-1 text-sm font-semibold text-white">
+                  Omnissa is a 2025 Gartner Leader for DaaS (3rd year running).
+                </p>
+              </div>
+              <div class="border border-white/10 bg-black/50 rounded-2xl p-3.5 hover:border-igelYellow/70 hover:bg-igelYellow/10 transition-colors">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Compatibility</p>
+                <p class="mt-1 text-sm font-semibold text-white">
+                  IGEL OS is certified for Workspace ONE UEM &amp; Horizon Cloud Next-Gen (2025).
+                </p>
+              </div>
+              <div class="border border-white/10 bg-black/50 rounded-2xl p-3.5 hover:border-igelYellow/70 hover:bg-igelYellow/10 transition-colors">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Zero Trust</p>
+                <p class="mt-1 text-sm font-semibold text-white">
+                  Architecture aligned to NIST 800-207 &amp; IEC 62443 frameworks.
+                </p>
+              </div>
+              <div class="border border-white/10 bg-black/50 rounded-2xl p-3.5 hover:border-igelYellow/70 hover:bg-igelYellow/10 transition-colors">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Customer outcomes</p>
+                <p class="mt-1 text-sm font-semibold text-white">
+                  Up to 30% TCO reduction and 70% lower helpdesk calls post-deployment.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="cta" class="section-card relative overflow-hidden">
+          <div class="relative z-10 px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-8 space-y-5">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+              <div>
+                <h2 class="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                  <span class="spark-dot"></span>
+                  Make Windows 11 work without replacing PCs
+                </h2>
+                <p class="mt-1 text-sm sm:text-base text-slate-200 max-w-2xl">
+                  Offer a <span class="font-semibold text-igelYellow">30-Day IGEL + Omnissa Pilot</span> to de-risk the project and prove value fast.
+                </p>
+              </div>
+              <button type="button"
+                      class="cta-glow inline-flex items-center gap-2 bg-igelYellow text-igelBlack px-4 py-2 rounded-full text-xs sm:text-sm font-semibold shadow-spark-soft">
+                <span>Propose the 30-day pilot</span>
+                <span class="text-lg leading-none">→</span>
+              </button>
+            </div>
+
+            <!-- Interactive checklist toy -->
+            <div class="grid lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] gap-6 lg:gap-8 items-start">
+              <div class="border border-white/10 bg-black/40 rounded-3xl p-4 sm:p-5">
+                <p class="text-[11px] sm:text-xs uppercase tracking-[0.18em] text-slate-400 mb-3">
+                  Pilot playbook — tap each step as you complete it
+                </p>
+                <ol class="space-y-2.5 text-xs sm:text-[13px]" id="pilot-checklist">
+                  <li class="flex items-start gap-2 checklist-item cursor-pointer">
+                    <span class="mt-0.5 w-4 h-4 rounded-md border border-white/30 flex items-center justify-center text-[11px] text-transparent checklist-icon">
+                      ✓
+                    </span>
+                    <p><span class="font-semibold text-igelYellow">1. Identify aging hardware set.</span> Target non-compliant Windows 10 devices approaching refresh.</p>
+                  </li>
+                  <li class="flex items-start gap-2 checklist-item cursor-pointer">
+                    <span class="mt-0.5 w-4 h-4 rounded-md border border-white/30 flex items-center justify-center text-[11px] text-transparent checklist-icon">
+                      ✓
+                    </span>
+                    <p><span class="font-semibold text-igelYellow">2. Deploy IGEL OS via USB or PXE.</span> Convert devices into secure IGEL endpoints in hours, not weeks.</p>
+                  </li>
+                  <li class="flex items-start gap-2 checklist-item cursor-pointer">
+                    <span class="mt-0.5 w-4 h-4 rounded-md border border-white/30 flex items-center justify-center text-[11px] text-transparent checklist-icon">
+                      ✓
+                    </span>
+                    <p><span class="font-semibold text-igelYellow">3. Connect to Horizon Cloud Windows 11 sessions.</span> Use Omnissa to orchestrate apps, desktops, and policies.</p>
+                  </li>
+                  <li class="flex items-start gap-2 checklist-item cursor-pointer">
+                    <span class="mt-0.5 w-4 h-4 rounded-md border border-white/30 flex items-center justify-center text-[11px] text-transparent checklist-icon">
+                      ✓
+                    </span>
+                    <p><span class="font-semibold text-igelYellow">4. Measure satisfaction & savings.</span> Track user NPS, login times, helpdesk tickets, and TCO deltas.</p>
+                  </li>
+                </ol>
+              </div>
+
+              <div class="border border-white/10 bg-black/60 rounded-3xl p-4 sm:p-5 space-y-3">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400">
+                  Talk track snippet
+                </p>
+                <p class="text-xs sm:text-[13px] text-slate-100">
+                  “Let’s make Windows 11 work for you — <span class="font-semibold text-igelYellow">without replacing your PCs</span>.
+                  We’ll repurpose what you already own with IGEL OS and deliver Windows 11 via Omnissa Horizon Cloud.
+                  Thirty days, one pilot, and the numbers will speak for themselves.”
+                </p>
+                <p class="text-[11px] text-slate-400">
+                  Keep this as your closing line on calls and in follow-up emails.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Interactivity JS -->
+  <script>
+    // Smooth scroll nav chips
+    document.querySelectorAll('[data-scroll-target]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.querySelector(btn.getAttribute('data-scroll-target'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Market trigger cards toy
+    const marketCards = document.querySelectorAll('.market-card');
+    const marketExplainer = document.getElementById('market-explainer');
+
+    const marketExplainerMap = {
+      hardware: "Position IGEL OS as the way to keep non-compliant PCs in service, and Omnissa Horizon Cloud as the Windows 11 delivery plane. The business doesn’t buy hardware — it buys a modern, secured workspace.",
+      hybrid: "Zero Trust + hybrid work needs a single control plane. Show how Workspace ONE UEM sees IGEL endpoints alongside laptops and mobiles, then use Horizon to deliver the apps people live in.",
+      sustainability: "Lead with TCO and ESG: IGEL extends device life while Horizon moves compute to the data center or cloud. You reduce waste, energy, and cost in a measurable way."
+    };
+
+    marketCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const key = card.getAttribute('data-market-card');
+        marketCards.forEach(c => {
+          c.classList.remove('market-card-active');
+          c.querySelectorAll('.market-card-detail').forEach(d => d.classList.add('hidden'));
+        });
+        card.classList.add('market-card-active');
+        const detail = card.querySelector('.market-card-detail');
+        if (detail) {
+          detail.classList.remove('hidden');
+        }
+        if (marketExplainer && marketExplainerMap[key]) {
+          marketExplainer.textContent = marketExplainerMap[key];
+        }
+      });
+    });
+
+    // Layer tabs toy
+    const layerTabs = document.querySelectorAll('[data-layer-tab]');
+    const layerPanels = document.querySelectorAll('.layer-panel');
+
+    layerTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-layer-tab');
+        layerTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        layerPanels.forEach(panel => {
+          panel.classList.add('hidden');
+          panel.style.opacity = '0.8';
+        });
+        const activePanel = document.querySelector('[data-layer-panel="' + target + '"]');
+        if (activePanel) {
+          activePanel.classList.remove('hidden');
+          activePanel.style.opacity = '1';
+        }
+      });
+    });
+
+    // Feature comparison toy
+    const featureTabs = document.querySelectorAll('[data-feature-category]');
+    const featurePanels = document.querySelectorAll('.feature-panel');
+
+    featureTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const category = tab.getAttribute('data-feature-category');
+        featureTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        featurePanels.forEach(panel => {
+          panel.classList.toggle('hidden', panel.getAttribute('data-feature-panel') !== category);
+        });
+      });
+    });
+
+    // Sales play cards toy
+    const playCards = document.querySelectorAll('.sales-play-card');
+    playCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const key = card.getAttribute('data-play-card');
+        const details = document.querySelector('[data-play-details="' + key + '"]');
+        if (!details) return;
+        const isHidden = details.classList.contains('hidden');
+        // collapse all
+        document.querySelectorAll('.sales-play-details').forEach(d => d.classList.add('hidden'));
+        if (isHidden) {
+          details.classList.remove('hidden');
+        }
+      });
+    });
+
+    // Accordion for objections
+    const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+    accordionTriggers.forEach(trigger => {
+      const panelId = trigger.getAttribute('aria-controls');
+      const panel = document.getElementById(panelId);
+      trigger.addEventListener('click', () => {
+        const expanded = trigger.getAttribute('aria-expanded') === 'true';
+        if (!panel) return;
+        if (expanded) {
+          trigger.setAttribute('aria-expanded', 'false');
+          panel.style.maxHeight = '0';
+        } else {
+          // close others
+          accordionTriggers.forEach(t => {
+            const pId = t.getAttribute('aria-controls');
+            const p = document.getElementById(pId);
+            if (p && p !== panel) {
+              t.setAttribute('aria-expanded', 'false');
+              p.style.maxHeight = '0';
+            }
+          });
+          trigger.setAttribute('aria-expanded', 'true');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Checklist toy
+    const checklistItems = document.querySelectorAll('#pilot-checklist .checklist-item');
+    checklistItems.forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('line-through');
+        const icon = item.querySelector('.checklist-icon');
+        if (icon) {
+          if (item.classList.contains('line-through')) {
+            icon.style.backgroundColor = '#FFD101';
+            icon.style.borderColor = '#FFD101';
+            icon.style.color = '#141414';
+          } else {
+            icon.style.backgroundColor = 'transparent';
+            icon.style.borderColor = 'rgba(255,255,255,0.3)';
+            icon.style.color = 'transparent';
+          }
+        }
+      });
+    });
+
+    // Chart.js TCO chart (illustrative dummy data)
+    const tcoCtx = document.getElementById('tcoChart');
+    if (tcoCtx) {
+      new Chart(tcoCtx, {
+        type: 'bar',
+        data: {
+          labels: ['TCO (relative)', 'Helpdesk tickets (relative)'],
+          datasets: [
+            {
+              label: 'Legacy endpoints',
+              data: [100, 100],
+              backgroundColor: 'rgba(148,163,184,0.9)'
+            },
+            {
+              label: 'Omnissa + IGEL',
+              data: [70, 30],
+              backgroundColor: 'rgba(255,209,1,0.9)'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              labels: {
+                color: '#E5E7EB',
+                font: { size: 11 }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': ' + context.parsed.y + ' (index)';
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                color: 'rgba(148,163,184,0.25)'
+              },
+              ticks: {
+                color: '#E5E7EB',
+                font: { size: 11 }
+              }
+            },
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(148,163,184,0.25)'
+              },
+              ticks: {
+                color: '#E5E7EB',
+                font: { size: 11 },
+                callback: function(value) {
+                  return value + '';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
