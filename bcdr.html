@@ -98,6 +98,45 @@
         radial-gradient(circle at 20% 10%, rgba(255, 209, 1, 0.18) 0, transparent 55%),
         radial-gradient(circle at 80% 90%, rgba(255, 255, 255, 0.06) 0, transparent 55%);
     }
+    .hero-pill {
+      border-radius: 9999px;
+      background: radial-gradient(circle at 25% 20%, rgba(255, 209, 1, 0.08), rgba(20, 20, 20, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 1.35rem;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55);
+    }
+
+    .aside-pill {
+      border-radius: 28px;
+      background: radial-gradient(circle at 30% 20%, rgba(255, 209, 1, 0.04), rgba(12, 12, 12, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .cta-primary {
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #ffd101, #ffba08);
+      color: #141414;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.45rem;
+      box-shadow: 0 12px 42px rgba(255, 209, 1, 0.45);
+      border: 1px solid rgba(255, 209, 1, 0.55);
+    }
+
+    .cta-secondary {
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(14, 14, 14, 0.92);
+      padding: 0.7rem 1rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .eyebrow {
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
 
     @media (prefers-reduced-motion: reduce) {
       * {
@@ -127,7 +166,7 @@
             />
             <div class="h-7 w-px bg-neutral-700/70"></div>
             <p class="text-xs font-medium tracking-[0.16em] uppercase text-neutral-300">
-              BC&amp;DR • Reseller Battlecard • 2025
+              BC&amp;DR &bull; Reseller Battlecard &bull; 2025
             </p>
           </div>
         </div>
@@ -144,150 +183,146 @@
       </header>
 
       <!-- HERO -->
-      <section class="section-card section-card-border overflow-hidden relative">
-        <div class="absolute -top-20 -right-24 w-72 h-72 rounded-full border border-[rgba(255,209,1,0.25)] blur-2xl opacity-60"></div>
-        <div class="absolute top-10 -left-12 w-40 h-40 rounded-full border border-[rgba(255,255,255,0.12)] opacity-70"></div>
+<section class="section-card section-card-border overflow-hidden relative">
+  <div class="absolute -top-28 -right-32 w-80 h-80 rounded-full border border-[rgba(255,209,1,0.25)] blur-2xl opacity-60"></div>
+  <div class="absolute top-8 -left-16 w-48 h-48 rounded-full border border-[rgba(255,255,255,0.12)] opacity-70"></div>
 
-        <div class="relative px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 flex flex-col lg:flex-row gap-7 lg:gap-10">
-          <!-- Left -->
-          <div class="flex-1 space-y-5 lg:space-y-6">
-            <div class="inline-flex items-center gap-2 chip px-3 py-1 text-xs font-medium text-neutral-200 uppercase tracking-[0.16em]">
-              <span class="h-1.5 w-1.5 rounded-full bg-[var(--igel-yellow)]"></span>
-              IGEL BC&amp;DR · Endpoint Continuity
-            </div>
+  <div class="relative px-5 sm:px-8 lg:px-10 py-7 sm:py-9 lg:py-10 flex flex-col lg:flex-row gap-8 lg:gap-10">
+    <div class="flex-1 space-y-6">
+      <div class="inline-flex items-center gap-2 chip px-3 py-1 text-xs font-semibold text-neutral-100 eyebrow">
+        <span class="h-1.5 w-1.5 rounded-full bg-[var(--igel-yellow)]"></span>
+        <span>IGEL BC&amp;DR &bull; Endpoint Continuity</span>
+      </div>
 
-            <div>
-              <h1 class="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white">
-                IGEL BC&amp;DR – Reseller Positioning Battlecard
-              </h1>
-              <p class="mt-2 text-sm sm:text-base text-neutral-200 max-w-xl">
-                <span class="font-semibold text-[var(--igel-yellow)]">Rapid Endpoint Recovery. Immutable Continuity.</span>
-                Give customers confidence in every reboot — even under active attack.
-              </p>
-            </div>
+      <div class="space-y-3">
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white leading-tight">
+          IGEL BC&amp;DR &ndash; Reseller Positioning Battlecard
+        </h1>
+        <p class="text-sm sm:text-base text-neutral-100 max-w-2xl leading-relaxed">
+          <span class="font-semibold text-[var(--igel-yellow)]">Rapid Endpoint Recovery. Immutable Continuity.</span>
+          Give customers confidence in every reboot &mdash; even under active attack.
+        </p>
+      </div>
 
-            <div class="grid sm:grid-cols-3 gap-3 text-xs sm:text-[0.8rem] text-neutral-200">
-              <div class="chip px-3 py-2 flex flex-col gap-1">
-                <span class="text-[0.68rem] uppercase tracking-[0.14em] text-neutral-400">Primary Outcome</span>
-                <span class="font-medium text-sm">Endpoints back online in &lt;10 minutes.</span>
-              </div>
-              <div class="chip px-3 py-2 flex flex-col gap-1">
-                <span class="text-[0.68rem] uppercase tracking-[0.14em] text-neutral-400">Core Mechanism</span>
-                <span class="font-medium text-sm">Reboot into secure, immutable IGEL OS.</span>
-              </div>
-              <div class="chip px-3 py-2 flex flex-col gap-1">
-                <span class="text-[0.68rem] uppercase tracking-[0.14em] text-neutral-400">Story Angle</span>
-                <span class="font-medium text-sm">From outage panic to controlled recovery.</span>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap gap-3 items-center">
-              <button
-                type="button"
-                class="chip-strong px-4 py-2 text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase shadow-lg shadow-[rgba(255,209,1,0.4)]"
-              >
-                Book a 10-minute Recovery Demo
-              </button>
-              <button
-                type="button"
-                class="chip px-3 py-2 text-xs sm:text-sm font-medium flex items-center gap-1.5"
-              >
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-                Ready-to-use with existing endpoints
-              </button>
-            </div>
-
-            <p class="text-[0.75rem] text-neutral-400 max-w-xl">
-              When cyberattacks or system failures hit, IGEL BC&amp;DR lets businesses reboot endpoints into a secure, immutable IGEL environment within minutes —
-              bypassing compromised Windows partitions, restoring SaaS, VDI, and collaboration access fast.
-            </p>
-          </div>
-
-          <!-- Right: Quick battle snapshot -->
-          <aside class="w-full lg:w-80 xl:w-96 space-y-4">
-            <div class="chip px-4 pt-3.5 pb-3 space-y-2">
-              <p class="text-[0.68rem] uppercase tracking-[0.16em] text-neutral-400">
-                Battle Snapshot · Use This Line
-              </p>
-              <p class="text-sm text-neutral-100">
-                <span class="font-semibold text-[var(--igel-yellow)]">“Where others rebuild from the ashes, IGEL lets you bypass the fire.”</span>
-                Use this as your opener when talking about endpoint recovery.
-              </p>
-            </div>
-
-            <div class="chip px-4 py-3 space-y-3 text-xs text-neutral-200">
-              <div class="flex items-center justify-between">
-                <span class="text-[0.68rem] uppercase tracking-[0.16em] text-neutral-400">Who to Target</span>
-                <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[0.65rem] font-semibold uppercase tracking-[0.16em]">
-                  High Fit
-                </span>
-              </div>
-              <ul class="space-y-1.5 list-disc list-inside">
-                <li>CIO / CISO under NIS2 / DORA / HIPAA pressure</li>
-                <li>BC&DR owners with strict 48–72 hour RTO</li>
-                <li>Organizations burned by slow reimaging cycles</li>
-              </ul>
-            </div>
-          </aside>
+      <div class="grid sm:grid-cols-3 gap-3 text-sm text-neutral-100">
+        <div class="hero-pill flex flex-col gap-1.5">
+          <span class="text-[0.68rem] eyebrow text-neutral-400">Primary Outcome</span>
+          <span class="font-semibold text-base text-white">Endpoints back online in &lt;10 minutes.</span>
         </div>
-      </section>
-
-      <!-- Elevator Pitch -->
-      <section id="elevator" class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-7 lg:py-8 glow-hover">
-        <div class="flex flex-col lg:flex-row gap-6 items-start">
-          <div class="flex-1 space-y-3">
-            <div class="flex items-center gap-2">
-              <span class="h-1.5 w-8 rounded-full bg-[var(--igel-yellow)]"></span>
-              <h2 class="text-sm sm:text-base font-semibold tracking-[0.16em] uppercase text-neutral-200">
-                🎯 Elevator Pitch
-              </h2>
-            </div>
-            <p class="text-sm sm:text-[0.95rem] text-neutral-100 leading-relaxed">
-              When cyberattacks or system failures hit, <span class="font-semibold text-[var(--igel-yellow)]">IGEL BC&amp;DR</span> lets businesses reboot endpoints
-              into a secure, immutable IGEL environment within minutes – bypassing compromised Windows partitions and restoring access to critical SaaS, VDI,
-              and collaboration tools. It’s the fastest way to turn disruption into continuity.
-            </p>
-          </div>
-
-          <!-- View toggle toy -->
-          <div class="w-full lg:w-72 xl:w-80 chip px-3.5 py-3 space-y-2 text-xs text-neutral-100">
-            <div class="flex items-center justify-between gap-2">
-              <span class="text-[0.68rem] uppercase tracking-[0.16em] text-neutral-400">Talk Track Lens</span>
-              <div class="inline-flex items-center gap-1 bg-black/40 rounded-full p-0.5">
-                <button
-                  type="button"
-                  class="lens-toggle px-2.5 py-1 rounded-full text-[0.65rem] font-semibold uppercase tracking-[0.14em] bg-[var(--igel-yellow)] text-[var(--igel-black)]"
-                  data-lens="reseller"
-                >
-                  Reseller
-                </button>
-                <button
-                  type="button"
-                  class="lens-toggle px-2.5 py-1 rounded-full text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-neutral-300"
-                  data-lens="customer"
-                >
-                  Customer
-                </button>
-              </div>
-            </div>
-            <div id="lens-reseller" class="space-y-1">
-              <p class="font-semibold text-[0.8rem] text-neutral-50">How to pitch it as a reseller:</p>
-              <p>
-                “We give your users a clean, centrally managed IGEL workspace they can reboot into in minutes — no reimaging,
-                no panic rebuilds, and no fresh hardware spend.”
-              </p>
-            </div>
-            <div id="lens-customer" class="space-y-1 hidden">
-              <p class="font-semibold text-[0.8rem] text-neutral-50">How it lands with customers:</p>
-              <p>
-                “If Windows is compromised, your users flip into a hardened IGEL workspace and keep working — while your teams safely investigate the breach.”
-              </p>
-            </div>
-          </div>
+        <div class="hero-pill flex flex-col gap-1.5">
+          <span class="text-[0.68rem] eyebrow text-neutral-400">Core Mechanism</span>
+          <span class="font-semibold text-base text-white">Reboot into secure, immutable IGEL OS.</span>
         </div>
-      </section>
+        <div class="hero-pill flex flex-col gap-1.5">
+          <span class="text-[0.68rem] eyebrow text-neutral-400">Story Angle</span>
+          <span class="font-semibold text-base text-white">From outage panic to controlled recovery.</span>
+        </div>
+      </div>
 
-      <!-- Pain Points -->
+      <div class="flex flex-wrap gap-3 items-center">
+        <a
+          href="#demo"
+          class="cta-primary text-xs sm:text-sm"
+        >
+          Book a 10-minute Recovery Demo
+        </a>
+        <div class="cta-secondary text-xs sm:text-sm font-medium flex items-center gap-2 px-3">
+          <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(16,185,129,0.18)]"></span>
+          Ready-to-use with existing endpoints
+        </div>
+      </div>
+
+      <p class="text-[0.85rem] text-neutral-300 max-w-2xl leading-relaxed">
+        When cyberattacks or system failures hit, IGEL BC&amp;DR lets businesses reboot endpoints into a secure, immutable IGEL
+        environment within minutes &mdash; bypassing compromised Windows partitions, restoring SaaS, VDI, and collaboration access fast.
+      </p>
+    </div>
+
+    <aside class="w-full lg:w-80 xl:w-96 space-y-4">
+      <div class="aside-pill px-4 pt-4 pb-3.5 space-y-2">
+        <p class="text-[0.68rem] eyebrow text-neutral-400">
+          Battle Snapshot &bull; Use This Line
+        </p>
+        <p class="text-sm text-neutral-100 leading-relaxed">
+          <span class="font-semibold text-[var(--igel-yellow)]">
+            "Where others rebuild from the ashes, IGEL lets you bypass the fire."
+          </span>
+          Use this as your opener when talking about endpoint recovery.
+        </p>
+      </div>
+
+      <div class="aside-pill px-4 py-4 space-y-3 text-sm text-neutral-100">
+        <div class="flex items-center justify-between">
+          <span class="text-[0.68rem] eyebrow text-neutral-400">Who to target</span>
+          <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[0.7rem] font-semibold eyebrow">
+            High Fit
+          </span>
+        </div>
+        <ul class="space-y-1.5 list-disc list-inside marker:text-neutral-400">
+          <li>CIO / CISO under NIS2 / DORA / HIPAA pressure</li>
+          <li>BC&amp;DR owners with strict 48&ndash;72 hour RTO</li>
+          <li>Organizations burned by slow reimaging cycles</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+<!-- Elevator Pitch -->
+<section id="elevator" class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-7 lg:py-8 glow-hover">
+  <div class="flex flex-col lg:flex-row gap-6 items-start">
+    <div class="flex-1 space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-pink-500 to-yellow-400 text-xs font-bold shadow-lg shadow-pink-500/40">
+          &#9733;
+        </span>
+        <h2 class="text-sm sm:text-base font-semibold tracking-[0.16em] uppercase text-neutral-50">
+          Elevator Pitch
+        </h2>
+      </div>
+      <p class="text-sm sm:text-[0.95rem] text-neutral-100 leading-relaxed max-w-3xl">
+        When cyberattacks or system failures hit, <span class="font-semibold text-[var(--igel-yellow)]">IGEL BC&amp;DR</span> lets businesses reboot endpoints
+        into a secure, immutable IGEL environment within minutes &mdash; bypassing compromised Windows partitions and restoring access to critical SaaS, VDI,
+        and collaboration tools. It is the fastest way to turn disruption into continuity.
+      </p>
+    </div>
+
+    <div class="w-full lg:w-72 xl:w-80 chip px-3.5 py-3 space-y-2 text-xs text-neutral-100">
+      <div class="flex items-center justify-between gap-2">
+        <span class="text-[0.68rem] eyebrow text-neutral-400">Talk Track Lens</span>
+        <div class="inline-flex items-center gap-1 bg-black/40 rounded-full p-0.5">
+          <button
+            type="button"
+            class="lens-toggle px-2.5 py-1 rounded-full text-[0.65rem] font-semibold uppercase tracking-[0.14em] bg-[var(--igel-yellow)] text-[var(--igel-black)]"
+            data-lens="reseller"
+          >
+            Reseller
+          </button>
+          <button
+            type="button"
+            class="lens-toggle px-2.5 py-1 rounded-full text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-neutral-300"
+            data-lens="customer"
+          >
+            Customer
+          </button>
+        </div>
+      </div>
+      <div id="lens-reseller" class="space-y-1">
+        <p class="font-semibold text-[0.8rem] text-neutral-50">How to pitch it as a reseller:</p>
+        <p>
+          "We give your users a clean, centrally managed IGEL workspace they can reboot into in minutes &mdash; no reimaging,
+          no panic rebuilds, and no fresh hardware spend."
+        </p>
+      </div>
+      <div id="lens-customer" class="space-y-1 hidden">
+        <p class="font-semibold text-[0.8rem] text-neutral-50">How it lands with customers:</p>
+        <p>
+          "If Windows is compromised, your users flip into a hardened IGEL workspace and keep working &mdash; while your teams safely investigate the breach."
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Pain Points -->
       <section id="pain" class="section-card section-card-border px-5 sm:px-8 lg:px-10 py-7 lg:py-8">
         <div class="flex items-center gap-2 mb-4">
           <span class="h-1.5 w-8 rounded-full bg-[var(--igel-yellow)]"></span>
