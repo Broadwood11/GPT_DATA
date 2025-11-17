@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IGEL BC&DR — Endpoint Continuity Infographic</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font: Manrope -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- BRAND + THEMER + TOYS -->
+  <style>
+    body { font-family: 'Manrope', sans-serif; background: #F7F7F7; color: #141414; }
+
+    /* ==== IGEL BRAND CARDS ==== */
+    .section-card {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      border: 1px solid #E4E4E4;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transition: all 150ms ease-out;
+    }
+    .section-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.10);
+    }
+
+    /* Header accent bar */
+    .section-card h2 {
+      position: relative;
+      padding-left: 1rem;
+      font-weight: 700;
+    }
+    .section-card h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.3rem;
+      width: 6px;
+      height: 80%;
+      border-radius: 4px;
+      background-color: #FFD101;
+    }
+
+    header img {
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.15));
+    }
+
+    /* === TABLE STYLING === */
+    table {
+      border-radius: 8px;
+      overflow: hidden;
+      width: 100%;
+    }
+    table thead {
+      background-color: #F7F7F7;
+    }
+    table td, table th {
+      border-color: #DDDDDD;
+      padding: 0.75rem;
+    }
+
+    /* === TOYS === */
+
+    /* Insight Capsules */
+    .insight-hidden {
+      display: none;
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      background: #FFF7D1;
+      border-left: 4px solid #FFD101;
+      border-radius: 6px;
+      color: #141414;
+    }
+    .insight-trigger {
+      cursor: pointer;
+      font-weight: 600;
+      color: #141414;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      background: #F4F4F4;
+      transition: all 150ms ease-out;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    .insight-trigger:hover {
+      background: #EAEAEA;
+    }
+
+    /* Toggle Switch */
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .toggle-switch {
+      width: 42px;
+      height: 22px;
+      background: #DDDDDD;
+      border-radius: 11px;
+      position: relative;
+      cursor: pointer;
+      transition: background 150ms ease-out;
+    }
+    .toggle-switch::after {
+      content: "";
+      width: 18px;
+      height: 18px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: all 150ms ease-out;
+    }
+    .toggle-switch.active {
+      background: #FFD101;
+    }
+    .toggle-switch.active::after {
+      transform: translateX(20px);
+    }
+
+    /* Expand Panel */
+    .expand-panel {
+      margin-top: 1rem;
+      display: none;
+      padding: 1rem;
+      border-left: 4px solid #141414;
+      background: #FAFAFA;
+      border-radius: 8px;
+    }
+
+    /* Table Hotspots */
+    .table-hotspot {
+      position: relative;
+      cursor: help;
+    }
+    .hotspot-tooltip {
+      opacity: 0;
+      transform: translateY(4px);
+      transition: all 150ms ease-out;
+      position: absolute;
+      left: 0;
+      bottom: 100%;
+      background: #141414;
+      color: #FFFFFF;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-size: 0.8rem;
+      z-index: 50;
+    }
+    .table-hotspot:hover .hotspot-tooltip,
+    .table-hotspot:focus .hotspot-tooltip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Sticky Navigation */
+    #sticky-nav {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #FFFFFF;
+      border: 1px solid #E4E4E4;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      display: none;
+      z-index: 999;
+    }
+    #sticky-nav a {
+      display: block;
+      margin-bottom: 6px;
+      color: #141414;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    #sticky-nav a:hover {
+      color: #FFD101;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sticky Nav -->
+  <div id="sticky-nav">
+    <a href="#introduction">Intro</a>
+    <a href="#elevator">Pitch</a>
+    <a href="#advantages">Advantages</a>
+    <a href="#questions">Questions</a>
+    <a href="#problems">Problems</a>
+    <a href="#critical">Critical</a>
+    <a href="#slides">Slides</a>
+    <a href="#chart">Chart</a>
+  </div>
+
+  <!-- HEADER -->
+  <header class="py-10 px-6 text-center">
+    <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" class="mx-auto mb-4 w-24" />
+    <h1 class="text-4xl font-bold">IGEL Business Continuity & Disaster Recovery (BC&DR)</h1>
+    <p class="text-lg mt-4 max-w-2xl mx-auto text-gray-700">
+      Instant, secure endpoint recovery that keeps users productive — even when Windows fails.
+    </p>
+  </header>
+
+  <main class="px-6 max-w-4xl mx-auto">
+
+    <!-- INTRO -->
+    <section id="introduction" class="section-card">
+      <h2>Introduction</h2>
+      <p class="text-gray-700">
+        Ransomware and OS failures can halt operations instantly. Most continuity plans focus on servers and cloud services — leaving endpoints offline for days. IGEL BC&DR fixes the blind spot by enabling compromised devices to reboot into a secure, immutable IGEL OS within minutes.
+      </p>
+      <p class="mt-4 text-gray-700">
+        IT teams avoid costly reimaging, preserve forensic evidence, and maintain user productivity while investigations proceed.
+      </p>
+    </section>
+
+    <!-- ELEVATOR PITCH -->
+    <section id="elevator" class="section-card">
+      <h2>Elevator Pitch</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-4">
+        <div><h3 class="font-semibold mb-2">For CISOs</h3><p>Resilience without exposure or forensic loss.</p></div>
+        <div><h3 class="font-semibold mb-2">For IT Managers</h3><p>Instant recovery without reimaging.</p></div>
+        <div><h3 class="font-semibold mb-2">For CTOs</h3><p>Continuous operations without downtime.</p></div>
+      </div>
+    </section>
+
+    <!-- ADVANTAGES -->
+    <section id="advantages" class="section-card">
+      <h2>Key Advantages</h2>
+      <ul class="list-disc pl-6 space-y-2 mt-4">
+        <li>Dual Boot for instant recovery</li>
+        <li>USB Boot for hardware-agnostic fallback</li>
+        <li>Centralized control via UMS</li>
+        <li>Immutable OS preserves forensics</li>
+        <li>Aligns with NIS2, DORA, HIPAA</li>
+      </ul>
+    </section>
+
+    <!-- QUESTIONS -->
+    <section id="questions" class="section-card">
+      <h2>Questions to Ask</h2>
+      <p class="mt-4"><strong>Main Question:</strong> How long are users offline after ransomware or Windows failure?</p>
+      <ul class="list-disc pl-6 mt-2">
+        <li>Impact on SLAs</li>
+        <li>Cost of reimaging</li>
+        <li>Alignment with 48–72h mandates</li>
+        <li>Who owns endpoint resilience?</li>
+      </ul>
+    </section>
+
+    <!-- PROBLEMS TABLE + HOTSPOTS -->
+    <section id="problems" class="section-card">
+      <h2>Problems & Solutions</h2>
+
+      <div class="overflow-x-auto mt-6">
+        <table class="border border-gray-300">
+          <thead>
+            <tr>
+              <th>Problem</th>
+              <th>How IGEL Helps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-hotspot">
+                Endpoints offline after attack
+                <div class="hotspot-tooltip">Typical downtime: 24–72h.</div>
+              </td>
+              <td>Boot into IGEL in minutes</td>
+            </tr>
+            <tr>
+              <td class="table-hotspot">
+                Lost productivity
+                <div class="hotspot-tooltip">User productivity drops up to 97%.</div>
+              </td>
+              <td>Instant SaaS/VDI access</td>
+            </tr>
+            <tr>
+              <td>Costly reimaging</td><td>Clean-boot eliminates reimage cycles</td>
+            </tr>
+            <tr>
+              <td class="table-hotspot">
+                Forensic evidence destroyed
+                <div class="hotspot-tooltip">Reimaging wipes critical logs.</div>
+              </td>
+              <td>Preserves compromised partitions</td>
+            </tr>
+            <tr><td>Reinfection risk</td><td>Immutable OS prevents persistence</td></tr>
+            <tr><td>Compliance gaps</td><td>Meets regulatory mandates</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CRITICAL TOPICS + INSIGHT CAPSULES -->
+    <section id="critical" class="section-card">
+      <h2>Critical Topics</h2>
+
+      <h3 class="font-semibold mt-4">1. Endpoint Downtime & Reinfection</h3>
+      <p class="text-gray-700 mt-2">Reimaging is slow and risky.</p>
+
+      <div class="insight-trigger" data-insight="ins1">Tap to reveal deeper insight</div>
+      <div id="ins1" class="insight-hidden">
+        IGEL’s immutable OS eliminates local persistence, even if malware still exists on Windows.
+      </div>
+
+      <h3 class="font-semibold mt-6">2. Compliance Alignment</h3>
+      <p class="text-gray-700 mt-2">Manual recovery fails 48–72h mandates.</p>
+
+      <!-- Compliance Toggle -->
+      <div class="toggle-wrap mt-4">
+        <span class="font-semibold">Compliance Mode:</span>
+        <div class="toggle-switch" id="complianceToggle"></div>
+        <span id="complianceLabel">NIS2</span>
+      </div>
+    </section>
+
+    <!-- SLIDES -->
+    <section id="slides" class="section-card">
+      <h2>Slide Formats</h2>
+
+      <h3 class="font-semibold mt-4">Instant Endpoint Recovery</h3>
+      <ul class="list-disc pl-6 mt-2">
+        <li>Minutes, not days</li>
+        <li>Immutable OS</li>
+        <li>Dual Boot bypass</li>
+      </ul>
+
+      <h3 class="font-semibold mt-6">Forensics & Security Preservation</h3>
+      <button id="forensicsBtn" class="insight-trigger mt-2">
+        Show forensic integrity details
+      </button>
+      <div id="forensicsPanel" class="expand-panel">
+        IGEL never modifies the compromised Windows partition, preserving chain-of-custody evidence.
+      </div>
+    </section>
+
+    <!-- CHART -->
+    <section id="chart" class="section-card">
+      <h2>Recovery Time Comparison</h2>
+      <p class="text-sm text-gray-600 mt-2">Illustrative data</p>
+      <canvas id="rtChart" width="400" height="200"></canvas>
+    </section>
+
+  </main>
+
+  <footer class="text-center py-10 text-sm text-gray-600">
+    IGEL BC&DR Infographic — Built with Nova 🦔✨
+  </footer>
+
+  <!-- JAVASCRIPT FOR TOYS -->
+  <script>
+    // === Insight Capsules ===
+    document.querySelectorAll('.insight-trigger').forEach(trigger => {
+      const id = trigger.dataset.insight;
+      if (!id) return;
+      trigger.addEventListener('click', () => {
+        const panel = document.getElementById(id);
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    // === Compliance Toggle ===
+    const compToggle = document.getElementById('complianceToggle');
+    const compLabel = document.getElementById('complianceLabel');
+    let modes = ['NIS2', 'DORA', 'HIPAA'];
+    let idx = 0;
+    compToggle.addEventListener('click', () => {
+      compToggle.classList.toggle('active');
+      idx = (idx + 1) % modes.length;
+      compLabel.textContent = modes[idx];
+    });
+
+    // === Forensics Expand ===
+    document.getElementById('forensicsBtn').addEventListener('click', () => {
+      const p = document.getElementById('forensicsPanel');
+      p.style.display = p.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // === Sticky Nav ===
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('sticky-nav');
+      nav.style.display = window.scrollY > 400 ? 'block' : 'none';
+    });
+
+    // === Chart.js ===
+    const ctx = document.getElementById('rtChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Traditional Reimaging', 'IGEL Dual Boot'],
+        datasets: [{
+          label: 'Recovery Time (hours)',
+          data: [48, 0.5],
+          backgroundColor: ['#141414', '#FFD101'],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: 'rgba(20,20,20,0.08)' }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: { font: { family: 'Manrope' }, color: '#141414' }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
