@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IGEL + Omnissa vs Citrix — Competitive Battlecard Infographic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Manrope Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --igel-yellow: #FFD101;
+      --igel-black: #141414;
+      --igel-white: #FFFFFF;
+      --igel-neutral: #1F2933;
+      --igel-border-soft: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 45%, #000000 100%);
+      color: var(--igel-white);
+    }
+
+    .igel-shell {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(3, 7, 18, 0.98));
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.8),
+        0 30px 80px rgba(0, 0, 0, 0.9);
+    }
+
+    .igel-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.06), rgba(15, 23, 42, 0.9));
+      backdrop-filter: blur(16px);
+    }
+
+    .igel-section-card {
+      border-radius: 1.25rem;
+      border: 1px solid var(--igel-border-soft);
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.2), rgba(15, 23, 42, 0.96));
+      box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.9),
+        inset 0 0 0 1px rgba(15, 23, 42, 0.4);
+    }
+
+    .igel-section-card-alt {
+      border-radius: 1.25rem;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at bottom right, rgba(55, 65, 81, 0.55), rgba(15, 23, 42, 0.96));
+    }
+
+    .igel-tag {
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .spark-orbit {
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255, 209, 1, 0.14), transparent 55%),
+        radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.06), transparent 55%),
+        radial-gradient(circle at 20% 100%, rgba(129, 140, 248, 0.08), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .stat-chip {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7));
+    }
+
+    .glow-border {
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.6), 0 0 35px rgba(255, 209, 1, 0.18);
+    }
+
+    .persona-pill {
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 0.2rem 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    .table-grid-header {
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .table-row-alt {
+      background: rgba(17, 24, 39, 0.9);
+    }
+
+    .table-row {
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .badge-omni {
+      background: rgba(22, 163, 74, 0.14);
+      color: #bbf7d0;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+    }
+
+    .badge-citrix {
+      background: rgba(248, 113, 113, 0.1);
+      color: #fecaca;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 113, 113, 0.45);
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+    }
+
+    .talk-track-highlight {
+      background: radial-gradient(circle at top left, rgba(255, 209, 1, 0.09), rgba(15, 23, 42, 0.98));
+      border-radius: 1.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 1);
+    }
+
+    .chart-card {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.2), rgba(15, 23, 42, 0.98));
+    }
+
+    .igel-cta {
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--igel-yellow), #facc15);
+      color: #020617;
+      font-weight: 600;
+      box-shadow:
+        0 12px 25px rgba(15, 23, 42, 0.9),
+        0 0 22px rgba(255, 209, 1, 0.65);
+    }
+
+    .igel-cta:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
+
+    .igel-cta-secondary {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    @media (max-width: 640px) {
+      .headline-balance {
+        font-size: 1.7rem;
+        line-height: 1.15;
+      }
+    }
+
+    @media (min-width: 641px) {
+      .headline-balance {
+        font-size: 2.3rem;
+        line-height: 1.1;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-50">
+  <div class="relative min-h-screen">
+    <div class="spark-orbit"></div>
+
+    <div class="relative mx-auto max-w-6xl px-4 py-6 sm:py-10">
+      <!-- Shell -->
+      <div class="igel-shell relative overflow-hidden p-4 sm:p-6 lg:p-8">
+        <!-- Header -->
+        <header class="relative flex flex-col gap-4 border-b border-slate-700 pb-5 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3">
+              <div class="flex h-12 w-32 items-center justify-start rounded-lg bg-slate-950/80 px-2 py-1 ring-1 ring-slate-700/80">
+                <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" alt="IGEL Logo" class="h-9 w-auto object-contain" />
+              </div>
+              <div class="hidden text-xs font-medium text-slate-300 sm:block">
+                <div class="uppercase tracking-[0.18em] text-[0.65rem] text-slate-400">Battlecard</div>
+                <div>IGEL + Omnissa vs Citrix</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 sm:justify-end">
+            <span class="igel-tag px-3 py-1 text-slate-300">
+              Hybrid Edge · Zero Trust · VDI Modernization
+            </span>
+            <span class="igel-tag px-3 py-1 border-yellow-400/60 bg-yellow-300/5 text-yellow-200">
+              For Omnissa & IGEL Field Teams
+            </span>
+          </div>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="relative mt-6 space-y-8 sm:mt-8">
+          <section id="hero" class="grid gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-start">
+            <div class="space-y-5">
+              <div class="inline-flex items-center gap-3 rounded-full border border-slate-600/70 bg-slate-900/70 px-3 py-1 text-xs uppercase tracking-[0.18em] text-slate-300">
+                <span class="h-1.5 w-1.5 rounded-full bg-[var(--igel-yellow)] shadow-[0_0_0_4px_rgba(255,209,1,0.3)]"></span>
+                IGEL + Omnissa Competitive Battlecard
+              </div>
+
+              <div class="space-y-3">
+                <h1 class="headline-balance font-semibold text-slate-50">
+                  Simplify, Secure &amp; Modernize
+                  <span class="block text-lg font-medium text-slate-300">
+                    Winning Windows 11 &amp; hybrid edge deals <span class="text-[var(--igel-yellow)]">away from Citrix.</span>
+                  </span>
+                </h1>
+                <p class="max-w-2xl text-sm sm:text-[0.95rem] leading-relaxed text-slate-300">
+                  IGEL + Omnissa deliver a Zero Trust workspace built for the hybrid edge—without the
+                  legacy drag of Citrix. Position the duo as the fastest path from brittle, complex VDI to
+                  secure, cloud-ready workspaces your customers can actually love.
+                </p>
+              </div>
+
+              <div class="grid gap-3 md:grid-cols-2">
+                <div class="igel-section-card p-4">
+                  <div class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">Positioning Theme</div>
+                  <div class="mt-1 text-sm text-slate-50">
+                    “Simplify, Secure, and Modernize.”
+                  </div>
+                  <p class="mt-1 text-xs text-slate-300">
+                    Legacy VDI was built for control. Modern workspaces are built for
+                    <span class="font-semibold text-slate-50">trust, resilience, and freedom.</span>
+                  </p>
+                </div>
+                <div class="igel-section-card-alt flex flex-col gap-3 p-4">
+                  <div class="flex items-center justify-between gap-2">
+                    <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-300">Citrix Displacement Pulse</p>
+                    <span class="stat-chip inline-flex items-center gap-1 px-3 py-1 text-[0.7rem] text-slate-200">
+                      <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                      Active Opportunity
+                    </span>
+                  </div>
+                  <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li>• Citrix complexity &amp; pricing fatigue is at an all-time high.</li>
+                    <li>• Windows 11 hardware constraints drive refresh anxiety.</li>
+                    <li>• Zero Trust mandates expose endpoint &amp; posture gaps.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-3">
+                <button class="igel-cta inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm">
+                  <span>Open Citrix Replacement Talk Track</span>
+                  <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-950/40">
+                    →
+                  </span>
+                </button>
+                <button class="igel-cta-secondary inline-flex items-center gap-2 px-4 py-2 text-xs text-slate-200 sm:text-sm">
+                  <span>Show Objections &amp; Counters</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Charts Column -->
+            <div class="space-y-4">
+              <div class="chart-card p-4 sm:p-5">
+                <div class="flex items-center justify-between gap-2">
+                  <div>
+                    <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-300">
+                      Battle at a Glance
+                    </p>
+                    <h2 class="mt-1 text-sm font-semibold text-slate-50">
+                      Omnissa + IGEL vs Citrix Across 8 Dimensions
+                    </h2>
+                  </div>
+                  <span class="rounded-full border border-emerald-300/40 bg-emerald-500/10 px-2 py-1 text-[0.65rem] font-medium text-emerald-200">
+                    Illustrative Scores
+                  </span>
+                </div>
+                <div class="mt-3">
+                  <canvas id="radarBattleChart" aria-label="Radar comparison of capabilities: Omnissa + IGEL vs Citrix" role="img"></canvas>
+                </div>
+                <p class="mt-2 text-[0.7rem] text-slate-300">
+                  Omnissa + IGEL consistently outscore Citrix on
+                  <span class="font-semibold text-slate-50">architecture simplicity, endpoint security, Zero Trust, and migration.</span>
+                </p>
+              </div>
+
+              <div class="chart-card p-4 sm:p-5">
+                <div class="flex items-center justify-between gap-2">
+                  <div>
+                    <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-300">
+                      TCO Impact vs Citrix
+                    </p>
+                    <h3 class="mt-1 text-sm font-semibold text-slate-50">
+                      Where the 30–50% Savings Actually Show Up
+                    </h3>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <canvas id="tcoBarChart" aria-label="Bar chart showing estimated TCO reduction vs Citrix across cost categories" role="img"></canvas>
+                </div>
+                <p class="mt-2 text-[0.7rem] text-slate-300">
+                  No Windows CALs, no AV agents on endpoints, and simpler licensing
+                  combine to materially reduce TCO compared to typical Citrix deployments.
+                  <span class="text-slate-400">(Illustrative data; adjust numbers for specific customers.)</span>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Executive Summary -->
+          <section id="executive-summary" class="igel-section-card mt-4 p-4 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/80 pb-3">
+              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">
+                Executive Summary
+              </h2>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="persona-pill text-sky-200/90">CIO / CISO</span>
+                <span class="persona-pill text-emerald-200/90">IT Director / EUC</span>
+                <span class="persona-pill text-amber-200/90">CFO / Procurement</span>
+              </div>
+            </div>
+
+            <div class="mt-4 grid gap-4 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
+              <div class="space-y-3 text-sm text-slate-200">
+                <p>
+                  <span class="font-semibold text-slate-50">Omnissa</span> (the reborn VMware EUC division)
+                  and <span class="font-semibold text-slate-50">IGEL</span> are executing a
+                  <span class="font-semibold">partner-first displacement strategy</span> targeting Citrix-heavy,
+                  regulated, and hybrid enterprises.
+                </p>
+                <p class="text-slate-300">
+                  Where Citrix has grown <span class="font-semibold text-slate-200">complex, costly, and closed,</span>
+                  IGEL + Omnissa position as <span class="font-semibold text-slate-50">secure, agile, and open</span>—
+                  from the control plane to the endpoint OS.
+                </p>
+                <p class="text-slate-300">
+                  The field message is direct:
+                  <span class="font-semibold text-slate-50">“Legacy VDI was built for control.
+                  Modern workspaces are built for trust, resilience, and freedom.”</span>
+                </p>
+              </div>
+
+              <div class="space-y-3">
+                <div class="rounded-xl border border-slate-600/80 bg-slate-950/60 p-3">
+                  <div class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                    Story in One Line
+                  </div>
+                  <p class="mt-1 text-[0.9rem] text-slate-50">
+                    <span class="font-semibold text-[var(--igel-yellow)]">IGEL + Omnissa</span> turn
+                    Windows 11 and Citrix renewals into a modernization moment—
+                    not a budget crisis.
+                  </p>
+                </div>
+                <div class="grid gap-3 text-xs text-slate-300 sm:grid-cols-2">
+                  <div class="rounded-lg border border-slate-600/70 bg-slate-900/60 p-3">
+                    <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                      Lead With
+                    </p>
+                    <ul class="mt-1 space-y-1.5">
+                      <li>• Zero Trust at endpoint + control plane.</li>
+                      <li>• Simpler management: one fabric, fewer consoles.</li>
+                      <li>• 30–50% TCO reduction vs Citrix.</li>
+                    </ul>
+                  </div>
+                  <div class="rounded-lg border border-slate-600/70 bg-slate-900/60 p-3">
+                    <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                      Land With
+                    </p>
+                    <ul class="mt-1 space-y-1.5">
+                      <li>• Immutable IGEL OS—no local attack surface.</li>
+                      <li>• Work Smart migration program.</li>
+                      <li>• Healthcare, finance &amp; public sector wins.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Core Differentiators -->
+          <section id="core-differentiators" class="igel-section-card p-4 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/80 pb-3">
+              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">
+                Core Differentiators — Omnissa + IGEL vs Citrix
+              </h2>
+              <div class="flex items-center gap-2 text-[0.7rem] text-slate-300">
+                <span class="badge-omni">Omnissa + IGEL Advantage</span>
+                <span class="badge-citrix">Citrix Weakness</span>
+              </div>
+            </div>
+
+            <!-- Desktop Table -->
+            <div class="mt-4 hidden text-xs text-slate-200 md:block">
+              <div class="grid grid-cols-[0.9fr_1.2fr_1.2fr] overflow-hidden rounded-xl border border-slate-600/70 bg-slate-950/80">
+                <div class="table-grid-header px-4 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                  Capability
+                </div>
+                <div class="table-grid-header px-4 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                  Omnissa + IGEL Advantage
+                </div>
+                <div class="table-grid-header px-4 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                  Citrix Weakness / Gap
+                </div>
+
+                <!-- Rows -->
+                <div class="table-row table-row-alt px-4 py-3 font-semibold text-slate-100">
+                  Architecture
+                </div>
+                <div class="table-row table-row-alt px-4 py-3 text-slate-200">
+                  Unified Horizon Control Plane + IGEL OS delivers a single management fabric
+                  for all endpoints (on-prem, Azure, AWS).
+                </div>
+                <div class="table-row table-row-alt px-4 py-3 text-slate-300">
+                  Fragmented architecture: Cloud + on-prem components with multiple consoles
+                  (Studio, Director, DaaS Portal) to manage.
+                </div>
+
+                <div class="table-row px-4 py-3 font-semibold text-slate-100">
+                  Endpoint Security
+                </div>
+                <div class="table-row px-4 py-3 text-slate-200">
+                  IGEL OS is immutable with no local apps or data. Workspace ONE ensures
+                  device trust before session launch.
+                </div>
+                <div class="table-row px-4 py-3 text-slate-300">
+                  Most Citrix deployments rely on Windows endpoints needing constant patching,
+                  AV agents, and local hardening.
+                </div>
+
+                <div class="table-row table-row-alt px-4 py-3 font-semibold text-slate-100">
+                  Zero Trust
+                </div>
+                <div class="table-row table-row-alt px-4 py-3 text-slate-200">
+                  Continuous Access Evaluation + Workspace ONE Trust Network integration
+                  (Okta, Thales, Carbon Black) delivers device + identity + session trust.
+                </div>
+                <div class="table-row table-row-alt px-4 py-3 text-slate-300">
+                  Limited primarily to session-level MFA and Secure Private Access; no native
+                  device posture enforcement.
+                </div>
+
+                <div class="table-row px-4 py-3 font-semibold text-slate-100">
+                  Manageability
+                </div>
+                <div class="table-row px-4 py-3 text-slate-200">
+                  One console manages endpoints, apps, identity, and policy.
+                  Freestyle Orchestrator automates onboarding, remediation, and patching.
+                </div>
+                <div class="table-row px-4 py-3 text-slate-300">
+                  Disjointed tools (Citrix DaaS, Citrix Endpoint Management, AD/GPOs).
+                  Automation leans on brittle PowerShell.
+                </div>
+
+                <div class="table-row table-row-alt px-4 py-3 font-semibold text-slate-100">
+                  Performance
+                </div>
+                <div class="table-row table-row-alt px-4 py-3 text-slate-200">
+                  IGEL OS + Blast Extreme provide fast logons, low latency, and consistent UX,
+                  even on aging devices.
+                </div>
+                <div class="table-row table-row-alt px-4 py-3 text-slate-300">
+                  Dependent on Windows health and local resource usage—“Windows rot” slows
+                  logins and sessions over time.
+                </div>
+
+                <div class="table-row px-4 py-3 font-semibold text-slate-100">
+                  Cost Structure
+                </div>
+                <div class="table-row px-4 py-3 text-slate-200">
+                  No Windows CALs or AV costs on endpoints; transparent pricing, free pilots,
+                  and a stable subscription model.
+                </div>
+                <div class="table-row px-4 py-3 text-slate-300">
+                  High recurring licensing and support renewals with an unpredictable SKU mix
+                  and per-user cost creep.
+                </div>
+
+                <div class="table-row table-row-alt px-4 py-3 font-semibold text-slate-100">
+                  Migration
+                </div>
+                <div class="table-row table-row-alt px-4 py-3 text-slate-200">
+                  Joint “Work Smart” Program: free assessments, playbooks, bundled pricing,
+                  and IGEL OS conversion tools.
+                </div>
+                <div class="table-row table-row-alt px-4 py-3 text-slate-300">
+                  No formal migration path; customers face manual, risky re-platforming.
+                </div>
+
+                <div class="table-row px-4 py-3 font-semibold text-slate-100">
+                  Vertical Fit
+                </div>
+                <div class="table-row px-4 py-3 text-slate-200">
+                  Strong in healthcare, finance, government, and retail with Horizon + IGEL OS
+                  integrations (Imprivata, Epic, DISA-certified environments).
+                </div>
+                <div class="table-row px-4 py-3 text-slate-300">
+                  Vertical story is infrastructure-heavy and legacy-oriented, tied to older on-prem
+                  architectures.
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile Stacked Cards -->
+            <div class="mt-4 space-y-3 text-xs text-slate-200 md:hidden">
+              <!-- Each capability as card -->
+              <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-[0.8rem] font-semibold text-slate-50">Architecture</h3>
+                  <div class="flex items-center gap-1">
+                    <span class="badge-omni">Omnissa + IGEL</span>
+                    <span class="badge-citrix">Citrix</span>
+                  </div>
+                </div>
+                <p class="mt-2 text-slate-200">
+                  Unified Horizon Control Plane + IGEL OS = single management fabric across on-prem, Azure, and AWS.
+                </p>
+                <p class="mt-1 text-slate-400">
+                  Citrix remains fragmented across multiple consoles (Studio, Director, DaaS Portal).
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-[0.8rem] font-semibold text-slate-50">Endpoint Security</h3>
+                </div>
+                <p class="mt-2 text-slate-200">
+                  IGEL OS is immutable, with no local apps or data; Workspace ONE validates device trust pre-session.
+                </p>
+                <p class="mt-1 text-slate-400">
+                  Citrix endpoints typically run full Windows—constant patching and AV overhead.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-[0.8rem] font-semibold text-slate-50">Zero Trust</h3>
+                </div>
+                <p class="mt-2 text-slate-200">
+                  Omnissa enforces device + identity + session trust via CAEP and Workspace ONE Trust Network.
+                </p>
+                <p class="mt-1 text-slate-400">
+                  Citrix focuses on session MFA and Secure Private Access; device posture is often external or absent.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-[0.8rem] font-semibold text-slate-50">Manageability</h3>
+                </div>
+                <p class="mt-2 text-slate-200">
+                  One console for endpoints, apps, identity, and policy with Freestyle Orchestrator automation.
+                </p>
+                <p class="mt-1 text-slate-400">
+                  Citrix environments juggle DaaS, Endpoint Management, and AD/GPOs—often glued by PowerShell.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-[0.8rem] font-semibold text-slate-50">Performance</h3>
+                </div>
+                <p class="mt-2 text-slate-200">
+                  IGEL OS + Blast Extreme deliver fast logons and consistent UX on aging hardware.
+                </p>
+                <p class="mt-1 text-slate-400">
+                  Citrix logons slow as Windows endpoints accumulate agents and background services.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-[0.8rem] font-semibold text-slate-50">Cost Structure</h3>
+                </div>
+                <p class="mt-2 text-slate-200">
+                  No Windows CALs or AV licenses on endpoints; transparent pricing and free pilots.
+                </p>
+                <p class="mt-1 text-slate-400">
+                  Citrix renewals are complex and expensive with a sprawling SKU matrix.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-[0.8rem] font-semibold text-slate-50">Migration</h3>
+                </div>
+                <p class="mt-2 text-slate-200">
+                  “Work Smart” program offers assessments, playbooks, bundled pricing, and IGEL OS conversion tools.
+                </p>
+                <p class="mt-1 text-slate-400">
+                  Citrix offers no structured migration path; customers must self-engineer.
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-[0.8rem] font-semibold text-slate-50">Vertical Fit</h3>
+                </div>
+                <p class="mt-2 text-slate-200">
+                  Proven in healthcare, finance, government, and retail with deep Horizon + IGEL integrations.
+                </p>
+                <p class="mt-1 text-slate-400">
+                  Citrix remains heavily tied to legacy, infrastructure-centric architectures.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Battle Messaging by Persona -->
+          <section id="persona-messaging" class="igel-section-card p-4 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/80 pb-3">
+              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">
+                Battle Messaging by Persona
+              </h2>
+              <span class="text-[0.7rem] uppercase tracking-[0.18em] text-slate-400">
+                Say the right thing to the right buyer.
+              </span>
+            </div>
+
+            <div class="mt-4 grid gap-4 md:grid-cols-4">
+              <!-- CIO / CISO -->
+              <article class="igel-section-card-alt flex flex-col justify-between p-4">
+                <header class="space-y-1">
+                  <div class="persona-pill text-sky-200">
+                    CIO / CISO
+                  </div>
+                  <h3 class="text-sm font-semibold text-slate-50">
+                    “Modernize workspace security with Zero Trust at every layer.”
+                  </h3>
+                </header>
+                <p class="mt-2 text-xs text-slate-300">
+                  IGEL’s immutable OS removes the endpoint attack surface. Workspace ONE device trust
+                  and CAEP ensure only healthy, verified devices reach critical apps.
+                </p>
+                <p class="mt-3 text-[0.7rem] text-slate-400">
+                  Proof to highlight: IGEL + Horizon environments with zero endpoint infections reported
+                  across healthcare &amp; finance deployments.
+                </p>
+              </article>
+
+              <!-- IT Director / EUC Lead -->
+              <article class="igel-section-card-alt flex flex-col justify-between p-4">
+                <header class="space-y-1">
+                  <div class="persona-pill text-emerald-200">
+                    IT Director / EUC Lead
+                  </div>
+                  <h3 class="text-sm font-semibold text-slate-50">
+                    “Unify management and simplify operations.”
+                  </h3>
+                </header>
+                <p class="mt-2 text-xs text-slate-300">
+                  Replace a sprawl of consoles and scripts with one control plane for devices, apps,
+                  identity, and policy. Freestyle Orchestrator automates onboarding and patching.
+                </p>
+                <p class="mt-3 text-[0.7rem] text-slate-400">
+                  Talk logons, image counts, and patch windows—then show how IGEL OS collapses endpoint variance.
+                </p>
+              </article>
+
+              <!-- CFO / Procurement -->
+              <article class="igel-section-card-alt flex flex-col justify-between p-4">
+                <header class="space-y-1">
+                  <div class="persona-pill text-amber-200">
+                    CFO / Procurement
+                  </div>
+                  <h3 class="text-sm font-semibold text-slate-50">
+                    “Cut endpoint &amp; virtualization TCO by 30–50%.”
+                  </h3>
+                </header>
+                <p class="mt-2 text-xs text-slate-300">
+                  No endpoint Windows licensing, fewer support tickets, and an easier subscription model
+                  mean real savings vs. Citrix’s renewal stack.
+                </p>
+                <p class="mt-3 text-[0.7rem] text-slate-400">
+                  Anchor on device life extension + license simplification. Use TEI-style framing.
+                </p>
+              </article>
+
+              <!-- End-User / Business Unit -->
+              <article class="igel-section-card-alt flex flex-col justify-between p-4">
+                <header class="space-y-1">
+                  <div class="persona-pill text-fuchsia-200">
+                    End-User / Business Unit
+                  </div>
+                  <h3 class="text-sm font-semibold text-slate-50">
+                    “Faster logins. Seamless sessions. Fewer disruptions.”
+                  </h3>
+                </header>
+                <p class="mt-2 text-xs text-slate-300">
+                  IGEL OS + Horizon Cloud regularly deliver &lt;10s logins and 99.9% uptime.
+                  That means fewer calls to the helpdesk and more time serving patients, customers, or citizens.
+                </p>
+                <p class="mt-3 text-[0.7rem] text-slate-400">
+                  Use real stories like badge-tap logins at Haaglanden Medical Center.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <!-- Citrix Objections & Counters -->
+          <section id="citrix-objections" class="igel-section-card p-4 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/80 pb-3">
+              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">
+                Common Citrix Objections &amp; How to Counter
+              </h2>
+              <span class="text-[0.7rem] text-slate-400">
+                Keep this open during renewal calls.
+              </span>
+            </div>
+
+            <div class="mt-4 grid gap-4 lg:grid-cols-2">
+              <!-- Left column -->
+              <div class="space-y-3 text-xs">
+                <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                  <p class="font-semibold text-rose-200">
+                    “Citrix delivers the best protocol performance.”
+                  </p>
+                  <p class="mt-1 text-slate-200">
+                    Blast Extreme now equals or beats HDX in most real-world scenarios.
+                    IGEL OS optimizes codec handling and reduces bandwidth usage at the endpoint.
+                  </p>
+                </div>
+
+                <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                  <p class="font-semibold text-rose-200">
+                    “We’re cloud-agnostic, VMware isn’t.”
+                  </p>
+                  <p class="mt-1 text-slate-200">
+                    Horizon supports Azure, AWS, and on-prem. The Horizon Control Plane provides
+                    a single policy and UX layer across clouds—Citrix still manages environments per site.
+                  </p>
+                </div>
+
+                <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                  <p class="font-semibold text-rose-200">
+                    “We offer built-in session security.”
+                  </p>
+                  <p class="mt-1 text-slate-200">
+                    Omnissa extends protection beyond the session: device posture + identity + session trust.
+                    IGEL removes the local endpoint attack surface completely.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Right column -->
+              <div class="space-y-3 text-xs">
+                <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                  <p class="font-semibold text-rose-200">
+                    “Citrix is more mature.”
+                  </p>
+                  <p class="mt-1 text-slate-200">
+                    Citrix is older—but Omnissa inherits 20+ years of VMware EUC innovation and re-emerges
+                    focused on modern work. Customers get both maturity and agility.
+                  </p>
+                </div>
+
+                <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                  <p class="font-semibold text-rose-200">
+                    “Migration is hard.”
+                  </p>
+                  <p class="mt-1 text-slate-200">
+                    The IGEL + Omnissa migration program automates assessment, conversion, and pilot rollout.
+                    Customers like Haaglanden Medical Center moved in weeks, not months.
+                  </p>
+                </div>
+
+                <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-3">
+                  <p class="font-semibold text-slate-100">
+                    Quick Objection Handling Tips
+                  </p>
+                  <ul class="mt-1 space-y-1.5 text-slate-300">
+                    <li>• Acknowledge Citrix’s history, then pivot to present-day complexity and cost.</li>
+                    <li>• Tie each counter to a <span class="text-slate-50 font-medium">tangible outcome</span> (TCO, login time, compliance).</li>
+                    <li>• Offer a no-cost assessment instead of debating every feature.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Joint Differentiation Messages -->
+          <section id="joint-differentiation" class="igel-section-card p-4 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/80 pb-3">
+              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">
+                Joint Differentiation Messages — Omnissa + IGEL
+              </h2>
+              <span class="text-[0.7rem] text-slate-400">
+                Turn these into slides, email headers, and social copy.
+              </span>
+            </div>
+
+            <div class="mt-4 grid gap-4 md:grid-cols-2">
+              <article class="igel-section-card-alt p-4">
+                <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-300">Simplify IT</h3>
+                <p class="mt-1 text-sm font-semibold text-slate-50">
+                  “From chaos to consolidation: one console for devices, users, and apps.”
+                </p>
+                <p class="mt-2 text-xs text-slate-300">
+                  Replace fragmented Citrix deployments with a single management fabric.
+                  Fewer consoles, fewer images, fewer ways to break production.
+                </p>
+              </article>
+
+              <article class="igel-section-card-alt p-4">
+                <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-300">Secure the Edge</h3>
+                <p class="mt-1 text-sm font-semibold text-slate-50">
+                  “No Windows. No local data. No attack surface.”
+                </p>
+                <p class="mt-2 text-xs text-slate-300">
+                  IGEL + Omnissa deliver a Zero Trust workspace where the endpoint is immutable,
+                  sessions are verified, and data stays in the data center.
+                </p>
+              </article>
+
+              <article class="igel-section-card-alt p-4">
+                <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-300">Enable Continuity</h3>
+                <p class="mt-1 text-sm font-semibold text-slate-50">
+                  “When downtime is unacceptable, immutable endpoints keep work moving.”
+                </p>
+                <p class="mt-2 text-xs text-slate-300">
+                  Combine IGEL’s endpoint resilience with Horizon’s high-availability design
+                  to protect frontline users during outages, incidents, or upgrades.
+                </p>
+              </article>
+
+              <article class="igel-section-card-alt p-4">
+                <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-300">Accelerate Modernization</h3>
+                <p class="mt-1 text-sm font-semibold text-slate-50">
+                  “Deploy a modern workspace in days, not months.”
+                </p>
+                <p class="mt-2 text-xs text-slate-300">
+                  The IGEL + Omnissa migration toolset turns Citrix renewals into fast pilots—so customers
+                  can see modern performance before they sign the next legacy contract.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <!-- Field-Ready Proof Points & Sales Plays -->
+          <section id="proof-points" class="igel-section-card p-4 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/80 pb-3">
+              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">
+                Field-Ready Proof Points &amp; Sales Plays
+              </h2>
+              <span class="text-[0.7rem] text-slate-400">
+                Drop these into slides, RFPs, and emails.
+              </span>
+            </div>
+
+            <div class="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.1fr)]">
+              <!-- Proof points -->
+              <div class="space-y-4">
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <div class="talk-track-highlight p-4">
+                    <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-300">
+                      Quantified Impact
+                    </p>
+                    <div class="mt-2 flex items-baseline gap-2">
+                      <span class="text-3xl font-semibold text-[var(--igel-yellow)]">30–50%</span>
+                      <span class="text-xs font-medium uppercase tracking-[0.18em] text-slate-300">Lower TCO</span>
+                    </div>
+                    <p class="mt-2 text-xs text-slate-300">
+                      Versus typical Citrix estates when you combine license savings, endpoint life extension,
+                      and support reduction. (Forrester TEI-style data in development.)
+                    </p>
+                  </div>
+
+                  <div class="talk-track-highlight p-4">
+                    <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-300">
+                      User Experience
+                    </p>
+                    <div class="mt-2 flex items-baseline gap-2">
+                      <span class="text-3xl font-semibold text-[var(--igel-yellow)]">&lt;10s</span>
+                      <span class="text-xs font-medium uppercase tracking-[0.18em] text-slate-300">Login Times</span>
+                    </div>
+                    <p class="mt-2 text-xs text-slate-300">
+                      Horizon Cloud + IGEL OS regularly deliver &lt;10 second logins and
+                      99.9% VDI session uptime.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-4 text-xs text-slate-300">
+                  <ul class="space-y-1.5">
+                    <li>• 5-second badge-tap login in healthcare (Haaglanden Medical Center).</li>
+                    <li>• 99.9% uptime for Horizon Cloud sessions with IGEL endpoints.</li>
+                    <li>• Zero endpoint infections reported across IGEL + Horizon deployments in healthcare and finance.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Sales Plays -->
+              <div class="space-y-4">
+                <div class="rounded-xl border border-slate-700 bg-slate-950/80 p-4 text-xs text-slate-300">
+                  <h3 class="text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-slate-200">
+                    Priority Sales Plays
+                  </h3>
+                  <ol class="mt-2 list-decimal space-y-1.5 pl-4">
+                    <li>
+                      <span class="font-semibold text-slate-50">Citrix Replacement Campaign</span> —
+                      Run “Break Free from Legacy VDI” email &amp; LinkedIn campaigns.
+                      Offer free migration assessments via IGEL + Omnissa partners.
+                    </li>
+                    <li>
+                      <span class="font-semibold text-slate-50">Vertical Playbooks</span> —
+                      Tailor messaging for Healthcare, Finance, and Public Sector with strong compliance, speed,
+                      and security outcomes.
+                    </li>
+                    <li>
+                      <span class="font-semibold text-slate-50">Joint Events</span> —
+                      Co-present at HIMSS, IGEL Disrupt, and Omnissa ONE with live Horizon-on-IGEL demos.
+                    </li>
+                    <li>
+                      <span class="font-semibold text-slate-50">Analyst Endorsement</span> —
+                      Use Gartner and IDC positioning that place Omnissa as a Leader in VDI and UEM
+                      to de-risk Citrix replacement.
+                    </li>
+                  </ol>
+                </div>
+
+                <div class="rounded-xl border border-dashed border-slate-700 bg-slate-950/70 p-4 text-xs text-slate-300">
+                  <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                    Quick Win Tip
+                  </p>
+                  <p class="mt-2 text-[0.9rem] text-slate-50">
+                    Lead with <span class="font-semibold text-[var(--igel-yellow)]">cost simplification</span>
+                    and <span class="font-semibold text-[var(--igel-yellow)]">security hardening</span>—
+                    the two areas where Citrix fatigue is deepest.
+                  </p>
+                  <p class="mt-2">
+                    Close with the IGEL OS story: it’s a visible, testable differentiator
+                    that customers can see, touch, and pilot in weeks.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Talk Track -->
+          <section id="talk-track" class="talk-track-highlight p-4 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-600/90 pb-3">
+              <h2 class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">
+                Citrix Replacement Talk Track (Use as a Script)
+              </h2>
+              <span class="text-[0.7rem] text-slate-400">
+                Trim or expand depending on audience.
+              </span>
+            </div>
+
+            <div class="mt-4 grid gap-4 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+              <div class="space-y-3 text-sm text-slate-200">
+                <p>
+                  “Citrix built virtualization for the last decade.
+                  <span class="font-semibold text-[var(--igel-yellow)]">IGEL and Omnissa built secure workspaces for the next one.</span>
+                </p>
+                <p>
+                  With <span class="font-semibold text-slate-50">IGEL OS</span>, there’s no Windows to patch on endpoints,
+                  no local data to protect, and no fragile agents to maintain.
+                  With <span class="font-semibold text-slate-50">Omnissa Horizon</span>, you manage policies, apps, and sessions
+                  from a single cloud-ready control plane across Azure, AWS, and on-prem.
+                </p>
+                <p>
+                  Instead of juggling consoles and firefighting logon issues, your teams get a
+                  <span class="font-semibold text-slate-50">seamless, Zero Trust workspace</span>
+                  that works wherever work happens—hospital ward, branch office, contact center, or home.
+                </p>
+                <p class="text-slate-300">
+                  Let’s start with a focused pilot on a high-value workflow and prove the difference before your next Citrix renewal.”
+                </p>
+              </div>
+
+              <div class="rounded-xl border border-slate-600/90 bg-slate-950/75 p-4 text-xs text-slate-300">
+                <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                  Talk Track Cues
+                </p>
+                <ul class="mt-2 space-y-1.5">
+                  <li>• Open with pain: complexity, cost, and security fatigue with Citrix.</li>
+                  <li>• Bridge to IGEL + Omnissa as a unified modernization move, not just a “swap.”</li>
+                  <li>• Anchor on one or two proof points (TCO + login time) that matter to this customer.</li>
+                  <li>• Close on low-risk pilot and assessment, not a full rip-and-replace decision.</li>
+                </ul>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="persona-pill text-slate-200">Use in renewal reviews</span>
+                  <span class="persona-pill text-slate-200">Works in email follow-up</span>
+                  <span class="persona-pill text-slate-200">Adapt for LinkedIn posts</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer / Navigation -->
+          <footer class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-700/80 pt-4 text-[0.7rem] text-slate-400">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="uppercase tracking-[0.18em] text-slate-500">IGEL × Omnissa</span>
+              <span class="h-1 w-1 rounded-full bg-slate-500"></span>
+              <span>Citrix Competitive Battlecard · 2025</span>
+            </div>
+            <a href="#hero" class="inline-flex items-center gap-1 rounded-full border border-slate-600 bg-slate-950/80 px-3 py-1 text-[0.7rem] text-slate-200 hover:border-slate-400">
+              <span>Back to top</span>
+              <span class="text-xs">↑</span>
+            </a>
+          </footer>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Radar Chart: Omnissa + IGEL vs Citrix (illustrative scores)
+    document.addEventListener("DOMContentLoaded", function () {
+      const radarCtx = document.getElementById("radarBattleChart");
+      if (radarCtx) {
+        new Chart(radarCtx, {
+          type: "radar",
+          data: {
+            labels: [
+              "Architecture Simplicity",
+              "Endpoint Security",
+              "Zero Trust Depth",
+              "Manageability",
+              "Performance",
+              "Cost & TCO",
+              "Migration Ease",
+              "Vertical Fit"
+            ],
+            datasets: [
+              {
+                label: "Omnissa + IGEL",
+                data: [5, 5, 5, 5, 5, 4, 5, 5],
+                borderColor: "rgba(255, 209, 1, 1)",
+                backgroundColor: "rgba(255, 209, 1, 0.16)",
+                borderWidth: 2,
+                pointRadius: 2
+              },
+              {
+                label: "Citrix",
+                data: [3, 2, 2, 3, 3, 2, 2, 3],
+                borderColor: "rgba(148, 163, 184, 1)",
+                backgroundColor: "rgba(148, 163, 184, 0.14)",
+                borderWidth: 1.5,
+                pointRadius: 2
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: {
+                  color: "#E5E7EB",
+                  font: { size: 10 }
+                }
+              }
+            },
+            scales: {
+              r: {
+                min: 0,
+                max: 5,
+                ticks: {
+                  stepSize: 1,
+                  showLabelBackdrop: false,
+                  color: "#9CA3AF",
+                  font: { size: 9 }
+                },
+                grid: {
+                  color: "rgba(55, 65, 81, 0.7)"
+                },
+                angleLines: {
+                  color: "rgba(75, 85, 99, 0.7)"
+                },
+                pointLabels: {
+                  color: "#CBD5F5",
+                  font: { size: 9 }
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // TCO Bar Chart: illustrative reductions vs Citrix baseline
+      const tcoCtx = document.getElementById("tcoBarChart");
+      if (tcoCtx) {
+        new Chart(tcoCtx, {
+          type: "bar",
+          data: {
+            labels: ["Licensing", "Endpoint Hardware", "Support Overhead"],
+            datasets: [
+              {
+                label: "Estimated TCO Reduction vs Citrix (%)",
+                data: [35, 40, 30],
+                backgroundColor: "rgba(255, 209, 1, 0.7)",
+                borderColor: "rgba(255, 209, 1, 1)",
+                borderWidth: 1.5,
+                borderRadius: 8
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                callbacks: {
+                  label: function (ctx) {
+                    return ctx.parsed.y + "% vs Citrix baseline";
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: {
+                  color: "#E5E7EB",
+                  font: { size: 10 }
+                },
+                grid: {
+                  display: false
+                }
+              },
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  color: "#9CA3AF",
+                  font: { size: 9 },
+                  callback: function (value) {
+                    return value + "%";
+                  }
+                },
+                grid: {
+                  color: "rgba(55, 65, 81, 0.7)"
+                },
+                suggestedMax: 50
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
