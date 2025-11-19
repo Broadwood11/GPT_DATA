@@ -14,33 +14,143 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --igel-yellow: #FFD101;
+      --igel-black: #141414;
+      --igel-white: #FFFFFF;
+      --teal: #004D68;
+      --plum: #770469;
+      --gov-blue: #001C99;
+      --retail-purple: #4500A6;
+      --mfg-grey: #43433D;
+    }
+
     body {
       font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--igel-black);
+      color: #e5e7eb;
     }
+
+    .page-shell {
+      position: relative;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 209, 1, 0.14), transparent 32%),
+        radial-gradient(circle at 82% 8%, rgba(0, 28, 153, 0.12), transparent 26%),
+        radial-gradient(circle at 80% 70%, rgba(119, 4, 105, 0.1), transparent 30%),
+        linear-gradient(180deg, #0c0c10 0%, #0f1117 65%, #0b0c0f 100%);
+      overflow: hidden;
+    }
+
+    .page-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 120px 120px;
+      opacity: 0.35;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .page-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 209, 1, 0.05), transparent 50%);
+      pointer-events: none;
+    }
+
     .section-card {
-      @apply bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8;
+      position: relative;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+      background: linear-gradient(145deg, rgba(20, 20, 20, 0.82), rgba(20, 20, 20, 0.62)) !important;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(255, 209, 1, 0.08);
+      overflow: hidden;
+      backdrop-filter: blur(6px);
     }
+
+    @media (min-width: 768px) {
+      .section-card {
+        padding: 2rem;
+      }
+    }
+
+    .section-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 209, 1, 0.08), transparent 36%),
+        radial-gradient(circle at 82% 8%, rgba(0, 76, 104, 0.08), transparent 32%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .section-card [class*="border-slate-700"] {
+      border-color: rgba(255, 255, 255, 0.18) !important;
+    }
+
+    .section-card [class*="border-slate-800"] {
+      border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
     .pill-label {
-      @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold tracking-wide;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--igel-white);
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
     }
+
     .stack-card {
-      @apply rounded-xl border border-slate-200 bg-slate-900/90 text-slate-50 px-4 py-3 flex flex-col gap-1;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: linear-gradient(180deg, rgba(24, 27, 33, 0.9), rgba(24, 27, 33, 0.75));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      padding: 0.85rem 1rem;
+      color: var(--igel-white);
     }
+
     .spark-dot {
       width: 6px;
       height: 6px;
       border-radius: 999px;
-      background: #FFD101;
+      background: var(--igel-yellow);
       display: inline-block;
+    }
+
+    .header-panel {
+      background: rgba(20, 20, 20, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-900">
-  <div class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
-    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+<body class="text-slate-100 antialiased">
+  <div class="page-shell text-slate-100">
+    <header class="header-panel border-b border-white/10 backdrop-blur-xl sticky top-0 z-20">
+      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
         <div class="flex items-center gap-3">
-          <div class="flex items-center justify-center bg-[#FFD101] rounded-xl px-2 py-1">
+          <div class="flex items-center justify-center bg-[#43433D] rounded-xl px-2 py-1">
             <img
               src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
               alt="IGEL logo"
@@ -53,24 +163,29 @@
           </div>
         </div>
         <div class="flex items-center gap-2">
-          <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/70">
+          <span class="pill-label bg-slate-900/80 text-slate-100 border border-white/10">
             <span class="spark-dot"></span>
             Immutable Endpoint OS
           </span>
-          <span class="hidden sm:inline-flex pill-label bg-emerald-500/10 text-emerald-300 border border-emerald-400/40">
+          <span class="hidden sm:inline-flex pill-label bg-emerald-500/10 text-emerald-200 border border-emerald-400/40 justify-center text-center">
+            <img
+              src="https://raw.githubusercontent.com/Broadwood11/images/main/island-logo-white-cropped.png"
+              alt="Island logo"
+              class="h-5 w-auto inline-block"
+            />
             Island-ready workspace
           </span>
         </div>
       </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-8 md:space-y-10">
+    <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-8 md:space-y-10">
       <!-- Hero / Intro -->
       <section class="grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] gap-6 md:gap-8 items-start">
         <article class="section-card bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-50 border-slate-800">
           <div class="flex items-center justify-between mb-4">
-            <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">
-              IGEL 101 — What Every Island Rep Should Know
+            <h1 class="text-3xl md:text-4xl font-semibold leading-tight tracking-tight text-[#FFD101]">
+              IGEL 101 - What Every Island Rep Should Know
             </h1>
 
           </div>
@@ -115,11 +230,11 @@
         <!-- Quick Pitch / Cheat Card -->
         <aside class="section-card bg-slate-900/70 border-slate-700/80 text-slate-50 space-y-4 sticky md:top-6">
           <div class="flex items-center justify-between gap-3">
-            <h2 class="text-sm font-semibold tracking-[0.16em] uppercase text-slate-300">
+            <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
               Elevator Pitch – Island Ready
             </h2>
-            <span class="pill-label bg-emerald-500/15 text-emerald-300 border border-emerald-400/50">
-              ⏱️ 20s talk track
+            <span class="pill-label bg-emerald-500/15 text-emerald-300 border border-emerald-400/50 justify-center text-center">
+              20s talk track
             </span>
           </div>
           <p class="text-sm leading-relaxed">
@@ -144,8 +259,8 @@
       <!-- Who IGEL Is -->
       <section class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
-            🧱 Who IGEL Is
+          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
+            🦔 Who Is IGEL
           </h2>
           
         </div>
@@ -190,7 +305,7 @@
               </p>
               <ul class="text-xs md:text-sm text-slate-200 space-y-1.5">
                 <li>• Think “ChromeOS for the enterprise, but immutable and vendor-neutral.”</li>
-                <li>• It’s not “a thin client box” — it’s a <span class="font-semibold">Zero Trust endpoint platform</span>.</li>
+                <li>• It’s not “a thin client box” - it’s a <span class="font-semibold">Zero Trust endpoint platform</span>.</li>
                 <li>• Any device that can boot IGEL can become an Island-ready secure workspace.</li>
               </ul>
             </div>
@@ -201,7 +316,7 @@
       <!-- Preventative Security Model -->
       <section class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
             🔒 IGEL’s Preventative Security Model
           </h2>
           <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">
@@ -285,7 +400,7 @@
       <!-- Stack: How IGEL + Island Fit -->
       <section class="section-card bg-slate-950/90 border-slate-800 text-slate-50">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
             🧩 How IGEL + Island Fit Together
           </h2>
           <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">
@@ -307,7 +422,7 @@
                 </p>
                 <p class="text-sm">
                   <span class="font-semibold text-[#FFD101]">Secure, compliant endpoint</span> +
-                  <span class="font-semibold text-emerald-300">secure, compliant workspace</span> —
+                  <span class="font-semibold text-emerald-300">secure, compliant workspace</span> -
                   without Windows or VDI complexity.
                 </p>
               </div>
@@ -337,7 +452,7 @@
                   Operating System
                 </p>
                 <p class="text-sm">
-                  <span class="font-semibold">IGEL OS 12</span> — immutable, read-only, image-verified.
+                  <span class="font-semibold">IGEL OS 12</span> - immutable, read-only, image-verified.
                   No local apps, no local data, no patch chaos.
                 </p>
               </div>
@@ -347,7 +462,7 @@
                   Hardware &amp; Boot
                 </p>
                 <p class="text-sm">
-                  TPM + Secure Boot validate device and OS before anything else runs — the “trust anchor”
+                  TPM + Secure Boot validate device and OS before anything else runs - the “trust anchor”
                   for everything Island does later.
                 </p>
               </div>
@@ -373,7 +488,7 @@
               </p>
               <ul class="text-xs md:text-sm text-slate-200 space-y-1.5">
                 <li>• “We replace Windows with an immutable OS and move the workspace into Island.”</li>
-                <li>• “We keep your identity, SaaS, and security stack — we just give it a cleaner endpoint.”</li>
+                <li>• “We keep your identity, SaaS, and security stack - we just give it a cleaner endpoint.”</li>
                 <li>• “Everything is managed centrally: UMS for devices, Island Console for sessions.”</li>
               </ul>
             </div>
@@ -384,7 +499,7 @@
       <!-- Why This Matters for Island Sellers -->
       <section class="section-card bg-slate-950/90 border-slate-800 text-slate-50">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
             🚀 Why This Matters for Island Sellers
           </h2>
 
@@ -407,7 +522,7 @@
             </p>
             <p>
               IGEL provides the <span class="font-semibold">known-good device</span>. When Island runs on IGEL OS, it can assume
-              a verified OS, policy-compliant device, and no rogue browsers — which means cleaner, stronger enforcement.
+              a verified OS, policy-compliant device, and no rogue browsers - which means cleaner, stronger enforcement.
             </p>
           </div>
 
@@ -427,7 +542,7 @@
               4. Accelerates time-to-value
             </p>
             <p>
-              IGEL’s UMS can mass-deploy IGEL OS in hours — no golden Windows images, no MDM circus.
+              IGEL’s UMS can mass-deploy IGEL OS in hours - no golden Windows images, no MDM circus.
               That means you can run joint IGEL + Island pilots at <span class="font-semibold">full fidelity in under a day</span>.
             </p>
           </div>
@@ -450,7 +565,7 @@
       <section class="section-card bg-slate-950/90 border-slate-800 text-slate-50">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
           <div>
-            <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+            <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
                IGEL + Island: Core Joint Sales Plays
             </h2>
             <p class="text-sm text-slate-200 mt-1">
@@ -563,7 +678,7 @@
                   Context you can cite
                 </p>
                 <p class="text-xs text-slate-100">
-                  Gartner expects ~25% of orgs to deploy enterprise browsers by 2026 —
+                  Gartner expects ~25% of orgs to deploy enterprise browsers by 2026 -
                   IGEL + Island is a future-proof way to get there.
                 </p>
               </div>
@@ -584,7 +699,7 @@
               <span class="font-semibold text-slate-100">Pain:</span> Unmanageable contractor devices and BYOD data leakage.
             </p>
             <p class="text-xs md:text-sm text-slate-100 mb-2">
-              <span class="font-semibold">Pitch:</span> “Launch a fully secure workspace in minutes on any device — no corporate laptop required.”
+              <span class="font-semibold">Pitch:</span> “Launch a fully secure workspace in minutes on any device - no corporate laptop required.”
             </p>
             <div class="grid md:grid-cols-[1.2fr,minmax(0,1fr)] gap-3 text-xs md:text-sm">
               <ul class="space-y-1.5 text-slate-200">
@@ -655,7 +770,7 @@
             </div>
             <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-3">
               <p class="font-semibold mb-1">Industry Playbooks &amp; Events</p>
-              <p>Healthcare, finance, BPO, education — plus joint demos at RSA, Black Hat, and IGEL Disrupt.</p>
+              <p>Healthcare, finance, BPO, education - plus joint demos at RSA, Black Hat, and IGEL Disrupt.</p>
             </div>
           </div>
         </div>
@@ -665,14 +780,14 @@
       <section class="section-card bg-slate-950/95 border-slate-800 text-slate-50">
         <div class="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] gap-6">
           <div class="space-y-4">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+            <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
               🧭 Positioning Lines Island Should Steal Shamelessly
             </h2>
             <ul class="text-sm md:text-base text-slate-100 space-y-1.5">
               <li>• “Secure by design, simple by design.”</li>
               <li>• “Prevent, don’t patch.”</li>
               <li>• “Modern work. Without Windows.”</li>
-              <li>• “From the endpoint to the browser — Zero Trust that travels with the user.”</li>
+              <li>• “From the endpoint to the browser - Zero Trust that travels with the user.”</li>
               <li>• “Immutable. Intelligent. Island-ready.”</li>
             </ul>
             <p class="text-xs text-slate-300">
@@ -696,7 +811,7 @@
                 </div>
                 <div class="flex flex-col gap-1">
                   <span class="font-semibold">IGEL OS 12 has a built-in App Portal.</span>
-                  <span>That’s where Island is delivered — easy install = easy upsell.</span>
+                  <span>That’s where Island is delivered - easy install = easy upsell.</span>
                 </div>
                 <div class="flex flex-col gap-1">
                   <span class="font-semibold">IGEL owns the device layer; Island owns the browser layer.</span>
@@ -719,7 +834,7 @@
           <span class="font-semibold">anti-VDI, pro-Zero Trust, browser-native workspace stack</span>.
         </p>
         <p>
-          You’re not just selling a browser. You’re selling a simpler, safer way to work —
+          You’re not just selling a browser. You’re selling a simpler, safer way to work -
           from the silicon up to the SaaS tab.
         </p>
       </section>
