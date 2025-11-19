@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IGEL 101 for Island Sellers – Zero Trust from BIOS to Browser</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Manrope font (IGEL primary) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .section-card {
+      @apply bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8;
+    }
+    .pill-label {
+      @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold tracking-wide;
+    }
+    .stack-card {
+      @apply rounded-xl border border-slate-200 bg-slate-900/90 text-slate-50 px-4 py-3 flex flex-col gap-1;
+    }
+    .spark-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #FFD101;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-900">
+  <div class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
+    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center bg-[#FFD101] rounded-xl px-2 py-1">
+            <img
+              src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+              alt="IGEL logo"
+              class="h-8 w-auto"
+            />
+          </div>
+          <div class="hidden sm:flex flex-col">
+            <span class="text-xs font-medium tracking-[0.16em] text-[#FFD101] uppercase">IGEL for Island Sellers</span>
+            <span class="text-sm text-slate-300">Zero Trust from BIOS to browser tab</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/70">
+            <span class="spark-dot"></span>
+            Immutable Endpoint OS
+          </span>
+          <span class="hidden sm:inline-flex pill-label bg-emerald-500/10 text-emerald-300 border border-emerald-400/40">
+            Island-ready workspace
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-8 md:space-y-10">
+      <!-- Hero / Intro -->
+      <section class="grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] gap-6 md:gap-8 items-start">
+        <article class="section-card bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-50 border-slate-800">
+          <div class="flex items-center justify-between mb-4">
+            <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">
+              IGEL 101 — What Every Island Rep Should Know
+            </h1>
+            <span class="hidden sm:inline-flex pill-label bg-[#FFD101] text-black shadow-sm">
+              IGEL x Island
+            </span>
+          </div>
+          <p class="text-sm md:text-base text-slate-200 leading-relaxed mb-4">
+            If <span class="font-semibold text-[#FFD101]">Island</span> is the <span class="italic">brain</span> of secure, policy-driven browsing,
+            <span class="font-semibold text-[#FFD101]">IGEL</span> is the <span class="italic">spine</span> that keeps the whole posture unbreakable.
+          </p>
+          <p class="text-sm md:text-base text-slate-300 leading-relaxed mb-4">
+            IGEL turns messy, drift-prone endpoints into a <span class="font-semibold">known-good device layer</span>. Island turns every tab
+            on that device into a <span class="font-semibold">controlled, zero-trust workspace</span>. You’re not just selling a browser —
+            you’re selling a modern client stack that makes Windows, VPN headaches, and VDI sprawl look ancient.
+          </p>
+
+          <div class="mt-5 grid gap-4 md:grid-cols-3">
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/70 p-3">
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-[0.16em] mb-1">
+                Your soundbite
+              </p>
+              <p class="text-sm leading-relaxed">
+                “IGEL secures the device. Island secures the session. Together you get Zero Trust from BIOS to browser.”
+              </p>
+            </div>
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/70 p-3">
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-[0.16em] mb-1">
+                Who this is for
+              </p>
+              <p class="text-sm">
+                Island AEs & SEs selling into endpoint-heavy, compliance-heavy environments (healthcare, finance, public sector, BPO, retail).
+              </p>
+            </div>
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/70 p-3">
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-[0.16em] mb-1">
+                Outcome
+              </p>
+              <p class="text-sm">
+                A clear, repeatable story you can run in discovery, demos, and boardroom pitches — without being an IGEL expert.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Quick Pitch / Cheat Card -->
+        <aside class="section-card bg-slate-900/70 border-slate-700/80 text-slate-50 space-y-4 sticky md:top-6">
+          <div class="flex items-center justify-between gap-3">
+            <h2 class="text-sm font-semibold tracking-[0.16em] uppercase text-slate-300">
+              Elevator Pitch – Island Ready
+            </h2>
+            <span class="pill-label bg-emerald-500/15 text-emerald-300 border border-emerald-400/50">
+              ⏱️ 20s talk track
+            </span>
+          </div>
+          <p class="text-sm leading-relaxed">
+            “<span class="font-semibold text-[#FFD101]">IGEL</span> turns any device into a secure, managed endpoint.
+            <span class="font-semibold text-[#FFD101]">Island</span> turns every browser session on that device into a secure workspace.
+            Together, they eliminate the need for Windows, VDI, and patching — while giving enterprises Zero Trust control
+            from boot to browser.”
+          </p>
+          <div class="border-t border-slate-700/80 pt-3 space-y-2">
+            <p class="text-xs tracking-[0.18em] uppercase text-slate-400 font-semibold">
+              Use when...
+            </p>
+            <ul class="text-xs text-slate-200 space-y-1.5">
+              <li>• Customer complains about VDI cost, lag, or patch fatigue.</li>
+              <li>• You hear “shared endpoints,” “contractors,” or “BYOD risk.”</li>
+              <li>• CISO asks what you trust <span class="italic">under</span> the browser.</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Who IGEL Is -->
+      <section class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+            🧱 Who IGEL Is
+          </h2>
+          
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-3">
+            <p class="text-sm md:text-base text-slate-200 leading-relaxed">
+              <span class="font-semibold text-[#FFD101]">IGEL Technology</span> is the global leader in
+              <span class="font-semibold">Hardened Endpoint OS</span> platforms for secure access to VDI, DaaS, and SaaS workspaces.
+              Its flagship product, <span class="font-semibold">IGEL OS 12</span>, is an
+              <span class="font-semibold italic">Immutable Endpoint OS</span> — a lightweight, read-only, centrally managed operating system
+              built for secure hybrid work.
+            </p>
+            <ul class="text-sm text-slate-200 space-y-2">
+              <li>• Replaces Windows on endpoints (laptops, desktops, thin clients, or old PCs).</li>
+              <li>• Boots in seconds, runs entirely from RAM, and <span class="font-semibold">cannot be altered or infected</span>.</li>
+              <li>• Managed via the <span class="font-semibold">Universal Management Suite (UMS)</span>, IGEL’s enterprise-grade control plane.</li>
+              <li>• Integrates with Omnissa, Citrix, Microsoft, AWS WorkSpaces — and now
+                <span class="font-semibold text-emerald-300">natively runs the Island Enterprise Browser</span> from the IGEL App Portal.
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4">
+              <p class="text-xs font-semibold tracking-[0.16em] uppercase text-slate-400 mb-2">
+                Core customer sweet spots
+              </p>
+              <div class="grid grid-cols-2 gap-2 text-xs md:text-sm">
+                <span class="rounded-lg bg-slate-950/60 px-2 py-1.5 border border-slate-700/80">🏥 Healthcare</span>
+                <span class="rounded-lg bg-slate-950/60 px-2 py-1.5 border border-slate-700/80">🏦 Finance</span>
+                <span class="rounded-lg bg-slate-950/60 px-2 py-1.5 border border-slate-700/80">🏭 Manufacturing</span>
+                <span class="rounded-lg bg-slate-950/60 px-2 py-1.5 border border-slate-700/80">🛍️ Retail</span>
+                <span class="rounded-lg bg-slate-950/60 px-2 py-1.5 border border-slate-700/80">📞 BPO / Call Centers</span>
+                <span class="rounded-lg bg-slate-950/60 px-2 py-1.5 border border-slate-700/80">🏛️ Public Sector</span>
+              </div>
+            </div>
+
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4">
+              <p class="text-xs font-semibold tracking-[0.16em] uppercase text-slate-400 mb-2">
+                Translate for Island customers
+              </p>
+              <ul class="text-xs md:text-sm text-slate-200 space-y-1.5">
+                <li>• Think “ChromeOS for the enterprise, but immutable and vendor-neutral.”</li>
+                <li>• It’s not “a thin client box” — it’s a <span class="font-semibold">Zero Trust endpoint platform</span>.</li>
+                <li>• Any device that can boot IGEL can become an Island-ready secure workspace.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Preventative Security Model -->
+      <section class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+          <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+            🔒 IGEL’s Preventative Security Model
+          </h2>
+          <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">
+            Prevent &gt; Detect
+          </span>
+        </div>
+
+        <p class="text-sm md:text-base text-slate-200 leading-relaxed mb-4">
+          Traditional endpoint security layers <span class="italic">react</span> after compromise. IGEL makes compromise
+          almost impossible to begin with. Its <span class="font-semibold">Preventative Security Architecture</span>
+          locks down the device layer so Island can confidently govern the session layer.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 flex flex-col gap-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+              Immutable OS
+            </p>
+            <p class="text-sm text-slate-100">
+              Read-only, image-verified OS with no local data and no drift.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-1">
+              <li>• Endpoints behave predictably.</li>
+              <li>• Island runs on a known-good base.</li>
+            </ul>
+          </div>
+
+          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 flex flex-col gap-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+              Secure Boot + TPM
+            </p>
+            <p class="text-sm text-slate-100">
+              UEFI Secure Boot + TPM provide hardware-rooted trust at startup.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-1">
+              <li>• Only signed, approved images boot.</li>
+              <li>• Device posture is provable, not assumed.</li>
+            </ul>
+          </div>
+
+          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 flex flex-col gap-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+              Zero Local Attack Surface
+            </p>
+            <p class="text-sm text-slate-100">
+              No local apps, no admin rights, no noisy agent stack.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-1">
+              <li>• Fewer places for malware to hide.</li>
+              <li>• Island is the primary workspace, not “one browser of many.”</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-5 grid md:grid-cols-[1.2fr,1fr] gap-4 items-start">
+          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400 mb-2">
+              How to frame it
+            </p>
+            <p class="text-sm text-slate-100 mb-2">
+              IGEL secures the <span class="font-semibold">device layer</span>. Island secures the <span class="font-semibold">user session layer</span>.
+            </p>
+            <p class="text-sm text-slate-200">
+              Together they deliver <span class="font-semibold text-[#FFD101]">“Zero Trust from BIOS to browser tab.”</span>
+              That’s the line that sticks in a CISO’s head.
+            </p>
+          </div>
+          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400 mb-2">
+              What changes for security teams
+            </p>
+            <ul class="text-xs md:text-sm text-slate-200 space-y-1.5">
+              <li>• Fewer agents, fewer conflicts, fewer “mystery” endpoints.</li>
+              <li>• Stronger device attestation feeding Island policies.</li>
+              <li>• Cleaner audits: no local data, clear control planes.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stack: How IGEL + Island Fit -->
+      <section class="section-card bg-slate-950/90 border-slate-800 text-slate-50">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+          <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+            🧩 How IGEL + Island Fit Together
+          </h2>
+          <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">
+            BIOS ➝ OS ➝ Browser ➝ Policy
+          </span>
+        </div>
+
+        <div class="grid lg:grid-cols-[1.25fr,minmax(0,1fr)] gap-6 items-start">
+          <!-- Visual stack -->
+          <div class="space-y-3">
+            <p class="text-sm text-slate-200 mb-2">
+              Use this mental model when you’re drawing on a whiteboard, in a slide, or verbally:
+            </p>
+
+            <div class="space-y-2">
+              <div class="stack-card">
+                <p class="text-xs font-semibold tracking-[0.18em] uppercase text-emerald-300">
+                  Outcome
+                </p>
+                <p class="text-sm">
+                  <span class="font-semibold text-[#FFD101]">Secure, compliant endpoint</span> +
+                  <span class="font-semibold text-emerald-300">secure, compliant workspace</span> —
+                  without Windows or VDI complexity.
+                </p>
+              </div>
+
+              <div class="stack-card bg-slate-900">
+                <p class="text-xs font-semibold tracking-[0.18em] uppercase text-slate-400">
+                  Management
+                </p>
+                <p class="text-sm">
+                  <span class="font-semibold">IGEL UMS</span> governs devices +
+                  <span class="font-semibold">Island Cloud Console</span> governs sessions.
+                </p>
+              </div>
+
+              <div class="stack-card bg-slate-900">
+                <p class="text-xs font-semibold tracking-[0.18em] uppercase text-slate-400">
+                  Session
+                </p>
+                <p class="text-sm">
+                  IGEL auto-launches <span class="font-semibold text-emerald-300">Island</span> at login.
+                  Island enforces DLP, MFA, SaaS policies, and data controls inside every tab.
+                </p>
+              </div>
+
+              <div class="stack-card bg-slate-900">
+                <p class="text-xs font-semibold tracking-[0.18em] uppercase text-slate-400">
+                  Operating System
+                </p>
+                <p class="text-sm">
+                  <span class="font-semibold">IGEL OS 12</span> — immutable, read-only, image-verified.
+                  No local apps, no local data, no patch chaos.
+                </p>
+              </div>
+
+              <div class="stack-card bg-slate-900">
+                <p class="text-xs font-semibold tracking-[0.18em] uppercase text-slate-400">
+                  Hardware &amp; Boot
+                </p>
+                <p class="text-sm">
+                  TPM + Secure Boot validate device and OS before anything else runs — the “trust anchor”
+                  for everything Island does later.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Experience -->
+          <div class="rounded-2xl bg-slate-900/80 border border-slate-700/80 p-4 md:p-5 flex flex-col gap-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400 mb-2">
+                Customer experience – what the user feels
+              </p>
+              <p class="text-sm text-slate-100">
+                Boot IGEL → auto-launch Island → auto-auth to SaaS via SSO → work anywhere.
+              </p>
+              <p class="text-sm text-slate-200 mt-1.5">
+                No local data. No laggy VDI window. No security fatigue from juggling browsers, VPNs, and agents.
+              </p>
+            </div>
+            <div class="border-t border-slate-700/80 pt-3">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400 mb-2">
+                Talk track for architects
+              </p>
+              <ul class="text-xs md:text-sm text-slate-200 space-y-1.5">
+                <li>• “We replace Windows with an immutable OS and move the workspace into Island.”</li>
+                <li>• “We keep your identity, SaaS, and security stack — we just give it a cleaner endpoint.”</li>
+                <li>• “Everything is managed centrally: UMS for devices, Island Console for sessions.”</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why This Matters for Island Sellers -->
+      <section class="section-card bg-slate-950/90 border-slate-800 text-slate-50">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+          <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+            🚀 Why This Matters for Island Sellers
+          </h2>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 md:gap-6 text-sm text-slate-100">
+          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 flex flex-col gap-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+              1. Expands Island’s addressable market
+            </p>
+            <p>
+              IGEL has <span class="font-semibold">4M+ endpoints</span> and deep EUC channel roots (HP, LG, Lenovo, Dell).
+              Selling into IGEL accounts means riding a trusted ecosystem that’s already shifting away from Windows and VDI.
+            </p>
+          </div>
+
+          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 flex flex-col gap-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+              2. Gives Island a trusted hardware foundation
+            </p>
+            <p>
+              IGEL provides the <span class="font-semibold">known-good device</span>. When Island runs on IGEL OS, it can assume
+              a verified OS, policy-compliant device, and no rogue browsers — which means cleaner, stronger enforcement.
+            </p>
+          </div>
+
+          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 flex flex-col gap-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+              3. Strengthens Zero Trust &amp; SaaS narratives
+            </p>
+            <p>
+              CISOs are moving from network-centric Zero Trust to <span class="font-semibold">endpoint + session control</span>.
+              IGEL + Island is the cleanest version of that:
+              “You can’t secure SaaS until you secure both the device and the browser.”
+            </p>
+          </div>
+
+          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 flex flex-col gap-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+              4. Accelerates time-to-value
+            </p>
+            <p>
+              IGEL’s UMS can mass-deploy IGEL OS in hours — no golden Windows images, no MDM circus.
+              That means you can run joint IGEL + Island pilots at <span class="font-semibold">full fidelity in under a day</span>.
+            </p>
+          </div>
+
+          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 flex flex-col gap-2 md:col-span-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+              5. Joint proof points you can name-drop
+            </p>
+            <ul class="space-y-1.5 text-slate-100">
+              <li>• <span class="font-semibold">Hendrick Motorsports</span>: IGEL + Island saved six figures and sped up logins.</li>
+              <li>• <span class="font-semibold">Global bank</span>: Eliminated VDI servers and saved millions.</li>
+              <li>• <span class="font-semibold">Healthcare providers</span>: Secure EMR on shared endpoints with zero local data.</li>
+              <li>• <span class="font-semibold">BPOs</span>: Onboard contractors in minutes with a fully contained workspace.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sales Plays -->
+      <section class="section-card bg-slate-950/90 border-slate-800 text-slate-50">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div>
+            <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+               IGEL + Island: Core Joint Sales Plays
+            </h2>
+            <p class="text-sm text-slate-200 mt-1">
+              Use these five plays to anchor your discovery, demo, and proposal motions.
+            </p>
+          </div>
+          <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">
+            Secure · Simple · Seamless
+          </span>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Play 1 -->
+          <article class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 md:p-5">
+            <header class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <h3 class="text-sm md:text-base font-semibold">
+                1. The VDI Liberation Play
+              </h3>
+              <span class="pill-label bg-slate-950 text-slate-200 border border-slate-700/80">
+                🎯 FinServ · Healthcare · Retail · BPO · Education
+              </span>
+            </header>
+            <p class="text-xs md:text-sm text-slate-300 mb-1">
+              <span class="font-semibold text-slate-100">Pain:</span> Expensive, laggy, complex VDI and Windows stacks.
+            </p>
+            <p class="text-xs md:text-sm text-slate-100 mb-2">
+              <span class="font-semibold text-slate-100">Pitch:</span> “What if you could eliminate your VDI servers, deliver the same apps via SaaS,
+              and cut endpoint costs by 70%?”
+            </p>
+            <div class="grid md:grid-cols-[1.2fr,minmax(0,1fr)] gap-3 text-xs md:text-sm">
+              <ul class="space-y-1.5 text-slate-200">
+                <li>• IGEL delivers a secure, immutable OS on repurposed hardware.</li>
+                <li>• Island replaces the VDI session with a secure browser workspace.</li>
+                <li>• Together, they decommission datacenter load while <span class="font-semibold">improving UX</span>.</li>
+              </ul>
+              <div class="rounded-lg bg-slate-950/80 border border-slate-700/80 p-3">
+                <p class="text-[0.7rem] font-semibold tracking-[0.16em] uppercase text-slate-400 mb-1">
+                  Proof &amp; assets
+                </p>
+                <p class="text-xs text-slate-100 mb-1">
+                  • Global bank saved tens of millions by replacing VDI with Island on hardened endpoints.
+                </p>
+                <p class="text-xs text-slate-200">
+                  • Pair with: “Modern Alternative to VDI” brief + Forrester TEI 344% ROI data.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Play 2 -->
+          <article class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 md:p-5">
+            <header class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <h3 class="text-sm md:text-base font-semibold">
+                2. The Zero Trust to the Edge Play
+              </h3>
+              <span class="pill-label bg-slate-950 text-slate-200 border border-slate-700/80">
+                🎯 CISO-led · Regulated sectors
+              </span>
+            </header>
+            <p class="text-xs md:text-sm text-slate-300 mb-1">
+              <span class="font-semibold text-slate-100">Pain:</span> Fragmented Zero Trust (network-only or identity-only).
+            </p>
+            <p class="text-xs md:text-sm text-slate-100 mb-2">
+              <span class="font-semibold">Pitch:</span> “IGEL secures the device. Island secures the session.
+              Together, you get Zero Trust everywhere.”
+            </p>
+            <div class="grid md:grid-cols-[1.2fr,minmax(0,1fr)] gap-3 text-xs md:text-sm">
+              <ul class="space-y-1.5 text-slate-200">
+                <li>• IGEL ensures only verified devices boot, with a hardened OS.</li>
+                <li>• Island enforces conditional access, MFA, DLP, and posture at the browser level.</li>
+                <li>• Policies tie device trust → browser session → data flow for end-to-end control.</li>
+              </ul>
+              <div class="rounded-lg bg-slate-950/80 border border-slate-700/80 p-3">
+                <p class="text-[0.7rem] font-semibold tracking-[0.16em] uppercase text-slate-400 mb-1">
+                  Anchor phrases
+                </p>
+                <p class="text-xs text-slate-100">
+                  • “From BIOS to browser tab, every layer verified.”<br/>
+                  • “Zero Trust that travels with the user, not the network.”
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Play 3 -->
+          <article class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 md:p-5">
+            <header class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <h3 class="text-sm md:text-base font-semibold">
+                3. The Secure SaaS Workspace Play
+              </h3>
+              <span class="pill-label bg-slate-950 text-slate-200 border border-slate-700/80">
+                🎯 Mid-market · Cloud-first
+              </span>
+            </header>
+            <p class="text-xs md:text-sm text-slate-300 mb-1">
+              <span class="font-semibold text-slate-100">Pain:</span> Shadow IT, SaaS sprawl, ungoverned browser access.
+            </p>
+            <p class="text-xs md:text-sm text-slate-100 mb-2">
+              <span class="font-semibold">Pitch:</span> “Turn the browser into your new secure workspace.
+              No agents. No drift. No risk.”
+            </p>
+            <div class="grid md:grid-cols-[1.2fr,minmax(0,1fr)] gap-3 text-xs md:text-sm">
+              <ul class="space-y-1.5 text-slate-200">
+                <li>• Island delivers SaaS access control, DLP, and MFA enforcement inside the browser.</li>
+                <li>• IGEL guarantees the endpoint cannot be tampered with or used for data exfiltration.</li>
+                <li>• UMS + Island Console = unified visibility across users, apps, and devices.</li>
+              </ul>
+              <div class="rounded-lg bg-slate-950/80 border border-slate-700/80 p-3">
+                <p class="text-[0.7rem] font-semibold tracking-[0.16em] uppercase text-slate-400 mb-1">
+                  Context you can cite
+                </p>
+                <p class="text-xs text-slate-100">
+                  Gartner expects ~25% of orgs to deploy enterprise browsers by 2026 —
+                  IGEL + Island is a future-proof way to get there.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Play 4 -->
+          <article class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 md:p-5">
+            <header class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <h3 class="text-sm md:text-base font-semibold">
+                4. The Rapid BYOD &amp; Contractor Enablement Play
+              </h3>
+              <span class="pill-label bg-slate-950 text-slate-200 border border-slate-700/80">
+                🎯 MSPs · Govt · Logistics · Call Centers · M&amp;A
+              </span>
+            </header>
+            <p class="text-xs md:text-sm text-slate-300 mb-1">
+              <span class="font-semibold text-slate-100">Pain:</span> Unmanageable contractor devices and BYOD data leakage.
+            </p>
+            <p class="text-xs md:text-sm text-slate-100 mb-2">
+              <span class="font-semibold">Pitch:</span> “Launch a fully secure workspace in minutes on any device — no corporate laptop required.”
+            </p>
+            <div class="grid md:grid-cols-[1.2fr,minmax(0,1fr)] gap-3 text-xs md:text-sm">
+              <ul class="space-y-1.5 text-slate-200">
+                <li>• User boots IGEL from USB (UD Pocket) or a cloud-managed endpoint.</li>
+                <li>• Island auto-launches with SSO, policy control, and contextual data protection.</li>
+                <li>• No data ever touches the device; revoking access is instant and complete.</li>
+              </ul>
+              <div class="rounded-lg bg-slate-950/80 border border-slate-700/80 p-3">
+                <p class="text-[0.7rem] font-semibold tracking-[0.16em] uppercase text-slate-400 mb-1">
+                  Asset bundle
+                </p>
+                <p class="text-xs text-slate-100">
+                  • “BYOD Done Right” playbook + pre-configured demo bundle
+                  (IGEL UD Pocket + Island trial licenses).
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Play 5 -->
+          <article class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 md:p-5">
+            <header class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <h3 class="text-sm md:text-base font-semibold">
+                5. The Sustainable Workspace Play
+              </h3>
+              <span class="pill-label bg-slate-950 text-slate-200 border border-slate-700/80">
+                🎯 IT + ESG buyers
+              </span>
+            </header>
+            <p class="text-xs md:text-sm text-slate-300 mb-1">
+              <span class="font-semibold text-slate-100">Pain:</span> Device churn, energy waste, and cost pressure.
+            </p>
+            <p class="text-xs md:text-sm text-slate-100 mb-2">
+              <span class="font-semibold">Pitch:</span> “Reduce e-waste and datacenter load while advancing security and ESG goals.”
+            </p>
+            <div class="grid md:grid-cols-[1.2fr,minmax(0,1fr)] gap-3 text-xs md:text-sm">
+              <ul class="space-y-1.5 text-slate-200">
+                <li>• IGEL extends hardware life by 3–5 years by repurposing existing PCs.</li>
+                <li>• Island removes the need for server-heavy VDI sessions.</li>
+                <li>• Result: secure, sustainable, agile workspaces that finance and ESG teams both like.</li>
+              </ul>
+              <div class="rounded-lg bg-slate-950/80 border border-slate-700/80 p-3">
+                <p class="text-[0.7rem] font-semibold tracking-[0.16em] uppercase text-slate-400 mb-1">
+                  Stories to reference
+                </p>
+                <p class="text-xs text-slate-100">
+                  • IGEL case studies (e.g., Western Health) + Island energy efficiency stats
+                  for a combined ESG + TCO narrative.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Co-sell motions -->
+        <div class="mt-6 border-t border-slate-800 pt-4">
+          <h3 class="text-sm md:text-base font-semibold text-slate-100 mb-3">
+            🎯 Co-sell motions you can suggest
+          </h3>
+          <div class="grid md:grid-cols-3 gap-3 text-xs md:text-sm text-slate-200">
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-3">
+              <p class="font-semibold mb-1">Secure Browser Workspace Bundle</p>
+              <p>Pre-packaged IGEL + Island trial, co-funded POC for SaaS-first customers.</p>
+            </div>
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-3">
+              <p class="font-semibold mb-1">ROI / TCO Storytelling</p>
+              <p>Use Forrester TEI + IGEL TCO savings in joint calculators for CFOs.</p>
+            </div>
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-3">
+              <p class="font-semibold mb-1">Industry Playbooks &amp; Events</p>
+              <p>Healthcare, finance, BPO, education — plus joint demos at RSA, Black Hat, and IGEL Disrupt.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Positioning & Key Takeaways -->
+      <section class="section-card bg-slate-950/95 border-slate-800 text-slate-50">
+        <div class="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] gap-6">
+          <div class="space-y-4">
+            <h2 class="text-xl md:text-2xl font-semibold tracking-tight">
+              🧭 Positioning Lines Island Should Steal Shamelessly
+            </h2>
+            <ul class="text-sm md:text-base text-slate-100 space-y-1.5">
+              <li>• “Secure by design, simple by design.”</li>
+              <li>• “Prevent, don’t patch.”</li>
+              <li>• “Modern work. Without Windows.”</li>
+              <li>• “From the endpoint to the browser — Zero Trust that travels with the user.”</li>
+              <li>• “Immutable. Intelligent. Island-ready.”</li>
+            </ul>
+            <p class="text-xs text-slate-300">
+              Sprinkle these lines into discovery and recap emails; they align perfectly with Island’s secure workspace story.
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-sm md:text-base font-semibold text-slate-100">
+              💡 Key Takeaways for Island Reps
+            </h3>
+            <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-3 md:p-4">
+              <div class="grid gap-2 text-xs md:text-sm text-slate-100">
+                <div class="flex flex-col gap-1">
+                  <span class="font-semibold">IGEL ≠ “thin client box.”</span>
+                  <span>It’s a secure, cloud-native OS and Zero Trust platform.</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-semibold">IGEL customers already “get” secure workspaces.</span>
+                  <span>Island is the natural next upgrade: browser-defined workspace on a hardened OS.</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-semibold">IGEL OS 12 has a built-in App Portal.</span>
+                  <span>That’s where Island is delivered — easy install = easy upsell.</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-semibold">IGEL owns the device layer; Island owns the browser layer.</span>
+                  <span>Together: complete client-side security and visibility.</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-semibold">UMS + Island Console = one pane of glass.</span>
+                  <span>Perfect for regulated, distributed, or contractor-heavy environments.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer summary -->
+      <section class="text-xs md:text-sm text-slate-300 pb-4">
+        <p class="mb-1">
+          In short: <span class="font-semibold text-[#FFD101]">IGEL + Island</span> is the
+          <span class="font-semibold">anti-VDI, pro-Zero Trust, browser-native workspace stack</span>.
+        </p>
+        <p>
+          You’re not just selling a browser. You’re selling a simpler, safer way to work —
+          from the silicon up to the SaaS tab.
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
