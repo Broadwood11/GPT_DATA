@@ -25,6 +25,10 @@
       --mfg-grey: #43433D;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--igel-black);
@@ -143,6 +147,42 @@
       border: 1px solid rgba(255, 255, 255, 0.06);
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
     }
+
+    .jump-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .jump-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 0.95rem;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--igel-white);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+      transition: all 160ms ease;
+    }
+
+    .jump-button:hover {
+      border-color: var(--igel-yellow);
+      box-shadow: 0 12px 34px rgba(255, 209, 1, 0.2);
+      transform: translateY(-1px);
+      color: var(--igel-yellow);
+    }
+
+    .jump-button .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--igel-yellow);
+      opacity: 0.9;
+    }
   </style>
 </head>
 <body class="text-slate-100 antialiased">
@@ -180,6 +220,15 @@
     </header>
 
     <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-8 md:space-y-10">
+      <nav class="jump-buttons mb-4 md:mb-6">
+        <a class="jump-button" href="#elevator"><span class="dot"></span>Elevator Pitch</a>
+        <a class="jump-button" href="#who-igel"><span class="dot"></span>Who Is IGEL</a>
+        <a class="jump-button" href="#security-model"><span class="dot"></span>Security Model</a>
+        <a class="jump-button" href="#fit-together"><span class="dot"></span>How They Fit</a>
+        <a class="jump-button" href="#why-matters"><span class="dot"></span>Why It Matters</a>
+        <a class="jump-button" href="#sales-plays"><span class="dot"></span>Sales Plays</a>
+        <a class="jump-button" href="#positioning"><span class="dot"></span>Positioning Lines</a>
+      </nav>
       <!-- Hero / Intro -->
       <section class="grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] gap-6 md:gap-8 items-start">
         <article class="section-card bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-50 border-slate-800">
@@ -230,8 +279,8 @@
         <!-- Quick Pitch / Cheat Card -->
         <aside class="section-card bg-slate-900/70 border-slate-700/80 text-slate-50 space-y-4 sticky md:top-6">
           <div class="flex items-center justify-between gap-3">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
-              Elevator Pitch – Island Ready
+            <h2 id="elevator" class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
+              Elevator Pitch - Island Ready
             </h2>
             <span class="pill-label bg-emerald-500/15 text-emerald-300 border border-emerald-400/50 justify-center text-center">
               20s talk track
@@ -259,7 +308,7 @@
       <!-- Who IGEL Is -->
       <section class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
+          <h2 id="who-igel" class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
             🦔 Who Is IGEL
           </h2>
           
@@ -316,7 +365,7 @@
       <!-- Preventative Security Model -->
       <section class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
+          <h2 id="security-model" class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
             🔒 IGEL’s Preventative Security Model
           </h2>
           <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">
@@ -400,7 +449,7 @@
       <!-- Stack: How IGEL + Island Fit -->
       <section class="section-card bg-slate-950/90 border-slate-800 text-slate-50">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
+          <h2 id="fit-together" class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
             🧩 How IGEL + Island Fit Together
           </h2>
           <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">
@@ -499,7 +548,7 @@
       <!-- Why This Matters for Island Sellers -->
       <section class="section-card bg-slate-950/90 border-slate-800 text-slate-50">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
+          <h2 id="why-matters" class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
             🚀 Why This Matters for Island Sellers
           </h2>
 
@@ -565,7 +614,7 @@
       <section class="section-card bg-slate-950/90 border-slate-800 text-slate-50">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
           <div>
-            <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
+            <h2 id="sales-plays" class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
                IGEL + Island: Core Joint Sales Plays
             </h2>
             <p class="text-sm text-slate-200 mt-1">
@@ -780,7 +829,7 @@
       <section class="section-card bg-slate-950/95 border-slate-800 text-slate-50">
         <div class="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] gap-6">
           <div class="space-y-4">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
+            <h2 id="positioning" class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
               🧭 Positioning Lines Island Should Steal Shamelessly
             </h2>
             <ul class="text-sm md:text-base text-slate-100 space-y-1.5">
