@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IGEL + Omnissa | Secure Endpoint OS Platform for Zero Trust Workspaces</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Manrope font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --igel-yellow: #ffd101;
+      --igel-black: #060608;
+      --igel-white: #ffffff;
+      --igel-healthcare-teal: #004d68;
+      --igel-finserv-plum: #770469;
+      --igel-gov-blue: #001c99;
+      --igel-retail-purple: #4500a6;
+      --igel-manufacturing-grey: #43433d;
+    }
+
+    body {
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top right, rgba(255, 209, 1, 0.18), transparent 55%) var(--igel-black);
+      color: var(--igel-white);
+      scroll-behavior: smooth;
+    }
+
+    .igel-hero-gradient {
+      background:
+        radial-gradient(circle at top left, rgba(255, 209, 1, 0.2), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(255, 209, 1, 0.08), transparent 55%),
+        linear-gradient(135deg, #050506, #0c0c10);
+    }
+
+    .section-card {
+      border-radius: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background:
+        radial-gradient(circle at top left, rgba(255, 209, 1, 0.05), transparent 58%),
+        rgba(10, 10, 12, 0.95);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(18px);
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(6, 6, 8, 0.92);
+    }
+
+    .spark-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--igel-yellow);
+      box-shadow: 0 0 16px rgba(255, 209, 1, 0.9);
+    }
+
+    .section-anchor {
+      scroll-margin-top: 96px;
+    }
+
+    .table-wrapper {
+      border-radius: 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at top right, rgba(255, 209, 1, 0.05), transparent 50%), rgba(4, 4, 6, 0.98);
+      overflow: hidden;
+    }
+
+    .badge-soft {
+      border-radius: 999px;
+      padding: 0.25rem 0.8rem;
+      background: rgba(255, 209, 1, 0.085);
+      border: 1px solid rgba(255, 209, 1, 0.45);
+      color: var(--igel-yellow);
+      font-size: 0.7rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .vertical-chip-healthcare {
+      background: rgba(0, 77, 104, 0.22);
+      border-color: rgba(0, 77, 104, 0.9);
+      color: #b5e8ff;
+    }
+
+    .vertical-chip-finance {
+      background: rgba(119, 4, 105, 0.22);
+      border-color: rgba(119, 4, 105, 0.9);
+      color: #ffd5ff;
+    }
+
+    .vertical-chip-gov {
+      background: rgba(0, 28, 153, 0.22);
+      border-color: rgba(0, 28, 153, 0.9);
+      color: #d1ddff;
+    }
+
+    .vertical-chip-retail {
+      background: rgba(69, 0, 166, 0.22);
+      border-color: rgba(69, 0, 166, 0.9);
+      color: #e1d4ff;
+    }
+
+    .vertical-chip-manufacturing {
+      background: rgba(67, 67, 61, 0.22);
+      border-color: rgba(67, 67, 61, 0.9);
+      color: #e2e2de;
+    }
+
+    .glow-border {
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 0 35px rgba(255, 209, 1, 0.15);
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    @keyframes float-soft {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .float-soft {
+      animation: float-soft 6s ease-in-out infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="text-sm md:text-base">
+  <!-- Decorative global grid background -->
+  <div class="grid-bg fixed inset-0 z-0"></div>
+
+  <!-- Header / Hero -->
+  <header class="igel-hero-gradient relative z-10 border-b border-white/10">
+    <div class="pointer-events-none absolute inset-x-10 top-10 -z-10 mx-auto h-40 max-w-5xl rounded-full bg-gradient-to-r from-yellow-400/15 via-yellow-500/5 to-transparent blur-3xl"></div>
+
+    <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-12 pt-8 md:flex-row md:items-center md:pb-16 md:pt-10">
+      <!-- Hero text -->
+      <div class="flex flex-1 flex-col gap-5">
+        <div class="inline-flex flex-wrap items-center gap-3">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/16 bg-black/40 px-3 py-1">
+            <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[var(--igel-yellow)] text-[0.7rem] font-black text-black">
+              ☼
+            </span>
+            <span class="text-[0.7rem] uppercase tracking-[0.16em] text-white/80">
+              IGEL Secure Endpoint OS
+            </span>
+          </div>
+          <span class="hidden h-4 w-px bg-white/25 md:inline-block"></span>
+          <span class="text-[0.7rem] uppercase tracking-[0.14em] text-white/60">
+            Sales enablement for Omnissa sellers
+          </span>
+        </div>
+
+        <div>
+          <h1 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            IGEL + Omnissa
+            <span class="block text-lg font-normal text-white/70 sm:text-xl">
+              Secure endpoint edge for Zero Trust workspaces
+            </span>
+          </h1>
+          <p class="mt-4 max-w-xl text-sm text-white/80 md:text-base">
+            IGEL hardens the endpoint so Omnissa can deliver Zero Trust workspaces without fragile, patch heavy PCs. Your story is simple:
+            convert devices, lock down the edge, deliver modern workspaces.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href="#secure-endpoint"
+            class="inline-flex items-center gap-2 rounded-full bg-[var(--igel-yellow)] px-4 py-2 text-xs font-semibold text-black shadow-lg shadow-yellow-500/40 transition hover:-translate-y-0.5 hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300"
+          >
+            Start with the IGEL story
+            <span class="text-base">↘</span>
+          </a>
+
+          <a
+            href="#sales-plays"
+            class="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs font-medium text-white transition hover:border-white/60 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+          >
+            Jump to sales plays
+          </a>
+        </div>
+
+        <div class="mt-2 flex flex-wrap items-center gap-2 text-[0.75rem] text-white/80">
+          <div class="pill inline-flex items-center gap-2 px-3 py-1">
+            <span class="spark-dot"></span>
+            <span>Immutable endpoint OS</span>
+          </div>
+          <div class="pill inline-flex items-center gap-2 px-3 py-1">
+            <span class="spark-dot opacity-70"></span>
+            <span>Omnissa Workspace ONE and Horizon Cloud</span>
+          </div>
+          <div class="pill inline-flex items-center gap-2 px-3 py-1">
+            <span class="spark-dot opacity-50"></span>
+            <span>Zero Trust from endpoint to cloud</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero right block -->
+      <div class="mt-6 flex flex-1 justify-center md:mt-0 md:justify-end">
+        <div class="relative w-full max-w-sm">
+          <div class="pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full border border-yellow-400/40 bg-yellow-300/5 blur-xl"></div>
+
+          <div class="section-card float-soft glow-border p-5">
+            <div class="mb-4 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <img
+                  src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+                  alt="IGEL logo"
+                  class="h-7"
+                />
+                <span class="text-[0.7rem] uppercase tracking-[0.16em] text-white/60">
+                  Endpoint edge view
+                </span>
+              </div>
+              <div class="flex items-center gap-1">
+                <span class="spark-dot"></span>
+                <span class="spark-dot opacity-60"></span>
+                <span class="spark-dot opacity-30"></span>
+              </div>
+            </div>
+
+            <p class="text-xs text-white/80">
+              Think of IGEL as the hardened edge that completes Omnissa Zero Trust workspaces. It turns existing devices into
+              compliant access nodes for Horizon and Workspace ONE instead of more PCs that IT has to patch.
+            </p>
+
+            <dl class="mt-4 grid grid-cols-2 gap-3 text-[0.7rem] text-white/80">
+              <div>
+                <dt class="text-white/60">Endpoint OS</dt>
+                <dd class="font-semibold text-white">IGEL OS 12</dd>
+              </div>
+              <div>
+                <dt class="text-white/60">Mode</dt>
+                <dd class="font-semibold text-white">Immutable and read only</dd>
+              </div>
+              <div>
+                <dt class="text-white/60">Windows at the edge</dt>
+                <dd class="font-semibold text-white">Removed</dd>
+              </div>
+              <div>
+                <dt class="text-white/60">TCO impact</dt>
+                <dd class="font-semibold text-white">60 to 70 percent lower</dd>
+              </div>
+            </dl>
+
+            <div class="mt-4 rounded-lg bg-black/60 p-3 text-[0.7rem] text-white/75">
+              Every IGEL device is a secure access node into Omnissa workspaces instead of a fragile endpoint that adds risk.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top navigation -->
+    <div class="border-t border-white/10 bg-black/70 backdrop-blur">
+      <nav class="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-4 py-3 text-[0.75rem] text-white/75">
+        <span class="mr-2 text-[0.7rem] uppercase tracking-[0.16em] text-white/40">Sections</span>
+        <a href="#secure-endpoint" class="pill px-3 py-1 hover:border-white/50 hover:bg-white/5 hover:text-white">IGEL platform</a>
+        <a href="#fit-together" class="pill px-3 py-1 hover:border-white/50 hover:bg-white/5 hover:text-white">How IGEL and Omnissa fit</a>
+        <a href="#integrations" class="pill px-3 py-1 hover:border-white/50 hover:bg-white/5 hover:text-white">Key integrations</a>
+        <a href="#value-pillars" class="pill px-3 py-1 hover:border-white/50 hover:bg-white/5 hover:text-white">Value pillars</a>
+        <a href="#vertical-wins" class="pill px-3 py-1 hover:border-white/50 hover:bg-white/5 hover:text-white">Vertical wins</a>
+        <a href="#sales-plays" class="pill px-3 py-1 hover:border-white/50 hover:bg-white/5 hover:text-white">Sales plays</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="relative z-10 mx-auto max-w-6xl space-y-8 px-4 py-8 md:space-y-10 md:py-12 lg:py-16">
+    <!-- IGEL Secure Endpoint OS Platform -->
+    <section id="secure-endpoint" class="section-anchor section-card p-6 md:p-8">
+      <div class="mb-4 flex items-start justify-between gap-3">
+        <div>
+          <h2 class="text-xl font-semibold text-white md:text-2xl">
+            🧭 IGEL: The secure endpoint OS platform
+          </h2>
+          <p class="mt-2 text-sm text-white/80">
+            IGEL is no longer a device brand. It is a software platform that transforms any compatible x86 device
+            laptop, thin client, or PC into a secure, centrally managed workspace endpoint.
+          </p>
+          <p class="mt-3 text-sm text-white/80">
+            Think of IGEL as the hardened edge that completes Omnissa Zero Trust workspaces.
+          </p>
+        </div>
+        <span class="hidden text-xs uppercase tracking-[0.16em] text-white/40 md:inline">
+          Story 1 of 7
+        </span>
+      </div>
+
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="md:max-w-xl">
+          <ul class="mt-2 space-y-2.5 text-sm text-white/85">
+            <li class="flex gap-2">
+              <span class="mt-1 inline-flex h-1.5 w-1.5 rounded-full bg-[var(--igel-yellow)]"></span>
+              <span>
+                Replaces Windows at the endpoint with an
+                <strong>immutable endpoint OS</strong> that is read only, lightweight, and built for remote access to VDI, DaaS, SaaS, or browser based workspaces.
+              </span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 inline-flex h-1.5 w-1.5 rounded-full bg-[var(--igel-yellow)]"></span>
+              <span>
+                Integrates directly with <strong>Omnissa Workspace ONE and Horizon Cloud</strong> for unified management, conditional access, and single sign on.
+              </span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 inline-flex h-1.5 w-1.5 rounded-full bg-[var(--igel-yellow)]"></span>
+              <span>
+                Eliminates local risk
+                no local apps, no stored data, and no patch chaos at the endpoint.
+              </span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 inline-flex h-1.5 w-1.5 rounded-full bg-[var(--igel-yellow)]"></span>
+              <span>
+                Extends hardware life by up to <strong>five years</strong>, cutting endpoint total cost of ownership by
+                <strong>60 to 70 percent</strong>.
+              </span>
+            </li>
+          </ul>
+
+          <p class="mt-5 rounded-lg bg-black/70 p-4 text-xs text-white/80">
+            For Omnissa sellers, IGEL turns every endpoint into a secure access node into Workspace ONE and Horizon.
+            No more fragile, costly, patch heavy PCs to support in every branch or clinic.
+          </p>
+        </div>
+
+        <div class="md:max-w-sm">
+          <div class="table-wrapper">
+            <div class="flex items-center justify-between border-b border-white/10 bg-black/60 px-4 py-3 text-xs text-white/85">
+              <span class="font-semibold">
+                IGEL for Omnissa sellers at a glance
+              </span>
+              <span class="rounded-full bg-white/10 px-2 py-0.5 text-[0.65rem] uppercase tracking-[0.16em] text-white/70">
+                Quick view
+              </span>
+            </div>
+            <dl class="grid grid-cols-1 gap-0 divide-y divide-white/8 text-xs text-white/80">
+              <div class="grid grid-cols-2 gap-0 px-4 py-3">
+                <dt class="pr-2 text-white/55">Primary use</dt>
+                <dd class="font-semibold text-white">Secure workspace endpoints for Horizon and Workspace ONE</dd>
+              </div>
+              <div class="grid grid-cols-2 gap-0 px-4 py-3">
+                <dt class="pr-2 text-white/55">Security stance</dt>
+                <dd class="font-semibold text-white">Immutable OS with no local applications or data</dd>
+              </div>
+              <div class="grid grid-cols-2 gap-0 px-4 py-3">
+                <dt class="pr-2 text-white/55">Device strategy</dt>
+                <dd class="font-semibold text-white">Convert existing hardware instead of buying new PCs</dd>
+              </div>
+              <div class="grid grid-cols-2 gap-0 px-4 py-3">
+                <dt class="pr-2 text-white/55">Key outcomes</dt>
+                <dd class="font-semibold text-white">
+                  Lower TCO, stronger Zero Trust posture, less endpoint noise for IT
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How IGEL + Omnissa fit together -->
+    <section id="fit-together" class="section-anchor section-card p-6 md:p-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="md:max-w-md">
+          <h2 class="text-xl font-semibold text-white md:text-2xl">
+            🧱 How IGEL and Omnissa fit together
+          </h2>
+          <p class="mt-2 text-sm text-white/80">
+            IGEL and Omnissa together deliver a preventative security architecture.
+            Security starts at the endpoint edge and extends cleanly to the cloud.
+          </p>
+          <blockquote class="mt-4 border-l-2 border-[var(--igel-yellow)] pl-4 text-xs italic text-white/80">
+            Omnissa delivers the workspace. IGEL locks down the endpoint.
+            <br />
+            <span class="text-white/60">Klaus Oestermann, CEO, IGEL Technology</span>
+          </blockquote>
+        </div>
+
+        <div class="flex-1 md:max-w-xl">
+          <div class="table-wrapper text-xs text-white/80">
+            <table class="min-w-full border-collapse">
+              <thead class="bg-white/5 text-[0.7rem] uppercase tracking-[0.12em] text-white/60">
+                <tr>
+                  <th class="px-4 py-2 text-left">Layer</th>
+                  <th class="px-4 py-2 text-left">Solution</th>
+                  <th class="px-4 py-2 text-left">Benefit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="odd:bg-black/40 even:bg-black/25">
+                  <td class="px-4 py-3 align-top font-semibold text-white">Workspace and apps</td>
+                  <td class="px-4 py-3 align-top">Omnissa Horizon Cloud and App Volumes</td>
+                  <td class="px-4 py-3 align-top">
+                    Secure, fast access to virtual desktops and applications for any role.
+                  </td>
+                </tr>
+                <tr class="odd:bg-black/40 even:bg-black/25">
+                  <td class="px-4 py-3 align-top font-semibold text-white">Access and identity</td>
+                  <td class="px-4 py-3 align-top">Workspace ONE UEM and Access</td>
+                  <td class="px-4 py-3 align-top">
+                    Unified management, conditional access, and Zero Trust posture enforcement from a single console.
+                  </td>
+                </tr>
+                <tr class="odd:bg-black/40 even:bg-black/25">
+                  <td class="px-4 py-3 align-top font-semibold text-white">Endpoint OS layer</td>
+                  <td class="px-4 py-3 align-top">IGEL OS 12</td>
+                  <td class="px-4 py-3 align-top">
+                    Immutable, centrally managed, Windows free endpoint with no local attack surface.
+                  </td>
+                </tr>
+                <tr class="odd:bg-black/40 even:bg-black/25">
+                  <td class="px-4 py-3 align-top font-semibold text-white">Edge virtualization</td>
+                  <td class="px-4 py-3 align-top">IGEL Managed Hypervisor</td>
+                  <td class="px-4 py-3 align-top">
+                    Runs legacy Windows applications locally at the edge when absolutely required.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-3 text-[0.75rem] text-white/70">
+            Omnissa provides the workspace platform. IGEL provides the secure, no maintenance edge that makes that platform safer and cheaper to run.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key integrations -->
+    <section id="integrations" class="section-anchor section-card p-6 md:p-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="md:max-w-sm">
+          <h2 class="text-xl font-semibold text-white md:text-2xl">
+            ⚙️ Key integrations Omnissa reps should know
+          </h2>
+          <p class="mt-2 text-sm text-white/80">
+            Lead with integration stories. Omnissa sellers win when IGEL is framed as the secure endpoint fabric that Workspace ONE and Horizon already manage.
+          </p>
+        </div>
+
+        <div class="grid flex-1 gap-4 md:grid-cols-2">
+          <article class="rounded-2xl bg-black/70 p-4 transition hover:-translate-y-0.5 hover:bg-black/80 hover:shadow-xl hover:shadow-yellow-500/10">
+            <h3 class="text-sm font-semibold text-white">
+              1. Workspace ONE UEM and IGEL OS 12
+            </h3>
+            <ul class="mt-2 space-y-1.5 text-xs text-white/80">
+              <li>Full lifecycle management of IGEL endpoints within Workspace ONE.</li>
+              <li>Centralized visibility and compliance enforcement across locations.</li>
+              <li>Zero touch enrollment and remote policy updates for distributed fleets.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl bg-black/70 p-4 transition hover:-translate-y-0.5 hover:bg-black/80 hover:shadow-xl hover:shadow-yellow-500/10">
+            <h3 class="text-sm font-semibold text-white">
+              2. Workspace ONE Access and IGEL
+            </h3>
+            <ul class="mt-2 space-y-1.5 text-xs text-white/80">
+              <li>SSO into Horizon Cloud or SaaS applications using FIDO2, smart cards, or tap and go with Imprivata.</li>
+              <li>Perfect fit for frontline and healthcare use cases with roaming clinicians and shift based workers.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl bg-black/70 p-4 transition hover:-translate-y-0.5 hover:bg-black/80 hover:shadow-xl hover:shadow-yellow-500/10">
+            <h3 class="text-sm font-semibold text-white">
+              3. Horizon Cloud next generation and IGEL
+            </h3>
+            <ul class="mt-2 space-y-1.5 text-xs text-white/80">
+              <li>Optimized Horizon client in IGEL OS for fast logins and high definition user experience.</li>
+              <li>Supports hybrid deployments including on premises, Azure, AWS, and private cloud.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl bg-black/70 p-4 transition hover:-translate-y-0.5 hover:bg-black/80 hover:shadow-xl hover:shadow-yellow-500/10">
+            <h3 class="text-sm font-semibold text-white">
+              4. App Volumes and IGEL Managed Hypervisor
+            </h3>
+            <ul class="mt-2 space-y-1.5 text-xs text-white/80">
+              <li>Delivers Windows applications to IGEL endpoints for hybrid modernization scenarios.</li>
+              <li>Keeps legacy applications available while workspaces shift to Horizon and SaaS delivery models.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core value pillars -->
+    <section id="value-pillars" class="section-anchor section-card p-6 md:p-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="md:max-w-sm">
+          <h2 class="text-xl font-semibold text-white md:text-2xl">
+            💼 Core value pillars to sell
+          </h2>
+          <p class="mt-2 text-sm text-white/80">
+            Use these four pillars as your standard value map whenever you position IGEL with Omnissa.
+          </p>
+        </div>
+
+        <div class="grid flex-1 gap-4 md:grid-cols-2">
+          <article class="rounded-2xl bg-black/75 p-4 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-lg hover:shadow-yellow-500/10">
+            <h3 class="text-sm font-semibold text-white">
+              1. Security without complexity
+            </h3>
+            <ul class="mt-2 space-y-1.5 text-xs text-white/80">
+              <li>Immutable OS that is read only, signed, and tamper proof.</li>
+              <li>No local attack surface which means fewer vulnerabilities and less endpoint management overhead.</li>
+              <li>UEFI Secure Boot and TPM backed encryption built in at the endpoint.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl bg-black/75 p-4 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-lg hover:shadow-yellow-500/10">
+            <h3 class="text-sm font-semibold text-white">
+              2. Cost and sustainability
+            </h3>
+            <ul class="mt-2 space-y-1.5 text-xs text-white/80">
+              <li>No Windows license needed at the endpoint.</li>
+              <li>Extend hardware lifespan by five to seven years in many environments.</li>
+              <li>Achieve 60 to 70 percent lower endpoint TCO compared to traditional PCs.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl bg-black/75 p-4 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-lg hover:shadow-yellow-500/10">
+            <h3 class="text-sm font-semibold text-white">
+              3. User experience
+            </h3>
+            <ul class="mt-2 space-y-1.5 text-xs text-white/80">
+              <li>Sub ten second logins to Horizon or SaaS applications in typical deployments.</li>
+              <li>Consistent performance even on older hardware thanks to lightweight IGEL OS.</li>
+              <li>Fast failover and recovery with IGEL business continuity and disaster recovery capabilities.</li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl bg-black/75 p-4 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-lg hover:shadow-yellow-500/10">
+            <h3 class="text-sm font-semibold text-white">
+              4. Regulatory and Zero Trust alignment
+            </h3>
+            <ul class="mt-2 space-y-1.5 text-xs text-white/80">
+              <li>Ready for NIS2 and PCI aligned environments where controls must be auditable.</li>
+              <li>Supports passwordless access and FIDO2 workflows across sectors.</li>
+              <li>Ideal for healthcare, finance, retail, and government where compliance is non negotiable.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Where IGEL + Omnissa win together -->
+    <section id="vertical-wins" class="section-anchor section-card p-6 md:p-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="md:max-w-sm">
+          <h2 class="text-xl font-semibold text-white md:text-2xl">
+            🧩 Where IGEL and Omnissa win together
+          </h2>
+          <p class="mt-2 text-sm text-white/80">
+            Aim IGEL and Omnissa at verticals where login time, compliance, and uptime are mission level requirements.
+          </p>
+        </div>
+
+        <div class="flex-1">
+          <div class="table-wrapper text-xs text-white/80">
+            <table class="min-w-full border-collapse">
+              <thead class="bg-white/5 text-[0.7rem] uppercase tracking-[0.12em] text-white/60">
+                <tr>
+                  <th class="px-4 py-2 text-left">Vertical</th>
+                  <th class="px-4 py-2 text-left">Use case</th>
+                  <th class="px-4 py-2 text-left">Why it fits</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="odd:bg-black/40 even:bg-black/25">
+                  <td class="px-4 py-3 align-top">
+                    <span class="badge-soft vertical-chip-healthcare border text-[0.65rem]">
+                      Healthcare
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 align-top">Tap and go roaming desktops</td>
+                  <td class="px-4 py-3 align-top">
+                    IGEL OS with Workspace ONE Access and Imprivata delivers instant logins with zero protected health information stored at the endpoint.
+                  </td>
+                </tr>
+                <tr class="odd:bg-black/40 even:bg-black/25">
+                  <td class="px-4 py-3 align-top">
+                    <span class="badge-soft vertical-chip-finance border text-[0.65rem]">
+                      Finance
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 align-top">Secure call centers or trading floors</td>
+                  <td class="px-4 py-3 align-top">
+                    Immutable endpoints with Horizon applications and central policy control support strict security and audit requirements.
+                  </td>
+                </tr>
+                <tr class="odd:bg-black/40 even:bg-black/25">
+                  <td class="px-4 py-3 align-top">
+                    <span class="badge-soft vertical-chip-gov border text-[0.65rem]">
+                      Government and defense
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 align-top">Zero Trust compliance</td>
+                  <td class="px-4 py-3 align-top">
+                    No local data, signed firmware, and hardware attestation align to strong Zero Trust requirements.
+                  </td>
+                </tr>
+                <tr class="odd:bg-black/40 even:bg-black/25">
+                  <td class="px-4 py-3 align-top">
+                    <span class="badge-soft vertical-chip-retail border text-[0.65rem]">
+                      Retail and logistics
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 align-top">Kiosks and edge devices</td>
+                  <td class="px-4 py-3 align-top">
+                    Central management, long hardware lifecycle, and 24 by 7 uptime for distributed sites and stores.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-3 text-[0.75rem] text-white/70">
+            Use vertical hooks in discovery. Talk about patient time, agent efficiency, uptime, or Zero Trust mandates based on the industry you are in front of.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conversation starters and soundbites -->
+    <section class="section-card p-6 md:p-8">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div>
+          <h2 class="text-xl font-semibold text-white md:text-2xl">
+            🛠️ Conversation starters for Omnissa sellers
+          </h2>
+          <p class="mt-2 text-sm text-white/80">
+            Use simple, provocative questions to surface PC pain that IGEL plus Omnissa can solve.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-sm text-white/85">
+            <li>What if your endpoints never needed patching again?</li>
+            <li>How much are you spending to maintain Windows on your call center devices today?</li>
+            <li>Would you like to manage all endpoints laptops, thin clients, and IGEL devices from one Workspace ONE dashboard?</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-semibold text-white md:text-2xl">
+            🦔 Key talking soundbites
+          </h2>
+          <ul class="mt-4 space-y-3 text-sm text-white/85">
+            <li>
+              IGEL turns your existing hardware into secure, zero maintenance Omnissa workspaces without disruptive endpoint rebuilds.
+            </li>
+            <li>
+              Together, IGEL and Omnissa simplify end user computing with fewer moving parts, fewer licenses, and less risk.
+            </li>
+            <li>
+              Modernization does not always mean migration. It can mean moving smarter away from legacy weight and toward predictable, secure workspaces.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- What is coming next -->
+    <section class="section-card p-6 md:p-8">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div>
+          <h2 class="text-xl font-semibold text-white md:text-2xl">
+            📈 What is coming next from IGEL
+          </h2>
+          <p class="mt-2 text-sm text-white/80">
+            Position IGEL as a platform that keeps evolving alongside Omnissa digital workspace strategy.
+          </p>
+          <ul class="mt-4 space-y-2 text-sm text-white/85">
+            <li>
+              <strong>IGEL Insights</strong> endpoint telemetry platform that integrates with digital experience and SIEM tools.
+            </li>
+            <li>
+              <strong>Active UMS and UMSaaS</strong> cloud native Universal Management Suite for IGEL fleets.
+            </li>
+            <li>
+              <strong>IGEL Managed Containers</strong> secure application delivery for modular, container based workspaces.
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-col justify-between">
+          <div>
+            <h3 class="text-sm font-semibold text-white">
+              🔑 Takeaway for Omnissa sales reps
+            </h3>
+            <blockquote class="mt-3 border-l-2 border-[var(--igel-yellow)] pl-4 text-xs text-white/85">
+              When you sell Omnissa, think workspace.
+              <br />
+              When you pair it with IGEL, think secure edge.
+              <br />
+              The two together create a Zero Trust workspace continuum from endpoint to cloud.
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sales Plays -->
+    <section id="sales-plays" class="section-anchor section-card p-6 md:p-8">
+      <header class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+        <div>
+          <h2 class="text-xl font-semibold text-white md:text-2xl">
+            🎯 Sales plays for IGEL and Omnissa
+          </h2>
+          <p class="mt-2 text-sm text-white/80">
+            Use these seven sales motions as ready made plays. Adapt language to your account, but keep the structure so the story is consistent.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 text-[0.7rem] text-white/70">
+          <span class="badge-soft">Citrix exit</span>
+          <span class="badge-soft">Modern workspace ROI</span>
+          <span class="badge-soft">Secure frontline</span>
+          <span class="badge-soft">Unified workspace</span>
+        </div>
+      </header>
+
+      <div class="mt-6 grid gap-5 md:grid-cols-2">
+        <!-- Play 1 -->
+        <article class="rounded-2xl bg-black/75 p-4 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-xl hover:shadow-yellow-500/15">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-sm font-semibold text-white">
+              1. Citrix exit accelerator core offensive play
+            </h3>
+            <span class="badge-soft text-[0.65rem]">Offensive</span>
+          </div>
+          <p class="mt-2 text-xs text-white/80">
+            <strong>Target</strong> enterprises frustrated with Citrix cost, licensing, or complexity.
+          </p>
+          <p class="mt-1 text-xs text-white/80">
+            <strong>Narrative</strong> move away from legacy VDI to a modern, secure, and simpler workspace.
+          </p>
+          <ul class="mt-3 space-y-1.5 text-xs text-white/80">
+            <li>Convert existing Windows devices to IGEL OS and extend hardware life by three to five years.</li>
+            <li>Deliver Horizon Cloud desktops managed by Workspace ONE UEM.</li>
+            <li>Offer migration assistance and trade in incentives for Citrix licenses and PC trade in credit.</li>
+            <li>Highlight up to 30 to 50 percent cost savings from reduced endpoint maintenance and licenses.</li>
+          </ul>
+          <p class="mt-3 rounded-lg bg-white/5 p-3 text-[0.7rem] text-white/80">
+            Outcome fast wins in healthcare, finance, and government where login time, security, and compliance cannot slip.
+          </p>
+        </article>
+
+        <!-- Play 2 -->
+        <article class="rounded-2xl bg-black/75 p-4 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-xl hover:shadow-yellow-500/15">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-sm font-semibold text-white">
+              2. Modern workspace ROI campaign quantify the win
+            </h3>
+            <span class="badge-soft text-[0.65rem]">Financial proof</span>
+          </div>
+          <p class="mt-2 text-xs text-white/80">
+            <strong>Goal</strong> arm sellers and partners with financial proof that IGEL plus Omnissa pay for themselves.
+          </p>
+          <ul class="mt-3 space-y-1.5 text-xs text-white/80">
+            <li>Build a joint ROI calculator that models IGEL device life extension and Omnissa licensing savings.</li>
+            <li>Measure energy efficiency, reduced downtime, and operational cost reduction from patch free endpoints.</li>
+            <li>Commission a Forrester style total economic impact study to validate TCO gains.</li>
+          </ul>
+          <p class="mt-3 text-[0.7rem] text-white/80">
+            Example message
+          </p>
+          <blockquote class="mt-1 border-l-2 border-[var(--igel-yellow)] pl-3 text-[0.7rem] text-white/80">
+            No Windows license. No patch Tuesday. No endpoint rebuilds.
+            IGEL and Omnissa deliver 60 percent fewer tickets and 40 percent longer device lifespan.
+          </blockquote>
+        </article>
+
+        <!-- Play 3 -->
+        <article class="rounded-2xl bg-black/75 p-4 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-xl hover:shadow-yellow-500/15">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-sm font-semibold text-white">
+              3. Secure frontline workspaces healthcare, retail, public sector
+            </h3>
+            <span class="badge-soft text-[0.65rem]">Frontline</span>
+          </div>
+          <p class="mt-2 text-xs text-white/80">
+            <strong>Theme</strong> speed, simplicity, and compliance at the clinical or frontline edge.
+          </p>
+          <ul class="mt-3 space-y-1.5 text-xs text-white/80">
+            <li>Demonstrate tap and go login with IGEL OS, Workspace ONE Access, and Imprivata.</li>
+            <li>Show roaming sessions across kiosks and carts via Horizon Cloud.</li>
+            <li>Reinforce Zero Trust assurance with no local data and immutable endpoints.</li>
+          </ul>
+          <p class="mt-3 rounded-lg bg-white/5 p-3 text-[0.7rem] text-white/80">
+            Sales hook every second saved in login is another second serving a patient or customer.
+          </p>
+        </article>
+
+        <!-- Play 4 -->
+        <article class="rounded-2xl bg-black/75 p-4 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-xl hover:shadow-yellow-500/15">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-sm font-semibold text-white">
+              4. Unified workspace simplification
+            </h3>
+            <span class="badge-soft text-[0.65rem]">Simplification</span>
+          </div>
+          <p class="mt-2 text-xs text-white/80">
+            <strong>Target</strong> IT decision makers overwhelmed by multi platform sprawl.
+          </p>
+          <p class="mt-1 text-xs text-white/80">
+            <strong>Narrative</strong> manage every endpoint from one pane of glass instead of stitching tools together.
+          </p>
+          <ul class="mt-3 space-y-1.5 text-xs text-white/80">
+            <li>Show that Workspace ONE UEM can natively enroll and manage IGEL OS endpoints.</li>
+            <li>Use joint demos that highlight policy enforcement, compliance dashboards, and remote wipe.</li>
+            <li>Position IGEL as the secure, no maintenance edge that complements Omnissa unified workspace control.</li>
+          </ul>
+          <p class="mt-3 rounded-lg bg-white/5 p-3 text-[0.7rem] text-white/80">
+            Outcome easier compliance, faster onboarding, and reduced IT overhead.
+          </p>
+        </article>
+
+        <!-- Play 5 -->
+        <article class="rounded-2xl bg-black/75 p-4 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-xl hover:shadow-yellow-500/15">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-sm font-semibold text-white">
+              5. Breaking free from legacy VDI migration playbook
+            </h3>
+            <span class="badge-soft text-[0.65rem]">Migration</span>
+          </div>
+          <p class="mt-2 text-xs text-white/80">
+            <strong>Deliverable</strong> a co branded whitepaper and partner toolkit.
+          </p>
+          <ul class="mt-3 space-y-1.5 text-xs text-white/80">
+            <li>Provide a step by step migration path from Citrix to Omnissa plus IGEL.</li>
+            <li>Include real customer testimonials such as login time reduced by 60 percent and support calls cut in half.</li>
+            <li>Share endpoint conversion scripts and best practices using IGEL UMS and Workspace ONE.</li>
+          </ul>
+          <p class="mt-3 text-[0.7rem] text-white/80">
+            Bonus co market webinars around the theme modern work without the weight.
+          </p>
+        </article>
+
+        <!-- Play 6 -->
+        <article class="rounded-2xl bg-black/75 p-4 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-xl hover:shadow-yellow-500/15">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-sm font-semibold text-white">
+              6. Field Fusion co branded events and proof experiences
+            </h3>
+            <span class="badge-soft text-[0.65rem]">Field engagement</span>
+          </div>
+          <p class="mt-2 text-xs text-white/80">
+            <strong>Tactics</strong> create shared experiences where customers can feel IGEL and Omnissa together.
+          </p>
+          <ul class="mt-3 space-y-1.5 text-xs text-white/80">
+            <li>Run joint booths at events like HIMSS, EDUCAUSE, and RSA with live demos.</li>
+            <li>Host regional Now and Next roadshows with hands on IGEL and Omnissa stations.</li>
+            <li>Offer Citrix exit clinics that bundle assessment, demo, and ROI report.</li>
+          </ul>
+          <p class="mt-3 rounded-lg bg-white/5 p-3 text-[0.7rem] text-white/80">
+            Demo mantra tap, log in, work, securely.
+          </p>
+        </article>
+
+        <!-- Play 7 -->
+        <article class="rounded-2xl bg-black/75 p-4 md:col-span-2 transition hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-xl hover:shadow-yellow-500/15">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-sm font-semibold text-white">
+              7. Omnissa ready endpoint program
+            </h3>
+            <span class="badge-soft text-[0.65rem]">Programmatic</span>
+          </div>
+          <p class="mt-2 text-xs text-white/80">
+            <strong>Concept</strong> pre certify IGEL OS devices with Horizon clients and Workspace ONE agents already embedded.
+          </p>
+          <ul class="mt-3 flex flex-wrap gap-2 text-[0.7rem] text-white/80">
+            <li class="pill border border-white/20 px-3 py-1">
+              Fast enrollment for customers deploying at scale
+            </li>
+            <li class="pill border border-white/20 px-3 py-1">
+              Co brand packaging Omnissa Ready by IGEL
+            </li>
+            <li class="pill border border-white/20 px-3 py-1">
+              OEM friendly bundles with HP and Lenovo thin clients
+            </li>
+          </ul>
+          <p class="mt-3 text-[0.7rem] text-white/75">
+            Unified message to carry everywhere
+          </p>
+          <blockquote class="mt-1 border-l-2 border-[var(--igel-yellow)] pl-3 text-[0.7rem] text-white/85">
+            Secure, simple, and smart workspaces anywhere.
+            IGEL hardens the endpoint. Omnissa empowers the workspace.
+            Together, they replace complexity with clarity.
+          </blockquote>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-10 border-t border-white/10 bg-black/90">
+    <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-5 text-[0.72rem] text-white/55 md:flex-row md:items-center md:justify-between">
+      <p>
+        IGEL is a secure enterprise endpoint OS for the hybrid work world. Omnissa delivers digital workspaces that run on top.
+      </p>
+      <p class="text-white/40">
+        Use this guide as a field companion for Omnissa and IGEL joint opportunities.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
