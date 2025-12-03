@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 💠‍🌐 IGEL × CrowdStrike Seller Infographic -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IGEL for CrowdStrike Sellers – Joint Value Infographic</title>
+  <meta name="description" content="A field-ready IGEL × CrowdStrike sales enablement infographic for Falcon sellers. Understand what IGEL is, where it fits, when to bring it in, and how to run joint plays in healthcare, finance, BPO, government, and hybrid work." />
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="IGEL for CrowdStrike Sellers – Joint Value Infographic" />
+  <meta property="og:description" content="A field-ready IGEL × CrowdStrike sales enablement infographic for Falcon sellers. Understand what IGEL is, where it fits, when to bring it in, and how to run joint plays in healthcare, finance, BPO, government, and hybrid work." />
+  <meta property="og:type" content="article" />
+  <!-- TODO: Replace with the final live URL of this infographic -->
+  <meta property="og:url" content="[[SET_FINAL_URL_HERE]]" />
+  <!-- TODO: Replace with the full URL to your 1200x675 thumbnail -->
+  <meta property="og:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="" />
+  <meta name="twitter:title" content="IGEL for CrowdStrike Sellers – Joint Value Infographic" />
+  <meta name="twitter:description" content="A field-ready IGEL × CrowdStrike sales enablement infographic for Falcon sellers. Understand what IGEL is, where it fits, when to bring it in, and how to run joint plays in healthcare, finance, BPO, government, and hybrid work." />
+  <meta name="twitter:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Manrope font (IGEL primary) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --igel-yellow: #FFD101;
+      --igel-black: #141414;
+      --igel-white: #FFFFFF;
+      --teal: #004D68;
+      --plum: #770469;
+      --gov-blue: #001C99;
+      --retail-purple: #4500A6;
+      --mfg-grey: #43433D;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--igel-black);
+      color: #e5e7eb;
+    }
+
+    .page-shell {
+      position: relative;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 209, 1, 0.14), transparent 32%),
+        radial-gradient(circle at 82% 8%, rgba(0, 28, 153, 0.12), transparent 26%),
+        radial-gradient(circle at 80% 70%, rgba(119, 4, 105, 0.1), transparent 30%),
+        linear-gradient(180deg, #0c0c10 0%, #0f1117 65%, #0b0c0f 100%);
+      overflow: hidden;
+    }
+
+    .page-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 120px 120px;
+      opacity: 0.35;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .page-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 209, 1, 0.05), transparent 50%);
+      pointer-events: none;
+    }
+
+    .section-card {
+      position: relative;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+      background: linear-gradient(145deg, rgba(20, 20, 20, 0.82), rgba(20, 20, 20, 0.62)) !important;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(255, 209, 1, 0.08);
+      overflow: hidden;
+      backdrop-filter: blur(6px);
+    }
+
+    @media (min-width: 768px) {
+      .section-card {
+        padding: 2rem;
+      }
+    }
+
+    .section-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 209, 1, 0.08), transparent 36%),
+        radial-gradient(circle at 82% 8%, rgba(0, 76, 104, 0.08), transparent 32%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .section-card [class*="border-slate-700"] {
+      border-color: rgba(255, 255, 255, 0.18) !important;
+    }
+
+    .section-card [class*="border-slate-800"] {
+      border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .pill-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--igel-white);
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+    }
+
+    .stack-card {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: linear-gradient(180deg, rgba(24, 27, 33, 0.9), rgba(24, 27, 33, 0.75));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      padding: 0.85rem 1rem;
+      color: var(--igel-white);
+    }
+
+    .spark-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--igel-yellow);
+      display: inline-block;
+    }
+
+    .header-panel {
+      background: rgba(20, 20, 20, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .jump-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .jump-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 0.95rem;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--igel-white);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+      transition: all 160ms ease;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .jump-button:hover {
+      border-color: var(--igel-yellow);
+      box-shadow: 0 12px 34px rgba(255, 209, 1, 0.2);
+      transform: translateY(-1px);
+      color: var(--igel-yellow);
+    }
+
+    .jump-button .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--igel-yellow);
+      opacity: 0.9;
+    }
+
+    .jump-button-active {
+      border-color: var(--igel-yellow);
+      color: var(--igel-yellow);
+      box-shadow: 0 12px 34px rgba(255, 209, 1, 0.2);
+      background: linear-gradient(135deg, rgba(255, 209, 1, 0.12), rgba(255, 255, 255, 0.04));
+    }
+
+    .mini-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .badge-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(17,24,39,0.9);
+    }
+
+    .badge-chip .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--igel-yellow);
+    }
+
+    .subtle-divider {
+      height: 1px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      opacity: 0.35;
+    }
+
+    .kv-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 0.5rem 0.9rem;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(17,24,39,0.9);
+    }
+
+    .kv-pill span {
+      font-weight: 600;
+    }
+
+    .industry-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .industry-tag[data-industry="healthcare"] {
+      border-color: rgba(0,77,104,0.85);
+      color: #e0f2f8;
+    }
+
+    .industry-tag[data-industry="finserv"] {
+      border-color: rgba(119,4,105,0.85);
+      color: #fde7fb;
+    }
+
+    .industry-tag[data-industry="gov"] {
+      border-color: rgba(0,28,153,0.85);
+      color: #e0e6ff;
+    }
+
+    .industry-tag[data-industry="bpo"] {
+      border-color: rgba(69,0,166,0.85);
+      color: #efe4ff;
+    }
+
+    .industry-tag[data-industry="remote"] {
+      border-color: rgba(67,67,61,0.85);
+      color: #e5e7eb;
+    }
+
+    .igel-spark-row {
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+    }
+
+    .igel-spark-row span.spark-dot {
+      opacity: 0.85;
+    }
+
+    .igel-spark-row span.spark-dot:nth-child(2) {
+      transform: scale(1.2) translateY(-1px);
+    }
+
+    .igel-spark-row span.spark-dot:nth-child(3) {
+      transform: scale(0.9) translateY(1px);
+    }
+
+    .quote-bar {
+      border-left: 3px solid var(--igel-yellow);
+      padding-left: 0.9rem;
+    }
+
+    .nav-blur {
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-shell">
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 lg:py-14">
+
+      <!-- Sticky Header / Nav -->
+      <header class="header-panel nav-blur sticky top-4 z-30 rounded-2xl px-4 md:px-6 py-3 md:py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="flex items-center gap-3 md:gap-4">
+          <div class="relative flex items-center gap-2">
+            <div class="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-400/80 to-yellow-200/90 flex items-center justify-center shadow-lg shadow-yellow-400/40">
+              <img
+                src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+                alt="IGEL logo"
+                class="w-8 h-auto object-contain"
+              />
+            </div>
+            <div class="hidden sm:flex flex-col">
+              <span class="text-xs font-semibold tracking-[0.18em] uppercase text-slate-300">IGEL × CrowdStrike</span>
+              <span class="text-sm font-medium text-slate-100">Endpoint OS + Falcon Joint Value</span>
+            </div>
+          </div>
+          <span class="pill-label md:inline-flex hidden">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Seller Enablement • Falcon Field Guide
+          </span>
+        </div>
+
+        <nav class="w-full md:w-auto">
+          <div class="jump-buttons justify-start md:justify-end overflow-x-auto no-scrollbar">
+            <a href="#hook" class="jump-button" data-nav-target="hook">
+              <span class="dot"></span>
+              <span>1. Hook</span>
+            </a>
+            <a href="#what-igel-is" class="jump-button" data-nav-target="what-igel-is">
+              <span class="dot"></span>
+              <span>2. IGEL 101</span>
+            </a>
+            <a href="#stack-fit" class="jump-button" data-nav-target="stack-fit">
+              <span class="dot"></span>
+              <span>3. Stack Fit</span>
+            </a>
+            <a href="#pains" class="jump-button" data-nav-target="pains">
+              <span class="dot"></span>
+              <span>4. Customer Pain</span>
+            </a>
+            <a href="#amplifier" class="jump-button" data-nav-target="amplifier">
+              <span class="dot"></span>
+              <span>5. Amplifier</span>
+            </a>
+            <a href="#triggers" class="jump-button" data-nav-target="triggers">
+              <span class="dot"></span>
+              <span>6. Deal Signals</span>
+            </a>
+            <a href="#plays" class="jump-button" data-nav-target="plays">
+              <span class="dot"></span>
+              <span>7. Joint Plays</span>
+            </a>
+            <a href="#landmines" class="jump-button" data-nav-target="landmines">
+              <span class="dot"></span>
+              <span>8. Landmines</span>
+            </a>
+            <a href="#talk-track" class="jump-button" data-nav-target="talk-track">
+              <span class="dot"></span>
+              <span>9. Talk Track</span>
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Page Intro / Hero -->
+      <main class="mt-6 space-y-6 md:space-y-8 lg:space-y-10">
+
+        <section id="hook" class="scroll-mt-24">
+          <article class="section-card">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-10">
+              <div class="flex-1 space-y-4">
+                <div class="flex items-center gap-3">
+                  <span class="pill-label">
+                    <span class="spark-dot"></span>
+                    CrowdStrike Seller Cheat Sheet
+                  </span>
+                  <div class="hidden md:flex igel-spark-row">
+                    <span class="spark-dot"></span>
+                    <span class="spark-dot"></span>
+                    <span class="spark-dot"></span>
+                  </div>
+                </div>
+
+                <div class="space-y-3">
+                  <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] font-extrabold tracking-tight text-slate-50">
+                    Falcon is powerful.<span class="text-amber-300"> Your endpoints shouldn&rsquo;t be chaos.</span>
+                  </h1>
+                  <p class="text-sm sm:text-base text-slate-200 max-w-2xl">
+                    This is a **field-ready view** of how IGEL&rsquo;s immutable endpoint OS **makes Falcon easier to sell, deploy, and prove**—so you close bigger, cleaner deals with less noise and fewer objections.
+                  </p>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-3 mt-4">
+                  <div class="stack-card">
+                    <div class="mini-tag mb-1">For</div>
+                    <p class="text-sm font-semibold text-slate-50">CrowdStrike AEs, SEs &amp; Specialists</p>
+                    <p class="mt-1 text-xs text-slate-300">
+                      Use this when a deal touches VDI, DaaS, or messy endpoint estates.
+                    </p>
+                  </div>
+                  <div class="stack-card">
+                    <div class="mini-tag mb-1">Outcome</div>
+                    <p class="text-sm font-semibold text-slate-50">Faster Falcon wins, bigger platform footprint</p>
+                    <p class="mt-1 text-xs text-slate-300">
+                      IGEL removes OS friction so Falcon&rsquo;s value lands cleanly.
+                    </p>
+                  </div>
+                  <div class="stack-card">
+                    <div class="mini-tag mb-1">Remember</div>
+                    <p class="text-sm font-semibold text-slate-50">IGEL hardens the device. Falcon protects what runs.</p>
+                    <p class="mt-1 text-xs text-slate-300">
+                      It&rsquo;s not &ldquo;another agent&rdquo;—it&rsquo;s the **preventative foundation**.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-[40%] flex flex-col justify-between gap-4">
+                <div class="rounded-2xl border border-yellow-400/40 bg-gradient-to-br from-yellow-300/10 via-yellow-200/5 to-slate-900/70 p-4 md:p-5 shadow-[0_18px_45px_rgba(250,204,21,0.25)]">
+                  <p class="mini-tag mb-2 text-yellow-200/90">Falcon Reality Check</p>
+                  <div class="quote-bar space-y-2">
+                    <p class="text-sm text-slate-100">
+                      <span class="font-semibold text-amber-300">Falcon stops breaches.</span>
+                      IGEL makes the device so locked down that Falcon sees **less junk and more signal**.
+                    </p>
+                    <p class="text-xs text-slate-300">
+                      Less OS drift → fewer incidents → cleaner Falcon story for CISOs and boards.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                  <div class="kv-pill">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span>Immutable endpoint OS</span>
+                  </div>
+                  <div class="kv-pill">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                    <span>Falcon on from first boot</span>
+                  </div>
+                  <div class="kv-pill">
+                    <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                    <span>Device life +3–5 years</span>
+                  </div>
+                  <div class="kv-pill">
+                    <span class="w-1.5 h-1.5 rounded-full bg-lime-400"></span>
+                    <span>Zero local data to encrypt</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Section 2: What IGEL Actually Is -->
+        <section id="what-igel-is" class="scroll-mt-28">
+          <article class="section-card">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-10">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-4 mb-3">
+                  <p class="mini-tag">Section 2 · IGEL 101</p>
+                  <div class="hidden md:flex items-center gap-2 text-xs text-slate-300">
+                    <span class="spark-dot"></span>
+                    <span>Think of IGEL as the **endpoint OS** in your Falcon story.</span>
+                  </div>
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold text-slate-50 mb-3">
+                  What IGEL Actually Is (in CrowdStrike language)
+                </h2>
+                <p class="text-sm md:text-sm text-slate-200 max-w-2xl mb-4">
+                  IGEL is a **modern, immutable endpoint OS** built for secure digital workspaces. It locks down the device itself so Falcon can focus on high-value detection and response.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-3 md:gap-4">
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Immutable by design</h3>
+                    <ul class="space-y-1.5 text-xs text-slate-200 leading-relaxed">
+                      <li>• Read-only OS image—no local installs or drift.</li>
+                      <li>• No local data: nothing for ransomware to encrypt.</li>
+                      <li>• Known-good state you can always revert to.</li>
+                    </ul>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Cloud-managed at scale</h3>
+                    <ul class="space-y-1.5 text-xs text-slate-200 leading-relaxed">
+                      <li>• Universal Management Suite (UMS) manages config &amp; updates.</li>
+                      <li>• Policy-driven control across thousands of endpoints.</li>
+                      <li>• Falcon agent can be part of the **golden image**.</li>
+                    </ul>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Device-agnostic &amp; cost-aware</h3>
+                    <ul class="space-y-1.5 text-xs text-slate-200 leading-relaxed">
+                      <li>• Runs on most x86 devices (PCs, thin clients).</li>
+                      <li>• Extends device life by 3–5 years.</li>
+                      <li>• Helps customers defer or reduce endpoint refresh.</li>
+                    </ul>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Preventative Security Model™</h3>
+                    <ul class="space-y-1.5 text-xs text-slate-200 leading-relaxed">
+                      <li>• Removes entire attack vectors at the OS layer.</li>
+                      <li>• No patch chaos, no persistence on disk.</li>
+                      <li>• Falcon handles runtime threats; IGEL blocks OS abuse.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-[38%] space-y-4">
+                <div class="rounded-xl border border-slate-600/70 bg-slate-900/80 p-4 space-y-2">
+                  <p class="mini-tag">Mental Model</p>
+                  <p class="text-xs text-slate-100">
+                    <span class="font-semibold text-amber-300">IGEL locks down the device.</span>
+                    Falcon locks down what runs on it. Put together: **prevention at the OS, intelligence in the cloud.**
+                  </p>
+                </div>
+
+                <div class="rounded-xl border border-slate-700/80 bg-slate-950/70 p-4 space-y-3">
+                  <p class="mini-tag">Quick Tell-Back Test</p>
+                  <p class="text-xs text-slate-200">
+                    If a rep can say this, they get it:
+                  </p>
+                  <p class="text-xs text-slate-50 italic">
+                    &ldquo;IGEL is a locked-down endpoint OS that keeps Falcon&rsquo;s endpoints consistent, tamper-proof, and free of local data.&rdquo;
+                  </p>
+                  <div class="flex flex-wrap gap-2 pt-1">
+                    <span class="badge-chip">
+                      <span class="dot"></span> Immutable OS
+                    </span>
+                    <span class="badge-chip">
+                      <span class="dot"></span> No local data
+                    </span>
+                    <span class="badge-chip">
+                      <span class="dot"></span> Cloud managed
+                    </span>
+                    <span class="badge-chip">
+                      <span class="dot"></span> Falcon-ready
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Section 3: Where IGEL Fits in the Stack -->
+        <section id="stack-fit" class="scroll-mt-28">
+          <article class="section-card">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-4 mb-3">
+                  <p class="mini-tag">Section 3 · Stack Fit</p>
+                  <span class="text-xs text-slate-300">
+                    IGEL = foundation. Falcon = intelligent shield.
+                  </span>
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold text-slate-50 mb-2">
+                  How IGEL and Falcon Build a Defense-in-Depth Stack
+                </h2>
+                <p class="text-sm text-slate-200 max-w-2xl mb-4">
+                  IGEL doesn&rsquo;t replace Falcon. It **prepares the device** so Falcon can operate with maximum signal and minimum noise—aligned with Zero Trust and modern compliance expectations.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-3 md:gap-4">
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Endpoint OS – IGEL</h3>
+                    <p class="text-xs text-slate-200">
+                      Hardened, read-only OS; strictly controlled apps and drivers; no local user data. This is your **clean, tamper-resistant foundation.**
+                    </p>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Threat Prevention &amp; Detection – Falcon</h3>
+                    <p class="text-xs text-slate-200">
+                      Single agent, cloud analytics, AI-driven EDR/XDR, identity and behavioral analytics. This is your **runtime intelligence and response.**
+                    </p>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Access &amp; Identity</h3>
+                    <p class="text-xs text-slate-200">
+                      Conditional access, device posture checks, and identity protections ensure **only trusted users on trusted devices** reach sensitive assets.
+                    </p>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Management &amp; Response</h3>
+                    <p class="text-xs text-slate-200">
+                      IGEL UMS handles config &amp; OS posture; Falcon console orchestrates security response. Together they cut **MTTR from days to minutes.**
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-[40%]">
+                <div class="rounded-2xl border border-slate-600/80 bg-slate-950/80 p-4 md:p-5">
+                  <p class="mini-tag mb-3">Visual Stack</p>
+                  <div class="space-y-3 text-xs">
+                    <div class="flex flex-col gap-2">
+                      <div class="h-9 rounded-lg bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-600/80 flex items-center px-3 justify-between">
+                        <span class="font-semibold text-slate-100">Access / Identity</span>
+                        <span class="text-[0.65rem] text-slate-300">Falcon Identity, Device Posture</span>
+                      </div>
+                      <div class="h-9 rounded-lg bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-600/80 flex items-center px-3 justify-between">
+                        <span class="font-semibold text-slate-100">Threat Prevention &amp; Detection</span>
+                        <span class="text-[0.65rem] text-slate-300">Falcon Platform</span>
+                      </div>
+                      <div class="h-9 rounded-lg bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-600/80 flex items-center px-3 justify-between">
+                        <span class="font-semibold text-slate-100">Endpoint OS</span>
+                        <span class="text-[0.65rem] text-amber-300">IGEL OS (immutable)</span>
+                      </div>
+                    </div>
+                    <div class="subtle-divider my-3"></div>
+                    <p class="text-xs text-slate-200">
+                      <span class="font-semibold text-amber-300">Seller line:</span>
+                      &ldquo;IGEL gives Falcon a tamper-proof runway; Falcon ensures nothing malicious takes off.&rdquo;
+                    </p>
+                    <p class="text-[0.7rem] text-slate-400">
+                      Tip: When customers ask &ldquo;How is this different from Microsoft hardening?&rdquo; → Microsoft layers controls into Windows;
+                      <span class="font-semibold">IGEL changes the OS architecture itself</span> into something customers can&rsquo;t easily misconfigure.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Section 4: Customer Pains -->
+        <section id="pains" class="scroll-mt-28">
+          <article class="section-card">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-10">
+              <div class="flex-1">
+                <p class="mini-tag mb-2">Section 4 · Customer Pain</p>
+                <h2 class="text-xl md:text-2xl font-bold text-slate-50 mb-2">
+                  The Problems Falcon Can&rsquo;t Solve Alone (But IGEL Can Help With)
+                </h2>
+                <p class="text-sm text-slate-200 max-w-2xl mb-4">
+                  Falcon stops attacks. But customers still battle **OS sprawl, aging hardware, and patch chaos** that drain their teams and muddle the security story. IGEL turns those into solvable problems.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-3 md:gap-4">
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1">Patch chaos &amp; OS drift</h3>
+                    <ul class="text-xs text-slate-200 space-y-1.5">
+                      <li>• Thousands of Windows versions &amp; builds in the wild.</li>
+                      <li>• Inconsistent policies, exceptions, and local installs.</li>
+                      <li>• CISO worry: &ldquo;We can&rsquo;t really prove endpoint hygiene.&rdquo;</li>
+                    </ul>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1">VDI / DaaS endpoints nobody owns</h3>
+                    <ul class="text-xs text-slate-200 space-y-1.5">
+                      <li>• Shared clinical or call center endpoints are half-owned.</li>
+                      <li>• Who patches the OS? Who locks down USB?</li>
+                      <li>• IGEL lets IT treat them as **disposable, stateless devices.**</li>
+                    </ul>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1">Aging &amp; diverse hardware fleets</h3>
+                    <ul class="text-xs text-slate-200 space-y-1.5">
+                      <li>• Multiple vendors, OS versions, and support contracts.</li>
+                      <li>• Refresh projects collide with budget &amp; security timelines.</li>
+                      <li>• IGEL breathes 3–5 more years into existing x86 devices.</li>
+                    </ul>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1">Compliance &amp; audit pressure</h3>
+                    <ul class="text-xs text-slate-200 space-y-1.5">
+                      <li>• Regulators ask about device integrity and local data.</li>
+                      <li>• &ldquo;We have Falcon&rdquo; is strong, but not the whole story.</li>
+                      <li>• IGEL adds a **provable control** at the OS level.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-[36%] space-y-4">
+                <div class="rounded-xl border border-rose-500/50 bg-gradient-to-br from-rose-900/60 via-slate-950/80 to-slate-950/90 p-4 space-y-2">
+                  <p class="mini-tag text-rose-200">Use-Case Hook for the CISO</p>
+                  <p class="text-xs text-rose-50">
+                    &ldquo;Falcon gives you visibility and response. IGEL gives you **OS immutability** so those controls land on something you actually trust.&rdquo;
+                  </p>
+                </div>
+                <div class="rounded-xl border border-slate-700/70 bg-slate-950/80 p-4 space-y-2">
+                  <p class="mini-tag mb-2">Pain → Seller Translation</p>
+                  <ul class="text-xs text-slate-200 space-y-1.5">
+                    <li><span class="font-semibold text-amber-300">Patch complaints?</span> → Talk IGEL&rsquo;s immutable OS and golden images.</li>
+                    <li><span class="font-semibold text-amber-300">VDI expansion?</span> → Position IGEL as the **secure thin endpoint** for those sessions.</li>
+                    <li><span class="font-semibold text-amber-300">Refresh delays?</span> → Highlight device life extension with IGEL OS.</li>
+                    <li><span class="font-semibold text-amber-300">Audit anxiety?</span> → Pair Falcon logs with IGEL&rsquo;s locked-down device story.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Section 5: IGEL as Amplifier -->
+        <section id="amplifier" class="scroll-mt-28">
+          <article class="section-card">
+            <p class="mini-tag mb-2">Section 5 · The Turn</p>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-50 mb-4">
+              Don&rsquo;t Sell Around IGEL. Sell Falcon <span class="text-amber-300">With</span> IGEL.
+            </h2>
+
+            <div class="grid lg:grid-cols-2 gap-4 md:gap-6">
+              <!-- Left: Without IGEL -->
+              <div class="rounded-2xl border border-slate-700/80 bg-gradient-to-b from-slate-900/90 to-slate-950/95 p-4 md:p-5 space-y-3">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="badge-chip border-rose-500/60 text-rose-100">
+                    <span class="dot" style="background:#f97373;"></span>
+                    Without IGEL
+                  </span>
+                </div>
+                <ul class="text-xs text-slate-200 space-y-2">
+                  <li>• Falcon is strong—but runs on **messy, drifting OS images**.</li>
+                  <li>• Patch/OS issues generate avoidable noise in Falcon alerts.</li>
+                  <li>• VDI / shared endpoints are half-owned and under-managed.</li>
+                  <li>• Microsoft/S1 can claim &ldquo;they harden the endpoint too.&rdquo;</li>
+                  <li>• Buyer sees Falcon as &ldquo;another agent&rdquo; vs. architectural change.</li>
+                </ul>
+                <p class="text-[0.7rem] text-slate-400">
+                  Result: You still win deals—but face more objections, longer POCs, and fuzzier ROI stories.
+                </p>
+              </div>
+
+              <!-- Right: With IGEL -->
+              <div class="rounded-2xl border border-emerald-500/60 bg-gradient-to-b from-emerald-900/30 via-slate-950/95 to-slate-950/95 p-4 md:p-5 space-y-3">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="badge-chip border-emerald-400/70 text-emerald-100">
+                    <span class="dot" style="background:#34d399;"></span>
+                    With IGEL
+                  </span>
+                </div>
+                <ul class="text-xs text-slate-100 space-y-2">
+                  <li>• Falcon runs on **immutable, read-only endpoints**—no local data, no OS drift.</li>
+                  <li>• Falcon agent is baked into IGEL&rsquo;s golden image; devices boot **protected by default**.</li>
+                  <li>• UMS gives IT one place to manage endpoint posture and app access.</li>
+                  <li>• You reposition Falcon + IGEL as a **defense-in-depth architecture**, not overlapping tools.</li>
+                  <li>• Value message shifts to: &ldquo;Fewer incidents, less OpEx, more provable Zero Trust.&rdquo;</li>
+                </ul>
+                <p class="text-[0.7rem] text-slate-300">
+                  Result: Shorter resistance cycles, cleaner ROI stories, and a differentiated endpoint narrative versus Microsoft or SentinelOne.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-4 md:mt-5 rounded-xl border border-slate-700/80 bg-slate-950/80 p-3 md:p-4">
+              <p class="mini-tag mb-1">One-Line Reframe for Reps</p>
+              <p class="text-xs text-slate-100">
+                &ldquo;IGEL removes the OS problems Falcon can&rsquo;t fix—so Falcon can focus on catching real attackers, not compensating for a messy endpoint estate.&rdquo;
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <!-- Section 6: When to Bring IGEL In -->
+        <section id="triggers" class="scroll-mt-28">
+          <article class="section-card">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-10">
+              <div class="flex-1">
+                <p class="mini-tag mb-2">Section 6 · Deal Signals</p>
+                <h2 class="text-xl md:text-2xl font-bold text-slate-50 mb-2">
+                  When to Bring IGEL Into a CrowdStrike Deal
+                </h2>
+                <p class="text-sm text-slate-200 max-w-2xl mb-4">
+                  You don&rsquo;t need IGEL in every Falcon deal. But when these phrases appear, **you&rsquo;re leaving value on the table** if you don&rsquo;t introduce it.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-3 md:gap-4">
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Infrastructure &amp; workspace signals</h3>
+                    <ul class="text-xs text-slate-200 space-y-1.5">
+                      <li>• Expanding or modernizing <span class="font-semibold">VDI / DaaS / W365 / Citrix / Omnissa</span>.</li>
+                      <li>• Talking about &ldquo;thin client refresh&rdquo; or &ldquo;branch modernisation.&rdquo;</li>
+                      <li>• Complaints about &ldquo;fat PC&rdquo; management overhead.</li>
+                    </ul>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Security &amp; risk signals</h3>
+                    <ul class="text-xs text-slate-200 space-y-1.5">
+                      <li>• Ransomware fatigue or &ldquo;we&rsquo;ve been hit before&rdquo; stories.</li>
+                      <li>• Zero Trust roadmap conversations.</li>
+                      <li>• Concern about insider risk on shared endpoints.</li>
+                    </ul>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Cost &amp; operations signals</h3>
+                    <ul class="text-xs text-slate-200 space-y-1.5">
+                      <li>• &ldquo;We can&rsquo;t refresh all these endpoints right now.&rdquo;</li>
+                      <li>• High helpdesk load for patching, reimaging, and OS incidents.</li>
+                      <li>• Mandate to reduce branch or remote endpoint OpEx.</li>
+                    </ul>
+                  </div>
+                  <div class="stack-card">
+                    <h3 class="text-sm font-semibold text-slate-50 mb-1.5">Falcon POC-specific signals</h3>
+                    <ul class="text-xs text-slate-200 space-y-1.5">
+                      <li>• Falcon performs well, but OS management issues keep surfacing.</li>
+                      <li>• Customer asks for &ldquo;golden image&rdquo; or &ldquo;locked-down&rdquo; device mode.</li>
+                      <li>• Questions about layering Falcon with Microsoft/S1 at the endpoint.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-[38%] space-y-4">
+                <div class="rounded-xl border border-slate-700/80 bg-slate-950/90 p-4 space-y-2">
+                  <p class="mini-tag mb-1">Trigger Sentence for Reps</p>
+                  <p class="text-xs text-slate-100 italic">
+                    &ldquo;If you&rsquo;re worried about keeping Falcon-protected endpoints patched, consistent, and compliant, IGEL eliminates that pain by making the OS itself immutable and centrally managed.&rdquo;
+                  </p>
+                </div>
+                <div class="rounded-xl border border-slate-700/80 bg-slate-950/90 p-4 space-y-3">
+                  <p class="mini-tag">Quick Checklist</p>
+                  <ul class="text-xs text-slate-200 space-y-1.5">
+                    <li>✅ Do they have (or want) VDI/DaaS/W365?</li>
+                    <li>✅ Are endpoints shared (clinics, call centers, branches)?</li>
+                    <li>✅ Is patching or reimaging a recurring complaint?</li>
+                    <li>✅ Are they comparing Falcon to Microsoft/S1 bundles?</li>
+                  </ul>
+                  <p class="text-[0.7rem] text-slate-400">
+                    If you tick **2+ boxes** → bring IGEL into the conversation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Section 7: Joint Plays -->
+        <section id="plays" class="scroll-mt-28">
+          <article class="section-card">
+            <p class="mini-tag mb-2">Section 7 · Joint Sales Plays</p>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-50 mb-2">
+              Field-Ready IGEL × CrowdStrike Plays You Can Run Today
+            </h2>
+            <p class="text-sm text-slate-200 max-w-3xl mb-4">
+              Use these **named plays** to anchor conversations with CIOs, CISOs, and line-of-business leaders. Each one has a target persona, trigger, and fast way to explain the joint value.
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+              <!-- Healthcare -->
+              <div class="stack-card border-teal-600/60">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="industry-tag" data-industry="healthcare">
+                    <span class="spark-dot"></span> Healthcare
+                  </div>
+                  <span class="text-[0.65rem] text-slate-400">Cybersecure Clinic / Hospital</span>
+                </div>
+                <p class="text-xs text-slate-100 font-semibold mb-1">
+                  Target: CIO, CISO, Clinical IT, Compliance
+                </p>
+                <ul class="text-[0.75rem] text-slate-200 space-y-1.5 mb-2">
+                  <li><span class="font-semibold text-teal-200">Trigger:</span> Ransomware scares, EMR modernization, shared nurse workstations.</li>
+                  <li><span class="font-semibold text-teal-200">Pain:</span> Unmanaged clinical endpoints; local data at risk.</li>
+                  <li><span class="font-semibold text-teal-200">Promise:</span> IGEL makes endpoints read-only and disposable; Falcon blocks any runtime attack.</li>
+                </ul>
+                <p class="text-[0.7rem] text-slate-300 italic">
+                  Line: &ldquo;Even if a clinic device is &lsquo;owned,&rsquo; reset to known-good takes seconds.&rdquo;
+                </p>
+              </div>
+
+              <!-- FinServ -->
+              <div class="stack-card border-[rgba(119,4,105,0.8)]">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="industry-tag" data-industry="finserv">
+                    <span class="spark-dot"></span> FinServ
+                  </div>
+                  <span class="text-[0.65rem] text-slate-400">Zero Trust Trading Floor</span>
+                </div>
+                <p class="text-xs text-slate-100 font-semibold mb-1">
+                  Target: CIO, CISO, Risk &amp; Compliance, Infra VP
+                </p>
+                <ul class="text-[0.75rem] text-slate-200 space-y-1.5 mb-2">
+                  <li><span class="font-semibold text-fuchsia-200">Trigger:</span> Zero Trust mandates, SOC2 audits, endpoint refresh.</li>
+                  <li><span class="font-semibold text-fuchsia-200">Pain:</span> Insider risk, complex workstations, heavy audit trails.</li>
+                  <li><span class="font-semibold text-fuchsia-200">Promise:</span> IGEL enforces least functionality; Falcon enforces least privilege and continuous monitoring.</li>
+                </ul>
+                <p class="text-[0.7rem] text-slate-300 italic">
+                  Line: &ldquo;Every trader station becomes a hardened, fully auditable Zero Trust endpoint.&rdquo;
+                </p>
+              </div>
+
+              <!-- BPO / Contact Center -->
+              <div class="stack-card border-[rgba(69,0,166,0.8)]">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="industry-tag" data-industry="bpo">
+                    <span class="spark-dot"></span> BPO / CX
+                  </div>
+                  <span class="text-[0.65rem] text-slate-400">Secure Contact Center</span>
+                </div>
+                <p class="text-xs text-slate-100 font-semibold mb-1">
+                  Target: IT Director, Security Manager, Ops Lead
+                </p>
+                <ul class="text-[0.75rem] text-slate-200 space-y-1.5 mb-2">
+                  <li><span class="font-semibold text-violet-200">Trigger:</span> Hybrid agents, home PCs, strict client data clauses.</li>
+                  <li><span class="font-semibold text-violet-200">Pain:</span> Unmanaged devices; high risk of data exfiltration.</li>
+                  <li><span class="font-semibold text-violet-200">Promise:</span> IGEL UD Pocket + Falcon turns any PC into a secure, non-persistent agent endpoint.</li>
+                </ul>
+                <p class="text-[0.7rem] text-slate-300 italic">
+                  Line: &ldquo;Agents bring any PC; you bring IGEL + Falcon. No local data, consistent controls.&rdquo;
+                </p>
+              </div>
+
+              <!-- Government -->
+              <div class="stack-card border-[rgba(0,28,153,0.8)]">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="industry-tag" data-industry="gov">
+                    <span class="spark-dot"></span> Government
+                  </div>
+                  <span class="text-[0.65rem] text-slate-400">Mission-Ready Endpoint</span>
+                </div>
+                <p class="text-xs text-slate-100 font-semibold mb-1">
+                  Target: Fed/SLED CISO, Program Managers
+                </p>
+                <ul class="text-[0.75rem] text-slate-200 space-y-1.5 mb-2">
+                  <li><span class="font-semibold text-indigo-200">Trigger:</span> EO 14028, Zero Trust mandates, secure telework.</li>
+                  <li><span class="font-semibold text-indigo-200">Pain:</span> Hard to prove endpoint trust and continuity.</li>
+                  <li><span class="font-semibold text-indigo-200">Promise:</span> IGEL provides hardened, policy-driven OS; Falcon provides FedRAMP-authorized protection and telemetry.</li>
+                </ul>
+                <p class="text-[0.7rem] text-slate-300 italic">
+                  Line: &ldquo;Mission workloads only land on devices with provable OS integrity and active Falcon protection.&rdquo;
+                </p>
+              </div>
+
+              <!-- Remote Work -->
+              <div class="stack-card border-[rgba(67,67,61,0.9)]">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="industry-tag" data-industry="remote">
+                    <span class="spark-dot"></span> Hybrid Work
+                  </div>
+                  <span class="text-[0.65rem] text-slate-400">Secure Remote Work</span>
+                </div>
+                <p class="text-xs text-slate-100 font-semibold mb-1">
+                  Target: CIO, Digital Workplace, Security Architect
+                </p>
+                <ul class="text-[0.75rem] text-slate-200 space-y-1.5 mb-2">
+                  <li><span class="font-semibold text-slate-200">Trigger:</span> Remote endpoint sprawl, browser-first strategies, DaaS.</li>
+                  <li><span class="font-semibold text-slate-200">Pain:</span> High endpoint cost and inconsistent controls.</li>
+                  <li><span class="font-semibold text-slate-200">Promise:</span> IGEL makes endpoints lightweight and centrally managed; Falcon keeps them continually safe.</li>
+                </ul>
+                <p class="text-[0.7rem] text-slate-300 italic">
+                  Line: &ldquo;Secure productivity anywhere without throwing hardware spend at the problem.&rdquo;
+                </p>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Section 8: Competitive Landmines -->
+        <section id="landmines" class="scroll-mt-28">
+          <article class="section-card">
+            <p class="mini-tag mb-2">Section 8 · Competitive Landmines &amp; Watchpoints</p>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-50 mb-2">
+              How IGEL Helps You Navigate Microsoft, SentinelOne, Legacy AV &amp; VDI-Only Stories
+            </h2>
+            <p class="text-sm text-slate-200 max-w-3xl mb-4">
+              Use IGEL to **defuse confusing overlap**—not create it. The goal is to reposition Falcon + IGEL as a **clear architectural stack** rather than &ldquo;yet another agent bundle.&rdquo;
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="rounded-2xl border border-slate-700/80 bg-slate-950/90 p-4 space-y-3">
+                <h3 class="text-sm font-semibold text-slate-50">Microsoft &amp; SentinelOne Overlap</h3>
+                <ul class="text-xs text-slate-200 space-y-1.5">
+                  <li>• IGEL is not &ldquo;another security agent&rdquo;; it&rsquo;s the **endpoint OS** itself.</li>
+                  <li>• Microsoft and S1 harden within Windows; IGEL **replaces the underlying OS** on key endpoints.</li>
+                  <li>• Talk in architecture terms: &ldquo;We&rsquo;re changing what the endpoint <span class="italic">is</span>, not just adding another control.&rdquo;</li>
+                </ul>
+                <p class="text-[0.7rem] text-slate-300 italic">
+                  Seller line: &ldquo;Microsoft adds more software; IGEL changes the device architecture into something attackers can&rsquo;t easily tamper with.&rdquo;
+                </p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-700/80 bg-slate-950/90 p-4 space-y-3">
+                <h3 class="text-sm font-semibold text-slate-50">Legacy AV Stacks &amp; VDI-Only Vendors</h3>
+                <ul class="text-xs text-slate-200 space-y-1.5">
+                  <li>• IGEL + Falcon often **replace** Symantec / Trend / McAfee stacks with better outcomes.</li>
+                  <li>• Citrix / Omnissa secure the session; IGEL secures the **physical endpoint** under that session.</li>
+                  <li>• Emphasize Zero Trust: device + identity + session; IGEL plugs the device gap.</li>
+                </ul>
+                <p class="text-[0.7rem] text-slate-300 italic">
+                  Seller line: &ldquo;VDI-only security protects the session. IGEL ensures the device under that session can&rsquo;t be repurposed or weaponized.&rdquo;
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-4">
+              <div class="rounded-xl border border-amber-400/60 bg-amber-900/20 p-3 space-y-2">
+                <p class="mini-tag">Positioning Watchpoints</p>
+                <ul class="text-[0.75rem] text-slate-100 space-y-1.5">
+                  <li>• Don&rsquo;t pitch IGEL as &ldquo;Falcon but cheaper.&rdquo; It&rsquo;s **OS + Falcon**, not Falcon alternatives.</li>
+                  <li>• Don&rsquo;t promise IGEL everywhere; focus on the right endpoint segments (VDI, shared, regulated, remote).</li>
+                  <li>• Don&rsquo;t oversell offline capability—be clear on how IGEL + Falcon behave in limited connectivity scenarios.</li>
+                </ul>
+              </div>
+              <div class="rounded-xl border border-slate-700/80 bg-slate-950/90 p-3 space-y-2">
+                <p class="mini-tag">Risk &amp; Integrity</p>
+                <p class="text-[0.75rem] text-slate-200">
+                  Be precise: IGEL **reduces attack surface and persistence options**; Falcon **detects and responds to sophisticated threats** that still attempt to execute.
+                  Together they shift endpoint posture from reactive cleanup to proactive assurance—but no vendor can promise zero risk.
+                </p>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Section 9: Talk Track & Why It Matters -->
+        <section id="talk-track" class="scroll-mt-28">
+          <article class="section-card">
+            <p class="mini-tag mb-2">Section 9 · 30-Second Talk Track</p>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-50 mb-3">
+              How to Talk About IGEL in 30 Seconds (and Why Reps Should Care)
+            </h2>
+
+            <div class="grid lg:grid-cols-[2fr,1.4fr] gap-4 md:gap-6 items-start">
+              <div class="space-y-4">
+                <div class="rounded-2xl border border-slate-700/80 bg-slate-950/90 p-4 md:p-5">
+                  <p class="mini-tag mb-2">Field-Ready Talk Track</p>
+                  <div class="quote-bar space-y-2">
+                    <p class="text-sm text-slate-50">
+                      &ldquo;IGEL is a hardened, read-only endpoint OS that makes Falcon even more effective.
+                      It prevents endpoints from being tampered with, keeps data off the device, and lets IT manage everything from one console.
+                      You get the ultimate combo: IGEL stops most attacks from ever starting; Falcon detects and responds to anything that still tries to get through.&rdquo;
+                    </p>
+                  </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-3 text-xs">
+                  <div class="stack-card">
+                    <p class="mini-tag mb-1">Why this matters to a seller</p>
+                    <p class="text-slate-100 font-semibold mb-1">Bigger deal sizes</p>
+                    <p class="text-slate-300">
+                      Now you&rsquo;re not just selling an agent—you&rsquo;re selling a **Zero Trust endpoint architecture**.
+                    </p>
+                  </div>
+                  <div class="stack-card">
+                    <p class="mini-tag mb-1">Why this matters to SEs</p>
+                    <p class="text-slate-100 font-semibold mb-1">Cleaner POCs</p>
+                    <p class="text-slate-300">
+                      Immutable OS reduces weird OS issues that derail POCs and inflate &ldquo;noise&rdquo; in the data.
+                    </p>
+                  </div>
+                  <div class="stack-card">
+                    <p class="mini-tag mb-1">Why this matters to customers</p>
+                    <p class="text-slate-100 font-semibold mb-1">Less risk, less toil</p>
+                    <p class="text-slate-300">
+                      Fewer patches, less drift, faster recovery, and a simpler compliance story.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="rounded-2xl border border-slate-700/80 bg-slate-950/95 p-4 space-y-2">
+                  <p class="mini-tag mb-1">Identity Alignment Lines</p>
+                  <ul class="text-[0.75rem] text-slate-200 space-y-1.5">
+                    <li>• &ldquo;If you care about the architecture of risk, IGEL is your missing layer.&rdquo;</li>
+                    <li>• &ldquo;If you sell Falcon on outcomes, IGEL gives you the OS story to back it up.&rdquo;</li>
+                    <li>• &ldquo;If you live in Zero Trust conversations, IGEL closes the endpoint gap most architectures leave open.&rdquo;</li>
+                  </ul>
+                </div>
+                <div class="rounded-2xl border border-emerald-500/60 bg-emerald-900/20 p-4 space-y-2">
+                  <p class="mini-tag mb-1">Fast Recap for Reps</p>
+                  <ul class="text-[0.75rem] text-emerald-50 space-y-1.5">
+                    <li>1. IGEL = immutable endpoint OS that extends device life and removes OS chaos.</li>
+                    <li>2. Falcon = AI-driven detection and response that thrives on clean, consistent endpoints.</li>
+                    <li>3. Together = **Zero Trust-ready endpoint platform** that&rsquo;s easier to sell, easier to run, and easier to defend to auditors.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Footer / Quick Reference -->
+        <section class="scroll-mt-28">
+          <article class="section-card">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <p class="mini-tag mb-1">Seller Quick Reference</p>
+                <p class="text-sm text-slate-100">
+                  Use this page as your **jumping-off point** in Falcon deals that touch VDI, compliance-heavy endpoints, or endpoint refresh projects.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2 text-[0.75rem]">
+                <span class="badge-chip">
+                  <span class="dot"></span> Immutable OS
+                </span>
+                <span class="badge-chip">
+                  <span class="dot"></span> Zero local data
+                </span>
+                <span class="badge-chip">
+                  <span class="dot"></span> Falcon-first boot
+                </span>
+                <span class="badge-chip">
+                  <span class="dot"></span> VDI endpoints
+                </span>
+                <span class="badge-chip">
+                  <span class="dot"></span> Zero Trust-ready
+                </span>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Simple scroll-based nav highlighting for jump buttons
+    (function () {
+      const sections = document.querySelectorAll("section[id]");
+      const navButtons = document.querySelectorAll(".jump-button");
+
+      function onScroll() {
+        let currentId = null;
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom >= 120) {
+            currentId = section.id;
+          }
+        });
+
+        navButtons.forEach((btn) => {
+          const target = btn.getAttribute("data-nav-target");
+          if (target === currentId) {
+            btn.classList.add("jump-button-active");
+          } else {
+            btn.classList.remove("jump-button-active");
+          }
+        });
+      }
+
+      document.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+</body>
+</html>
