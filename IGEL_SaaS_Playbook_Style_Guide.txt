@@ -1,0 +1,89 @@
+IGEL SaaS / Web App Playbook Style Guide (HTML)
+==============================================
+Use this as a quick blueprint to spin up new, similarly branded HTML playbooks for other topics.
+
+Core stack
+- Tailwind via CDN (no build): <script src="https://cdn.tailwindcss.com"></script>
+- Font: Manrope (weights 400–800) via Google Fonts.
+- Icons: Prefer simple text/shape badges; avoid external icon libs unless required.
+- JS: Minimal; only for mobile nav toggles or light interactions.
+
+Brand colors
+- IGEL Yellow: #ffd101 (primary accent)
+- IGEL Black: #141414
+- IGEL White: #ffffff
+- Background: dark gradient (black/deep gray), optionally with subtle radial glows.
+
+Logos
+- Primary logo (yellow): https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png
+- Keep logo height ~36px–40px in the header; preserve aspect ratio.
+
+Page shell
+- Body font: "Manrope", system fallbacks.
+- Background: radial/linear dark gradient; keep text high-contrast (#f4f4f5/white).
+- Use subtle “spark” radial highlights for atmosphere; low opacity.
+
+Navigation (desktop)
+- Left sticky rail, ~230px wide, position: sticky, top ~88px.
+- Each link: pill/rounded rectangle with a small numbered bubble (yellow gradient) + label.
+- Rail container: dark glassy panel with 1px soft border; shadow for lift.
+- Sequence your sections numerically; match numbers between nav and section headings.
+
+Navigation (mobile)
+- Keep a top “Menu” toggle that reveals a grid of pill links.
+- Use compact rounded pills with light borders and hover/focus transitions.
+
+Header / hero strip
+- Left: IGEL logo + 2-line text block (kicker and title).
+- Right (desktop): hero text stack with a short tagline; keep it concise.
+- Background: black/neutral gradient with slight blur; thin bottom border line.
+
+Section headers
+- Number: <h2> with IGEL Yellow and heavy weight (e.g., class “igel-section-number”).
+- Title: <h3> with white, bold (class “igel-section-title”).
+- Optional hint: uppercase microcopy on the right (class “section-hint”).
+- Underline headers with a subtle bottom border and spacing.
+
+Cards and blocks
+- Use rounded 18–22px corners, 1px soft border, dark glass backgrounds, and hover-lift states.
+- Accent blocks: light yellow radial background wash; keep text white/neutral.
+- Pills: thin yellow border + uppercase tracking; sparing use.
+- Stat bars: gray track with a yellow-to-orange gradient fill; short descriptive copy.
+
+Typography
+- Kicker labels: uppercase, letter-spaced, small (10–12px), yellow or neutral.
+- Body text: 14–16px, neutral-200/300; avoid long walls of text—use short lists.
+- List markers: use simple bullets (-) or “•”; avoid mojibake characters.
+
+Layout rhythm
+- Max content width ~1024–1180px.
+- Main grid: [nav rail | content]; content stack with 32–40px vertical rhythm between sections.
+- Keep consistent padding on cards (20–28px).
+
+Background flourishes
+- Optional “spark” divs: blurred radial gradients in yellow/neutral with low opacity.
+- Avoid heavy patterns; keep it subtle so content stays readable.
+
+Responsive tips
+- Hide the left rail below lg; rely on the mobile menu pills.
+- Ensure text scales comfortably (clamp headings if needed).
+- Avoid fixed heights; let cards grow with content.
+
+Reuseable class ideas (if not using Tailwind @apply):
+- .igel-card: rounded-2xl, border border-neutral-800, bg-neutral-900/80, shadow, backdrop-blur.
+- .igel-pill: inline-flex, rounded-full, thin yellow border, uppercase tracking.
+- .igel-section-number: bold yellow number (h2).
+- .igel-section-title: bold white title (h3).
+- .section-hint: uppercase microcopy with a short gradient underline pseudo-element.
+- .nav-rail: sticky vertical container; .nav-index: yellow circle badge.
+
+Content guidance
+- Lead each page with a strong “value headline” and a short supporting paragraph.
+- Use 3–4 high-impact proof visuals: cheat-sheet block, ROI stat bars, or mini comparison cards.
+- Keep objections, competitive points, and ROI in compact cards for fast scanning.
+- End with a “Before you leave” checklist in a highlighted box.
+
+Accessibility & polish
+- Provide :focus-visible states on interactive elements (outline/offset in yellow).
+- Ensure sufficient contrast (aim for WCAG AA on text).
+- Keep motion subtle; respect prefers-reduced-motion by turning off transitions if implemented.

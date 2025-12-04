@@ -88,6 +88,214 @@
       box-shadow: 0 1px 0 rgba(250, 250, 250, 0.03);
     }
 
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(14, 14, 14, 0.92));
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #f4f4f5;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.3));
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+    }
+
+    .nav-chip:hover {
+      color: #ffe999;
+      border-color: rgba(255, 209, 1, 0.6);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-chip:focus-visible {
+      outline: 2px solid rgba(255, 209, 1, 0.7);
+      outline-offset: 2px;
+    }
+
+    .nav-chip .nav-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #ffd101, #ffb526);
+      color: #141414;
+      font-weight: 800;
+      font-size: 11px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-chip .nav-label {
+      letter-spacing: 0.06em;
+    }
+
+    .nav-chip.is-primary {
+      background: linear-gradient(90deg, rgba(255, 209, 1, 0.14), rgba(255, 209, 1, 0.05));
+      border-color: rgba(255, 209, 1, 0.65);
+      color: #fff9db;
+    }
+
+    .nav-chip.nav-chip-mobile {
+      width: 100%;
+      justify-content: flex-start;
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(18, 18, 18, 0.92);
+    }
+
+    .nav-rail {
+      position: sticky;
+      top: 88px;
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(145deg, rgba(16, 16, 16, 0.92), rgba(20, 20, 20, 0.92));
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+    }
+
+    .nav-rail-title {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 0.25rem;
+    }
+
+    .nav-rail a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.65rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #f4f4f5;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: all 0.18s ease-out;
+    }
+
+    .nav-rail a:hover {
+      border-color: rgba(255, 209, 1, 0.65);
+      color: #fff9db;
+      transform: translateX(2px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-rail .nav-index {
+      width: 26px;
+      height: 26px;
+      border-radius: 9999px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #ffd101, #ffb703);
+      color: #141414;
+      font-weight: 800;
+      font-size: 12px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      margin-bottom: 1rem;
+    }
+
+    .igel-section-number {
+      font-size: 1.2rem;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: #ffd101;
+    }
+
+    .igel-section-title {
+      @apply text-2xl sm:text-3xl font-extrabold tracking-tight;
+      color: #ffffff;
+    }
+
+    .section-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    .section-hint::before {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 209, 1, 0.6));
+      border-radius: 9999px;
+    }
+
+    .accent-block {
+      position: relative;
+      padding: 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at 20% 20%, rgba(255, 209, 1, 0.08), rgba(18, 18, 18, 0.95));
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .icon-bubble {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #ffd101, #ffb703);
+      color: #141414;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    .stat-bar {
+      position: relative;
+      height: 10px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .stat-bar .fill {
+      position: absolute;
+      inset: 0;
+      width: var(--fill, 60%);
+      background: linear-gradient(90deg, #ffd101, #ff7a00);
+    }
+
     /* mobile nav */
     #primaryNav a {
       transition: background 0.15s ease-out, color 0.15s ease-out, transform 0.15s ease-out;
@@ -133,116 +341,112 @@
   <meta name="twitter:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
 </head>
 
-<body class="min-h-screen text-sm sm:text-base">
-  <!-- Decorative sparks -->
-  <div class="spark w-64 h-64 -top-10 -left-10 opacity-80"></div>
-  <div class="spark w-80 h-80 top-1/3 -right-16 opacity-70"></div>
-  <div class="spark w-56 h-56 bottom-10 left-1/4 opacity-60"></div>
+  <body class="min-h-screen text-sm sm:text-base">
+    <!-- Decorative sparks -->
+    <div class="spark w-64 h-64 -top-10 -left-10 opacity-80"></div>
+    <div class="spark w-80 h-80 top-1/3 -right-16 opacity-70"></div>
+    <div class="spark w-56 h-56 bottom-10 left-1/4 opacity-60"></div>
 
-  <!-- Header & Nav -->
-  <header
-    class="sticky top-0 z-40 border-b border-neutral-800/80 bg-gradient-to-r from-black/95 via-neutral-950/95 to-black/95 backdrop-blur nav-shadow">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-      <div class="flex items-center gap-3">
-        <img
-          src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
-          alt="IGEL logo" class="h-8 w-auto" />
-        <div class="hidden flex-col leading-tight sm:flex">
-          <span class="text-xs font-semibold tracking-[0.22em] uppercase text-yellow-300">
-            SaaS &amp; Web App
-          </span>
-          <span class="text-sm font-semibold text-white">
-            IGEL Seller Playbook
-          </span>
+    <!-- Header & Nav -->
+    <header
+      class="sticky top-0 z-40 border-b border-neutral-800/80 bg-gradient-to-r from-black/95 via-neutral-950/95 to-black/95 backdrop-blur nav-shadow">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-center justify-between gap-4 py-3">
+          <div class="flex items-center gap-3">
+            <img
+              src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+              alt="IGEL logo" class="h-9 w-auto" />
+            <div class="flex flex-col leading-tight">
+              <span class="text-[10px] font-semibold tracking-[0.22em] uppercase text-yellow-300">
+                SaaS &amp; Web App
+              </span>
+              <span class="text-sm font-semibold text-white">
+                IGEL Seller Playbook
+              </span>
+            </div>
+          </div>
+
+          <div class="hidden flex-1 justify-end text-right sm:flex">
+            <div class="flex flex-col gap-0.5">
+              <span class="text-[11px] uppercase tracking-[0.18em] text-neutral-400">Hero comments</span>
+              <span class="text-lg font-semibold text-white">SaaS &amp; Web App | IGEL seller playbook</span>
+              <span class="text-xs text-neutral-400">Secure • Managed • Browser-first • Cost down</span>
+            </div>
+          </div>
+
+          <button id="navToggle"
+            class="inline-flex items-center justify-center rounded-full border border-neutral-700 px-3 py-1 text-xs font-medium text-neutral-100 sm:hidden"
+            aria-expanded="false" aria-controls="primaryNav">
+            Menu
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
       </div>
 
-      <!-- Desktop nav -->
-      <nav class="hidden items-center gap-1 text-[11px] font-medium sm:flex">
-        <a href="#exec-summary"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">Summary</a>
-        <a href="#value-prop"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">Value
-          Prop</a>
-        <a href="#pain-points"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">Pain
-          &amp; Fix</a>
-        <a href="#icp"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">ICP</a>
-        <a href="#discovery"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">Discovery</a>
-        <a href="#messaging"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">Messaging</a>
-        <a href="#competitive"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">Competitive</a>
-        <a href="#objections"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">Objections</a>
-        <a href="#sales-motion"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">Sales
-          Motion</a>
-        <a href="#roi"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">ROI</a>
-        <a href="#toolkit"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">Toolkit</a>
-        <a href="#final-summary"
-          class="rounded-full px-3 py-1 hover:bg-yellow-300/10 hover:text-yellow-200">Final
-          Summary</a>
+      <!-- Mobile nav -->
+      <nav id="primaryNav" class="hidden border-t border-neutral-800/70 bg-black/95 sm:hidden">
+        <div class="mx-auto max-w-6xl px-4 py-3 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-2 gap-2">
+            <a href="#exec-summary" class="nav-chip nav-chip-mobile"><span class="nav-index">1</span><span
+                class="nav-label">Summary</span></a>
+            <a href="#value-prop" class="nav-chip nav-chip-mobile"><span class="nav-index">2</span><span
+                class="nav-label">Value Prop</span></a>
+            <a href="#pain-points" class="nav-chip nav-chip-mobile"><span class="nav-index">3</span><span
+                class="nav-label">Pain &amp; Fix</span></a>
+            <a href="#icp" class="nav-chip nav-chip-mobile"><span class="nav-index">4</span><span
+                class="nav-label">ICP</span></a>
+            <a href="#discovery" class="nav-chip nav-chip-mobile"><span class="nav-index">5</span><span
+                class="nav-label">Discovery</span></a>
+            <a href="#messaging" class="nav-chip nav-chip-mobile"><span class="nav-index">6</span><span
+                class="nav-label">Messaging</span></a>
+            <a href="#competitive" class="nav-chip nav-chip-mobile"><span class="nav-index">7</span><span
+                class="nav-label">Competitive</span></a>
+            <a href="#objections" class="nav-chip nav-chip-mobile"><span class="nav-index">8</span><span
+                class="nav-label">Objections</span></a>
+            <a href="#sales-motion" class="nav-chip nav-chip-mobile"><span class="nav-index">9</span><span
+                class="nav-label">Sales Motion</span></a>
+            <a href="#roi" class="nav-chip nav-chip-mobile"><span class="nav-index">10</span><span
+                class="nav-label">ROI</span></a>
+            <a href="#deployment" class="nav-chip nav-chip-mobile"><span class="nav-index">11</span><span
+                class="nav-label">Deployment</span></a>
+            <a href="#toolkit" class="nav-chip nav-chip-mobile"><span class="nav-index">12</span><span
+                class="nav-label">Toolkit</span></a>
+            <a href="#add-ons" class="nav-chip nav-chip-mobile"><span class="nav-index">13</span><span
+                class="nav-label">Add-ons</span></a>
+            <a href="#final-summary" class="nav-chip nav-chip-mobile"><span class="nav-index">14</span><span
+                class="nav-label">Final</span></a>
+          </div>
+        </div>
       </nav>
-
-      <!-- Mobile nav toggle -->
-      <button id="navToggle"
-        class="inline-flex items-center justify-center rounded-full border border-neutral-700 px-3 py-1 text-xs font-medium text-neutral-100 sm:hidden"
-        aria-expanded="false" aria-controls="primaryNav">
-        Menu
-        <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile nav -->
-    <nav id="primaryNav" class="hidden border-t border-neutral-800/70 bg-black/95 sm:hidden">
-      <div class="mx-auto flex max-w-6xl flex-wrap gap-2 px-4 py-3 text-[11px] font-medium">
-        <a href="#exec-summary"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Summary</a>
-        <a href="#value-prop"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Value
-          Prop</a>
-        <a href="#pain-points"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Pain
-          &amp; Fix</a>
-        <a href="#icp"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">ICP</a>
-        <a href="#discovery"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Discovery</a>
-        <a href="#messaging"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Messaging</a>
-        <a href="#competitive"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Competitive</a>
-        <a href="#objections"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Objections</a>
-        <a href="#sales-motion"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Sales
-          Motion</a>
-        <a href="#roi"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">ROI</a>
-        <a href="#deployment"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Deployment</a>
-        <a href="#toolkit"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Toolkit</a>
-        <a href="#add-ons"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Add-ons</a>
-        <a href="#final-summary"
-          class="rounded-full bg-neutral-900 px-3 py-1 text-neutral-100 hover:bg-yellow-300/15 hover:text-yellow-100">Final
-          Summary</a>
-      </div>
-    </nav>
   </header>
 
-  <!-- Main -->
-  <main class="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">
+  <!-- Layout -->
+  <div class="mx-auto max-w-6xl grid gap-6 px-4 pb-16 pt-6 sm:px-6 lg:grid-cols-[230px,1fr] lg:px-8">
+    <!-- Desktop left rail nav -->
+    <aside class="nav-rail hidden lg:flex">
+      <div class="nav-rail-title">Navigate</div>
+      <a href="#exec-summary"><span class="nav-index">1</span><span>Summary</span></a>
+      <a href="#value-prop"><span class="nav-index">2</span><span>Value Prop</span></a>
+      <a href="#pain-points"><span class="nav-index">3</span><span>Pain &amp; Fix</span></a>
+      <a href="#icp"><span class="nav-index">4</span><span>ICP</span></a>
+      <a href="#discovery"><span class="nav-index">5</span><span>Discovery</span></a>
+      <a href="#messaging"><span class="nav-index">6</span><span>Messaging</span></a>
+      <a href="#competitive"><span class="nav-index">7</span><span>Competitive</span></a>
+      <a href="#objections"><span class="nav-index">8</span><span>Objections</span></a>
+      <a href="#sales-motion"><span class="nav-index">9</span><span>Sales Motion</span></a>
+      <a href="#roi"><span class="nav-index">10</span><span>ROI</span></a>
+      <a href="#deployment"><span class="nav-index">11</span><span>Deployment</span></a>
+      <a href="#toolkit"><span class="nav-index">12</span><span>Toolkit</span></a>
+      <a href="#add-ons"><span class="nav-index">13</span><span>Add-ons</span></a>
+      <a href="#final-summary"><span class="nav-index">14</span><span>Final</span></a>
+    </aside>
+
+    <!-- Main -->
+    <main class="w-full">
     <!-- Hero / Executive Summary -->
     <section id="exec-summary" class="mb-10 sm:mb-14">
       <div
@@ -251,9 +455,9 @@
         <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-yellow-400 via-yellow-500 to-amber-400">
         </div>
 
-        <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-          <div class="sm:max-w-xl">
-            <p class="igel-section-kicker mb-2">1. Executive Summary</p>
+          <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+            <div class="sm:max-w-xl">
+            <h2 class="igel-section-number mb-2">1. Executive Summary</h2>
             <h1 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
               Sell the browser, not the box.
             </h1>
@@ -293,6 +497,42 @@
             </ul>
           </div>
         </div>
+
+        <div class="mt-6 grid gap-3 sm:grid-cols-3">
+          <div class="accent-block">
+            <div class="flex items-center gap-3">
+              <span class="icon-bubble">Sec</span>
+              <div>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+                  Lock down fast
+                </p>
+                <p class="text-sm font-semibold text-white">Read-only OS, no local data, policy-led browsers.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accent-block">
+            <div class="flex items-center gap-3">
+              <span class="icon-bubble">Ops</span>
+              <div>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+                  Manage once
+                </p>
+                <p class="text-sm font-semibold text-white">Central console, zero-touch rollout, consistent UX.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accent-block">
+            <div class="flex items-center gap-3">
+              <span class="icon-bubble">ROI</span>
+              <div>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+                  Spend smarter
+                </p>
+                <p class="text-sm font-semibold text-white">Extend devices 3-5 years and shrink refresh spend.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -300,14 +540,12 @@
     <section id="value-prop" class="mb-10 sm:mb-14">
       <div class="grid gap-6 lg:grid-cols-[1.3fr,1fr]">
         <article class="igel-card hover-lift p-5 sm:p-7">
-          <div class="flex items-center justify-between gap-3">
+          <div class="section-header">
             <div>
-              <p class="igel-section-kicker mb-1">2. Value Proposition</p>
-              <h2 class="igel-section-title">IGEL for SaaS &amp; Web Apps</h2>
+              <h2 class="igel-section-number mb-1">2. Value Proposition</h2>
+              <h3 class="igel-section-title">IGEL for SaaS &amp; Web Apps</h3>
             </div>
-            <span class="hidden rounded-full bg-neutral-800 px-3 py-1 text-[11px] font-medium text-neutral-200 sm:inline-flex">
-              Core positioning
-            </span>
+            <span class="section-hint">Core positioning</span>
           </div>
           <p class="mt-4 text-sm text-neutral-200 sm:text-[15px]">
             IGEL delivers secure, high-performance access to SaaS and web apps on any endpoint —
@@ -360,18 +598,42 @@
           </div>
         </aside>
       </div>
+
+      <div class="mt-5 igel-card hover-lift p-5 sm:p-6">
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-300">Ticket reduction</p>
+            <div class="mt-2 stat-bar">
+              <div class="fill" style="--fill:72%;"></div>
+            </div>
+            <p class="mt-2 text-xs text-neutral-200 sm:text-sm">Up to 70% fewer support tickets with locked-down, read-only builds.</p>
+          </div>
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-300">Hardware life extension</p>
+            <div class="mt-2 stat-bar">
+              <div class="fill" style="--fill:85%;"></div>
+            </div>
+            <p class="mt-2 text-xs text-neutral-200 sm:text-sm">Extend endpoint lifespan 3-5 years by shifting heavy work to SaaS.</p>
+          </div>
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-300">CAPEX avoided</p>
+            <div class="mt-2 stat-bar">
+              <div class="fill" style="--fill:65%;"></div>
+            </div>
+            <p class="mt-2 text-xs text-neutral-200 sm:text-sm">Reduce refresh spend while keeping performance high for browser-first roles.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- 3. Pain Points & How IGEL Solves Them -->
     <section id="pain-points" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">3. Customer Pain &amp; Resolution</p>
-          <h2 class="igel-section-title">Map the pain directly to IGEL outcomes</h2>
+          <h2 class="igel-section-number mb-1">3. Customer Pain &amp; Resolution</h2>
+          <h3 class="igel-section-title">Map the pain directly to IGEL outcomes</h3>
         </div>
-        <span class="hidden text-[11px] text-neutral-400 sm:inline">
-          Use these bullets in discovery &amp; your pitch.
-        </span>
+        <span class="section-hint">Use these bullets in discovery &amp; your pitch</span>
       </div>
 
       <div class="grid gap-5 md:grid-cols-2">
@@ -469,11 +731,12 @@
 
     <!-- 4. ICP -->
     <section id="icp" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">4. Ideal Customer Profiles</p>
-          <h2 class="igel-section-title">Who is the perfect SaaS &amp; web app IGEL customer?</h2>
+          <h2 class="igel-section-number mb-1">4. Ideal Customer Profiles</h2>
+          <h3 class="igel-section-title">Who is the perfect SaaS &amp; web app IGEL customer?</h3>
         </div>
+        <span class="section-hint">Target segments</span>
       </div>
 
       <div class="grid gap-5 md:grid-cols-2">
@@ -541,11 +804,12 @@
 
     <!-- 5. Discovery Questions -->
     <section id="discovery" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">5. Discovery</p>
-          <h2 class="igel-section-title">Discovery questions for SaaS &amp; web app opportunities</h2>
+          <h2 class="igel-section-number mb-1">5. Discovery</h2>
+          <h3 class="igel-section-title">Discovery questions for SaaS &amp; web app opportunities</h3>
         </div>
+        <span class="section-hint">Qualify early</span>
       </div>
 
       <div class="grid gap-5 md:grid-cols-3">
@@ -589,11 +853,12 @@
 
     <!-- 6. Messaging Framework -->
     <section id="messaging" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">6. Messaging Framework</p>
-          <h2 class="igel-section-title">How to tell the IGEL SaaS story</h2>
+          <h2 class="igel-section-number mb-1">6. Messaging Framework</h2>
+          <h3 class="igel-section-title">How to tell the IGEL SaaS story</h3>
         </div>
+        <span class="section-hint">Story beats</span>
       </div>
 
       <div class="grid gap-5 lg:grid-cols-[1.3fr,1fr]">
@@ -660,11 +925,12 @@
 
     <!-- 7. Competitive Positioning -->
     <section id="competitive" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">7. Competitive Positioning</p>
-          <h2 class="igel-section-title">How to compare IGEL against alternatives</h2>
+          <h2 class="igel-section-number mb-1">7. Competitive Positioning</h2>
+          <h3 class="igel-section-title">How to compare IGEL against alternatives</h3>
         </div>
+        <span class="section-hint">Contrast quickly</span>
       </div>
 
       <div class="grid gap-5 lg:grid-cols-3">
@@ -708,11 +974,12 @@
 
     <!-- 8. Objections -->
     <section id="objections" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">8. Common Objections</p>
-          <h2 class="igel-section-title">Objection handling crib sheet</h2>
+          <h2 class="igel-section-number mb-1">8. Common Objections</h2>
+          <h3 class="igel-section-title">Objection handling crib sheet</h3>
         </div>
+        <span class="section-hint">Answer crisply</span>
       </div>
 
       <div class="grid gap-5 md:grid-cols-2">
@@ -799,11 +1066,12 @@
 
     <!-- 9. Sales Motion -->
     <section id="sales-motion" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">9. Sales Motion</p>
-          <h2 class="igel-section-title">Repeatable SaaS / web app sales motion</h2>
+          <h2 class="igel-section-number mb-1">9. Sales Motion</h2>
+          <h3 class="igel-section-title">Repeatable SaaS / web app sales motion</h3>
         </div>
+        <span class="section-hint">Flow to follow</span>
       </div>
 
       <div class="igel-card hover-lift p-5 sm:p-6">
@@ -868,11 +1136,12 @@
 
     <!-- 10. ROI Messaging -->
     <section id="roi" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">10. ROI &amp; Financial Impact</p>
-          <h2 class="igel-section-title">Make the business case impossible to ignore</h2>
+          <h2 class="igel-section-number mb-1">10. ROI &amp; Financial Impact</h2>
+          <h3 class="igel-section-title">Make the business case impossible to ignore</h3>
         </div>
+        <span class="section-hint">Prove it fast</span>
       </div>
 
       <div class="grid gap-5 lg:grid-cols-[1.3fr,1fr]">
@@ -906,11 +1175,12 @@
 
     <!-- 11. Deployment Patterns -->
     <section id="deployment" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">11. Deployment Patterns</p>
-          <h2 class="igel-section-title">Common SaaS / web app deployment modes</h2>
+          <h2 class="igel-section-number mb-1">11. Deployment Patterns</h2>
+          <h3 class="igel-section-title">Common SaaS / web app deployment modes</h3>
         </div>
+        <span class="section-hint">Pick the mode</span>
       </div>
 
       <div class="grid gap-5 md:grid-cols-3">
@@ -960,11 +1230,12 @@
 
     <!-- 12. Sales Toolkit -->
     <section id="toolkit" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">12. Sales Toolkit</p>
-          <h2 class="igel-section-title">Copy / paste-ready assets</h2>
+          <h2 class="igel-section-number mb-1">12. Sales Toolkit</h2>
+          <h3 class="igel-section-title">Copy / paste-ready assets</h3>
         </div>
+        <span class="section-hint">Ready to send</span>
       </div>
 
       <div class="grid gap-5 lg:grid-cols-2">
@@ -1020,11 +1291,12 @@
 
     <!-- 13. Add-ons & Integrations -->
     <section id="add-ons" class="mb-10 sm:mb-14">
-      <div class="mb-4 flex items-center justify-between gap-3">
+      <div class="section-header">
         <div>
-          <p class="igel-section-kicker mb-1">13. Add-ons &amp; Integrations</p>
-          <h2 class="igel-section-title">Enhancing the IGEL SaaS stack</h2>
+          <h2 class="igel-section-number mb-1">13. Add-ons &amp; Integrations</h2>
+          <h3 class="igel-section-title">Enhancing the IGEL SaaS stack</h3>
         </div>
+        <span class="section-hint">Stack fit</span>
       </div>
 
       <div class="igel-card hover-lift p-5 sm:p-6">
@@ -1063,33 +1335,39 @@
 
     <!-- 14. Final Summary -->
     <section id="final-summary" class="mb-4 sm:mb-6">
-      <div class="igel-card hover-lift flex flex-col gap-5 p-5 sm:flex-row sm:items-start sm:justify-between sm:p-6">
-        <div class="sm:max-w-xl">
-          <p class="igel-section-kicker mb-1">14. Final Summary</p>
-          <h2 class="igel-section-title">IGEL is the SaaS-first endpoint OS</h2>
-          <p class="mt-3 text-sm text-neutral-200 sm:text-[15px]">
-            This playbook gives you everything you need to sell IGEL into SaaS and browser-first
-            environments. The biggest wins come from customers who want stronger endpoint security,
-            centralized control, lower cost, and standardized SaaS/web workflows across a
-            cloud-first digital workplace.
-          </p>
+      <div class="igel-card hover-lift flex flex-col gap-5 p-5 sm:p-6">
+        <div class="section-header">
+          <div>
+            <h2 class="igel-section-number mb-1">14. Final Summary</h2>
+            <h3 class="igel-section-title">IGEL is the SaaS-first endpoint OS</h3>
+          </div>
+          <span class="section-hint">Close with clarity</span>
         </div>
-        <div
-          class="flex flex-col gap-2 rounded-2xl border border-yellow-300/40 bg-yellow-300/10 p-4 text-xs text-neutral-100 sm:w-64 sm:text-sm">
-          <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-200">
-            Before you leave the meeting, confirm:
-          </p>
-          <ul class="mt-1 space-y-1.5">
-            <li>• They are SaaS / browser-first or moving that way.</li>
-            <li>• They struggle with endpoint security, patching, or UX consistency.</li>
-            <li>• They care about extending device life and cutting refresh costs.</li>
-            <li>• They have at least one pilot-ready group (contact center, branch, remote workers,
-              etc.).</li>
-          </ul>
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+          <div class="sm:max-w-xl">
+            <p class="text-sm text-neutral-200 sm:text-[15px]">
+              This playbook gives you everything you need to sell IGEL into SaaS and browser-first
+              environments. The biggest wins come from customers who want stronger endpoint security,
+              centralized control, lower cost, and standardized SaaS/web workflows across a
+              cloud-first digital workplace.
+            </p>
+          </div>
+          <div
+            class="flex flex-col gap-2 rounded-2xl border border-yellow-300/40 bg-yellow-300/10 p-4 text-xs text-neutral-100 sm:w-64 sm:text-sm">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-200">
+              Before you leave the meeting, confirm:
+            </p>
+            <ul class="mt-1 space-y-1.5">
+              <li>- They are SaaS / browser-first or moving that way.</li>
+              <li>- They struggle with endpoint security, patching, or UX consistency.</li>
+              <li>- They care about extending device life and cutting refresh costs.</li>
+              <li>- They have at least one pilot-ready group (contact center, branch, remote workers,
+                etc.).</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
-
     <!-- Back to top -->
     <div class="flex justify-end">
       <a href="#exec-summary"
@@ -1097,7 +1375,8 @@
         ↑ Back to top
       </a>
     </div>
-  </main>
+    </main>
+  </div>
 
   <!-- Footer -->
   <footer class="border-t border-neutral-900 bg-black/95 py-4 text-[11px] text-neutral-500">
