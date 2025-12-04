@@ -174,6 +174,22 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
     }
 
+    @media (max-height: 900px) {
+      .nav-rail {
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+      }
+
+      .nav-rail::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .nav-rail::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 999px;
+      }
+    }
+
     .nav-rail-title {
       font-size: 11px;
       letter-spacing: 0.18em;
@@ -229,16 +245,22 @@
     }
 
     .igel-section-number {
-      font-size: 1.2rem;
-      line-height: 1.3;
+      font-size: 1.45rem;
+      line-height: 1.25;
       font-weight: 800;
       letter-spacing: 0.04em;
       color: #ffd101;
     }
 
+    .igel-heading-highlight {
+      color: var(--igel-yellow);
+    }
+
     .igel-section-title {
       @apply text-2xl sm:text-3xl font-extrabold tracking-tight;
       color: #ffffff;
+      font-size: clamp(1.9rem, 1.6vw + 1rem, 2.6rem);
+      line-height: 1.22;
     }
 
     .section-hint {
@@ -303,6 +325,11 @@
 
     #primaryNav a:hover {
       transform: translateY(-1px);
+    }
+
+    #primaryNav {
+      max-height: 65vh;
+      overflow-y: auto;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -457,9 +484,8 @@
 
           <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
             <div class="sm:max-w-xl">
-            <h2 class="igel-section-number mb-2">1. Executive Summary</h2>
-            <h1 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Sell the browser, not the box.
+            <h1 class="igel-heading-highlight text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">
+              A sales playbook to help position IGEL for SaaS and Web App Scenarios
             </h1>
             <p class="mt-4 text-sm text-neutral-200 sm:text-base">
               IGEL gives SaaS-first, browser-first organizations a secure, centrally managed endpoint
@@ -542,7 +568,7 @@
         <article class="igel-card hover-lift p-5 sm:p-7">
           <div class="section-header">
             <div>
-              <h2 class="igel-section-number mb-1">2. Value Proposition</h2>
+              <h1 class="igel-section-number mb-1">Value Proposition</h1>
               <h3 class="igel-section-title">IGEL for SaaS &amp; Web Apps</h3>
             </div>
             <span class="section-hint">Core positioning</span>
@@ -630,7 +656,7 @@
     <section id="pain-points" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">3. Customer Pain &amp; Resolution</h2>
+          <h1 class="igel-section-number mb-1">Customer Pain &amp; Resolution</h1>
           <h3 class="igel-section-title">Map the pain directly to IGEL outcomes</h3>
         </div>
         <span class="section-hint">Use these bullets in discovery &amp; your pitch</span>
@@ -733,7 +759,7 @@
     <section id="icp" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">4. Ideal Customer Profiles</h2>
+          <h1 class="igel-section-number mb-1">Ideal Customer Profiles</h1>
           <h3 class="igel-section-title">Who is the perfect SaaS &amp; web app IGEL customer?</h3>
         </div>
         <span class="section-hint">Target segments</span>
@@ -806,7 +832,7 @@
     <section id="discovery" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">5. Discovery</h2>
+          <h1 class="igel-section-number mb-1">Discovery</h1>
           <h3 class="igel-section-title">Discovery questions for SaaS &amp; web app opportunities</h3>
         </div>
         <span class="section-hint">Qualify early</span>
@@ -855,13 +881,13 @@
     <section id="messaging" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">6. Messaging Framework</h2>
+          <h1 class="igel-section-number mb-1">Messaging Framework</h1>
           <h3 class="igel-section-title">How to tell the IGEL SaaS story</h3>
         </div>
         <span class="section-hint">Story beats</span>
       </div>
 
-      <div class="grid gap-5 lg:grid-cols-[1.3fr,1fr]">
+      <div class="flex flex-col gap-5">
         <article class="igel-card hover-lift p-5 sm:p-6">
           <h3 class="text-sm font-semibold text-yellow-300">
             Primary message
@@ -871,46 +897,48 @@
             web-based applications — ideal for modern, distributed workforces.
           </p>
 
-          <div class="mt-5 overflow-hidden rounded-2xl border border-neutral-800">
-            <div
-              class="grid grid-cols-2 bg-neutral-900/80 text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-300 sm:grid-cols-5">
-              <div class="border-b border-neutral-800 px-3 py-2 sm:border-b-0 sm:border-r">
-                Need
-              </div>
-              <div class="border-b border-neutral-800 px-3 py-2 sm:border-b-0 sm:border-r">
-                Security
-              </div>
-              <div class="border-b border-neutral-800 px-3 py-2 sm:border-b-0 sm:border-r">
-                Cost
-              </div>
-              <div class="border-b border-neutral-800 px-3 py-2 sm:border-b-0 sm:border-r">
-                Simplicity
-              </div>
-              <div class="px-3 py-2">Experience &amp; Scale</div>
-            </div>
-            <div class="bg-neutral-950/90 text-xs text-neutral-200 sm:text-sm">
-              <div class="grid grid-cols-2 border-b border-neutral-900 sm:grid-cols-5">
-                <div class="border-r border-neutral-900 px-3 py-3 font-semibold text-neutral-100">
-                  IGEL message
+          <div class="mt-5 overflow-x-auto">
+            <div class="min-w-[780px] w-full overflow-hidden rounded-2xl border border-neutral-800">
+              <div
+                class="grid grid-cols-2 bg-neutral-900/80 text-[12px] font-semibold uppercase tracking-[0.18em] text-neutral-300 sm:grid-cols-5">
+                <div class="border-b border-neutral-800 px-4 py-3 sm:border-b-0 sm:border-r">
+                  Need
                 </div>
-                <div class="border-r border-neutral-900 px-3 py-3">
-                  Prevents malware, removes local data, enforces endpoint controls.
+                <div class="border-b border-neutral-800 px-4 py-3 sm:border-b-0 sm:border-r">
+                  Security
                 </div>
-                <div class="border-r border-neutral-900 px-3 py-3">
-                  Extends hardware life, reduces OS overhead and licensing.
+                <div class="border-b border-neutral-800 px-4 py-3 sm:border-b-0 sm:border-r">
+                  Cost
                 </div>
-                <div class="border-r border-neutral-900 px-3 py-3">
-                  Zero-touch provisioning, simple updates, intuitive UI.
+                <div class="border-b border-neutral-800 px-4 py-3 sm:border-b-0 sm:border-r">
+                  Simplicity
                 </div>
-                <div class="px-3 py-3">
-                  Fast, consistent SaaS access; manage thousands of devices from one interface.
+                <div class="px-4 py-3">Experience &amp; Scale</div>
+              </div>
+              <div class="bg-neutral-950/90 text-xs text-neutral-200 sm:text-sm">
+                <div class="grid grid-cols-2 border-b border-neutral-900 sm:grid-cols-5">
+                  <div class="border-r border-neutral-900 px-4 py-4 font-semibold text-neutral-100">
+                    IGEL message
+                  </div>
+                  <div class="border-r border-neutral-900 px-4 py-4">
+                    Prevents malware, removes local data, enforces endpoint controls.
+                  </div>
+                  <div class="border-r border-neutral-900 px-4 py-4">
+                    Extends hardware life, reduces OS overhead and licensing.
+                  </div>
+                  <div class="border-r border-neutral-900 px-4 py-4">
+                    Zero-touch provisioning, simple updates, intuitive UI.
+                  </div>
+                  <div class="px-4 py-4">
+                    Fast, consistent SaaS access; manage thousands of devices from one interface.
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </article>
 
-        <aside class="igel-card hover-lift p-5 sm:p-6">
+        <article class="igel-card hover-lift p-5 sm:p-6">
           <h3 class="text-sm font-semibold text-yellow-300">
             Quick positioning lines
           </h3>
@@ -919,7 +947,7 @@
             <li>• “We secure the browser and the device that runs it — at scale.”</li>
             <li>• “You keep your hardware. We give it a modern, secure SaaS life.”</li>
           </ul>
-        </aside>
+        </article>
       </div>
     </section>
 
@@ -927,7 +955,7 @@
     <section id="competitive" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">7. Competitive Positioning</h2>
+          <h1 class="igel-section-number mb-1">Competitive Positioning</h1>
           <h3 class="igel-section-title">How to compare IGEL against alternatives</h3>
         </div>
         <span class="section-hint">Contrast quickly</span>
@@ -976,7 +1004,7 @@
     <section id="objections" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">8. Common Objections</h2>
+          <h1 class="igel-section-number mb-1">Common Objections</h1>
           <h3 class="igel-section-title">Objection handling crib sheet</h3>
         </div>
         <span class="section-hint">Answer crisply</span>
@@ -1068,7 +1096,7 @@
     <section id="sales-motion" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">9. Sales Motion</h2>
+          <h1 class="igel-section-number mb-1">Sales Motion</h1>
           <h3 class="igel-section-title">Repeatable SaaS / web app sales motion</h3>
         </div>
         <span class="section-hint">Flow to follow</span>
@@ -1138,7 +1166,7 @@
     <section id="roi" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">10. ROI &amp; Financial Impact</h2>
+          <h1 class="igel-section-number mb-1">ROI &amp; Financial Impact</h1>
           <h3 class="igel-section-title">Make the business case impossible to ignore</h3>
         </div>
         <span class="section-hint">Prove it fast</span>
@@ -1177,7 +1205,7 @@
     <section id="deployment" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">11. Deployment Patterns</h2>
+          <h1 class="igel-section-number mb-1">Deployment Patterns</h1>
           <h3 class="igel-section-title">Common SaaS / web app deployment modes</h3>
         </div>
         <span class="section-hint">Pick the mode</span>
@@ -1232,7 +1260,7 @@
     <section id="toolkit" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">12. Sales Toolkit</h2>
+          <h1 class="igel-section-number mb-1">Sales Toolkit</h1>
           <h3 class="igel-section-title">Copy / paste-ready assets</h3>
         </div>
         <span class="section-hint">Ready to send</span>
@@ -1293,7 +1321,7 @@
     <section id="add-ons" class="mb-10 sm:mb-14">
       <div class="section-header">
         <div>
-          <h2 class="igel-section-number mb-1">13. Add-ons &amp; Integrations</h2>
+          <h1 class="igel-section-number mb-1">Add-ons &amp; Integrations</h1>
           <h3 class="igel-section-title">Enhancing the IGEL SaaS stack</h3>
         </div>
         <span class="section-hint">Stack fit</span>
@@ -1338,7 +1366,7 @@
       <div class="igel-card hover-lift flex flex-col gap-5 p-5 sm:p-6">
         <div class="section-header">
           <div>
-            <h2 class="igel-section-number mb-1">14. Final Summary</h2>
+            <h1 class="igel-section-number mb-1">Final Summary</h1>
             <h3 class="igel-section-title">IGEL is the SaaS-first endpoint OS</h3>
           </div>
           <span class="section-hint">Close with clarity</span>
@@ -1382,7 +1410,7 @@
   <footer class="border-t border-neutral-900 bg-black/95 py-4 text-[11px] text-neutral-500">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
       <span>IGEL · SaaS &amp; Web App Sales Playbook</span>
-      <span class="hidden sm:inline">Built for IGEL sellers in a cloud-first, hybrid work world.</span>
+      <span class="hidden sm:inline">Built by Broadwood.</span>
     </div>
   </footer>
 

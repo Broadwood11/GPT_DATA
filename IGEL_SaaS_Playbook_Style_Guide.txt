@@ -27,11 +27,12 @@ Navigation (desktop)
 - Left sticky rail, ~230px wide, position: sticky, top ~88px.
 - Each link: pill/rounded rectangle with a small numbered bubble (yellow gradient) + label.
 - Rail container: dark glassy panel with 1px soft border; shadow for lift.
-- Sequence your sections numerically; match numbers between nav and section headings.
+- When viewport height is tight, allow the rail to scroll (max-height ~calc(100vh - 120px), thin scrollbar); on tall screens, let it breathe naturally.
 
 Navigation (mobile)
-- Keep a top “Menu” toggle that reveals a grid of pill links.
+- Keep a top "Menu" toggle that reveals a grid of pill links.
 - Use compact rounded pills with light borders and hover/focus transitions.
+- Cap menu height around 65vh and enable vertical scrolling so the full list is always reachable.
 
 Header / hero strip
 - Left: IGEL logo + 2-line text block (kicker and title).
@@ -39,9 +40,9 @@ Header / hero strip
 - Background: black/neutral gradient with slight blur; thin bottom border line.
 
 Section headers
-- Number: <h2> with IGEL Yellow and heavy weight (e.g., class “igel-section-number”).
-- Title: <h3> with white, bold (class “igel-section-title”).
-- Optional hint: uppercase microcopy on the right (class “section-hint”).
+- Section label: <h1> in IGEL Yellow (class "igel-section-number"), sized up (~1.45rem).
+- Title: <h3> in white (class "igel-section-title") with a clamp so it scales on larger displays.
+- Optional hint: uppercase microcopy on the right (class "section-hint").
 - Underline headers with a subtle bottom border and spacing.
 
 Cards and blocks
@@ -66,14 +67,19 @@ Background flourishes
 
 Responsive tips
 - Hide the left rail below lg; rely on the mobile menu pills.
-- Ensure text scales comfortably (clamp headings if needed).
+- Clamp section titles so they scale smoothly on larger displays.
 - Avoid fixed heights; let cards grow with content.
+
+Messaging layout
+- Primary messaging table should span the content width with a min-width (~780px) and horizontal scroll if needed; use generous padding on cells.
+- Place quick positioning lines in their own full-width card beneath the primary message block.
 
 Reuseable class ideas (if not using Tailwind @apply):
 - .igel-card: rounded-2xl, border border-neutral-800, bg-neutral-900/80, shadow, backdrop-blur.
 - .igel-pill: inline-flex, rounded-full, thin yellow border, uppercase tracking.
-- .igel-section-number: bold yellow number (h2).
+- .igel-section-number: bold yellow section label (h1-sized).
 - .igel-section-title: bold white title (h3).
+- .igel-heading-highlight: apply IGEL yellow to key hero headings.
 - .section-hint: uppercase microcopy with a short gradient underline pseudo-element.
 - .nav-rail: sticky vertical container; .nav-index: yellow circle badge.
 
