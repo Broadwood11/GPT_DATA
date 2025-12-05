@@ -184,9 +184,27 @@
         width: 8px;
       }
 
-      .nav-rail::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 999px;
+    .nav-rail::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+    }
+    }
+
+    .page-shell {
+      transform-origin: top left;
+    }
+
+    @media (max-width: 1500px) {
+      .page-shell {
+        transform: scale(0.94);
+        width: 106%;
+      }
+    }
+
+    @media (max-width: 1350px) {
+      .page-shell {
+        transform: scale(0.9);
+        width: 112%;
       }
     }
 
@@ -452,7 +470,7 @@
   </header>
 
   <!-- Layout -->
-  <div class="mx-auto max-w-6xl grid gap-6 px-4 pb-16 pt-6 sm:px-6 lg:grid-cols-[230px,1fr] lg:px-8">
+  <div class="page-shell mx-auto max-w-6xl grid gap-6 px-4 pb-16 pt-6 sm:px-6 lg:grid-cols-[230px,1fr] lg:px-8">
     <!-- Desktop left rail nav -->
     <aside class="nav-rail hidden lg:flex">
       <div class="nav-rail-title">Navigate</div>

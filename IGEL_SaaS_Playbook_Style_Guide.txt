@@ -28,6 +28,7 @@ Navigation (desktop)
 - Each link: pill/rounded rectangle with a small numbered bubble (yellow gradient) + label.
 - Rail container: dark glassy panel with 1px soft border; shadow for lift.
 - When viewport height is tight, allow the rail to scroll (max-height ~calc(100vh - 120px), thin scrollbar); on tall screens, let it breathe naturally.
+- For embedded iframe use, scale the main shell down slightly on medium view widths (e.g., 94% below ~1500px, 90% below ~1350px) and offset width so content still fills the rail + content grid.
 
 Navigation (mobile)
 - Keep a top "Menu" toggle that reveals a grid of pill links.
@@ -69,6 +70,7 @@ Responsive tips
 - Hide the left rail below lg; rely on the mobile menu pills.
 - Clamp section titles so they scale smoothly on larger displays.
 - Avoid fixed heights; let cards grow with content.
+- For iframe embeds, a scaled shell plus scrollable nav keeps the full playbook visible without clipping.
 
 Messaging layout
 - Primary messaging table should span the content width with a min-width (~780px) and horizontal scroll if needed; use generous padding on cells.
