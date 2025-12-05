@@ -35,7 +35,8 @@
     }
 
     .section-card-border {
-      border-image: linear-gradient(135deg, rgba(255, 209, 1, 0.5), rgba(255, 255, 255, 0.08)) 1;
+      border: 1px solid rgba(255, 209, 1, 0.5);
+      border-radius: 1.25rem;
     }
 
     .chip {
@@ -387,6 +388,48 @@
     <div class="spark-orbit"></div>
   </div>
 
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-neutral-800/80 bg-gradient-to-r from-black/95 via-neutral-950/95 to-black/95 backdrop-blur nav-shadow">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between gap-4 py-3">
+        <div class="flex items-center gap-3">
+          <img
+            src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+            alt="IGEL logo" class="h-9 w-auto" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-[10px] font-semibold tracking-[0.22em] uppercase text-yellow-300">
+              BC&amp;DR · Reseller Battlecard · 2025
+            </span>
+            <span class="text-sm font-semibold text-white">
+              IGEL Continuity &amp; Recovery
+            </span>
+          </div>
+        </div>
+
+        <div class="hidden flex-1 justify-end text-right sm:flex">
+          <div class="flex flex-col gap-0.5">
+            <span class="text-[11px] uppercase tracking-[0.18em] text-neutral-400">Endpoint Continuity</span>
+            <span class="text-lg font-semibold text-white">Rapid recovery | Immutable OS | BYOD-ready</span>
+            <span class="text-xs text-neutral-400">Secure | Managed | Dataless | Browser-first</span>
+          </div>
+        </div>
+
+        <nav class="lg:hidden border border-neutral-800/60 bg-black/70 rounded-2xl px-3 py-2">
+          <div class="grid grid-cols-2 gap-2 text-[11px] uppercase tracking-[0.12em]">
+            <a href="#hero" class="nav-chip nav-chip-mobile"><span class="nav-index">1</span><span class="nav-label">Overview</span></a>
+            <a href="#elevator" class="nav-chip nav-chip-mobile"><span class="nav-index">2</span><span class="nav-label">Pitch</span></a>
+            <a href="#pain" class="nav-chip nav-chip-mobile"><span class="nav-index">3</span><span class="nav-label">Pain</span></a>
+            <a href="#features" class="nav-chip nav-chip-mobile"><span class="nav-index">4</span><span class="nav-label">Features</span></a>
+            <a href="#charts" class="nav-chip nav-chip-mobile"><span class="nav-index">5</span><span class="nav-label">Charts</span></a>
+            <a href="#value" class="nav-chip nav-chip-mobile"><span class="nav-index">6</span><span class="nav-label">Value</span></a>
+            <a href="#faq" class="nav-chip nav-chip-mobile"><span class="nav-index">7</span><span class="nav-label">FAQ</span></a>
+            <a href="#next-steps" class="nav-chip nav-chip-mobile"><span class="nav-index">8</span><span class="nav-label">Next</span></a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
   <!-- Layout -->
   <div class="page-shell mx-auto max-w-6xl grid gap-6 px-4 pb-16 pt-6 sm:px-6 lg:grid-cols-[230px,1fr] lg:px-8">
     <!-- Desktop left rail nav -->
@@ -404,36 +447,6 @@
 
     <!-- Main -->
     <main class="w-full space-y-8 lg:space-y-10">
-
-      <!-- Top Bar -->
-      <header class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="bg-neutral-900/80 border border-neutral-700/60 rounded-2xl px-3.5 py-2 flex items-center gap-2 shadow-lg">
-            <img
-              src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
-              alt="IGEL Logo"
-              class="h-7 w-auto"
-            />
-            <div class="h-7 w-px bg-neutral-700/70"></div>
-            <p class="text-xs font-medium tracking-[0.16em] uppercase text-neutral-300">
-              BC&amp;DR &bull; Reseller Battlecard &bull; 2025
-            </p>
-          </div>
-        </div>
-
-        <nav class="lg:hidden border border-neutral-800/60 bg-black/70 rounded-2xl px-3 py-2">
-          <div class="grid grid-cols-2 gap-2 text-[11px] uppercase tracking-[0.12em]">
-            <a href="#hero" class="nav-chip nav-chip-mobile"><span class="nav-index">1</span><span class="nav-label">Overview</span></a>
-            <a href="#elevator" class="nav-chip nav-chip-mobile"><span class="nav-index">2</span><span class="nav-label">Pitch</span></a>
-            <a href="#pain" class="nav-chip nav-chip-mobile"><span class="nav-index">3</span><span class="nav-label">Pain</span></a>
-            <a href="#features" class="nav-chip nav-chip-mobile"><span class="nav-index">4</span><span class="nav-label">Features</span></a>
-            <a href="#charts" class="nav-chip nav-chip-mobile"><span class="nav-index">5</span><span class="nav-label">Charts</span></a>
-            <a href="#value" class="nav-chip nav-chip-mobile"><span class="nav-index">6</span><span class="nav-label">Value</span></a>
-            <a href="#faq" class="nav-chip nav-chip-mobile"><span class="nav-index">7</span><span class="nav-label">FAQ</span></a>
-            <a href="#next-steps" class="nav-chip nav-chip-mobile"><span class="nav-index">8</span><span class="nav-label">Next</span></a>
-          </div>
-        </nav>
-      </header>
 
       <!-- HERO -->
 <section class="section-card section-card-border overflow-hidden relative">
@@ -459,27 +472,21 @@
 
       <div class="grid sm:grid-cols-3 gap-3 text-sm text-neutral-100">
         <div class="hero-pill flex flex-col gap-1.5">
-          <span class="text-[0.68rem] eyebrow text-neutral-400">Primary Outcome</span>
-          <span class="font-semibold text-base text-white">Endpoints back online in &lt;10 minutes.</span>
+          <span class="text-[0.64rem] eyebrow text-neutral-400">Primary Outcome</span>
+          <span class="font-semibold text-[0.95rem] leading-5 text-white">Endpoints back online in &lt;10 minutes.</span>
         </div>
         <div class="hero-pill flex flex-col gap-1.5">
-          <span class="text-[0.68rem] eyebrow text-neutral-400">Core Mechanism</span>
-          <span class="font-semibold text-base text-white">Reboot into secure, immutable IGEL OS.</span>
+          <span class="text-[0.64rem] eyebrow text-neutral-400">Core Mechanism</span>
+          <span class="font-semibold text-[0.95rem] leading-5 text-white">Reboot into secure, immutable IGEL OS.</span>
         </div>
         <div class="hero-pill flex flex-col gap-1.5">
-          <span class="text-[0.68rem] eyebrow text-neutral-400">Story Angle</span>
-          <span class="font-semibold text-base text-white">From outage panic to controlled recovery.</span>
+          <span class="text-[0.64rem] eyebrow text-neutral-400">Story Angle</span>
+          <span class="font-semibold text-[0.95rem] leading-5 text-white">From outage panic to controlled recovery.</span>
         </div>
       </div>
 
       <div class="flex flex-wrap gap-3 items-center">
-        <a
-          href="https://www.igel.com/business-continuity-disaster-recovery/#form"
-          class="cta-primary text-xs sm:text-sm"
-        >
-          Book a 10-minute Recovery Demo
-        </a>
-        <div class="cta-secondary text-xs sm:text-sm font-medium flex items-center gap-2 px-3">
+        <div class="cta-secondary text-xs sm:text-sm font-medium flex items-center gap-2 px-3 text-white">
           <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(16,185,129,0.18)]"></span>
           Ready-to-use with existing endpoints
         </div>

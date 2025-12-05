@@ -39,6 +39,7 @@ Header / hero strip
 - Left: IGEL logo + 2-line text block (kicker and title).
 - Right (desktop): hero text stack with a short tagline; keep it concise.
 - Background: black/neutral gradient with slight blur; thin bottom border line.
+- Preferred header style: sticky bar with dark gradient, light glass blur, and a subtle 1px neutral bottom border (matches Zscaler playbook header).
 
 Section headers
 - Section label: <h1> in IGEL Yellow (class "igel-section-number"), sized up (~1.45rem).
