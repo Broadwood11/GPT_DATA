@@ -1,238 +1,462 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-[#141414]">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IGEL + ControlUp | Joint Sales Playbook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGEL + Zscaler | Joint Sales Playbook</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        igel: {
+                            black: '#141414',
+                            white: '#ffffff',
+                            yellow: '#ffd101',
+                            darkglass: 'rgba(20, 20, 20, 0.8)',
+                            cardglass: 'rgba(255, 255, 255, 0.05)',
+                            borderglass: 'rgba(255, 255, 255, 0.1)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(255, 209, 1, 0.15)',
+                        'lift': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            background-color: #141414;
+            color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 209, 1, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism Utilities */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
 
-  <!-- Chart.js (if needed later) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        .glass-card:hover {
+            border-color: rgba(255, 209, 1, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px rgba(255, 209, 1, 0.05);
+            transform: translateY(-2px);
+        }
 
-  <style>
-    body { font-family: 'Manrope', sans-serif; color: #f4f4f5; }
+        .active-tab {
+            background: #ffd101;
+            color: #141414;
+            border-color: #ffd101;
+            font-weight: 700;
+        }
 
-    /* IGEL dark-glass cards */
-    .glass {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
-      border-radius: 18px;
-      padding: 1.5rem;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .glass:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
-    }
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #e4e4e7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .section-header {
-      display:flex;
-      align-items:center;
-      gap:.75rem;
-      margin-bottom:.75rem;
-    }
-    .section-number {
-      background:#ffd101;
-      color:#141414;
-      font-weight:800;
-      padding:.25rem .55rem;
-      border-radius:8px;
-    }
+        .yellow-gradient-text {
+            background: linear-gradient(to right, #ffd101, #ffeb80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .title-glow {
-      text-shadow:0 0 8px rgba(255,209,1,0.45);
-    }
-  </style>
+        /* Sparkle Animation */
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        .spark-dot {
+            width: 4px;
+            height: 4px;
+            background: #ffd101;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 0 8px #ffd101;
+            animation: pulse-glow 3s infinite;
+        }
+    </style>
 
-  <!-- Social Meta -->
-  <meta name="description" content="IGEL + ControlUp: A closed-loop experience engine. Standardize endpoints, reveal truth in real time, and deliver predictable DEX outcomes across distributed environments." />
-
-  <!-- Open Graph -->
-  <!-- TODO replace with actual URLs -->
-  <meta property="og:title" content="IGEL + ControlUp | Joint Sales Playbook" />
-  <meta property="og:description" content="A closed-loop experience engine: IGEL standardizes, ControlUp reveals truth. Faster MTTR, better DEX, stronger operations." />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="[[SET_FINAL_URL_HERE]]" />
-  <meta property="og:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="IGEL + ControlUp | Joint Sales Playbook" />
-  <meta name="twitter:description" content="Standardize → Observe → Diagnose → Remediate → Verify. The IGEL + ControlUp experience engine." />
-  <meta name="twitter:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
-
+    <meta property="og:title" content="IGEL + Zscaler Joint Sales Playbook" />
+    <meta property="og:description" content="Zero Trust from Cloud to Endpoint. The definitive field guide for IGEL + Zscaler wins." />
+    <meta property="og:type" content="article" />
 </head>
+<body class="antialiased selection:bg-igel-yellow selection:text-igel-black">
 
-<body class="min-h-full">
+    <header class="relative w-full py-16 px-6 lg:px-12 border-b border-igel-borderglass overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+            <div class="absolute top-10 right-20 w-64 h-64 bg-igel-yellow/5 rounded-full blur-3xl"></div>
+        </div>
 
-<!-- HERO -->
-<header class="w-full py-16 bg-gradient-to-b from-black via-[#141414] to-[#141414]">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" 
-         alt="IGEL Logo" class="mx-auto w-32 mb-6 opacity-90" />
-    <h1 class="text-4xl md:text-5xl font-extrabold text-white title-glow">IGEL + ControlUp</h1>
-    <p class="text-neutral-300 mt-4 text-xl max-w-3xl mx-auto">
-      A closed-loop experience engine: <span class="text-[#ffd101]">IGEL standardizes</span>,  
-      <span class="text-[#ffd101]">ControlUp reveals truth</span>, and IT gains the power to deliver predictable end-user experience everywhere.
-    </p>
-  </div>
-</header>
+        <div class="relative z-10 max-w-7xl mx-auto text-center">
+            <div class="flex justify-center items-center gap-6 mb-8">
+                <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_wht.png" alt="IGEL" class="h-10 md:h-12 opacity-90">
+                <span class="text-2xl text-neutral-500 font-light">+</span>
+                <div class="h-8 md:h-10 flex items-center justify-center text-white text-2xl font-bold tracking-tight">Zscaler</div> 
+                </div>
+            
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+                <span class="gradient-text">Zero Trust.</span>
+                <span class="yellow-gradient-text">Verified.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-neutral-400 max-w-2xl mx-auto font-medium">
+                The Joint Sales Playbook: Securing the Path & The Device.
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <span class="px-4 py-1 rounded-full bg-neutral-800/50 border border-neutral-700 text-sm text-neutral-300">
+                    🔒 No Data on Device
+                </span>
+                <span class="px-4 py-1 rounded-full bg-neutral-800/50 border border-neutral-700 text-sm text-neutral-300">
+                    ☁️ Cloud-Native SSE
+                </span>
+                <span class="px-4 py-1 rounded-full bg-neutral-800/50 border border-neutral-700 text-sm text-neutral-300">
+                    🚀 Instant Onboarding
+                </span>
+            </div>
+        </div>
+    </header>
 
-<main class="max-w-5xl mx-auto px-6 pb-24 space-y-16">
+    <main class="max-w-7xl mx-auto px-6 lg:px-12 py-12 space-y-24">
 
-<!-- 1 — HOOK -->
-<section id="hook">
-  <div class="section-header">
-    <span class="section-number">01</span>
-    <h2 class="text-2xl md:text-3xl font-bold">You Can't Fix What You Can't See</h2>
-  </div>
+        <section id="architecture">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-block px-3 py-1 rounded bg-igel-yellow/10 border border-igel-yellow/20 text-igel-yellow text-xs font-bold uppercase tracking-wider">
+                        The Joint Value Architecture
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">Endpoint Immutability Meets <br/>Cloud-Native Inspection.</h2>
+                    <p class="text-neutral-400 text-lg leading-relaxed">
+                        Legacy security trusts the device and inspects the network. We trust neither. 
+                        <strong class="text-white">IGEL</strong> locks down the OS so it cannot be compromised. 
+                        <strong class="text-white">Zscaler</strong> brokers the connection so the network is never exposed.
+                    </p>
+                    
+                    <ul class="space-y-4 mt-4">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-2 h-2 rounded-full bg-igel-yellow shadow-[0_0_8px_#ffd101]"></div>
+                            <div>
+                                <span class="block text-white font-semibold">Endpoint Layer (IGEL)</span>
+                                <span class="text-neutral-500 text-sm">Read-only OS, no local data, 95% reduced attack surface.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-2 h-2 rounded-full bg-neutral-400"></div>
+                            <div>
+                                <span class="block text-white font-semibold">Access Layer (Zscaler)</span>
+                                <span class="text-neutral-500 text-sm">Zero Trust Exchange (ZIA/ZPA) brokers all traffic. No open ports.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-2 h-2 rounded-full bg-neutral-400"></div>
+                            <div>
+                                <span class="block text-white font-semibold">Integration</span>
+                                <span class="text-neutral-500 text-sm">Zscaler Client Connector packaged natively on IGEL OS.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-  <div class="glass">
-    <p class="text-neutral-200 leading-relaxed">
-      Distributed workforces, clinical environments, branch locations, and remote users all depend on fast, reliable digital experience — 
-      but IT teams still operate with incomplete endpoint → network → session visibility. 
-      When the last mile is blind, triage slows, cost rises, and user frustration spikes.
-    </p>
-    <p class="mt-4 text-[#ffd101] font-semibold">
-      Drift breaks data. Data breaks decisions.
-    </p>
-  </div>
-</section>
+                <div class="relative glass-card rounded-2xl p-8 aspect-video flex flex-col justify-between overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-igel-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div class="text-center border-b border-dashed border-neutral-700 pb-6 relative">
+                        <div class="text-3xl mb-2">☁️</div>
+                        <h3 class="text-white font-bold">Zscaler Zero Trust Exchange</h3>
+                        <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Identity & Policy Broker</p>
+                        <div class="absolute left-1/2 bottom-[-25px] w-[2px] h-[50px] bg-gradient-to-b from-neutral-700 via-igel-yellow to-neutral-700"></div>
+                    </div>
 
-<!-- 2 — ENDPOINT PROBLEM -->
-<section id="endpoint-problem">
-  <div class="section-header">
-    <span class="section-number">02</span>
-    <h2 class="text-2xl md:text-3xl font-bold">The Endpoint Is the Weakest Link</h2>
-  </div>
+                    <div class="flex-grow flex items-center justify-center">
+                        <span class="px-3 py-1 bg-[#141414] border border-igel-yellow/30 rounded text-xs text-igel-yellow">Authenticated Tunnel</span>
+                    </div>
 
-  <div class="glass">
-    <p class="text-neutral-200">
-      Traditional Windows endpoints drift, patch unpredictably, collect local bloat, and generate inconsistent telemetry. 
-      DEX tools can only be as accurate as the foundation they run on — and that foundation is often unstable.
-    </p>
-    <ul class="mt-4 text-neutral-300 list-disc list-inside space-y-1">
-      <li>Inconsistent baselines corrupt DEX analytics.</li>
-      <li>Local changes break repeatability and forecasting.</li>
-      <li>Support tickets increase when data and reality disagree.</li>
-    </ul>
-  </div>
-</section>
+                    <div class="text-center border-t border-dashed border-neutral-700 pt-6">
+                        <h3 class="text-white font-bold">IGEL OS Endpoint</h3>
+                        <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Immutable & Managed</p>
+                        <div class="flex justify-center gap-2 mt-3">
+                            <div class="w-8 h-5 rounded border border-neutral-600 bg-neutral-800"></div>
+                            <div class="w-8 h-5 rounded border border-neutral-600 bg-neutral-800"></div>
+                            <div class="w-8 h-5 rounded border border-neutral-600 bg-neutral-800"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- 3 — IGEL FOUNDATION -->
-<section id="igel-baseline">
-  <div class="section-header">
-    <span class="section-number">03</span>
-    <h2 class="text-2xl md:text-3xl font-bold">IGEL: A Secure, Immutable Baseline</h2>
-  </div>
+        <section id="plays">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">6 Tier-One Sales Plays</h2>
+                <p class="text-neutral-400">Select a play to reveal the target persona, pain points, and proof.</p>
+            </div>
 
-  <div class="glass">
-    <p class="text-neutral-200">
-      IGEL OS stabilizes endpoint operations by eliminating drift, removing local data, and enforcing a centrally managed, read-only configuration. 
-      It provides the consistent substrate ControlUp needs to generate accurate, actionable intelligence.
-    </p>
-    <ul class="mt-4 text-neutral-300 list-disc list-inside space-y-1">
-      <li>Immutable, locked-down OS.</li>
-      <li>No configuration drift, ever.</li>
-      <li>Centrally managed device posture at scale.</li>
-      <li>SaaS-delivered App Portal → instant deployment of ControlUp agents.</li>
-    </ul>
-  </div>
-</section>
+            <div class="flex flex-wrap justify-center gap-3 mb-8" role="tablist">
+                <button onclick="switchTab('vpn')" id="tab-vpn" class="px-5 py-2 rounded-full border border-neutral-700 text-sm font-semibold transition-all hover:border-igel-yellow active-tab">VPN Replacement</button>
+                <button onclick="switchTab('vdi')" id="tab-vdi" class="px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">VDI Optimization</button>
+                <button onclick="switchTab('byod')" id="tab-byod" class="px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Contractors / BYOD</button>
+                <button onclick="switchTab('compliance')" id="tab-compliance" class="px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Regulated Ops</button>
+                <button onclick="switchTab('cost')" id="tab-cost" class="px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Cost Reduction</button>
+                <button onclick="switchTab('ot')" id="tab-ot" class="px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Secure OT</button>
+            </div>
 
-<!-- 4 — CONTROLUP INSIGHT -->
-<section id="controlup-dex">
-  <div class="section-header">
-    <span class="section-number">04</span>
-    <h2 class="text-2xl md:text-3xl font-bold">ControlUp: Real-Time Truth Everywhere</h2>
-  </div>
+            <div class="glass-card rounded-2xl p-8 md:p-12 relative min-h-[400px]">
+                
+                <div id="content-vpn" class="play-content animate-fade-in">
+                    <div class="flex justify-between items-start mb-6 border-b border-neutral-800 pb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">VPN Replacement</h3>
+                            <p class="text-igel-yellow font-mono text-sm">Zero Trust Access Without the Drag</p>
+                        </div>
+                        <div class="text-right hidden md:block">
+                            <span class="block text-xs text-neutral-500 uppercase">Target Persona</span>
+                            <span class="text-white font-semibold">CISO, NetSec Arch</span>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">💥 The Pain</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">VPNs expose the whole network, slow down users, and break Zero Trust models. They are a choke point.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🪄 The Promise</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">Zscaler ZPA brokers the app connection. IGEL ensures the device is clean. No open ports, no lateral movement.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🏆 The Proof</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed border-l-2 border-igel-yellow pl-3">Finance customer replaced 5k VPN seats, cut latency by 40%, eliminated 80% of endpoint tickets.</p>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="glass">
-    <p class="text-neutral-200">
-      ControlUp Edge DX and Remote DX capture the most complete picture of digital experience available: endpoint health, CPU/memory, 
-      Wi-Fi quality, latency, VDI session performance, application responsiveness, and even UC metrics.
-    </p>
-    <ul class="mt-4 text-neutral-300 list-disc list-inside space-y-1">
-      <li>Client-side telemetry for accurate VDI diagnosis.</li>
-      <li>Network path and Wi-Fi insights for remote users.</li>
-      <li>UC analytics for Teams/Zoom call quality.</li>
-      <li>Correlated endpoint + network + session visibility.</li>
-    </ul>
-  </div>
-</section>
+                <div id="content-vdi" class="play-content hidden animate-fade-in">
+                    <div class="flex justify-between items-start mb-6 border-b border-neutral-800 pb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">VDI Optimization</h3>
+                            <p class="text-igel-yellow font-mono text-sm">Secure Browser-First Workspaces</p>
+                        </div>
+                        <div class="text-right hidden md:block">
+                            <span class="block text-xs text-neutral-500 uppercase">Target Persona</span>
+                            <span class="text-white font-semibold">CIO, Workspace Lead</span>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">💥 The Pain</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">VDI is expensive, complex, and overkill for users who just need SaaS. It's heavy infrastructure for a web world.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🪄 The Promise</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">Use Zscaler Cloud Browser Isolation + IGEL OS. Pixel-stream the browser without the VDI tax.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🏆 The Proof</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed border-l-2 border-igel-yellow pl-3">Retail enterprise replaced 60% of VDI users, saving 50% on infra and 30% on endpoints.</p>
+                        </div>
+                    </div>
+                </div>
 
-<!-- 5 — TENSION -->
-<section id="tension">
-  <div class="section-header">
-    <span class="section-number">05</span>
-    <h2 class="text-2xl md:text-3xl font-bold">Telemetry Fails Without Standardization</h2>
-  </div>
+                <div id="content-byod" class="play-content hidden animate-fade-in">
+                    <div class="flex justify-between items-start mb-6 border-b border-neutral-800 pb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">Contractor / BYOD</h3>
+                            <p class="text-igel-yellow font-mono text-sm">No Agent. No Data. No Risk.</p>
+                        </div>
+                        <div class="text-right hidden md:block">
+                            <span class="block text-xs text-neutral-500 uppercase">Target Persona</span>
+                            <span class="text-white font-semibold">Risk & Compliance</span>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">💥 The Pain</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">Contractors on unmanaged laptops are a massive data leak risk. Shipping laptops is slow and costly.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🪄 The Promise</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">IGEL USB Boot + Zscaler PRA. Instant, isolated environment on their own hardware. Zero data footprint.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🏆 The Proof</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed border-l-2 border-igel-yellow pl-3">Manufacturing firm reduced onboarding from 2 weeks to 2 hours. Passed ISO 27001 cleanly.</p>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="glass">
-    <p class="text-neutral-200">
-      Even the best analytics engine can't interpret inconsistent data. 
-      Drift destroys baselines → baselines drive all DEX insights. 
-      Without IGEL, ControlUp must fight through noise before delivering signal.
-    </p>
-  </div>
-</section>
+                <div id="content-compliance" class="play-content hidden animate-fade-in">
+                    <div class="flex justify-between items-start mb-6 border-b border-neutral-800 pb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">Regulated Modernization</h3>
+                            <p class="text-igel-yellow font-mono text-sm">Compliance-Grade Zero Trust</p>
+                        </div>
+                        <div class="text-right hidden md:block">
+                            <span class="block text-xs text-neutral-500 uppercase">Target Persona</span>
+                            <span class="text-white font-semibold">CISO, Compliance Officer</span>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">💥 The Pain</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">Audits (HIPAA, PCI, NIST) punish you for data on endpoints and open networks. Proving compliance is hell.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🪄 The Promise</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">IGEL ensures "no data on device." Zscaler logs every transaction. Compliance is baked into the architecture.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🏆 The Proof</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed border-l-2 border-igel-yellow pl-3">Public-sector deployment achieved Zero Trust EO compliance using FedRAMP stack.</p>
+                        </div>
+                    </div>
+                </div>
 
-<!-- 6 — THE TURN: CLOSED LOOP -->
-<section id="closed-loop">
-  <div class="section-header">
-    <span class="section-number">06</span>
-    <h2 class="text-2xl md:text-3xl font-bold">Together: A Closed-Loop Experience Engine</h2>
-  </div>
+                <div id="content-cost" class="play-content hidden animate-fade-in">
+                    <div class="flex justify-between items-start mb-6 border-b border-neutral-800 pb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">Cost & Risk Reduction</h3>
+                            <p class="text-igel-yellow font-mono text-sm">Do More with Less, and Safer</p>
+                        </div>
+                        <div class="text-right hidden md:block">
+                            <span class="block text-xs text-neutral-500 uppercase">Target Persona</span>
+                            <span class="text-white font-semibold">CFO, EUC Leader</span>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">💥 The Pain</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">PC refresh cycles are expensive. Windows licensing and EDR bloat kill the budget. Patching consumes IT.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🪄 The Promise</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">Extend hardware life 3-5 years with IGEL. Consolidate security agents into Zscaler Cloud.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🏆 The Proof</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed border-l-2 border-igel-yellow pl-3">Global bank cut endpoint TCO by 45%, saved $2.3M in capital avoidance.</p>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="glass">
-    <p class="text-neutral-200">
-      When IGEL provides a consistent substrate and ControlUp provides real-time intelligence, the enterprise gains a 
-      repeatable loop of improvement: standardize → observe → diagnose → remediate → verify.
-    </p>
+                <div id="content-ot" class="play-content hidden animate-fade-in">
+                    <div class="flex justify-between items-start mb-6 border-b border-neutral-800 pb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">Secure OT Access</h3>
+                            <p class="text-igel-yellow font-mono text-sm">Air-Gapped. Auditable. Anywhere.</p>
+                        </div>
+                        <div class="text-right hidden md:block">
+                            <span class="block text-xs text-neutral-500 uppercase">Target Persona</span>
+                            <span class="text-white font-semibold">OT Security Lead</span>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">💥 The Pain</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">Privileged users need remote access to critical infrastructure, but standard VPNs are too risky for OT.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🪄 The Promise</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed">Zscaler PRA provides ephemeral, recorded sessions. IGEL keeps the endpoint air-gapped from the OS level.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-neutral-300 uppercase tracking-wider">🏆 The Proof</h4>
+                            <p class="text-neutral-400 text-sm leading-relaxed border-l-2 border-igel-yellow pl-3">Energy customer met NERC-CIP standards for remote maintenance without specialized hardware.</p>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="mt-6 grid md:grid-cols-5 gap-4 text-center text-neutral-200 font-medium">
-      <div class="glass py-4">Standardize<br><span class="text-[#ffd101]">IGEL</span></div>
-      <div class="glass py-4">Observe<br><span class="text-[#ffd101]">ControlUp</span></div>
-      <div class="glass py-4">Diagnose<br><span class="text-[#ffd101]">Edge DX</span></div>
-      <div class="glass py-4">Remediate<br><span class="text-[#ffd101]">IT Ops</span></div>
-      <div class="glass py-4">Verify<br><span class="text-[#ffd101]">ControlUp</span></div>
-    </div>
-  </div>
-</section>
+            </div>
+        </section>
 
-<!-- 7 — OUTCOMES -->
-<section id="outcomes">
-  <div class="section-header">
-    <span class="section-number">07</span>
-    <h2 class="text-2xl md:text-3xl font-bold">Customer Outcomes that Matter</h2>
-  </div>
+        <section class="grid md:grid-cols-2 gap-12">
+            
+            <div class="glass-card rounded-2xl p-8 border-l-4 border-l-igel-yellow">
+                <h3 class="text-xl font-bold text-white mb-4">🎤 The 30-Second Pitch</h3>
+                <p class="text-neutral-300 italic mb-4">
+                    "Think of IGEL as the Zero Trust endpoint layer that completes your Zscaler story. 
+                    It replaces Windows with a secure, read-only OS that holds no data. 
+                    So when you deliver secure access through Zscaler, IGEL ensures the device itself can’t be the weak link. 
+                    Together, we give you Zero Trust from cloud to endpoint—faster, simpler, and safer."
+                </p>
+                <div class="flex gap-2">
+                    <span class="text-xs bg-neutral-800 px-2 py-1 rounded text-neutral-500">Memorize this</span>
+                </div>
+            </div>
 
-  <div class="glass">
-    <ul class="text-neutral-200 list-disc list-inside space-y-2">
-      <li>Lower MTTR through accurate, correlated telemetry.</li>
-      <li>Fewer support tickets and faster VDI troubleshooting.</li>
-      <li>Better UC experience for Teams/Zoom.</li>
-      <li>Endpoint lifecycle extension via IGEL conversion.</li>
-      <li>Predictable performance in healthcare, finance, retail, public sector, and manufacturing.</li>
-    </ul>
+            <div class="glass-card rounded-2xl p-8">
+                <h3 class="text-xl font-bold text-white mb-4">📡 Buying Signals</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-3 text-neutral-300 text-sm">
+                        <span class="text-igel-yellow">⚡</span> Customer replacing/renewing VPNs.
+                    </li>
+                    <li class="flex items-center gap-3 text-neutral-300 text-sm">
+                        <span class="text-igel-yellow">⚡</span> VDI complaints (cost, complexity, slowness).
+                    </li>
+                    <li class="flex items-center gap-3 text-neutral-300 text-sm">
+                        <span class="text-igel-yellow">⚡</span> "How do we secure contractors?"
+                    </li>
+                    <li class="flex items-center gap-3 text-neutral-300 text-sm">
+                        <span class="text-igel-yellow">⚡</span> Upcoming PC hardware refresh.
+                    </li>
+                </ul>
+            </div>
 
-    <p class="mt-4 text-[#ffd101] font-semibold">
-      Standardize first. Analyze second. Transform experience everywhere.
-    </p>
-  </div>
-</section>
+        </section>
 
-</main>
+        <footer class="text-center pt-12 pb-8 border-t border-neutral-800">
+            <p class="text-neutral-500 text-sm">IGEL + Zscaler Joint Sales Playbook • 2025</p>
+            <p class="text-neutral-600 text-xs mt-2">Internal Use Only. Confidential.</p>
+        </footer>
 
-<footer class="py-12 text-center text-neutral-600 text-sm">
-  IGEL Ready Playbook Praxis Theme • All Rights Reserved
-</footer>
+    </main>
 
+    <script>
+        function switchTab(playId) {
+            // 1. Reset all buttons
+            const buttons = document.querySelectorAll('button[role!="none"]');
+            buttons.forEach(btn => {
+                btn.classList.remove('active-tab', 'text-igel-black');
+                btn.classList.add('text-neutral-400');
+                if(!btn.classList.contains('hover:text-white')) {
+                     btn.classList.add('hover:text-white');
+                }
+            });
+
+            // 2. Activate clicked button
+            const activeBtn = document.getElementById('tab-' + playId);
+            activeBtn.classList.remove('text-neutral-400', 'hover:text-white');
+            activeBtn.classList.add('active-tab');
+
+            // 3. Hide all content
+            const contents = document.querySelectorAll('.play-content');
+            contents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // 4. Show active content
+            document.getElementById('content-' + playId).classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
