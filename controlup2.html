@@ -11,8 +11,6 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <script>
         tailwind.config = {
             theme: {
@@ -30,9 +28,14 @@
                     fontFamily: {
                         sans: ['Manrope', 'sans-serif'],
                     },
-                    boxShadow: {
-                        'glow': '0 0 20px rgba(255, 209, 1, 0.15)',
-                        'lift': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -67,10 +70,10 @@
         }
 
         .active-tab {
-            background: #ffd101;
-            color: #141414;
-            border-color: #ffd101;
-            font-weight: 700;
+            background: #ffd101 !important;
+            color: #141414 !important;
+            border-color: #ffd101 !important;
+            font-weight: 800 !important;
         }
 
         .gradient-text {
@@ -84,26 +87,16 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        /* Sparkle Animation */
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
+        
+        /* Explicit animation class for the content switch */
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
         }
-        .spark-dot {
-            width: 4px;
-            height: 4px;
-            background: #ffd101;
-            border-radius: 50%;
-            position: absolute;
-            box-shadow: 0 0 8px #ffd101;
-            animation: pulse-glow 3s infinite;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
-
-    <meta property="og:title" content="IGEL + Zscaler Joint Sales Playbook" />
-    <meta property="og:description" content="Zero Trust from Cloud to Endpoint. The definitive field guide for IGEL + Zscaler wins." />
-    <meta property="og:type" content="article" />
 </head>
 <body class="antialiased selection:bg-igel-yellow selection:text-igel-black">
 
@@ -116,8 +109,8 @@
             <div class="flex justify-center items-center gap-6 mb-8">
                 <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_wht.png" alt="IGEL" class="h-10 md:h-12 opacity-90">
                 <span class="text-2xl text-neutral-500 font-light">+</span>
-                <div class="h-8 md:h-10 flex items-center justify-center text-white text-2xl font-bold tracking-tight">Zscaler</div> 
-                </div>
+                <div class="h-8 md:h-10 flex items-center justify-center text-white text-2xl font-bold tracking-tight">Zscaler</div>
+            </div>
             
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
                 <span class="gradient-text">Zero Trust.</span>
@@ -126,17 +119,6 @@
             <p class="text-xl md:text-2xl text-neutral-400 max-w-2xl mx-auto font-medium">
                 The Joint Sales Playbook: Securing the Path & The Device.
             </p>
-            <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <span class="px-4 py-1 rounded-full bg-neutral-800/50 border border-neutral-700 text-sm text-neutral-300">
-                    🔒 No Data on Device
-                </span>
-                <span class="px-4 py-1 rounded-full bg-neutral-800/50 border border-neutral-700 text-sm text-neutral-300">
-                    ☁️ Cloud-Native SSE
-                </span>
-                <span class="px-4 py-1 rounded-full bg-neutral-800/50 border border-neutral-700 text-sm text-neutral-300">
-                    🚀 Instant Onboarding
-                </span>
-            </div>
         </div>
     </header>
 
@@ -170,38 +152,23 @@
                                 <span class="text-neutral-500 text-sm">Zero Trust Exchange (ZIA/ZPA) brokers all traffic. No open ports.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 w-2 h-2 rounded-full bg-neutral-400"></div>
-                            <div>
-                                <span class="block text-white font-semibold">Integration</span>
-                                <span class="text-neutral-500 text-sm">Zscaler Client Connector packaged natively on IGEL OS.</span>
-                            </div>
-                        </li>
                     </ul>
                 </div>
 
                 <div class="relative glass-card rounded-2xl p-8 aspect-video flex flex-col justify-between overflow-hidden group">
                     <div class="absolute inset-0 bg-gradient-to-br from-igel-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
                     <div class="text-center border-b border-dashed border-neutral-700 pb-6 relative">
                         <div class="text-3xl mb-2">☁️</div>
                         <h3 class="text-white font-bold">Zscaler Zero Trust Exchange</h3>
                         <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Identity & Policy Broker</p>
                         <div class="absolute left-1/2 bottom-[-25px] w-[2px] h-[50px] bg-gradient-to-b from-neutral-700 via-igel-yellow to-neutral-700"></div>
                     </div>
-
                     <div class="flex-grow flex items-center justify-center">
                         <span class="px-3 py-1 bg-[#141414] border border-igel-yellow/30 rounded text-xs text-igel-yellow">Authenticated Tunnel</span>
                     </div>
-
                     <div class="text-center border-t border-dashed border-neutral-700 pt-6">
                         <h3 class="text-white font-bold">IGEL OS Endpoint</h3>
                         <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Immutable & Managed</p>
-                        <div class="flex justify-center gap-2 mt-3">
-                            <div class="w-8 h-5 rounded border border-neutral-600 bg-neutral-800"></div>
-                            <div class="w-8 h-5 rounded border border-neutral-600 bg-neutral-800"></div>
-                            <div class="w-8 h-5 rounded border border-neutral-600 bg-neutral-800"></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -210,16 +177,16 @@
         <section id="plays">
             <div class="text-center mb-10">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">6 Tier-One Sales Plays</h2>
-                <p class="text-neutral-400">Select a play to reveal the target persona, pain points, and proof.</p>
+                <p class="text-neutral-400">Select a play to reveal details.</p>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-3 mb-8" role="tablist">
-                <button onclick="switchTab('vpn')" id="tab-vpn" class="px-5 py-2 rounded-full border border-neutral-700 text-sm font-semibold transition-all hover:border-igel-yellow active-tab">VPN Replacement</button>
-                <button onclick="switchTab('vdi')" id="tab-vdi" class="px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">VDI Optimization</button>
-                <button onclick="switchTab('byod')" id="tab-byod" class="px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Contractors / BYOD</button>
-                <button onclick="switchTab('compliance')" id="tab-compliance" class="px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Regulated Ops</button>
-                <button onclick="switchTab('cost')" id="tab-cost" class="px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Cost Reduction</button>
-                <button onclick="switchTab('ot')" id="tab-ot" class="px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Secure OT</button>
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button onclick="switchTab('vpn')" id="tab-vpn" class="tab-btn active-tab px-5 py-2 rounded-full border border-neutral-700 text-sm font-semibold transition-all hover:border-igel-yellow">VPN Replacement</button>
+                <button onclick="switchTab('vdi')" id="tab-vdi" class="tab-btn px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">VDI Optimization</button>
+                <button onclick="switchTab('byod')" id="tab-byod" class="tab-btn px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Contractors / BYOD</button>
+                <button onclick="switchTab('compliance')" id="tab-compliance" class="tab-btn px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Regulated Ops</button>
+                <button onclick="switchTab('cost')" id="tab-cost" class="tab-btn px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Cost Reduction</button>
+                <button onclick="switchTab('ot')" id="tab-ot" class="tab-btn px-5 py-2 rounded-full border border-neutral-700 text-neutral-400 text-sm font-semibold transition-all hover:border-igel-yellow hover:text-white">Secure OT</button>
             </div>
 
             <div class="glass-card rounded-2xl p-8 md:p-12 relative min-h-[400px]">
@@ -385,12 +352,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
         <section class="grid md:grid-cols-2 gap-12">
-            
             <div class="glass-card rounded-2xl p-8 border-l-4 border-l-igel-yellow">
                 <h3 class="text-xl font-bold text-white mb-4">🎤 The 30-Second Pitch</h3>
                 <p class="text-neutral-300 italic mb-4">
@@ -411,17 +376,13 @@
                         <span class="text-igel-yellow">⚡</span> Customer replacing/renewing VPNs.
                     </li>
                     <li class="flex items-center gap-3 text-neutral-300 text-sm">
-                        <span class="text-igel-yellow">⚡</span> VDI complaints (cost, complexity, slowness).
+                        <span class="text-igel-yellow">⚡</span> VDI complaints (cost, complexity).
                     </li>
                     <li class="flex items-center gap-3 text-neutral-300 text-sm">
                         <span class="text-igel-yellow">⚡</span> "How do we secure contractors?"
                     </li>
-                    <li class="flex items-center gap-3 text-neutral-300 text-sm">
-                        <span class="text-igel-yellow">⚡</span> Upcoming PC hardware refresh.
-                    </li>
                 </ul>
             </div>
-
         </section>
 
         <footer class="text-center pt-12 pb-8 border-t border-neutral-800">
@@ -433,13 +394,15 @@
 
     <script>
         function switchTab(playId) {
-            // 1. Reset all buttons
-            const buttons = document.querySelectorAll('button[role!="none"]');
+            // 1. Reset all buttons using the dedicated .tab-btn class
+            const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => {
-                btn.classList.remove('active-tab', 'text-igel-black');
+                // Remove active styling
+                btn.classList.remove('active-tab');
+                // Reset to default inactive styling
                 btn.classList.add('text-neutral-400');
                 if(!btn.classList.contains('hover:text-white')) {
-                     btn.classList.add('hover:text-white');
+                    btn.classList.add('hover:text-white');
                 }
             });
 
@@ -454,8 +417,14 @@
                 content.classList.add('hidden');
             });
 
-            // 4. Show active content
-            document.getElementById('content-' + playId).classList.remove('hidden');
+            // 4. Show active content with animation reset
+            const activeContent = document.getElementById('content-' + playId);
+            activeContent.classList.remove('hidden');
+            
+            // Re-trigger animation
+            activeContent.classList.remove('animate-fade-in');
+            void activeContent.offsetWidth; // trigger reflow
+            activeContent.classList.add('animate-fade-in');
         }
     </script>
 </body>
