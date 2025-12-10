@@ -1,434 +1,238 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-[#141414]">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The EUC Blind Spot That Costs Millions — IGEL + ControlUp</title>
+  <title>IGEL + ControlUp | Joint Sales Playbook</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind CDN -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Chart.js -->
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Chart.js (if needed later) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Meta Description -->
-  <meta name="description" content="How IGEL + ControlUp eliminate the EUC blind spot, deliver real-time visibility, slash troubleshooting time, and create proactive IT operations." />
+  <style>
+    body { font-family: 'Manrope', sans-serif; color: #f4f4f5; }
 
-  <!-- Open Graph Meta (placeholders for URL & image) -->
-  <!-- TODO: Replace with the final live URL of this infographic -->
-  <meta property="og:title" content="The EUC Blind Spot That Costs Millions — IGEL + ControlUp" />
-  <meta property="og:description" content="How IGEL + ControlUp eliminate the EUC blind spot, deliver real-time visibility, slash troubleshooting time, and create proactive IT operations." />
+    /* IGEL dark-glass cards */
+    .glass {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 1.5rem;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .glass:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    }
+
+    .section-header {
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      margin-bottom:.75rem;
+    }
+    .section-number {
+      background:#ffd101;
+      color:#141414;
+      font-weight:800;
+      padding:.25rem .55rem;
+      border-radius:8px;
+    }
+
+    .title-glow {
+      text-shadow:0 0 8px rgba(255,209,1,0.45);
+    }
+  </style>
+
+  <!-- Social Meta -->
+  <meta name="description" content="IGEL + ControlUp: A closed-loop experience engine. Standardize endpoints, reveal truth in real time, and deliver predictable DEX outcomes across distributed environments." />
+
+  <!-- Open Graph -->
+  <!-- TODO replace with actual URLs -->
+  <meta property="og:title" content="IGEL + ControlUp | Joint Sales Playbook" />
+  <meta property="og:description" content="A closed-loop experience engine: IGEL standardizes, ControlUp reveals truth. Faster MTTR, better DEX, stronger operations." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="[[SET_FINAL_URL_HERE]]" />
-  <!-- TODO: Replace with the full URL to your 1200x675 thumbnail -->
   <meta property="og:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
 
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The EUC Blind Spot That Costs Millions — IGEL + ControlUp" />
-  <meta name="twitter:description" content="How IGEL + ControlUp eliminate the EUC blind spot and power proactive IT." />
+  <meta name="twitter:title" content="IGEL + ControlUp | Joint Sales Playbook" />
+  <meta name="twitter:description" content="Standardize → Observe → Diagnose → Remediate → Verify. The IGEL + ControlUp experience engine." />
   <meta name="twitter:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
+
 </head>
 
-<body class="min-h-screen bg-[radial-gradient(circle_at_top,_#1b1b1b,_#050505_70%)] text-neutral-50 font-['Manrope',sans-serif] relative">
+<body class="min-h-full">
 
-  <!-- Background sparks -->
-  <div class="pointer-events-none fixed -top-40 -left-40 w-[26rem] h-[26rem] bg-[radial-gradient(circle_at_center,rgba(255,209,1,0.16),transparent_70%)] blur-3xl opacity-60 -z-10"></div>
-  <div class="pointer-events-none fixed -bottom-40 -right-40 w-[26rem] h-[26rem] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.09),transparent_70%)] blur-3xl opacity-70 -z-10"></div>
+<!-- HERO -->
+<header class="w-full py-16 bg-gradient-to-b from-black via-[#141414] to-[#141414]">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" 
+         alt="IGEL Logo" class="mx-auto w-32 mb-6 opacity-90" />
+    <h1 class="text-4xl md:text-5xl font-extrabold text-white title-glow">IGEL + ControlUp</h1>
+    <p class="text-neutral-300 mt-4 text-xl max-w-3xl mx-auto">
+      A closed-loop experience engine: <span class="text-[#ffd101]">IGEL standardizes</span>,  
+      <span class="text-[#ffd101]">ControlUp reveals truth</span>, and IT gains the power to deliver predictable end-user experience everywhere.
+    </p>
+  </div>
+</header>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-30 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <!-- Logo placeholder -->
-        <div class="w-32 h-8 bg-[url('https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png')] bg-contain bg-no-repeat bg-left" aria-label="IGEL Logo"></div>
-        <div>
-          <div class="text-xs tracking-[0.18em] uppercase text-neutral-400">IGEL + ControlUp</div>
-          <h1 class="text-lg md:text-xl font-bold text-neutral-50">The EUC Blind Spot That Costs Millions</h1>
-        </div>
-      </div>
+<main class="max-w-5xl mx-auto px-6 pb-24 space-y-16">
 
-      <!-- Mobile menu button -->
-      <button id="mobileMenuToggle" class="md:hidden inline-flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-700 text-xs tracking-wide uppercase text-neutral-200 hover:border-[#ffd101] hover:text-[#ffd101] transition">
-        <span>Menu</span>
-        <span class="text-lg leading-none">☰</span>
-      </button>
+<!-- 1 — HOOK -->
+<section id="hook">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2 class="text-2xl md:text-3xl font-bold">You Can't Fix What You Can't See</h2>
+  </div>
+
+  <div class="glass">
+    <p class="text-neutral-200 leading-relaxed">
+      Distributed workforces, clinical environments, branch locations, and remote users all depend on fast, reliable digital experience — 
+      but IT teams still operate with incomplete endpoint → network → session visibility. 
+      When the last mile is blind, triage slows, cost rises, and user frustration spikes.
+    </p>
+    <p class="mt-4 text-[#ffd101] font-semibold">
+      Drift breaks data. Data breaks decisions.
+    </p>
+  </div>
+</section>
+
+<!-- 2 — ENDPOINT PROBLEM -->
+<section id="endpoint-problem">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2 class="text-2xl md:text-3xl font-bold">The Endpoint Is the Weakest Link</h2>
+  </div>
+
+  <div class="glass">
+    <p class="text-neutral-200">
+      Traditional Windows endpoints drift, patch unpredictably, collect local bloat, and generate inconsistent telemetry. 
+      DEX tools can only be as accurate as the foundation they run on — and that foundation is often unstable.
+    </p>
+    <ul class="mt-4 text-neutral-300 list-disc list-inside space-y-1">
+      <li>Inconsistent baselines corrupt DEX analytics.</li>
+      <li>Local changes break repeatability and forecasting.</li>
+      <li>Support tickets increase when data and reality disagree.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 3 — IGEL FOUNDATION -->
+<section id="igel-baseline">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2 class="text-2xl md:text-3xl font-bold">IGEL: A Secure, Immutable Baseline</h2>
+  </div>
+
+  <div class="glass">
+    <p class="text-neutral-200">
+      IGEL OS stabilizes endpoint operations by eliminating drift, removing local data, and enforcing a centrally managed, read-only configuration. 
+      It provides the consistent substrate ControlUp needs to generate accurate, actionable intelligence.
+    </p>
+    <ul class="mt-4 text-neutral-300 list-disc list-inside space-y-1">
+      <li>Immutable, locked-down OS.</li>
+      <li>No configuration drift, ever.</li>
+      <li>Centrally managed device posture at scale.</li>
+      <li>SaaS-delivered App Portal → instant deployment of ControlUp agents.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4 — CONTROLUP INSIGHT -->
+<section id="controlup-dex">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2 class="text-2xl md:text-3xl font-bold">ControlUp: Real-Time Truth Everywhere</h2>
+  </div>
+
+  <div class="glass">
+    <p class="text-neutral-200">
+      ControlUp Edge DX and Remote DX capture the most complete picture of digital experience available: endpoint health, CPU/memory, 
+      Wi-Fi quality, latency, VDI session performance, application responsiveness, and even UC metrics.
+    </p>
+    <ul class="mt-4 text-neutral-300 list-disc list-inside space-y-1">
+      <li>Client-side telemetry for accurate VDI diagnosis.</li>
+      <li>Network path and Wi-Fi insights for remote users.</li>
+      <li>UC analytics for Teams/Zoom call quality.</li>
+      <li>Correlated endpoint + network + session visibility.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5 — TENSION -->
+<section id="tension">
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2 class="text-2xl md:text-3xl font-bold">Telemetry Fails Without Standardization</h2>
+  </div>
+
+  <div class="glass">
+    <p class="text-neutral-200">
+      Even the best analytics engine can't interpret inconsistent data. 
+      Drift destroys baselines → baselines drive all DEX insights. 
+      Without IGEL, ControlUp must fight through noise before delivering signal.
+    </p>
+  </div>
+</section>
+
+<!-- 6 — THE TURN: CLOSED LOOP -->
+<section id="closed-loop">
+  <div class="section-header">
+    <span class="section-number">06</span>
+    <h2 class="text-2xl md:text-3xl font-bold">Together: A Closed-Loop Experience Engine</h2>
+  </div>
+
+  <div class="glass">
+    <p class="text-neutral-200">
+      When IGEL provides a consistent substrate and ControlUp provides real-time intelligence, the enterprise gains a 
+      repeatable loop of improvement: standardize → observe → diagnose → remediate → verify.
+    </p>
+
+    <div class="mt-6 grid md:grid-cols-5 gap-4 text-center text-neutral-200 font-medium">
+      <div class="glass py-4">Standardize<br><span class="text-[#ffd101]">IGEL</span></div>
+      <div class="glass py-4">Observe<br><span class="text-[#ffd101]">ControlUp</span></div>
+      <div class="glass py-4">Diagnose<br><span class="text-[#ffd101]">Edge DX</span></div>
+      <div class="glass py-4">Remediate<br><span class="text-[#ffd101]">IT Ops</span></div>
+      <div class="glass py-4">Verify<br><span class="text-[#ffd101]">ControlUp</span></div>
     </div>
+  </div>
+</section>
 
-    <!-- Mobile menu -->
-    <nav id="mobileMenu" class="md:hidden hidden border-t border-neutral-800 bg-neutral-950/95">
-      <div class="max-w-6xl mx-auto px-4 py-3 grid grid-cols-2 gap-3 text-xs">
-        <a href="#hook" class="flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-700 text-neutral-200 hover:border-[#ffd101] hover:text-[#ffd101] transition">
-          <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#ffd101] text-black text-[0.65rem] font-bold">1</span>
-          Hook
-        </a>
-        <a href="#setup" class="flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-700 text-neutral-200 hover:border-[#ffd101] hover:text-[#ffd101] transition">
-          <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#ffd101] text-black text-[0.65rem] font-bold">2</span>
-          Problem
-        </a>
-        <a href="#mechanism" class="flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-700 text-neutral-200 hover:border-[#ffd101] hover:text-[#ffd101] transition">
-          <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#ffd101] text-black text-[0.65rem] font-bold">3</span>
-          Mechanism
-        </a>
-        <a href="#tension" class="flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-700 text-neutral-200 hover:border-[#ffd101] hover:text-[#ffd101] transition">
-          <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#ffd101] text-black text-[0.65rem] font-bold">4</span>
-          Tension
-        </a>
-        <a href="#turn" class="flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-700 text-neutral-200 hover:border-[#ffd101] hover:text-[#ffd101] transition">
-          <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#ffd101] text-black text-[0.65rem] font-bold">5</span>
-          The Turn
-        </a>
-        <a href="#insight" class="flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-700 text-neutral-200 hover:border-[#ffd101] hover:text-[#ffd101] transition">
-          <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#ffd101] text-black text-[0.65rem] font-bold">6</span>
-          Insight
-        </a>
-        <a href="#implications" class="flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-700 text-neutral-200 hover:border-[#ffd101] hover:text-[#ffd101] transition">
-          <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#ffd101] text-black text-[0.65rem] font-bold">7</span>
-          Outcomes
-        </a>
-        <a href="#closure" class="flex items-center gap-2 px-3 py-2 rounded-full border border-neutral-700 text-neutral-200 hover:border-[#ffd101] hover:text-[#ffd101] transition">
-          <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#ffd101] text-black text-[0.65rem] font-bold">8</span>
-          Closure
-        </a>
-      </div>
-    </nav>
-  </header>
+<!-- 7 — OUTCOMES -->
+<section id="outcomes">
+  <div class="section-header">
+    <span class="section-number">07</span>
+    <h2 class="text-2xl md:text-3xl font-bold">Customer Outcomes that Matter</h2>
+  </div>
 
-  <main class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-10 md:py-14">
-    <div class="grid md:grid-cols-[220px,1fr] gap-8 lg:gap-10 items-start">
+  <div class="glass">
+    <ul class="text-neutral-200 list-disc list-inside space-y-2">
+      <li>Lower MTTR through accurate, correlated telemetry.</li>
+      <li>Fewer support tickets and faster VDI troubleshooting.</li>
+      <li>Better UC experience for Teams/Zoom.</li>
+      <li>Endpoint lifecycle extension via IGEL conversion.</li>
+      <li>Predictable performance in healthcare, finance, retail, public sector, and manufacturing.</li>
+    </ul>
 
-      <!-- Desktop nav rail -->
-      <aside class="hidden md:block">
-        <div class="rounded-2xl border border-neutral-800 bg-neutral-950/70 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur p-4 sticky top-28 max-h-[calc(100vh-140px)] overflow-y-auto">
-          <div class="text-xs tracking-[0.18em] uppercase text-neutral-400 mb-3">Story Flow</div>
-          <nav class="space-y-2 text-sm">
-            <a href="#hook" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-neutral-800/80 transition text-neutral-200">
-              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ffd101] text-black text-xs font-extrabold">1</span>
-              <span>Hook: The blind spot</span>
-            </a>
-            <a href="#setup" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-neutral-800/80 transition text-neutral-200">
-              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ffd101] text-black text-xs font-extrabold">2</span>
-              <span>Problem context</span>
-            </a>
-            <a href="#mechanism" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-neutral-800/80 transition text-neutral-200">
-              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ffd101] text-black text-xs font-extrabold">3</span>
-              <span>How it works</span>
-            </a>
-            <a href="#tension" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-neutral-800/80 transition text-neutral-200">
-              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ffd101] text-black text-xs font-extrabold">4</span>
-              <span>Why tools fail</span>
-            </a>
-            <a href="#turn" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-neutral-800/80 transition text-neutral-200">
-              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ffd101] text-black text-xs font-extrabold">5</span>
-              <span>The App Portal turn</span>
-            </a>
-            <a href="#insight" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-neutral-800/80 transition text-neutral-200">
-              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ffd101] text-black text-xs font-extrabold">6</span>
-              <span>Proactive IT</span>
-            </a>
-            <a href="#implications" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-neutral-800/80 transition text-neutral-200">
-              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ffd101] text-black text-xs font-extrabold">7</span>
-              <span>Business outcomes</span>
-            </a>
-            <a href="#closure" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-neutral-800/80 transition text-neutral-200">
-              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ffd101] text-black text-xs font-extrabold">8</span>
-              <span>Modern EUC blueprint</span>
-            </a>
-          </nav>
-        </div>
-      </aside>
+    <p class="mt-4 text-[#ffd101] font-semibold">
+      Standardize first. Analyze second. Transform experience everywhere.
+    </p>
+  </div>
+</section>
 
-      <!-- Content stack -->
-      <section class="space-y-10 md:space-y-12 lg:space-y-14">
+</main>
 
-        <!-- 1: Hook -->
-        <article id="hook" class="rounded-2xl border border-neutral-800 bg-neutral-900/80 shadow-[0_0_35px_rgba(0,0,0,0.55)] backdrop-blur px-5 py-6 md:px-7 md:py-8 lg:px-8 lg:py-9">
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <div>
-              <div class="text-[#ffd101] uppercase tracking-[0.2em] text-xs font-extrabold">01</div>
-              <h2 class="text-2xl md:text-3xl font-extrabold text-white mt-1">The Missing Last Mile</h2>
-            </div>
-            <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full border border-neutral-700 text-xs uppercase tracking-wide text-neutral-300">
-              Hook
-            </span>
-          </div>
-          <p class="text-sm md:text-base text-neutral-200">
-            EUC teams can see data center performance — but the real cause of incidents often lives on the endpoint: Wi-Fi quality, latency, device load, and user conditions.
-            This “last-mile blind spot” drives misdiagnosis, longer MTTR, and higher costs.
-          </p>
-        </article>
+<footer class="py-12 text-center text-neutral-600 text-sm">
+  IGEL Ready Playbook Praxis Theme • All Rights Reserved
+</footer>
 
-        <!-- 2: Setup -->
-        <article id="setup" class="rounded-2xl border border-neutral-800 bg-neutral-900/80 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur px-5 py-6 md:px-7 md:py-8 lg:px-8 lg:py-9">
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <div>
-              <div class="text-[#ffd101] uppercase tracking-[0.2em] text-xs font-extrabold">02</div>
-              <h2 class="text-2xl font-bold text-white mt-1">Hybrid Work Makes EUC Problems Harder</h2>
-            </div>
-            <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full border border-neutral-700 text-xs uppercase tracking-wide text-neutral-300">
-              Problem
-            </span>
-          </div>
-          <p class="text-sm md:text-base text-neutral-200">
-            Distributed workforces, unpredictable networks, and rising security pressures strain IT teams.
-            Traditional tools were never designed to see what’s happening on the user's device in real time.
-          </p>
-          <ul class="mt-4 text-sm text-neutral-300 space-y-2 list-disc list-inside">
-            <li>Unpredictable Wi-Fi and ISP variability.</li>
-            <li>Security and compliance requirements rising each year.</li>
-            <li>Endpoints increasingly outside corporate walls and VPNs.</li>
-            <li>Helpdesks flying blind when users report “slow performance.”</li>
-          </ul>
-        </article>
-
-        <!-- 3: Mechanism -->
-        <article id="mechanism" class="rounded-2xl border border-neutral-800 bg-neutral-900/80 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur px-5 py-6 md:px-7 md:py-8 lg:px-8 lg:py-9">
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <div>
-              <div class="text-[#ffd101] uppercase tracking-[0.2em] text-xs font-extrabold">03</div>
-              <h2 class="text-2xl font-bold text-white mt-1">How IGEL + ControlUp Work Together</h2>
-            </div>
-            <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full border border-neutral-700 text-xs uppercase tracking-wide text-neutral-300">
-              Mechanism
-            </span>
-          </div>
-          <div class="grid md:grid-cols-2 gap-6 mt-3 md:mt-4">
-            <div class="space-y-2">
-              <h3 class="text-sm font-semibold text-neutral-100">IGEL OS: Secure Endpoint OS</h3>
-              <p class="text-sm text-neutral-300">
-                A secure, read-only, centrally managed endpoint operating system that eliminates drift, reduces attack surface,
-                and extends device life across thin clients and repurposed PCs.
-              </p>
-            </div>
-            <div class="space-y-2">
-              <h3 class="text-sm font-semibold text-neutral-100">ControlUp ONE: Real-Time DEX</h3>
-              <p class="text-sm text-neutral-300">
-                Real-time telemetry, historical analytics, and automation across VDI, cloud, and endpoints.
-                Remote DX + Edge DX merge endpoint and session data into a single pane of glass.
-              </p>
-            </div>
-          </div>
-          <!-- Subtle hotspot explanations -->
-          <div class="mt-5 flex flex-wrap gap-3 text-xs">
-            <button class="inline-flex items-center px-3 py-1 rounded-full border border-[#ffd101] text-[#ffd101] uppercase tracking-[0.18em]"
-                    type="button">
-              IGEL Role
-            </button>
-            <button class="inline-flex items-center px-3 py-1 rounded-full border border-[#ffd101] text-[#ffd101] uppercase tracking-[0.18em]"
-                    type="button">
-              ControlUp Role
-            </button>
-          </div>
-        </article>
-
-        <!-- 4: Tension -->
-        <article id="tension" class="rounded-2xl border border-neutral-800 bg-neutral-900/80 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur px-5 py-6 md:px-7 md:py-8 lg:px-8 lg:py-9">
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <div>
-              <div class="text-[#ffd101] uppercase tracking-[0.2em] text-xs font-extrabold">04</div>
-              <h2 class="text-2xl font-bold text-white mt-1">Why Traditional Monitoring Fails</h2>
-            </div>
-            <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full border border-neutral-700 text-xs uppercase tracking-wide text-neutral-300">
-              Tension
-            </span>
-          </div>
-          <p class="text-sm md:text-base text-neutral-200">
-            When performance degrades, IT teams bounce between VDI tools, network dashboards, and user reports —
-            often without any actual endpoint data.
-          </p>
-          <p class="mt-3 text-sm italic text-neutral-300">
-            Result: reactive firefighting, long MTTR, frustrated users, and wasted time.
-          </p>
-        </article>
-
-        <!-- 5: The Turn -->
-        <article id="turn" class="rounded-2xl border border-neutral-800 bg-neutral-900/80 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur px-5 py-6 md:px-7 md:py-8 lg:px-8 lg:py-9">
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <div>
-              <div class="text-[#ffd101] uppercase tracking-[0.2em] text-xs font-extrabold">05</div>
-              <h2 class="text-2xl font-bold text-white mt-1">The Turning Point: App Portal Integration</h2>
-            </div>
-            <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full border border-neutral-700 text-xs uppercase tracking-wide text-neutral-300">
-              The Turn
-            </span>
-          </div>
-          <p class="text-sm md:text-base text-neutral-200">
-            ControlUp Remote DX and Edge DX deploy natively through the IGEL App Portal as signed apps — no custom partitions,
-            complex scripts, or manual installs on each device.
-          </p>
-          <p class="mt-3 text-sm md:text-base text-neutral-100 font-semibold">
-            IGEL devices become real-time telemetry nodes, appearing in ControlUp as first-class, fully monitored endpoints.
-          </p>
-        </article>
-
-        <!-- 6: Insight -->
-        <article id="insight" class="rounded-2xl border border-neutral-800 bg-neutral-900/80 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur px-5 py-6 md:px-7 md:py-8 lg:px-8 lg:py-9">
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <div>
-              <div class="text-[#ffd101] uppercase tracking-[0.2em] text-xs font-extrabold">06</div>
-              <h2 class="text-2xl font-bold text-white mt-1">Proactive IT Becomes Possible</h2>
-            </div>
-            <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full border border-neutral-700 text-xs uppercase tracking-wide text-neutral-300">
-              Insight
-            </span>
-          </div>
-          <p class="text-sm md:text-base text-neutral-200">
-            When endpoint and session data combine, IT teams know exactly what’s happening — and can act before users even feel an issue.
-          </p>
-
-          <div class="mt-6">
-            <canvas id="mttrChart" class="w-full max-w-xl mx-auto" height="140" aria-label="MTTR Before and After IGEL + ControlUp"></canvas>
-            <p class="mt-3 text-xs text-neutral-400 text-center">
-              Illustrative data: MTTR reduction after adopting IGEL + ControlUp (for example purposes only).
-            </p>
-          </div>
-
-          <!-- Before/After toggle text (subtle toy, but all Tailwind) -->
-          <div class="mt-5 flex flex-wrap items-center gap-3 text-xs">
-            <button id="toggleBefore" type="button" class="inline-flex items-center px-3 py-1 rounded-full border border-neutral-700 text-neutral-200 uppercase tracking-[0.18em]">
-              Before
-            </button>
-            <button id="toggleAfter" type="button" class="inline-flex items-center px-3 py-1 rounded-full border border-[#ffd101] text-[#ffd101] uppercase tracking-[0.18em]">
-              After
-            </button>
-            <p id="toggleText" class="text-[0.8rem] text-neutral-300">
-              Before: IT reacted only after users complained, often guessing at the real root cause.
-            </p>
-          </div>
-        </article>
-
-        <!-- 7: Implications -->
-        <article id="implications" class="rounded-2xl border border-neutral-800 bg-neutral-900/80 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur px-5 py-6 md:px-7 md:py-8 lg:px-8 lg:py-9">
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <div>
-              <div class="text-[#ffd101] uppercase tracking-[0.2em] text-xs font-extrabold">07</div>
-              <h2 class="text-2xl font-bold text-white mt-1">What Organizations Gain</h2>
-            </div>
-            <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full border border-neutral-700 text-xs uppercase tracking-wide text-neutral-300">
-              Outcomes
-            </span>
-          </div>
-          <div class="space-y-3 text-sm text-neutral-200">
-            <div>
-              <span class="font-semibold text-neutral-50">Faster troubleshooting.</span>
-              <span class="text-neutral-300 ml-1">End-to-end visibility can cut MTTR by 50% or more.</span>
-            </div>
-            <div>
-              <span class="font-semibold text-neutral-50">Superior digital experience.</span>
-              <span class="text-neutral-300 ml-1">Fewer slowdowns, faster logins, and fewer escalations.</span>
-            </div>
-            <div>
-              <span class="font-semibold text-neutral-50">Stronger security & compliance.</span>
-              <span class="text-neutral-300 ml-1">A read-only OS plus continuous monitoring aligns with Zero Trust.</span>
-            </div>
-            <div>
-              <span class="font-semibold text-neutral-50">Deferred hardware refresh.</span>
-              <span class="text-neutral-300 ml-1">Repurpose existing PCs as secure IGEL endpoints monitored by ControlUp.</span>
-            </div>
-            <div>
-              <span class="font-semibold text-neutral-50">Better outcomes in key verticals.</span>
-              <span class="text-neutral-300 ml-1">Healthcare, finance, government, and retail all benefit from more uptime and fewer tickets.</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 8: Closure / CTA -->
-        <article id="closure" class="rounded-2xl border border-[#ffd101]/40 bg-neutral-900/90 shadow-[0_0_40px_rgba(0,0,0,0.7)] backdrop-blur px-5 py-6 md:px-7 md:py-8 lg:px-8 lg:py-9">
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <div>
-              <div class="text-[#ffd101] uppercase tracking-[0.2em] text-xs font-extrabold">08</div>
-              <h2 class="text-2xl font-bold text-white mt-1">A Modern EUC Blueprint</h2>
-            </div>
-            <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full border border-neutral-700 text-xs uppercase tracking-wide text-neutral-300">
-              Closure
-            </span>
-          </div>
-          <p class="text-sm md:text-base text-neutral-100">
-            “Secure Endpoint + Intelligent Monitoring = Optimal Workspace.”
-          </p>
-          <p class="mt-3 text-sm text-neutral-200">
-            IGEL and ControlUp together deliver a sustainable, high-performance EUC strategy for 2025 and beyond — one that improves user experience,
-            reduces risk, and keeps costs under control.
-          </p>
-          <div class="mt-5">
-            <a href="#hook" class="inline-flex items-center px-4 py-2 rounded-full border border-[#ffd101] bg-[#ffd101] text-black text-xs font-semibold uppercase tracking-[0.2em] hover:bg-yellow-300 hover:border-yellow-300 transition">
-              Talk Through the Architecture
-            </a>
-          </div>
-        </article>
-
-      </section>
-    </div>
-  </main>
-
-  <!-- Scripts: Chart + simple toggles -->
-  <script>
-    // MTTR chart
-    const ctx = document.getElementById('mttrChart');
-    if (ctx) {
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Before', 'Month 1', 'Month 2', 'Month 3'],
-          datasets: [{
-            label: 'MTTR (minutes)',
-            data: [90, 60, 50, 45],
-            borderColor: '#ffd101',
-            backgroundColor: 'rgba(255, 209, 1, 0.25)',
-            tension: 0.3,
-            pointRadius: 4
-          }]
-        },
-        options: {
-          plugins: {
-            legend: { display: false }
-          },
-          scales: {
-            x: {
-              ticks: { color: '#e5e5e5' },
-              grid: { color: 'rgba(148,163,184,0.25)' }
-            },
-            y: {
-              ticks: { color: '#e5e5e5' },
-              grid: { color: 'rgba(148,163,184,0.15)' }
-            }
-          }
-        }
-      });
-    }
-
-    // Mobile menu toggle
-    const mobileToggle = document.getElementById('mobileMenuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileToggle && mobileMenu) {
-      mobileToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
-
-    // Before/After toggle text
-    const beforeBtn = document.getElementById('toggleBefore');
-    const afterBtn = document.getElementById('toggleAfter');
-    const toggleText = document.getElementById('toggleText');
-
-    if (beforeBtn && afterBtn && toggleText) {
-      beforeBtn.addEventListener('click', () => {
-        toggleText.textContent = "Before: IT reacted only after users complained, often guessing at the real root cause.";
-        beforeBtn.classList.add('border-[#ffd101]', 'text-[#ffd101]');
-        afterBtn.classList.remove('border-[#ffd101]', 'text-[#ffd101]');
-        afterBtn.classList.add('border-neutral-700', 'text-neutral-200');
-      });
-
-      afterBtn.addEventListener('click', () => {
-        toggleText.textContent = "After: Combined IGEL + ControlUp visibility lets IT resolve issues before users even notice them.";
-        afterBtn.classList.add('border-[#ffd101]', 'text-[#ffd101]');
-        beforeBtn.classList.remove('border-[#ffd101]', 'text-[#ffd101]');
-        beforeBtn.classList.add('border-neutral-700', 'text-neutral-200');
-      });
-    }
-  </script>
 </body>
 </html>
