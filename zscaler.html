@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>IGEL + Zscaler Zero Trust Playbook for Zscaler Sellers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IGEL for Zscaler Sellers | Zero Trust from Cloud to Screen</title>
+  <meta
+    name="description"
+    content="Field-ready IGEL + Zscaler playbook for Zscaler sellers: how a hardened, immutable endpoint OS completes Zero Trust from cloud to device."
+  />
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Manrope font (IGEL primary) -->
+  <!-- Manrope font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -16,913 +17,1481 @@
     rel="stylesheet"
   />
 
-  <style>
-    :root {
-      --igel-yellow: #ffd101;
-      --igel-black: #141414;
-      --igel-white: #ffffff;
-    }
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+  <style type="text/tailwindcss">
     body {
-      position: relative;
-      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #292929 0, #050505 40%, #000000 100%);
-      color: var(--igel-white);
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
     }
 
-    .page-shell {
-      transform-origin: top left;
-    }
-
-    @media (max-width: 1500px) {
-      .page-shell {
-        transform: scale(0.94);
-        width: 106%;
-      }
-    }
-
-    @media (max-width: 1350px) {
-      .page-shell {
-        transform: scale(0.9);
-        width: 112%;
-      }
+    /* Soft dark gradient background + subtle glows */
+    .igel-bg {
+      background: radial-gradient(circle at top left, rgba(255, 209, 1, 0.07), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(148, 163, 184, 0.12), transparent 55%),
+        linear-gradient(135deg, #020617, #020617 35%, #0b0b0f 100%);
     }
 
     .igel-card {
-      @apply rounded-2xl bg-neutral-900/80 border border-neutral-800 shadow-lg;
-      backdrop-filter: blur(10px);
-    }
-
-    .igel-section-number {
-      font-size: 1.3rem;
-      line-height: 1.25;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      color: var(--igel-yellow);
-    }
-
-    .igel-section-title {
-      @apply text-2xl sm:text-3xl font-extrabold tracking-tight;
-      color: #ffffff;
-      font-size: clamp(1.9rem, 1.6vw + 1rem, 2.6rem);
-      line-height: 1.22;
-    }
-
-    .section-hint {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: rgba(255, 255, 255, 0.62);
-    }
-
-    .section-hint::before {
-      content: "";
-      width: 18px;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 209, 1, 0.6));
-      border-radius: 9999px;
-    }
-
-    .section-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 0.75rem;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      margin-bottom: 1rem;
+      @apply rounded-2xl border border-neutral-800/80 bg-neutral-900/80 shadow-lg shadow-black/40 backdrop-blur;
     }
 
     .igel-pill {
-      @apply inline-flex items-center rounded-full border border-yellow-300/40 px-3 py-1 text-xs font-semibold uppercase tracking-wide;
-      background: rgba(255, 209, 1, 0.06);
-      letter-spacing: 0.1em;
+      @apply inline-flex items-center gap-2 rounded-full border border-yellow-400/70 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.16em] uppercase text-neutral-100;
+    }
+
+    .igel-section-number {
+      @apply text-sm font-semibold uppercase tracking-[0.18em] text-yellow-400;
+    }
+
+    .igel-section-title {
+      @apply text-xl md:text-2xl font-semibold text-neutral-50;
     }
 
     .nav-rail {
-      position: sticky;
-      top: 88px;
-      align-self: start;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 1rem;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: linear-gradient(145deg, rgba(16, 16, 16, 0.92), rgba(20, 20, 20, 0.92));
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+      max-height: calc(100vh - 112px);
     }
 
-    .nav-rail-title {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: 0.25rem;
-    }
-
-    .nav-rail a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 0.65rem;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #f4f4f5;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: all 0.18s ease-out;
-    }
-
-    .nav-rail a:hover {
-      border-color: rgba(255, 209, 1, 0.65);
-      color: #fff9db;
-      transform: translateX(2px);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4);
-    }
-
-    .nav-rail .nav-index {
-      width: 26px;
-      height: 26px;
-      border-radius: 9999px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #ffd101, #ffb703);
-      color: #141414;
-      font-weight: 800;
-      font-size: 12px;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
-    }
-
-    @media (max-height: 900px) {
-      .nav-rail {
-        max-height: calc(100vh - 120px);
-        overflow-y: auto;
-      }
-
-      .nav-rail::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      .nav-rail::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 999px;
-      }
-    }
-
-    #primaryNav {
-      max-height: 65vh;
-      overflow-y: auto;
-    }
-
-    #primaryNav a {
-      transition: background 0.15s ease-out, color 0.15s ease-out, transform 0.15s ease-out;
-    }
-
-    #primaryNav a:hover {
-      transform: translateY(-1px);
-    }
-
-    table.igel-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-
-    table.igel-table thead {
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    table.igel-table th,
-    table.igel-table td {
-      padding: 0.75rem 0.9rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      vertical-align: top;
-      text-align: left;
-    }
-
-    .accent-block {
-      position: relative;
-      padding: 1rem;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: radial-gradient(circle at 20% 20%, rgba(255, 209, 1, 0.08), rgba(18, 18, 18, 0.95));
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
-    }
-
-    .nav-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.45rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #f4f4f5;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.3));
-      transition: all 0.18s ease-out;
-      white-space: nowrap;
-    }
-
-    .nav-chip:hover {
-      color: #ffe999;
-      border-color: rgba(255, 209, 1, 0.6);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    .nav-chip.nav-chip-mobile {
-      width: 100%;
-      justify-content: flex-start;
-      border-color: rgba(255, 255, 255, 0.12);
-      background: rgba(18, 18, 18, 0.92);
+    .nav-pill {
+      @apply flex items-center gap-3 rounded-full border border-neutral-700/80 bg-neutral-900/70 px-3 py-2 text-xs font-medium text-neutral-200 transition hover:border-yellow-400/80 hover:text-yellow-300;
     }
 
     .nav-index {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, #ffd101, #ffb526);
-      color: #141414;
-      font-weight: 800;
-      font-size: 11px;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+      @apply flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-yellow-300 to-amber-400 text-[0.7rem] font-bold text-black;
     }
 
-    .spark {
-      position: absolute;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(255, 209, 1, 0.15), transparent 70%);
-      filter: blur(2px);
-      pointer-events: none;
+    .section-hint {
+      @apply text-[0.65rem] uppercase tracking-[0.16em] text-neutral-400;
     }
 
-    .nav-shadow {
-      box-shadow: 0 1px 0 rgba(250, 250, 250, 0.03);
+    .igel-stat-bar-track {
+      @apply h-1.5 w-full rounded-full bg-neutral-800/80;
+    }
+
+    .igel-stat-bar-fill {
+      background: linear-gradient(90deg, #ffd101, #fb923c);
+    }
+
+    /* Simple hover lift */
+    .hover-lift {
+      @apply transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/40;
+    }
+
+    /* details/summary styling */
+    details.igel-accordion > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.igel-accordion[open] .accordion-chevron {
+      transform: rotate(90deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 
-  <meta name="description" content="IGEL for Zscaler sellers: how a hardened, dataless endpoint OS completes Zscaler Zero Trust from cloud to screen, with plays, triggers, and real world scenarios." />
-
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="IGEL for Zscaler Sellers | Zero Trust from Cloud to Screen" />
-  <meta property="og:description" content="Partner ready overview for Zscaler reps. Understand how IGEL's immutable endpoint OS completes Zero Trust, unlocks BYOD, reduces VDI cost, and accelerates compliant deployments." />
+  <meta property="og:title" content="IGEL + Zscaler Zero Trust Playbook for Zscaler Sellers" />
+  <meta
+    property="og:description"
+    content="Field-ready IGEL + Zscaler playbook for Zscaler sellers: how a hardened, immutable endpoint OS completes Zero Trust from cloud to device."
+  />
   <meta property="og:type" content="article" />
+  <!-- TODO: Replace with the final live URL of this infographic -->
   <meta property="og:url" content="[[SET_FINAL_URL_HERE]]" />
+  <!-- TODO: Replace with the full URL to your 1200x675 thumbnail -->
   <meta property="og:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="IGEL for Zscaler Sellers | Zero Trust from Cloud to Screen" />
-  <meta name="twitter:description" content="How IGEL endpoint OS and Zscaler Zero Trust Exchange work together to secure origin and path, with monetizable joint plays and sales signals." />
+  <meta name="twitter:title" content="IGEL + Zscaler Zero Trust Playbook for Zscaler Sellers" />
+  <meta
+    name="twitter:description"
+    content="Field-ready IGEL + Zscaler playbook for Zscaler sellers: how a hardened, immutable endpoint OS completes Zero Trust from cloud to device."
+  />
   <meta name="twitter:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
 </head>
 
-<body class="min-h-screen text-sm sm:text-base">
-  <!-- Decorative sparks -->
-  <div class="spark w-64 h-64 -top-10 -left-10 opacity-80"></div>
-  <div class="spark w-80 h-80 top-1/3 -right-16 opacity-70"></div>
-  <div class="spark w-56 h-56 bottom-10 left-1/4 opacity-60"></div>
-
-  <!-- Header -->
-  <header class="sticky top-0 z-40 border-b border-neutral-800/80 bg-gradient-to-r from-black/95 via-neutral-950/95 to-black/95 backdrop-blur nav-shadow">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap items-center justify-between gap-4 py-3">
-        <div class="flex items-center gap-3">
-          <img
-            src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
-            alt="IGEL logo" class="h-9 w-auto" />
-          <div class="flex flex-col leading-tight">
-            <span class="text-[10px] font-semibold tracking-[0.22em] uppercase text-yellow-300">
-              Zscaler Partnership
-            </span>
-            <span class="text-sm font-semibold text-white">
-              IGEL for Zscaler Sellers
-            </span>
-          </div>
+<body class="igel-bg min-h-screen text-neutral-100">
+  <!-- Sticky header -->
+  <header
+    class="sticky top-0 z-30 border-b border-neutral-800/80 bg-black/60 backdrop-blur-md"
+  >
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
+      <div class="flex items-center gap-3">
+        <img
+          src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+          alt="IGEL logo"
+          class="h-9 w-auto"
+        />
+        <div class="leading-tight">
+          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-yellow-400">
+            Field Playbook
+          </p>
+          <p class="text-sm font-semibold text-neutral-100">
+            IGEL + Zscaler &mdash; Zero Trust from Cloud to Endpoint
+          </p>
         </div>
-
-        <div class="hidden flex-1 justify-end text-right sm:flex">
-          <div class="flex flex-col gap-0.5">
-            <span class="text-[11px] uppercase tracking-[0.18em] text-neutral-400">Cloud to Screen</span>
-            <span class="text-lg font-semibold text-white">Zero Trust alignment | IGEL + Zscaler</span>
-            <span class="text-xs text-neutral-400">Secure | Managed | Dataless | Browser-first</span>
-          </div>
-        </div>
-
-        <button id="navToggle"
-          class="inline-flex items-center justify-center rounded-full border border-neutral-700 px-3 py-1 text-xs font-medium text-neutral-100 sm:hidden"
-          aria-expanded="false" aria-controls="primaryNav">
-          Menu
-          <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
       </div>
+      <div class="hidden text-right md:block">
+        <p class="text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400">
+          For Zscaler Sellers
+        </p>
+        <p class="text-xs text-neutral-300">
+          Position IGEL as the endpoint that makes Zero Trust real.
+        </p>
+      </div>
+      <!-- Mobile menu toggle -->
+      <button
+        id="mobileMenuToggle"
+        class="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1.5 text-xs font-medium text-neutral-100 md:hidden"
+      >
+        <span class="text-[0.65rem] uppercase tracking-[0.16em] text-neutral-300">Sections</span>
+        <svg
+          class="h-3 w-3 text-neutral-300"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
     </div>
 
-    <!-- Mobile nav -->
-    <nav id="primaryNav" class="hidden border-t border-neutral-800/70 bg-black/95 sm:hidden">
-      <div class="mx-auto max-w-6xl px-4 py-3 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 gap-2">
-          <a href="#hero" class="nav-chip nav-chip-mobile"><span class="nav-index">1</span><span
-              class="nav-label">Overview</span></a>
-          <a href="#what-igel-is" class="nav-chip nav-chip-mobile"><span class="nav-index">2</span><span
-              class="nav-label">What IGEL Is</span></a>
-          <a href="#stack-fit" class="nav-chip nav-chip-mobile"><span class="nav-index">3</span><span
-              class="nav-label">Stack Fit</span></a>
-          <a href="#signals" class="nav-chip nav-chip-mobile"><span class="nav-index">4</span><span
-              class="nav-label">Signals</span></a>
-          <a href="#value" class="nav-chip nav-chip-mobile"><span class="nav-index">5</span><span
-              class="nav-label">Joint Value</span></a>
-          <a href="#landmines" class="nav-chip nav-chip-mobile"><span class="nav-index">6</span><span
-              class="nav-label">Landmines</span></a>
-          <a href="#talk-track" class="nav-chip nav-chip-mobile"><span class="nav-index">7</span><span
-              class="nav-label">Talk Track</span></a>
-          <a href="#scenarios" class="nav-chip nav-chip-mobile"><span class="nav-index">8</span><span
-              class="nav-label">Scenarios</span></a>
-          <a href="#why-matters" class="nav-chip nav-chip-mobile"><span class="nav-index">9</span><span
-              class="nav-label">Why</span></a>
-          <a href="#tldr" class="nav-chip nav-chip-mobile"><span class="nav-index">10</span><span
-              class="nav-label">TLDR</span></a>
-          <a href="#plays" class="nav-chip nav-chip-mobile"><span class="nav-index">11</span><span
-              class="nav-label">Plays</span></a>
-          <a href="#architecture" class="nav-chip nav-chip-mobile"><span class="nav-index">12</span><span
-              class="nav-label">Architecture</span></a>
-        </div>
+    <!-- Mobile section menu -->
+    <nav
+      id="mobileMenu"
+      class="mx-auto hidden max-h-[65vh] max-w-6xl overflow-y-auto border-t border-neutral-800/70 bg-black/85 px-4 pb-3 pt-2 md:hidden"
+    >
+      <div class="grid grid-cols-2 gap-2 text-[0.7rem]">
+        <a href="#overview" class="nav-pill justify-start">
+          <span class="nav-index">1</span>
+          Overview
+        </a>
+        <a href="#architecture" class="nav-pill justify-start">
+          <span class="nav-index">2</span>
+          Joint Architecture
+        </a>
+        <a href="#personas" class="nav-pill justify-start">
+          <span class="nav-index">3</span>
+          Buyer Personas
+        </a>
+        <a href="#plays" class="nav-pill justify-start">
+          <span class="nav-index">4</span>
+          Joint Sales Plays
+        </a>
+        <a href="#igel-for-zs" class="nav-pill justify-start">
+          <span class="nav-index">5</span>
+          IGEL for Zscaler Reps
+        </a>
+        <a href="#use-cases" class="nav-pill justify-start">
+          <span class="nav-index">6</span>
+          Real-World Scenarios
+        </a>
+        <a href="#outcomes" class="nav-pill justify-start">
+          <span class="nav-index">7</span>
+          Outcomes & Compliance
+        </a>
+        <a href="#fast-facts" class="nav-pill justify-start">
+          <span class="nav-index">8</span>
+          Fast Facts & Next Steps
+        </a>
       </div>
     </nav>
   </header>
 
-  <!-- Layout -->
-  <div class="page-shell mx-auto max-w-6xl grid gap-6 px-4 pb-16 pt-6 sm:px-6 lg:grid-cols-[230px,1fr] lg:px-8">
-    <!-- Desktop left rail nav -->
-    <aside class="nav-rail hidden lg:flex">
-      <div class="nav-rail-title">Navigate</div>
-      <a href="#hero"><span class="nav-index">1</span><span>Overview</span></a>
-      <a href="#what-igel-is"><span class="nav-index">2</span><span>What IGEL Is</span></a>
-      <a href="#stack-fit"><span class="nav-index">3</span><span>Stack Fit</span></a>
-      <a href="#signals"><span class="nav-index">4</span><span>Signals</span></a>
-      <a href="#value"><span class="nav-index">5</span><span>Joint Value</span></a>
-      <a href="#landmines"><span class="nav-index">6</span><span>Landmines</span></a>
-      <a href="#talk-track"><span class="nav-index">7</span><span>Talk Track</span></a>
-      <a href="#scenarios"><span class="nav-index">8</span><span>Scenarios</span></a>
-      <a href="#why-matters"><span class="nav-index">9</span><span>Why It Matters</span></a>
-      <a href="#tldr"><span class="nav-index">10</span><span>TLDR</span></a>
-      <a href="#plays"><span class="nav-index">11</span><span>Sales Plays</span></a>
-      <a href="#architecture"><span class="nav-index">12</span><span>Architecture</span></a>
+  <main
+    class="mx-auto flex max-w-6xl gap-6 px-4 pb-16 pt-6 md:px-8 lg:pt-8"
+  >
+    <!-- Left navigation rail -->
+    <aside class="nav-rail sticky top-24 hidden w-56 shrink-0 md:block">
+      <div
+        class="igel-card flex h-full flex-col gap-3 overflow-y-auto border-neutral-800/90 bg-neutral-950/80 px-3 py-4"
+      >
+        <p class="mb-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neutral-400">
+          Navigate
+        </p>
+        <nav class="flex flex-col gap-2 text-[0.72rem]">
+          <a href="#overview" class="nav-pill">
+            <span class="nav-index">1</span>
+            Overview
+          </a>
+          <a href="#architecture" class="nav-pill">
+            <span class="nav-index">2</span>
+            Joint Value Architecture
+          </a>
+          <a href="#personas" class="nav-pill">
+            <span class="nav-index">3</span>
+            Ideal Customers & Personas
+          </a>
+          <a href="#plays" class="nav-pill">
+            <span class="nav-index">4</span>
+            Tier-One Joint Sales Plays
+          </a>
+          <a href="#igel-for-zs" class="nav-pill">
+            <span class="nav-index">5</span>
+            IGEL for Zscaler Sellers
+          </a>
+          <a href="#use-cases" class="nav-pill">
+            <span class="nav-index">6</span>
+            Real-World Scenarios
+          </a>
+          <a href="#outcomes" class="nav-pill">
+            <span class="nav-index">7</span>
+            Outcomes & Compliance
+          </a>
+          <a href="#fast-facts" class="nav-pill">
+            <span class="nav-index">8</span>
+            Fast Facts & Next Steps
+          </a>
+        </nav>
+      </div>
     </aside>
 
-    <!-- Main -->
-    <main class="w-full space-y-8">
-      <!-- Hero -->
-      <section id="hero" class="igel-card relative overflow-hidden border-neutral-800 bg-gradient-to-br from-neutral-950/95 via-neutral-900/90 to-neutral-950/95 px-5 py-6 sm:px-8 sm:py-8">
-        <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-yellow-400 via-yellow-500 to-amber-400"></div>
+    <!-- Main content stack -->
+    <div class="flex-1 space-y-10 lg:space-y-12">
+      <!-- 1. Overview / Hero -->
+      <section id="overview" class="space-y-4">
+        <header class="flex items-baseline justify-between gap-4">
+          <div>
+            <div class="igel-section-number">1 &middot; Orientation</div>
+            <h2 class="igel-section-title mt-1">
+              IGEL + Zscaler: The Zero Trust Endpoint-to-Cloud Fabric
+            </h2>
+          </div>
+          <div class="hidden md:block">
+            <p class="section-hint">Start here before diving into plays</p>
+          </div>
+        </header>
 
-        <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-          <div class="sm:max-w-xl">
-            <h1 class="igel-section-number mb-2">IGEL for Zscaler Sellers</h1>
-            <h1 class="igel-section-title">Zero Trust from cloud to screen</h1>
-            <p class="mt-4 text-sm text-neutral-200 sm:text-base">
-              Think of IGEL as the hardened operating system for Zscaler's Zero Trust network.
-              Zscaler secures the path from user to app. IGEL secures the device at the edge.
-              Together they close the last mile that pure SSE cannot see.
+        <article class="igel-card hover-lift border-neutral-800/80 p-5 md:p-6">
+          <div class="mb-3 flex flex-wrap items-center gap-2">
+            <span class="igel-pill">Zero Trust Workspace</span>
+            <span class="igel-pill border-yellow-500/80 text-yellow-300">
+              For Zscaler Sales
+            </span>
+          </div>
+          <div class="space-y-4 text-sm text-neutral-200">
+            <p class="text-[0.9rem] text-neutral-100">
+              The IGEL-Zscaler partnership delivers
+              <span class="font-semibold text-yellow-300"
+                >Zero Trust from cloud to endpoint</span
+              >: Zscaler secures the path, IGEL secures the device. Together they remove the
+              need for VPNs, heavy VDI, and fragile endpoint stacks by uniting a hardened,
+              read-only endpoint OS with Zscaler's cloud-native security edge.
             </p>
-            <div class="mt-4 grid gap-3 sm:grid-cols-3">
-              <div class="accent-block">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">Problem</p>
-                <p class="text-sm font-semibold text-white">Zero Trust fails if the endpoint is dirty, unmanaged, or non-compliant.</p>
+            <div class="grid gap-4 md:grid-cols-3">
+              <div>
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  In one line
+                </p>
+                <p class="mt-1 text-sm text-neutral-100">
+                  <span class="font-semibold text-yellow-300">IGEL locks down the device.</span>
+                  Zscaler locks down the path. Zero Trust becomes real, not just a slide.
+                </p>
               </div>
-              <div class="accent-block">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">What IGEL adds</p>
-                <p class="text-sm font-semibold text-white">Immutable, dataless OS that removes the local attack surface entirely.</p>
+              <div class="border-l border-neutral-800/70 pl-4 md:border-l-0 md:border-x">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  What this page is
+                </p>
+                <ul class="mt-1 space-y-1.5 text-xs text-neutral-200">
+                  <li>- Fast crib on how IGEL fits the Zscaler stack</li>
+                  <li>- 6 field-ready joint plays you can run today</li>
+                  <li>- 30-second talk track to position IGEL in any deal</li>
+                </ul>
               </div>
-              <div class="accent-block">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">Why Zscaler cares</p>
-                <p class="text-sm font-semibold text-white">Bigger deals, faster deployments, safer BYOD and contractors.</p>
+              <div>
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  When to bring IGEL in
+                </p>
+                <ul class="mt-1 space-y-1.5 text-xs text-neutral-200">
+                  <li>- VPN replacement / ZPA-led Zero Trust</li>
+                  <li>- VDI cost pain, SaaS-heavy users</li>
+                  <li>- Contractor / BYOD risk in regulated orgs</li>
+                  <li>- CISO asks "What about the endpoint?"</li>
+                </ul>
               </div>
             </div>
           </div>
+        </article>
+      </section>
 
-          <div class="mt-2 flex flex-col gap-3 rounded-2xl border border-yellow-400/40 bg-yellow-300/10 p-4 text-xs text-yellow-50 sm:mt-0 sm:w-64">
-            <div class="igel-pill justify-center text-yellow-900 bg-yellow-300/90 border-yellow-500/70 text-[11px] font-bold">
-              Zero Trust story spine
-            </div>
-            <ol class="mt-2 space-y-2 text-neutral-100">
-              <li>1. Zero Trust fails if you cannot trust the device.</li>
-              <li>2. Zscaler secures the path but cannot fix a compromised endpoint.</li>
-              <li>3. IGEL hardens the device with an immutable, dataless OS.</li>
-              <li>4. Together they align origin and path security.</li>
-              <li>5. Outcome: deployable Zero Trust from cloud to screen.</li>
-            </ol>
+      <!-- 2. Joint Value Architecture -->
+      <section id="architecture" class="space-y-4">
+        <header class="flex items-baseline justify-between gap-4">
+          <div>
+            <div class="igel-section-number">2 &middot; Joint Value Architecture</div>
+            <h2 class="igel-section-title mt-1">How IGEL + Zscaler Fit Technically</h2>
           </div>
+          <p class="section-hint hidden md:block">Use this for whiteboarding and slides</p>
+        </header>
+
+        <!-- Architecture split -->
+        <article class="igel-card hover-lift p-5 md:p-6">
+          <div class="grid gap-6 md:grid-cols-[1.2fr_1.1fr]">
+            <div class="space-y-4 text-sm text-neutral-200">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-yellow-400">
+                Zero Trust from Cloud to Endpoint
+              </p>
+              <p class="text-[0.9rem] text-neutral-100">
+                At its core, the IGEL-Zscaler architecture is simple:
+                <span class="font-semibold text-yellow-300">Zscaler secures the path</span>,
+                brokering every connection, and
+                <span class="font-semibold text-yellow-300">IGEL secures the device</span>,
+                enforcing an immutable, dataless OS at the edge.
+              </p>
+
+              <div class="grid gap-4 md:grid-cols-2">
+                <div class="rounded-xl bg-neutral-900/80 p-4">
+                  <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                    Endpoint layer &middot; IGEL OS
+                  </p>
+                  <ul class="mt-2 space-y-1.5 text-xs">
+                    <li>- Immutable, read-only OS &mdash; no writable partitions</li>
+                    <li>- No local data, minimal attack surface, no drift</li>
+                    <li>- Centralized control via Universal Management Suite (UMS)</li>
+                    <li>- Deploy as reimage or USB boot on existing x86 hardware</li>
+                  </ul>
+                </div>
+                <div class="rounded-xl bg-neutral-900/80 p-4">
+                  <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                    Access layer &middot; Zscaler Zero Trust Exchange
+                  </p>
+                  <ul class="mt-2 space-y-1.5 text-xs">
+                    <li>- ZIA: secure internet & SaaS access</li>
+                    <li>- ZPA: app-level Zero Trust access to internal apps</li>
+                    <li>- ZCC app packaged in IGEL App Portal</li>
+                    <li>- Cloud Browser Isolation & PRA for agentless/BYOD access</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="grid gap-4 md:grid-cols-2">
+                <div>
+                  <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                    Security synergy
+                  </p>
+                  <ul class="mt-2 space-y-1.5 text-xs">
+                    <li>- IGEL locks down USB, local apps, and write access</li>
+                    <li>- Zscaler applies inline inspection, isolation, and DLP</li>
+                    <li>- Malware has nowhere to land; data has nowhere to hide</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                    Operational view
+                  </p>
+                  <ul class="mt-2 space-y-1.5 text-xs">
+                    <li>- IGEL OS rollout via reimage, USB, or repurposed hardware</li>
+                    <li>- Zscaler is SaaS-delivered &mdash; identity + policy, no boxes</li>
+                    <li>- UMS + Zscaler console + ZDX = end-to-end visibility</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick comparison card -->
+            <div
+              class="flex flex-col justify-between rounded-2xl bg-neutral-950/80 p-4 ring-1 ring-neutral-800/90"
+            >
+              <div>
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Stack Mapping
+                </p>
+                <div class="mt-3 space-y-3 text-xs">
+                  <div class="flex items-start gap-2">
+                    <span
+                      class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400/90 text-[0.7rem] font-bold text-black"
+                      >1</span
+                    >
+                    <div>
+                      <p class="font-semibold text-neutral-50">Cloud / Network</p>
+                      <p class="text-neutral-300">
+                        Zscaler Zero Trust Exchange brokers all access to SaaS, internet, and
+                        private apps.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span
+                      class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400/90 text-[0.7rem] font-bold text-black"
+                      >2</span
+                    >
+                    <div>
+                      <p class="font-semibold text-neutral-50">Endpoint / Edge</p>
+                      <p class="text-neutral-300">
+                        IGEL OS turns endpoints into immutable access devices with no local
+                        attack surface.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span
+                      class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400/90 text-[0.7rem] font-bold text-black"
+                      >3</span
+                    >
+                    <div>
+                      <p class="font-semibold text-neutral-50">Identity / Policy</p>
+                      <p class="text-neutral-300">
+                        Customer&rsquo;s IdP + Zscaler policy engine decide who gets to what;
+                        IGEL enforces how the device can behave.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Risk reduction snapshot
+                </p>
+                <div class="space-y-2 text-[0.7rem] text-neutral-300">
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <span>Endpoint attack surface</span>
+                      <span class="font-semibold text-yellow-300">down as much as 95%</span>
+                    </div>
+                    <div class="igel-stat-bar-track mt-1">
+                      <div class="igel-stat-bar-fill h-1.5 w-10/12 rounded-full"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <span>VPN / VDI infra reliance</span>
+                      <span class="font-semibold text-yellow-300">down 40-60%</span>
+                    </div>
+                    <div class="igel-stat-bar-track mt-1">
+                      <div class="igel-stat-bar-fill h-1.5 w-8/12 rounded-full"></div>
+                    </div>
+                  </div>
+                  <p class="text-[0.65rem] text-neutral-500">
+                    Stats are indicative, based on field deployments &amp; customer case
+                    studies.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- 3. Ideal Customers & Personas -->
+      <section id="personas" class="space-y-4">
+        <header class="flex items-baseline justify-between gap-4">
+          <div>
+            <div class="igel-section-number">3 &middot; Target Customers</div>
+            <h2 class="igel-section-title mt-1">Who Buys IGEL + Zscaler, and Why</h2>
+          </div>
+          <p class="section-hint hidden md:block">Scan this before account mapping</p>
+        </header>
+
+        <article class="igel-card hover-lift p-5 md:p-6">
+          <div class="grid gap-5 md:grid-cols-[1.3fr_1fr]">
+            <div class="space-y-4 text-sm text-neutral-200">
+              <p class="text-[0.85rem] text-neutral-100">
+                The sweet spot is organizations that already feel the pain of legacy remote
+                access and heavy endpoints, especially in regulated industries.
+              </p>
+              <div class="grid gap-3 md:grid-cols-2">
+                <div>
+                  <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                    Ideal customer profiles
+                  </p>
+                  <ul class="mt-2 space-y-1.5 text-xs">
+                    <li>- Healthcare, finance, public sector, manufacturing</li>
+                    <li>- Hybrid/distributed workforces, call centers, branch-heavy orgs</li>
+                    <li>- VPN replacement or VDI cost reduction initiatives</li>
+                    <li>- Contractor-heavy or third-party access environments</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                    Trigger conditions
+                  </p>
+                  <ul class="mt-2 space-y-1.5 text-xs">
+                    <li>- VPN fatigue and ransomware risk</li>
+                    <li>- VDI renewals, infra upgrades, or cost audits</li>
+                    <li>- Zero Trust mandates (CISA, NIST, EO, NIS2)</li>
+                    <li>- PC refresh cycles and hardware lifecycle reviews</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Core buyer personas
+                </p>
+                <div class="mt-2 grid gap-3 text-xs md:grid-cols-3">
+                  <div class="rounded-xl bg-neutral-900/80 p-3">
+                    <p class="font-semibold text-neutral-50">CISO / Security</p>
+                    <p class="mt-1 text-neutral-300">
+                      Wants no data on device, no lateral movement, strong audit trail.
+                    </p>
+                  </div>
+                  <div class="rounded-xl bg-neutral-900/80 p-3">
+                    <p class="font-semibold text-neutral-50">CIO / EUC / Workspace</p>
+                    <p class="mt-1 text-neutral-300">
+                      Wants to shrink VDI and endpoint complexity while boosting UX.
+                    </p>
+                  </div>
+                  <div class="rounded-xl bg-neutral-900/80 p-3">
+                    <p class="font-semibold text-neutral-50">Network / SecOps</p>
+                    <p class="mt-1 text-neutral-300">
+                      Wants VPN gone, ZPA everywhere, with endpoints that don&rsquo;t keep
+                      breaking.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick persona filter (textual guidance) -->
+            <div
+              class="rounded-2xl bg-gradient-to-br from-yellow-400/15 via-amber-300/5 to-neutral-900/80 p-4 ring-1 ring-yellow-300/30"
+            >
+              <p class="text-[0.7rem] uppercase tracking-[0.16em] text-yellow-300">
+                Quick play chooser
+              </p>
+              <p class="mt-2 text-xs text-neutral-100">
+                Pick the persona you&rsquo;re talking to and start with the highlighted plays:
+              </p>
+              <div
+                class="mt-3 flex flex-wrap items-center gap-2 text-[0.7rem] text-neutral-900"
+              >
+                <span
+                  class="rounded-full bg-yellow-400/95 px-2.5 py-1 font-semibold text-[0.65rem] uppercase tracking-[0.14em]"
+                  >CISO</span
+                >
+                <span
+                  class="rounded-full bg-yellow-400/40 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-yellow-50"
+                  >Play 1 &middot; VPN Replacement</span
+                >
+                <span
+                  class="rounded-full bg-yellow-400/40 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-yellow-50"
+                  >Play 3 &middot; BYOD / Contractors</span
+                >
+              </div>
+              <div
+                class="mt-2 flex flex-wrap items-center gap-2 text-[0.7rem] text-neutral-900"
+              >
+                <span
+                  class="rounded-full bg-yellow-400/95 px-2.5 py-1 font-semibold text-[0.65rem] uppercase tracking-[0.14em]"
+                  >CIO / EUC</span
+                >
+                <span
+                  class="rounded-full bg-yellow-400/40 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-yellow-50"
+                  >Play 2 &middot; VDI Optimization</span
+                >
+                <span
+                  class="rounded-full bg-yellow-400/40 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-yellow-50"
+                  >Play 5 &middot; Endpoint TCO</span
+                >
+              </div>
+              <div
+                class="mt-2 flex flex-wrap items-center gap-2 text-[0.7rem] text-neutral-900"
+              >
+                <span
+                  class="rounded-full bg-yellow-400/95 px-2.5 py-1 font-semibold text-[0.65rem] uppercase tracking-[0.14em]"
+                  >OT / Industrial</span
+                >
+                <span
+                  class="rounded-full bg-yellow-400/40 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-yellow-50"
+                  >Play 4 &middot; Regulated Workspace</span
+                >
+                <span
+                  class="rounded-full bg-yellow-400/40 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-yellow-50"
+                  >Play 6 &middot; Secure OT / PRA</span
+                >
+              </div>
+              <p class="mt-3 text-[0.7rem] text-neutral-200">
+                Each play doubles as a conversation map. Tap into the section below to open
+                the full accordion details.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- 4. Joint Sales Plays (interactive accordions) -->
+      <section id="plays" class="space-y-4">
+        <header class="flex items-baseline justify-between gap-4">
+          <div>
+            <div class="igel-section-number">4 &middot; Tier-One Joint Sales Plays</div>
+            <h2 class="igel-section-title mt-1">
+              Six Proven IGEL + Zscaler Plays You Can Run Today
+            </h2>
+          </div>
+          <p class="section-hint hidden md:block">Open the accordions to brief yourself</p>
+        </header>
+
+        <div class="space-y-3 text-[0.75rem] text-neutral-300">
+          <p>
+            Use these plays as modular stories. Start with the persona&rsquo;s pain, walk to
+            the joint promise, then anchor with proof and risk notes.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <!-- Play 1 -->
+          <details class="igel-accordion igel-card group hover-lift p-4 md:p-5" open>
+            <summary
+              class="flex cursor-pointer items-start justify-between gap-4 text-left outline-none"
+            >
+              <div class="space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400 text-[0.7rem] font-bold text-black"
+                    >1</span
+                  >
+                  <span class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-neutral-400"
+                    >VPN Replacement</span
+                  >
+                  <span class="rounded-full bg-neutral-800/80 px-2 py-0.5 text-[0.65rem]">
+                    Persona: CISO &middot; SecOps &middot; Network
+                  </span>
+                </div>
+                <p class="text-sm font-semibold text-neutral-50">
+                  Zero Trust access without the drag of legacy VPNs.
+                </p>
+                <p class="text-xs text-neutral-300">
+                  Replace VPN concentrators with ZPA + IGEL OS for app-level access &mdash; no
+                  open ports, no lateral movement, less user pain.
+                </p>
+              </div>
+              <div
+                class="accordion-chevron mt-1.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-700/80 text-neutral-400 transition-transform duration-200 group-open:border-yellow-400/80 group-open:text-yellow-300"
+              >
+                <svg
+                  class="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-4 grid gap-4 text-xs text-neutral-200 md:grid-cols-3">
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Pain -> Promise -> Proof
+                </p>
+                <ul class="space-y-1.5">
+                  <li>
+                    <span class="font-semibold text-neutral-100">Pain:</span> VPNs expose
+                    networks, slow users, and break Zero Trust.
+                  </li>
+                  <li>
+                    <span class="font-semibold text-neutral-100">Promise:</span> ZPA +
+                    IGEL OS = app-level access with no network exposure.
+                  </li>
+                  <li>
+                    <span class="font-semibold text-neutral-100">Proof:</span> Finance and
+                    healthcare customers cut latency by ~40% and endpoint incident tickets by
+                    ~80%.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Why IGEL + Zscaler
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- Zscaler brokers every connection through Zero Trust Exchange.</li>
+                  <li>- IGEL ensures devices can&rsquo;t leak or persist data.</li>
+                  <li>- Together: a full endpoint-to-cloud Zero Trust fabric.</li>
+                </ul>
+                <p class="mt-2 text-[0.7rem] text-neutral-400">
+                  Enablement: joint ZPA demo, ZCC app packaging, deployment guide.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Watchpoints
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- Legacy fat-client apps that require full network-layer access.</li>
+                  <li>- Some OT/LAN workloads may still require residual VPN.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Play 2 -->
+          <details class="igel-accordion igel-card hover-lift p-4 md:p-5">
+            <summary
+              class="flex cursor-pointer items-start justify-between gap-4 text-left outline-none"
+            >
+              <div class="space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400 text-[0.7rem] font-bold text-black"
+                    >2</span
+                  >
+                  <span class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-neutral-400"
+                    >VDI Optimization / Replacement</span
+                  >
+                  <span class="rounded-full bg-neutral-800/80 px-2 py-0.5 text-[0.65rem]">
+                    Persona: CIO &middot; Workspace &middot; EUC
+                  </span>
+                </div>
+                <p class="text-sm font-semibold text-neutral-50">
+                  Secure browser-first workspaces instead of heavy VDI.
+                </p>
+                <p class="text-xs text-neutral-300">
+                  Take web/SaaS-first users off VDI using Zscaler Cloud Browser Isolation +
+                  IGEL OS for fast, secure, agentless access.
+                </p>
+              </div>
+              <div
+                class="accordion-chevron mt-1.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-700/80 text-neutral-400 transition-transform duration-200 group-open:border-yellow-400/80 group-open:text-yellow-300"
+              >
+                <svg
+                  class="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-4 grid gap-4 text-xs text-neutral-200 md:grid-cols-3">
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Pain -> Promise -> Proof
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- Pain: Heavy VDI infra, high licensing, poor UX.</li>
+                  <li>
+                    - Promise: Browser-first, pixel-streamed sessions with full isolation and
+                    immutable endpoints.
+                  </li>
+                  <li>
+                    - Proof: Retail enterprise replaced 60% of VDI users, saving ~50% infra
+                    and 30% endpoint refresh costs.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Why IGEL + Zscaler
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- IGEL OS keeps endpoints simple, locked, and dataless.</li>
+                  <li>- Zscaler isolates browser sessions and handles all inspection.</li>
+                  <li>- Enough for regulated data in most office/call-center roles.</li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Watchpoints
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- Power users needing persistent desktops or GPU-heavy apps.</li>
+                  <li>- VDI may remain for niche workloads; right-size instead of rip.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Play 3 -->
+          <details class="igel-accordion igel-card hover-lift p-4 md:p-5">
+            <summary
+              class="flex cursor-pointer items-start justify-between gap-4 text-left outline-none"
+            >
+              <div class="space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400 text-[0.7rem] font-bold text-black"
+                    >3</span
+                  >
+                  <span class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-neutral-400"
+                    >Contractor / BYOD Access</span
+                  >
+                  <span class="rounded-full bg-neutral-800/80 px-2 py-0.5 text-[0.65rem]">
+                    Persona: CISO &middot; Risk &amp; Compliance
+                  </span>
+                </div>
+                <p class="text-sm font-semibold text-neutral-50">
+                  No agent, no data, no risk for third-party users.
+                </p>
+                <p class="text-xs text-neutral-300">
+                  Combine Zscaler Zero Trust Browser / PRA with IGEL OS or USB boot for
+                  ephemeral, fully auditable sessions.
+                </p>
+              </div>
+              <div
+                class="accordion-chevron mt-1.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-700/80 text-neutral-400 transition-transform duration-200 group-open:border-yellow-400/80 group-open:text-yellow-300"
+              >
+                <svg
+                  class="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-4 grid gap-4 text-xs text-neutral-200 md:grid-cols-3">
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Pain -> Promise -> Proof
+                </p>
+                <ul class="space-y-1.5">
+                  <li>
+                    - Pain: Contractors on unmanaged devices risking IP and compliance fines.
+                  </li>
+                  <li>
+                    - Promise: Agentless, isolated access where no data ever lands on the
+                    endpoint.
+                  </li>
+                  <li>
+                    - Proof: Manufacturing firm cut onboarding from 2 weeks to 2 hours and
+                    passed ISO 27001 audit cleanly.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Why IGEL + Zscaler
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- Zscaler fully isolates session and governs data in transit.</li>
+                  <li>- IGEL guarantees each session starts from a clean, immutable OS.</li>
+                  <li>- Together they enable zero trust BYOD at scale.</li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Watchpoints
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- Depends on reliable network connectivity for contractors.</li>
+                  <li>- Some resistance to using managed or USB-boot devices.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Play 4 -->
+          <details class="igel-accordion igel-card hover-lift p-4 md:p-5">
+            <summary
+              class="flex cursor-pointer items-start justify-between gap-4 text-left outline-none"
+            >
+              <div class="space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400 text-[0.7rem] font-bold text-black"
+                    >4</span
+                  >
+                  <span class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-neutral-400"
+                    >Regulated Workspace Modernization</span
+                  >
+                  <span class="rounded-full bg-neutral-800/80 px-2 py-0.5 text-[0.65rem]">
+                    Persona: CISO &middot; Compliance
+                  </span>
+                </div>
+                <p class="text-sm font-semibold text-neutral-50">
+                  Compliance-grade Zero Trust workspaces for regulated environments.
+                </p>
+                <p class="text-xs text-neutral-300">
+                  Prove "no data on device" plus full audit logging to satisfy NIST, HIPAA,
+                  NIS2, PCI and Zero Trust mandates.
+                </p>
+              </div>
+              <div
+                class="accordion-chevron mt-1.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-700/80 text-neutral-400 transition-transform duration-200 group-open:border-yellow-400/80 group-open:text-yellow-300"
+              >
+                <svg
+                  class="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-4 grid gap-4 text-xs text-neutral-200 md:grid-cols-3">
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Pain -> Promise -> Proof
+                </p>
+                <ul class="space-y-1.5">
+                  <li>
+                    - Pain: Audits expose gaps in endpoint data handling and network exposure.
+                  </li>
+                  <li>
+                    - Promise: Immutable endpoints + cloud-isolated access with complete
+                    session logging.
+                  </li>
+                  <li>
+                    - Proof: Public-sector customer achieved Zero Trust EO compliance using
+                    Zscaler FedRAMP + IGEL OS.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Why IGEL + Zscaler
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- Align natively with Zero Trust architecture principles.</li>
+                  <li>- No implicit trust, continuous verification, minimal attack surface.</li>
+                  <li>
+                    - Audit-ready logs from Zscaler; "no data on device" guarantees from
+                    IGEL.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Watchpoints
+                </p>
+                <ul class="space-y-1.5">
+                  <li>
+                    - Some compliance teams still expect on-prem appliances and inline taps.
+                  </li>
+                  <li>- Education required on cloud-native inspection and logging depth.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Play 5 -->
+          <details class="igel-accordion igel-card hover-lift p-4 md:p-5">
+            <summary
+              class="flex cursor-pointer items-start justify-between gap-4 text-left outline-none"
+            >
+              <div class="space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400 text-[0.7rem] font-bold text-black"
+                    >5</span
+                  >
+                  <span class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-neutral-400"
+                    >Endpoint Cost &amp; Risk Reduction</span
+                  >
+                  <span class="rounded-full bg-neutral-800/80 px-2 py-0.5 text-[0.65rem]">
+                    Persona: CIO &middot; CFO &middot; EUC
+                  </span>
+                </div>
+                <p class="text-sm font-semibold text-neutral-50">
+                  Do more with less &mdash; and safer endpoints.
+                </p>
+                <p class="text-xs text-neutral-300">
+                  Extend hardware life 3-5 years with IGEL OS and consolidate edge security
+                  into Zscaler's SSE cloud.
+                </p>
+              </div>
+              <div
+                class="accordion-chevron mt-1.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-700/80 text-neutral-400 transition-transform duration-200 group-open:border-yellow-400/80 group-open:text-yellow-300"
+              >
+                <svg
+                  class="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-4 grid gap-4 text-xs text-neutral-200 md:grid-cols-3">
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Pain -> Promise -> Proof
+                </p>
+                <ul class="space-y-1.5">
+                  <li>
+                    - Pain: High endpoint TCO, patch chaos, rebuilds, Windows license and
+                    agent sprawl.
+                  </li>
+                  <li>
+                    - Promise: Lightweight IGEL OS + Zscaler SSE reduces both cost and
+                    incident volume.
+                  </li>
+                  <li>
+                    - Proof: Global bank cut endpoint TCO by ~45%, avoided $2.3M in refresh
+                    spend, and nearly eliminated malware cleanups.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Why IGEL + Zscaler
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- IGEL removes OS complexity at the endpoint.</li>
+                  <li>- Zscaler removes network security overhead and boxes.</li>
+                  <li>- Together deliver Zero Trust at consumer-device economics.</li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Watchpoints
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- Requires integration with identity platforms (Azure AD / Okta).</li>
+                  <li>- Some legacy management tools may be redundant or displaced.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Play 6 -->
+          <details class="igel-accordion igel-card hover-lift p-4 md:p-5">
+            <summary
+              class="flex cursor-pointer items-start justify-between gap-4 text-left outline-none"
+            >
+              <div class="space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400 text-[0.7rem] font-bold text-black"
+                    >6</span
+                  >
+                  <span class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-neutral-400"
+                    >Secure OT &amp; Privileged Access</span
+                  >
+                  <span class="rounded-full bg-neutral-800/80 px-2 py-0.5 text-[0.65rem]">
+                    Persona: OT Security &middot; Industrial CIO
+                  </span>
+                </div>
+                <p class="text-sm font-semibold text-neutral-50">
+                  Air-gapped, auditable, anywhere privileged access.
+                </p>
+                <p class="text-xs text-neutral-300">
+                  Use Zscaler PRA + IGEL OS for just-in-time remote maintenance with full
+                  pixel-streamed session recording.
+                </p>
+              </div>
+              <div
+                class="accordion-chevron mt-1.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-700/80 text-neutral-400 transition-transform duration-200 group-open:border-yellow-400/80 group-open:text-yellow-300"
+              >
+                <svg
+                  class="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-4 grid gap-4 text-xs text-neutral-200 md:grid-cols-3">
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Pain -> Promise -> Proof
+                </p>
+                <ul class="space-y-1.5">
+                  <li>
+                    - Pain: Privileged OT access from vendors/engineers without exposing
+                    sensitive networks.
+                  </li>
+                  <li>
+                    - Promise: Ephemeral, recorded PRA sessions from immutable IGEL endpoints.
+                  </li>
+                  <li>
+                    - Proof: Energy customer met NERC-CIP / ISO27019 while enabling secure
+                    remote maintenance.
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Why IGEL + Zscaler
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- Zscaler isolates OT networks and wraps access in PRA.</li>
+                  <li>- IGEL OS devices hold no data and minimize lateral risk.</li>
+                  <li>- Session recording + no local residue = audit-ready story.</li>
+                </ul>
+              </div>
+              <div class="space-y-2">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Watchpoints
+                </p>
+                <ul class="space-y-1.5">
+                  <li>- OT asset segmentation must be in place.</li>
+                  <li>- Some legacy OT protocols may limit what can be proxied.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
         </div>
       </section>
 
-      <!-- What IGEL is -->
-      <section id="what-igel-is" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
+      <!-- 5. IGEL for Zscaler Reps -->
+      <section id="igel-for-zs" class="space-y-4">
+        <header class="flex items-baseline justify-between gap-4">
           <div>
-            <h1 class="igel-section-number mb-1">What IGEL Actually Is</h1>
-            <h3 class="igel-section-title">Foundation</h3>
+            <div class="igel-section-number">5 &middot; Messaging</div>
+            <h2 class="igel-section-title mt-1">
+              How to Talk About IGEL in a Zscaler Deal
+            </h2>
           </div>
-          <span class="section-hint">Preventative security model</span>
+          <p class="section-hint hidden md:block">Steal these lines shamelessly</p>
+        </header>
+
+        <article class="igel-card hover-lift p-5 md:p-6">
+          <div class="grid gap-5 md:grid-cols-[1.35fr_1fr]">
+            <div class="space-y-4 text-sm text-neutral-200">
+              <div>
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  What IGEL actually is
+                </p>
+                <p class="mt-2 text-[0.9rem] text-neutral-100">
+                  IGEL is a
+                  <span class="font-semibold text-yellow-300"
+                    >modern, hardened endpoint operating system</span
+                  >
+                  &mdash; not another agent, not another desktop, not hardware. It&rsquo;s a
+                  <span class="font-semibold text-yellow-300"
+                    >Preventative Security ModelTM</span
+                  >
+                  built as a read-only, dataless, centrally managed OS for x86 devices.
+                </p>
+                <ul class="mt-2 space-y-1.5 text-xs">
+                  <li>- Immutable design: no writable partitions, no local data, no drift.</li>
+                  <li>
+                    - Preventative Security ModelTM: stops compromise before detection is
+                    needed.
+                  </li>
+                  <li>- UMS: policy-driven control at scale.</li>
+                  <li>- Deploy anywhere: replace Windows or boot from USB in minutes.</li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Where IGEL fits the Zscaler stack
+                </p>
+                <table
+                  class="mt-2 w-full min-w-[280px] text-left text-[0.7rem] text-neutral-200"
+                >
+                  <thead class="border-b border-neutral-800/80 text-[0.7rem] text-neutral-400">
+                    <tr>
+                      <th class="py-1 pr-2 font-medium">Layer</th>
+                      <th class="py-1 pr-2 font-medium">Role</th>
+                      <th class="py-1 font-medium">Who secures it</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="align-top">
+                      <td class="py-1.5 pr-2 text-yellow-300">Cloud / Network</td>
+                      <td class="py-1.5 pr-2">Secure access to SaaS, internet, private apps.</td>
+                      <td class="py-1.5">Zscaler Zero Trust Exchange</td>
+                    </tr>
+                    <tr class="align-top">
+                      <td class="py-1.5 pr-2 text-yellow-300">Endpoint / Edge</td>
+                      <td class="py-1.5 pr-2">
+                        Immutable, dataless OS; no local attack surface.
+                      </td>
+                      <td class="py-1.5">IGEL OS</td>
+                    </tr>
+                    <tr class="align-top">
+                      <td class="py-1.5 pr-2 text-yellow-300">Identity / Policy</td>
+                      <td class="py-1.5 pr-2">
+                        Authentication and access rules; policy enforcement.
+                      </td>
+                      <td class="py-1.5">Customer&rsquo;s IdP + Zscaler policy engine</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="space-y-4 text-xs text-neutral-200">
+              <div class="rounded-2xl bg-neutral-900/80 p-4">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  30-second talk track
+                </p>
+                <p class="mt-2 text-[0.78rem] text-neutral-100">
+                  "Think of IGEL as the Zero Trust endpoint layer that completes your Zscaler
+                  story. It replaces Windows with a secure, read-only OS that holds no data
+                  and can't be tampered with. So when you deliver secure access through
+                  Zscaler, IGEL ensures the device itself can't be the weak link. Together,
+                  we give customers Zero Trust from the device to the cloud&mdash;faster, simpler,
+                  and safer."
+                </p>
+              </div>
+
+              <div class="rounded-2xl bg-neutral-900/80 p-4">
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Competitive landmines IGEL helps avoid
+                </p>
+                <ul class="mt-2 space-y-1.5">
+                  <li>- VDI vendors (Omnissa/Citrix) with heavy, costly stacks.</li>
+                  <li>- EDR-only "Zero Trust" pitches that still rely on Windows sprawl.</li>
+                  <li>- VPN renewals that undercut ZPA-led Zero Trust deals.</li>
+                  <li>- Legacy endpoint management tools made redundant by UMS.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- 6. Real-world use cases -->
+      <section id="use-cases" class="space-y-4">
+        <header class="flex items-baseline justify-between gap-4">
+          <div>
+            <div class="igel-section-number">6 &middot; Real-World Scenarios</div>
+            <h2 class="igel-section-title mt-1">
+              Three Snap-in Scenarios Where IGEL + Zscaler Win
+            </h2>
+          </div>
+          <p class="section-hint hidden md:block">Use as "picture this" stories</p>
+        </header>
+
+        <div class="grid gap-4 md:grid-cols-3">
+          <article class="igel-card hover-lift p-4 text-xs text-neutral-200">
+            <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+              Scenario 1
+            </p>
+            <h3 class="mt-1 text-sm font-semibold text-neutral-50">
+              VPN replacement / remote workforce modernization
+            </h3>
+            <p class="mt-2">
+              <span class="font-semibold text-neutral-100">Challenge:</span> Legacy VPNs slow
+              users and expose networks.
+            </p>
+            <p class="mt-1">
+              <span class="font-semibold text-neutral-100">Solution:</span> ZPA + IGEL OS
+              endpoints &mdash; no VPN, no open ports, app-level Zero Trust.
+            </p>
+            <p class="mt-1">
+              <span class="font-semibold text-neutral-100">Outcome:</span> ~50% faster app
+              access, ~80% fewer security incidents.
+            </p>
+          </article>
+
+          <article class="igel-card hover-lift p-4 text-xs text-neutral-200">
+            <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+              Scenario 2
+            </p>
+            <h3 class="mt-1 text-sm font-semibold text-neutral-50">
+              VDI cost reduction / browser-first transformation
+            </h3>
+            <p class="mt-2">
+              <span class="font-semibold text-neutral-100">Challenge:</span> VDI costs outpace
+              value; most users just need SaaS.
+            </p>
+            <p class="mt-1">
+              <span class="font-semibold text-neutral-100">Solution:</span> Zscaler Cloud
+              Browser Isolation + IGEL OS replace VDI with pixel-streamed browsing.
+            </p>
+            <p class="mt-1">
+              <span class="font-semibold text-neutral-100">Outcome:</span> ~40% infra savings;
+              happier users, simpler stack.
+            </p>
+          </article>
+
+          <article class="igel-card hover-lift p-4 text-xs text-neutral-200">
+            <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+              Scenario 3
+            </p>
+            <h3 class="mt-1 text-sm font-semibold text-neutral-50">
+              Contractor / third-party access in regulated environments
+            </h3>
+            <p class="mt-2">
+              <span class="font-semibold text-neutral-100">Challenge:</span> Vendors need
+              access without risking PHI/PCI data.
+            </p>
+            <p class="mt-1">
+              <span class="font-semibold text-neutral-100">Solution:</span> IGEL USB boot +
+              Zscaler PRA for isolated, recorded sessions.
+            </p>
+            <p class="mt-1">
+              <span class="font-semibold text-neutral-100">Outcome:</span> Clean audits, faster
+              onboarding, zero data on device.
+            </p>
+          </article>
         </div>
+      </section>
 
-        <p class="text-sm text-neutral-200 sm:text-[15px] mb-5">
-          IGEL is a modern, hardened endpoint OS designed around the Preventative Security Model.
-          It removes the local attack surface and turns any compatible x86 device into a secure, compliant Zero Trust endpoint.
-        </p>
+      <!-- 7. Outcomes & Compliance -->
+      <section id="outcomes" class="space-y-4">
+        <header class="flex items-baseline justify-between gap-4">
+          <div>
+            <div class="igel-section-number">7 &middot; Outcomes</div>
+            <h2 class="igel-section-title mt-1">
+              Business, Security &amp; Compliance Outcomes You Can Promise
+            </h2>
+          </div>
+          <p class="section-hint hidden md:block">Anchor deals in outcomes, not tech</p>
+        </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="space-y-3 text-sm text-neutral-200">
+        <article class="igel-card hover-lift p-5 md:p-6 text-sm text-neutral-200">
+          <div class="grid gap-5 md:grid-cols-4">
             <div>
-              <p class="font-semibold text-white">Immutable by design</p>
-              <p class="text-neutral-300">Read only, modular OS. Endpoints always boot into a known good state.</p>
+              <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">Security</p>
+              <ul class="mt-2 space-y-1.5 text-xs">
+                <li>- No data on device, no open networks.</li>
+                <li>- No lateral movement paths from endpoints.</li>
+                <li>- Layered containment for malware and phishing.</li>
+              </ul>
             </div>
             <div>
-              <p class="font-semibold text-white">Dataless by intent</p>
-              <p class="text-neutral-300">No user data, apps, or credentials stored locally. Nothing meaningful to steal or ransom.</p>
+              <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">Cost</p>
+              <ul class="mt-2 space-y-1.5 text-xs">
+                <li>- Eliminate VPN hardware and cut VDI footprint.</li>
+                <li>- Extend hardware life by 3-5 years.</li>
+                <li>- Consolidate agents into Zscaler SSE cloud.</li>
+              </ul>
             </div>
             <div>
-              <p class="font-semibold text-white">Cloud first by nature</p>
-              <p class="text-neutral-300">Optimized for SaaS, VDI, DaaS, and browser workspaces including Zscaler Cloud Browser Isolation.</p>
+              <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                Operations
+              </p>
+              <ul class="mt-2 space-y-1.5 text-xs">
+                <li>- Simplified IT stack; fewer rebuilds.</li>
+                <li>- Faster onboarding/offboarding for staff and contractors.</li>
+                <li>- Unified telemetry via ZDX + IGEL UMS.</li>
+              </ul>
             </div>
             <div>
-              <p class="font-semibold text-white">Managed at scale</p>
-              <p class="text-neutral-300">Universal Management Suite (UMS) provides one-to-many policy, configuration, and firmware control.</p>
+              <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                User experience
+              </p>
+              <ul class="mt-2 space-y-1.5 text-xs">
+                <li>- Direct-to-app, low-latency access.</li>
+                <li>- No VPN lag, no VDI drag.</li>
+                <li>- Consistent experience across devices and locations.</li>
+              </ul>
             </div>
           </div>
-          <div class="space-y-3 text-sm text-neutral-100">
-            <div class="rounded-2xl border border-yellow-300/40 bg-yellow-300/10 p-4">
-              <p><strong>In short:</strong> IGEL turns any device into a secure, compliant, and easily managed Zero Trust endpoint that is ideal for Zscaler deployments.</p>
-            </div>
-            <p class="text-neutral-300">
-              IGEL is not a hardware vendor story. It is a software platform that replaces traditional desktop OS at the edge
-              for users who primarily access resources through the network and browser.
+
+          <div
+            class="mt-5 rounded-2xl bg-neutral-900/80 p-4 text-xs text-neutral-200 ring-1 ring-neutral-800/90"
+          >
+            <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+              Compliance posture
+            </p>
+            <p class="mt-2">
+              IGEL + Zscaler help organizations align with frameworks like
+              <span class="font-semibold text-neutral-100">HIPAA, PCI DSS, GDPR, NIST, NIS2</span>
+              and CISA&rsquo;s Zero Trust guidance by combining "no data on device" with cloud
+              isolation and full session recording.
             </p>
           </div>
-        </div>
+        </article>
       </section>
 
-      <!-- Stack fit -->
-      <section id="stack-fit" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
+      <!-- 8. Fast Facts & Next Steps -->
+      <section id="fast-facts" class="space-y-4">
+        <header class="flex items-baseline justify-between gap-4">
           <div>
-            <h1 class="igel-section-number mb-1">Where IGEL Fits in the Zscaler Stack</h1>
-            <h3 class="igel-section-title">Architecture</h3>
+            <div class="igel-section-number">8 &middot; Fast Facts</div>
+            <h2 class="igel-section-title mt-1">
+              One-Page Summary &amp; What to Do Next
+            </h2>
           </div>
-          <span class="section-hint">Origin + path</span>
-        </div>
+          <p class="section-hint hidden md:block">Use this as your leave-behind</p>
+        </header>
 
-        <p class="text-sm text-neutral-200 sm:text-[15px] mb-4">
-          Zscaler governs what a user can access and how traffic flows.
-          IGEL governs where that access originates, ensuring the endpoint is clean, compliant, and uncompromised.
-        </p>
-
-        <div class="overflow-x-auto mb-6">
-          <table class="igel-table">
-            <thead>
-              <tr>
-                <th>Layer</th>
-                <th>Zscaler</th>
-                <th>IGEL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Network and app access</strong></td>
-                <td>Zscaler Zero Trust Exchange brokers and inspects all connections.</td>
-                <td>Provides a trusted, tamper-resistant device to originate those connections.</td>
-              </tr>
-              <tr>
-                <td><strong>Identity and session control</strong></td>
-                <td>ZPA/ZIA enforce least privilege and session validation.</td>
-                <td>Ensures the session begins on an immutable, policy-locked OS.</td>
-              </tr>
-              <tr>
-                <td><strong>Browser isolation</strong></td>
-                <td>Cloud Browser Isolation keeps web threats off the device.</td>
-                <td>Prevents any residue or cached data from persisting locally.</td>
-              </tr>
-              <tr>
-                <td><strong>Compliance</strong></td>
-                <td>DLP, audit trails, and policy enforcement.</td>
-                <td>No regulated data at rest; consistent device posture for audits.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="rounded-2xl border border-yellow-300/30 bg-yellow-300/10 p-4 text-sm text-neutral-100">
-          Together they deliver Zero Trust from cloud to endpoint, closing the last mile risk that Zscaler alone cannot see: unmanaged or untrusted devices.
-        </div>
-      </section>
-
-      <!-- Signals -->
-      <section id="signals" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
-          <div>
-            <h1 class="igel-section-number mb-1">Signals That IGEL Should Enter the Deal</h1>
-            <h3 class="igel-section-title">Deal triggers</h3>
-          </div>
-          <span class="section-hint">Listen for these</span>
-        </div>
-
-        <p class="text-sm text-neutral-200 sm:text-[15px] mb-4">
-          When you hear any of these phrases, bring IGEL in immediately. These are the strongest indicators that
-          Zscaler's success depends on locking down the endpoint.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-neutral-200">
-          <ul class="list-disc ml-6 space-y-2">
-            <li>"We are dealing with unmanaged or BYOD endpoints."</li>
-            <li>"Our contractors, clinicians, or partners access systems remotely."</li>
-            <li>"We are tired of malware reimaging cycles or endpoint rebuilds."</li>
-          </ul>
-          <ul class="list-disc ml-6 space-y-2">
-            <li>"We are reevaluating or renewing VDI because of cost or complexity."</li>
-            <li>"We have Zero Trust goals but our endpoints are still a blind spot."</li>
-            <li>"We have audit gaps around data at rest on endpoints."</li>
-          </ul>
-        </div>
-        <p class="text-sm text-neutral-300 mt-4">
-          IGEL converts these from security blockers into deployment accelerators for Zscaler.
-        </p>
-      </section>
-
-      <!-- Joint value -->
-      <section id="value" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
-          <div>
-            <h1 class="igel-section-number mb-1">How IGEL Strengthens Zscaler's Value Proposition</h1>
-            <h3 class="igel-section-title">Joint value</h3>
-          </div>
-          <span class="section-hint">Complete Zero Trust</span>
-        </div>
-
-        <div class="overflow-x-auto mb-4">
-          <table class="igel-table">
-            <thead>
-              <tr>
-                <th>Challenge</th>
-                <th>What Zscaler Solves</th>
-                <th>What IGEL Adds</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Zero Trust at the network layer</strong></td>
-                <td>ZPA and ZIA enforce identity and session control, verifying every connection.</td>
-                <td>Ensures the device itself is trusted and tamper resistant before it connects.</td>
-              </tr>
-              <tr>
-                <td><strong>Browser isolation and web risk</strong></td>
-                <td>Zscaler isolates sessions in the cloud so web threats never run locally.</td>
-                <td>Guarantees nothing meaningful is cached or stored on the endpoint after the session.</td>
-              </tr>
-              <tr>
-                <td><strong>Remote and contractor onboarding</strong></td>
-                <td>Enables secure, often agentless, access to internal resources.</td>
-                <td>Provides a disposable, compliant endpoint via UD Pocket or thin client, with no local install.</td>
-              </tr>
-              <tr>
-                <td><strong>Operational simplicity</strong></td>
-                <td>Cloud managed policies and central visibility for network sessions.</td>
-                <td>Single pane device control with UMS for fleets of endpoints and UD Pockets.</td>
-              </tr>
-              <tr>
-                <td><strong>Compliance and audits</strong></td>
-                <td>Ensures data never leaves Zscaler's cloud and enforces strict DLP policy.</td>
-                <td>Ensures no regulated data persists on endpoints, ideal for HIPAA, PCI, and NIS2 readiness.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- Landmines -->
-      <section id="landmines" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
-          <div>
-            <h1 class="igel-section-number mb-1">Competitive Landmines IGEL Helps Avoid</h1>
-            <h3 class="igel-section-title">Competitive posture</h3>
-          </div>
-          <span class="section-hint">Steer the deal</span>
-        </div>
-
-        <div class="overflow-x-auto mb-4">
-          <table class="igel-table">
-            <thead>
-              <tr>
-                <th>Competitor Situation</th>
-                <th>Landmine</th>
-                <th>IGEL + Zscaler Counter</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Windows based endpoints</strong></td>
-                <td>Patch chaos, malware risk, local data and legacy agents everywhere.</td>
-                <td>IGEL OS is read only and non persistent with a minimal attack surface, backed by Zscaler inspection.</td>
-              </tr>
-              <tr>
-                <td><strong>Legacy VDI players</strong></td>
-                <td>Expensive, complex, and often poor user experience for simple browser workflows.</td>
-                <td>IGEL plus Zscaler enable browser first, no infrastructure workspaces with Zero Trust access.</td>
-              </tr>
-              <tr>
-                <td><strong>EDR only environments</strong></td>
-                <td>Reactive detection model that still relies on a full attack path existing.</td>
-                <td>Preventative Security Model removes the data and OS persistence that attackers depend on.</td>
-              </tr>
-              <tr>
-                <td><strong>VPN dependence</strong></td>
-                <td>Latency, broad network trust, and user friction that conflicts with Zero Trust principles.</td>
-                <td>Zscaler replaces VPN as the secure access fabric while IGEL ensures safe, hardened device origins.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- Talk track -->
-      <section id="talk-track" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
-          <div>
-            <h1 class="igel-section-number mb-1">How to Talk About IGEL in 30 Seconds</h1>
-            <h3 class="igel-section-title">Talk track</h3>
-          </div>
-          <span class="section-hint">Use this verbatim</span>
-        </div>
-
-        <blockquote class="rounded-2xl border border-yellow-300/40 bg-yellow-300/10 p-4 text-sm text-neutral-100 sm:text-base">
-          "Think of IGEL as the hardened operating system for Zscaler's Zero Trust network.
-          Zscaler secures the path from user to app. IGEL secures the device at the edge.
-          It is read only, dataless, and cloud managed so if an IGEL endpoint is lost, stolen, or infected,
-          there is nothing meaningful to breach. Together they deliver Zero Trust from cloud to screen."
-        </blockquote>
-      </section>
-
-      <!-- Scenarios -->
-      <section id="scenarios" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
-          <div>
-            <h1 class="igel-section-number mb-1">Three Real World Scenarios Where IGEL + Zscaler Win</h1>
-            <h3 class="igel-section-title">Field stories</h3>
-          </div>
-          <span class="section-hint">Proof points</span>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-sm text-neutral-200">
-          <div class="rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4">
-            <h3 class="text-lg font-semibold text-white mb-2">1. Secure Contractor Access</h3>
-            <p class="mb-2">Contractors boot from IGEL UD Pocket. No software is installed and no data is stored locally.</p>
-            <p class="mb-2">Zscaler isolates browser sessions so all activity runs in the cloud.</p>
-            <p><strong>Result:</strong> Agentless, compliant third party access ideal for healthcare, manufacturing, and supplier ecosystems.</p>
-          </div>
-          <div class="rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4">
-            <h3 class="text-lg font-semibold text-white mb-2">2. VDI Renewal Avoidance</h3>
-            <p class="mb-2">A customer faces a large renewal or expansion for a legacy VDI deployment.</p>
-            <p class="mb-2">IGEL endpoints plus Zscaler isolation recreate secure app access without full desktops.</p>
-            <p><strong>Result:</strong> Up to 60 to 70 percent lower TCO with similar security posture and better user experience.</p>
-          </div>
-          <div class="rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4">
-            <h3 class="text-lg font-semibold text-white mb-2">3. Zero Trust Telework Kit</h3>
-            <p class="mb-2">A public sector or regulated agency needs compliant remote work at scale.</p>
-            <p class="mb-2">IGEL provides locked down devices. Zscaler delivers Zero Trust Exchange access aligned with NIST 800 207.</p>
-            <p><strong>Result:</strong> Remote work that passes audits with zero data at rest.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Why it matters -->
-      <section id="why-matters" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
-          <div>
-            <h1 class="igel-section-number mb-1">Why This Matters for Zscaler Reps</h1>
-            <h3 class="igel-section-title">For Zscaler sellers</h3>
-          </div>
-          <span class="section-hint">Business impact</span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-neutral-200">
-          <ul class="list-disc ml-6 space-y-2">
-            <li><strong>Expand deal scope</strong> from network security to complete Zero Trust architecture.</li>
-            <li><strong>Accelerate adoption</strong> because IGEL simplifies endpoint readiness for pilots and rollouts.</li>
-            <li><strong>Increase stickiness</strong> once IGEL endpoints are deployed, Zscaler becomes the default access layer.</li>
-          </ul>
-          <ul class="list-disc ml-6 space-y-2">
-            <li><strong>Protect margins</strong> by replacing legacy VPN, VDI, and excess endpoint agents with a unified cloud native stack.</li>
-            <li><strong>De-risk projects</strong> where unmanaged or high risk endpoints are blocking Zero Trust progress.</li>
-            <li><strong>Strengthen executive story</strong> around compliance, cost, and workforce agility in one integrated solution.</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- TLDR -->
-      <section id="tldr" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
-          <div>
-            <h1 class="igel-section-number mb-1">TLDR for Zscaler Sellers</h1>
-            <h3 class="igel-section-title">At a glance</h3>
-          </div>
-          <span class="section-hint">Ready to repeat</span>
-        </div>
-
-        <div class="overflow-x-auto mb-4">
-          <table class="igel-table">
-            <thead>
-              <tr>
-                <th>Think of IGEL as</th>
-                <th>That lets you say</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>The secure shell for Zscaler's Zero Trust Exchange.</td>
-                <td>"We now protect the last inch, not just the last mile."</td>
-              </tr>
-              <tr>
-                <td>The OS that makes Zero Trust practical at the endpoint.</td>
-                <td>"No data, no risk, no friction at the device layer."</td>
-              </tr>
-              <tr>
-                <td>A cost cutting accelerator for cloud transformation.</td>
-                <td>"We can modernize without rebuilding your entire desktop stack."</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- Sales plays -->
-      <section id="plays" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
-          <div>
-            <h1 class="igel-section-number mb-1">IGEL + Zscaler Tier One Joint Sales Plays</h1>
-            <h3 class="igel-section-title">Monetizable joint plays</h3>
-          </div>
-          <span class="section-hint">Use in discovery</span>
-        </div>
-
-        <p class="text-sm text-neutral-200 sm:text-[15px] mb-4">
-          Six monetizable, repeatable, field ready plays designed for IGEL and Zscaler sellers.
-          Use these when qualifying, proposing, and building business cases.
-        </p>
-
-        <div class="space-y-6">
-          <article class="rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4">
-            <h3 class="text-xl font-semibold mb-2 text-white">1. Secure BYOD and Contractor Access Kit</h3>
-            <p class="text-sm mb-2"><strong>Target personas:</strong> CISO, SecOps, Workforce Enablement Lead</p>
-            <p class="text-sm mb-2"><strong>Trigger conditions:</strong> expanding contractor ecosystem, BYOD access, audit gaps, VPN fatigue.</p>
-            <p class="text-sm mb-2"><strong>Pain:</strong> Third party or BYOD access creates uncontrolled endpoints and data exposure.</p>
-            <p class="text-sm mb-2"><strong>Promise:</strong> Deliver agentless Zero Trust access from any device without data touching the endpoint.</p>
-            <p class="text-sm mb-2"><strong>Proof:</strong> IGEL UD Pocket plus Zscaler Browser Isolation in under one day. Contractors log in via browser. Data remains in the cloud and in memory only.</p>
-            <p class="text-sm text-neutral-300"><strong>Why IGEL + Zscaler:</strong> Zscaler isolates the session. IGEL ensures no local writes. The last mile risk disappears.</p>
-          </article>
-
-          <article class="rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4">
-            <h3 class="text-xl font-semibold mb-2 text-white">2. VDI and DaaS Cost Avoidance and Simplification</h3>
-            <p class="text-sm mb-2"><strong>Target personas:</strong> CIO, Infrastructure Lead, Workspace Strategist</p>
-            <p class="text-sm mb-2"><strong>Pain:</strong> VDI and DaaS are costly and complex for users who mostly need secure app and browser access.</p>
-            <p class="text-sm mb-2"><strong>Promise:</strong> Deliver the same secure access experience without full virtual desktops.</p>
-            <p class="text-sm mb-2"><strong>Proof:</strong> Replace a Citrix or Omnissa expansion with IGEL OS endpoints and Zscaler isolation,
-              achieving major cost savings and simpler operations.</p>
-            <p class="text-sm text-neutral-300"><strong>Positioning tip:</strong> Frame as "VDI lite for the right users," not a universal VDI replacement.</p>
-          </article>
-
-          <article class="rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4">
-            <h3 class="text-xl font-semibold mb-2 text-white">3. Healthcare Ransomware Resilience</h3>
-            <p class="text-sm mb-2"><strong>Target personas:</strong> CIO, CISO, Clinical IT, Risk and Compliance Officer</p>
-            <p class="text-sm mb-2"><strong>Pain:</strong> Persistent ransomware risk and sensitive PHI exposure on clinical endpoints.</p>
-            <p class="text-sm mb-2"><strong>Promise:</strong> Stateless clinical endpoints that cannot store PHI or propagate malware.</p>
-            <p class="text-sm mb-2"><strong>Proof:</strong> IGEL devices reboot into a clean state. Zscaler ensures malicious content never executes locally.</p>
-            <p class="text-sm text-neutral-300"><strong>Outcome:</strong> Ransomware resilience by design rather than by after the fact detection.</p>
-          </article>
-
-          <article class="rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4">
-            <h3 class="text-xl font-semibold mb-2 text-white">4. Zero Trust Telework for Public Sector</h3>
-            <p class="text-sm mb-2"><strong>Target personas:</strong> Federal and State IT Director, CISO, Compliance Lead</p>
-            <p class="text-sm mb-2"><strong>Pain:</strong> Aging VPN infrastructure, low endpoint visibility, and strict Zero Trust mandates.</p>
-            <p class="text-sm mb-2"><strong>Promise:</strong> FedRAMP aligned, cloud native telework with verifiable endpoint integrity.</p>
-            <p class="text-sm mb-2"><strong>Proof:</strong> IGEL devices boot verified and read only. Zscaler provides continuous identity and session verification.</p>
-            <p class="text-sm text-neutral-300"><strong>Note:</strong> Clarify reliance on internet connectivity and position as the modern alternative to legacy VPN architectures.</p>
-          </article>
-
-          <article class="rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4">
-            <h3 class="text-xl font-semibold mb-2 text-white">5. Secure Branch in a Box</h3>
-            <p class="text-sm mb-2"><strong>Target personas:</strong> Infrastructure Architect, Network Security Lead</p>
-            <p class="text-sm mb-2"><strong>Pain:</strong> VPN bottlenecks, branch hardware sprawl, weak endpoint control.</p>
-            <p class="text-sm mb-2"><strong>Promise:</strong> A simple kit that pairs secure endpoints with Zero Trust network access for each branch.</p>
-            <p class="text-sm mb-2"><strong>Proof:</strong> Fifty branch pilot where IGEL devices connect directly via Zscaler for web and app access with no local servers.</p>
-            <p class="text-sm text-neutral-300"><strong>Outcome:</strong> No VPN concentrators, no branch management servers, and no local data.</p>
-          </article>
-
-          <article class="rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4">
-            <h3 class="text-xl font-semibold mb-2 text-white">6. Data Privacy and Compliance Modernization</h3>
-            <p class="text-sm mb-2"><strong>Target personas:</strong> Compliance Officer, Risk Manager, Data Protection Officer</p>
-            <p class="text-sm mb-2"><strong>Pain:</strong> New regulatory deadlines and audits expose gaps in endpoint and access control.</p>
-            <p class="text-sm mb-2"><strong>Promise:</strong> Achieve compliance by architecture with provable controls instead of fragile process workarounds.</p>
-            <p class="text-sm mb-2"><strong>Proof:</strong> IGEL ensures regulated data is not stored locally. Zscaler enforces TLS inspection, DLP, and user level logging.</p>
-            <p class="text-sm text-neutral-300"><strong>Message:</strong> Compliance teams get both preventative controls and audit friendly evidence across device and network layers.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- Architecture -->
-      <section id="architecture" class="igel-card p-5 sm:p-7">
-        <div class="section-header">
-          <div>
-            <h1 class="igel-section-number mb-1">IGEL + Zscaler: The Joint Value Architecture</h1>
-            <h3 class="igel-section-title">Joint value architecture</h3>
-          </div>
-          <span class="section-hint">Cloud to screen</span>
-        </div>
-
-        <p class="text-sm text-neutral-200 sm:text-[15px] mb-4">
-          When IGEL and Zscaler come together the result is multiplicative.
-          A hardened, dataless endpoint fuses with a cloud native Zero Trust network to create an end to end secure workspace from cloud to screen.
-        </p>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 text-sm text-neutral-200">
-          <div>
-            <h3 class="text-lg font-semibold mb-2 text-white">1. Technical Alignment</h3>
-            <ul class="list-disc ml-6 space-y-2">
-              <li>IGEL provides a read only endpoint OS that enforces USB and peripheral controls.</li>
-              <li>Zscaler acts as a cloud based Zero Trust Exchange that inspects and brokers all traffic.</li>
-              <li>Zscaler CBI ensures sessions do not execute on the endpoint while IGEL removes local persistence.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold mb-2 text-white">2. Operational Alignment</h3>
-            <ul class="list-disc ml-6 space-y-2">
-              <li>IGEL OS can be deployed quickly via UD Pocket or PXE on existing hardware.</li>
-              <li>Zscaler access is provisioned virtually instantly with no VPN buildout.</li>
-              <li>Both are cloud managed which shortens support time and simplifies troubleshooting.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold mb-2 text-white">3. Go to Market Alignment</h3>
-            <p class="text-neutral-300 mb-2">
-              Both companies already have traction in regulated, security conscious sectors like healthcare, financial services, public sector, and manufacturing.
+        <div class="grid gap-5 md:grid-cols-[1.2fr_1fr]">
+          <article class="igel-card hover-lift p-5 md:p-6 text-xs text-neutral-200">
+            <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+              Joint solution snapshot
             </p>
-            <ul class="list-disc ml-6 space-y-2">
-              <li>IGEL locks down device risk for these industries.</li>
-              <li>Zscaler delivers secure access, logging, and DLP.</li>
-              <li>Together they offer a simpler, more complete Zero Trust path for CIO, CISO, and compliance stakeholders.</li>
+            <p class="mt-2 text-[0.9rem] text-neutral-100">
+              IGEL + Zscaler deliver a fully integrated Zero Trust workspace &mdash; secure,
+              seamless access to any app, from anywhere, without VPNs or heavy endpoints.
+            </p>
+            <ul class="mt-3 space-y-1.5">
+              <li>- Users and contractors operate from IGEL-powered endpoints or any browser.</li>
+              <li>- Zscaler's Zero Trust Exchange brokers access via ZIA, ZPA, and isolation.</li>
+              <li>- ZCC app is available directly in the IGEL App Portal.</li>
+              <li>- No data persists locally; high-risk content runs in Zscaler's cloud.</li>
             </ul>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold mb-2 text-white">4. Outcome Alignment</h3>
-            <ul class="list-disc ml-6 space-y-2">
-              <li><strong>Security:</strong> no data at rest and no trusted devices by default.</li>
-              <li><strong>User experience:</strong> browser based access without heavy VPN clients or VDI agents.</li>
-              <li><strong>Cost:</strong> fewer licenses for endpoint stacks and reduced infrastructure spend.</li>
-              <li><strong>Compliance:</strong> controls map cleanly to HIPAA, PCI DSS, ISO 27001, and NIS2 objectives.</li>
-            </ul>
-          </div>
-        </div>
 
-        <div class="rounded-2xl border border-yellow-300/30 bg-yellow-300/10 p-4 text-sm text-neutral-100 mt-6">
-          IGEL and Zscaler together redefine the endpoint to cloud trust boundary.
-          They close the last mile risk in Zero Trust architectures by aligning immutable endpoint control with dynamic cloud enforcement.
+            <div class="mt-4 grid gap-3 md:grid-cols-2">
+              <div>
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Top use cases
+                </p>
+                <ul class="mt-2 space-y-1.5">
+                  <li>1. VPN replacement / Zero Trust access (ZPA + IGEL)</li>
+                  <li>2. Secure internet &amp; SaaS access (ZIA + IGEL)</li>
+                  <li>3. BYOD / contractor access (Browser Isolation / PRA + IGEL)</li>
+                  <li>4. OT &amp; privileged access with PRA + IGEL</li>
+                </ul>
+              </div>
+              <div>
+                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                  Fast facts
+                </p>
+                <ul class="mt-2 space-y-1.5">
+                  <li>- Strategic partnership launched 2024.</li>
+                  <li>- IGEL named one of three strategic endpoint partners at Zenith 2025.</li>
+                  <li>- ZCC available in IGEL App Portal via IGEL Ready.</li>
+                  <li>- Proven in finance, healthcare, public sector &amp; manufacturing.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="igel-card hover-lift flex flex-col justify-between gap-4 p-5 text-xs text-neutral-200 md:p-6"
+          >
+            <div>
+              <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                Before you leave the account...
+              </p>
+              <ul class="mt-2 space-y-1.5">
+                <li>- Ask: "What's your plan for VPN and VDI over the next 24 months?"</li>
+                <li>- Ask: "How do you ensure Zero Trust down to the device today?"</li>
+                <li>- Identify: at least one contractor/BYOD use case.</li>
+                <li>- Map: which of the six plays fits their current initiative.</li>
+              </ul>
+            </div>
+            <div class="mt-3 rounded-2xl bg-neutral-900/80 p-4">
+              <p class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                Simple CTA for Zscaler sellers
+              </p>
+              <p class="mt-2 text-[0.8rem] text-neutral-100">
+                "Let's bring IGEL into the next workshop and show you what Zero Trust looks
+                like when the endpoint is immutable and the path is fully cloud-secured."
+              </p>
+            </div>
+          </article>
         </div>
       </section>
-    </main>
-  </div>
+    </div>
+  </main>
 
   <script>
-    const navToggle = document.getElementById("navToggle");
-    const primaryNav = document.getElementById("primaryNav");
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-    if (navToggle && primaryNav) {
-      navToggle.addEventListener("click", () => {
-        const isOpen = primaryNav.classList.contains("hidden") === false;
-        if (isOpen) {
-          primaryNav.classList.add("hidden");
-          navToggle.setAttribute("aria-expanded", "false");
-        } else {
-          primaryNav.classList.remove("hidden");
-          navToggle.setAttribute("aria-expanded", "true");
-        }
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Close menu when clicking a link
+      mobileMenu.querySelectorAll("a[href^='#']").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
       });
     }
   </script>
