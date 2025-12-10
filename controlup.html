@@ -85,12 +85,46 @@
       padding: 0.25rem 0.7rem;
       color: #e4e4e7;
     }
+    .page-shell {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      box-sizing: border-box;
+    }
+    @media (max-width: 640px) {
+      .page-shell {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .page-shell {
+        padding-left: 1.75rem;
+        padding-right: 1.75rem;
+      }
+    }
     .nav-rail {
       border-radius: 1.25rem;
       border: 1px solid rgba(63, 63, 70, 0.85);
       background: radial-gradient(circle at top left, rgba(39, 39, 42, 0.85), rgba(9, 9, 11, 0.98));
       backdrop-filter: blur(18px);
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+    }
+    @media (min-width: 768px) {
+      .nav-rail {
+        position: sticky;
+        top: 5.5rem;
+        max-height: calc(100vh - 7rem);
+        overflow-y: auto;
+      }
+    }
+    .nav-rail::-webkit-scrollbar {
+      width: 6px;
+    }
+    .nav-rail::-webkit-scrollbar-thumb {
+      background: rgba(120, 119, 129, 0.35);
+      border-radius: 999px;
     }
     .nav-index {
       width: 1.4rem;
@@ -142,7 +176,7 @@
 
   <!-- Header -->
   <header class="sticky top-0 z-30 border-b border-neutral-800/90 bg-black/70 backdrop-blur-xl">
-    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+    <div class="page-shell flex items-center justify-between gap-4 py-3">
       <div class="flex items-center gap-4">
         <img
           src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
@@ -167,10 +201,10 @@
     </div>
   </header>
 
-  <main class="mx-auto flex max-w-6xl gap-6 px-4 pb-12 pt-6 sm:px-6 lg:px-8">
+  <main class="page-shell flex flex-col gap-6 pb-12 pt-6 md:flex-row md:items-start">
     <!-- Desktop nav rail -->
-    <aside class="hidden w-60 shrink-0 md:block">
-      <nav class="nav-rail max-h-[calc(100vh-7rem)] overflow-y-auto px-3 py-4">
+    <aside class="hidden w-[14rem] shrink-0 md:block">
+      <nav class="nav-rail px-3 py-4">
         <p class="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-neutral-400">
           Quick sections
         </p>
@@ -288,7 +322,7 @@
     </aside>
 
     <!-- Main content -->
-    <div class="flex-1 space-y-8 md:space-y-10">
+    <div class="flex-1 w-full space-y-8 md:space-y-10">
       <!-- Mobile nav pills -->
       <section class="mb-2 md:hidden">
         <button
@@ -305,21 +339,21 @@
           <span class="text-[0.7rem] text-neutral-400" data-mobile-nav-label>Tap to open</span>
         </button>
         <div
-          class="mt-2 hidden max-h-[65vh] space-y-1 overflow-y-auto rounded-2xl border border-neutral-800 bg-black/80 p-2 text-[0.7rem] shadow-xl shadow-black/70"
+          class="mt-2 hidden max-h-[65vh] grid grid-cols-2 gap-2 overflow-y-auto rounded-2xl border border-neutral-800 bg-black/80 p-2 text-[0.72rem] shadow-xl shadow-black/70"
           data-mobile-nav-panel
         >
-          <a href="#overview" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Overview & Hero</a>
-          <a href="#what-igel-is" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">What IGEL Is</a>
-          <a href="#where-it-fits" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Where IGEL Fits</a>
-          <a href="#signals" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Signals & Cues</a>
-          <a href="#accelerate" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">IGEL Accelerates ControlUp</a>
-          <a href="#landmines" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Competitive Landmines</a>
-          <a href="#talktrack" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">30s Talk Track</a>
-          <a href="#scenarios" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Scenarios</a>
-          <a href="#architecture" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Joint Architecture</a>
-          <a href="#outcomes" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Outcomes</a>
-          <a href="#plays" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Sales Plays</a>
-          <a href="#cta" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">CTA</a>
+          <a href="#overview" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">Overview & Hero</a>
+          <a href="#what-igel-is" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">What IGEL Is</a>
+          <a href="#where-it-fits" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">Where IGEL Fits</a>
+          <a href="#signals" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">Signals & Cues</a>
+          <a href="#accelerate" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">IGEL Accelerates ControlUp</a>
+          <a href="#landmines" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">Competitive Landmines</a>
+          <a href="#talktrack" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">30s Talk Track</a>
+          <a href="#scenarios" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">Scenarios</a>
+          <a href="#architecture" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">Joint Architecture</a>
+          <a href="#outcomes" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">Outcomes</a>
+          <a href="#plays" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">Sales Plays</a>
+          <a href="#cta" class="flex items-center justify-center rounded-full border border-neutral-800/80 px-3 py-2 text-neutral-200 transition hover:border-yellow-400/70 hover:text-yellow-200">CTA</a>
         </div>
       </section>
 
@@ -424,7 +458,7 @@
 
         <div class="igel-card igel-card-hover overflow-hidden">
           <div class="overflow-x-auto">
-            <table class="min-w-[720px] w-full border-separate border-spacing-y-1.5 text-left text-[0.8rem]">
+            <table class="min-w-[780px] w-full border-separate border-spacing-y-1.5 text-left text-[0.8rem]">
               <thead class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
                 <tr>
                   <th class="px-4 pb-2">Layer</th>
