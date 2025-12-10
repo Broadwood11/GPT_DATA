@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IGEL + Lenovo | Sales Enablement</title>
+  <meta charset="UTF-8">
+  <title>IGEL + Lenovo | Zero-Trust Endpoint Playbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Meta Description -->
+  <meta name="description" content="A partner-ready IGEL + Lenovo playbook to help Lenovo sellers position secure, cloud-ready, zero-trust endpoints for hybrid work, VDI, and TruScale deals.">
 
-  <!-- Manrope font (IGEL primary) -->
+  <!-- Google Fonts: Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2upfamily=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="IGEL + Lenovo | Zero-Trust Endpoint Playbook" />
+  <meta property="og:description" content="A partner-ready IGEL + Lenovo playbook to help Lenovo sellers position secure, cloud-ready, zero-trust endpoints for hybrid work, VDI, and TruScale deals." />
+  <meta property="og:type" content="article" />
+  <!-- TODO: Replace with the final live URL of this infographic -->
+  <meta property="og:url" content="[[SET_FINAL_URL_HERE]]" />
+  <!-- TODO: Replace with the full URL to your 1200x675 thumbnail -->
+  <meta property="og:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IGEL + Lenovo | Zero-Trust Endpoint Playbook" />
+  <meta name="twitter:description" content="A partner-ready IGEL + Lenovo playbook to help Lenovo sellers position secure, cloud-ready, zero-trust endpoints for hybrid work, VDI, and TruScale deals." />
+  <meta name="twitter:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
 
   <style>
     :root {
-      --igel-yellow: #FFD101;
+      --igel-yellow: #ffd101;
       --igel-black: #141414;
-      --igel-white: #FFFFFF;
-      --teal: #004D68;
-      --plum: #770469;
-      --gov-blue: #001C99;
-      --retail-purple: #4500A6;
-      --mfg-grey: #43433D;
+      --igel-bg: #050509;
     }
 
     html {
@@ -31,607 +44,1048 @@
 
     body {
       font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--igel-black);
-      color: #e5e7eb;
+      background: radial-gradient(circle at top left, #1e1b4b 0, #020617 36%, #000000 100%);
+      color: #e5e5e5;
     }
 
-    .page-shell {
-      position: relative;
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 18% 18%, rgba(255, 209, 1, 0.14), transparent 32%),
-        radial-gradient(circle at 82% 8%, rgba(0, 28, 153, 0.12), transparent 26%),
-        radial-gradient(circle at 80% 70%, rgba(119, 4, 105, 0.1), transparent 30%),
-        linear-gradient(180deg, #0c0c10 0%, #0f1117 65%, #0b0c0f 100%);
-      overflow: hidden;
-    }
-
-    .page-shell::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-      background-size: 120px 120px;
-      opacity: 0.35;
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-
-    .page-shell::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(255, 209, 1, 0.05), transparent 50%);
-      pointer-events: none;
-    }
-
-    .section-card {
-      position: relative;
+    .igel-card {
       border-radius: 20px;
-      padding: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.16) !important;
-      background: linear-gradient(145deg, rgba(20, 20, 20, 0.82), rgba(20, 20, 20, 0.62)) !important;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(255, 209, 1, 0.08);
-      overflow: hidden;
-      backdrop-filter: blur(6px);
+      border: 1px solid rgb(38 38 38 / 0.9);
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), rgba(15, 23, 42, 0.96));
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(18px);
     }
 
-    @media (min-width: 768px) {
-      .section-card {
-        padding: 2rem;
-      }
+    .igel-card-soft {
+      border-radius: 18px;
+      border: 1px solid rgba(39, 39, 42, 0.8);
+      background: radial-gradient(circle at top, rgba(24, 24, 27, 0.9), rgba(9, 9, 11, 0.96));
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(16px);
     }
 
-    .section-card > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 18% 18%, rgba(255, 209, 1, 0.08), transparent 36%),
-        radial-gradient(circle at 82% 8%, rgba(0, 76, 104, 0.08), transparent 32%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .section-card [class*="border-slate-700"] {
-      border-color: rgba(255, 255, 255, 0.18) !important;
-    }
-
-    .section-card [class*="border-slate-800"] {
-      border-color: rgba(255, 255, 255, 0.2) !important;
-    }
-
-    .pill-label {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--igel-white);
+    .igel-pill {
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 209, 1, 0.7);
+      padding: 0.2rem 0.8rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      backdrop-filter: blur(6px);
     }
 
-    .stack-card {
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: linear-gradient(180deg, rgba(24, 27, 33, 0.9), rgba(24, 27, 33, 0.75));
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      padding: 0.85rem 1rem;
-      color: var(--igel-white);
-    }
-
-    .spark-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--igel-yellow);
-      display: inline-block;
-    }
-
-    .header-panel {
-      background: rgba(20, 20, 20, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
-    }
-
-    .jump-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .jump-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.6rem 0.95rem;
-      border-radius: 999px;
+    .igel-section-number {
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--igel-yellow);
       font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--igel-white);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
-      transition: all 160ms ease;
     }
 
-    .jump-button:hover {
-      border-color: var(--igel-yellow);
-      box-shadow: 0 12px 34px rgba(255, 209, 1, 0.2);
-      transform: translateY(-1px);
+    .igel-section-title {
+      font-weight: 800;
+      color: #f9fafb;
+      font-size: clamp(1.35rem, 1.15rem + 0.6vw, 1.7rem);
+      letter-spacing: 0.02em;
+    }
+
+    .igel-heading-highlight {
       color: var(--igel-yellow);
     }
 
-    .jump-button .dot {
-      width: 8px;
-      height: 8px;
+    .nav-rail {
+      position: sticky;
+      top: 5.5rem;
+      max-height: calc(100vh - 6.5rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(148, 163, 184, 0.7) transparent;
+    }
+
+    .nav-rail::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .nav-rail::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .nav-rail::-webkit-scrollbar-thumb {
+      background-color: rgba(148, 163, 184, 0.6);
       border-radius: 999px;
-      background: var(--igel-yellow);
-      opacity: 0.9;
+    }
+
+    .nav-index-badge {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 30% 15%, #fffbe6, #ffd101);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.70rem;
+      font-weight: 800;
+      color: #020617;
+      box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.9);
+    }
+
+    .spark {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 9999px;
+      filter: blur(55px);
+      opacity: 0.17;
+      mix-blend-mode: screen;
+      z-index: -1;
+    }
+
+    .spark-yellow {
+      background: radial-gradient(circle, rgba(255, 209, 1, 0.9), rgba(0, 0, 0, 0));
+    }
+
+    .spark-slate {
+      background: radial-gradient(circle, rgba(148, 163, 184, 0.9), rgba(0, 0, 0, 0));
+    }
+
+    .section-border {
+      border-bottom: 1px solid rgba(39, 39, 42, 0.94);
+    }
+
+    .stat-bar-track {
+      border-radius: 9999px;
+      background: linear-gradient(to right, #0f172a, #020617);
+    }
+
+    .stat-bar-fill {
+      border-radius: 9999px;
+      background: linear-gradient(to right, #ffd101, #f97316);
+    }
+
+    .accent-wash {
+      background: radial-gradient(circle at top left, rgba(255, 209, 1, 0.14), rgba(24, 24, 27, 0.96));
+      border: 1px solid rgba(250, 250, 250, 0.06);
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 260ms ease, opacity 220ms ease;
+      opacity: 0;
+    }
+
+    .accordion-body.open {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    .focus-outline-yellow:focus-visible {
+      outline: 2px solid var(--igel-yellow);
+      outline-offset: 3px;
     }
   </style>
 </head>
-<body class="text-slate-100 antialiased">
-  <div class="page-shell text-slate-100">
-    <header class="header-panel border-b border-white/10 backdrop-blur-xl sticky top-0 z-20">
-      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="flex items-center justify-center bg-[#43433D] rounded-xl px-2 py-1">
-            <img
-              src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
-              alt="IGEL logo"
-              class="h-12 w-auto"
-            />
-          </div>
-          <div class="hidden sm:flex flex-col">
-            <span class="text-xs font-medium tracking-[0.16em] text-[#FFD101] uppercase">IGEL + Lenovo</span>
-            <span class="text-sm text-slate-300">Immutable OS on trusted Lenovo devices</span>
-          </div>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="pill-label bg-slate-900/80 text-slate-100 border border-white/10">
-            <span class="spark-dot"></span>
-            Immutable OS
-          </span>
-          <span class="hidden sm:inline-flex pill-label bg-emerald-500/10 text-emerald-200 border border-emerald-400/40 justify-center text-center">
-            Lenovo certified
-          </span>
+<body class="min-h-screen text-sm md:text-[0.95rem] text-neutral-200 relative">
+  <!-- Background sparks -->
+  <div class="spark spark-yellow w-[420px] h-[420px] top-[-120px] left-[-120px]"></div>
+  <div class="spark spark-slate w-[380px] h-[380px] bottom-[-140px] right-[-120px]"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 border-b border-neutral-800/80 bg-gradient-to-b from-black/90 via-neutral-950/90 to-neutral-950/95 backdrop-blur-xl">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" alt="IGEL logo" class="h-9 w-auto">
+        <div class="flex flex-col">
+          <span class="text-[0.65rem] tracking-[0.2em] uppercase text-neutral-400">Partner Playbook</span>
+          <h1 class="text-sm sm:text-base md:text-lg font-semibold text-neutral-50">
+            IGEL + <span class="igel-heading-highlight">Lenovo</span> Zero-Trust Endpoint Story
+          </h1>
         </div>
       </div>
-    </header>
 
-    <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-8 md:space-y-10">
-      <nav class="jump-buttons mb-4 md:mb-6">
-        <a class="jump-button" href="#why-together"><span class="dot"></span>Why Together</a>
-        <a class="jump-button" href="#partnership"><span class="dot"></span>Partnership Model</a>
-        <a class="jump-button" href="#platform"><span class="dot"></span>Platform Value</a>
-        <a class="jump-button" href="#devices"><span class="dot"></span>Certified Devices</a>
-        <a class="jump-button" href="#plays"><span class="dot"></span>Sales Plays</a>
-        <a class="jump-button" href="#resources"><span class="dot"></span>Resources</a>
-        <a class="jump-button" href="#seller-angle"><span class="dot"></span>Seller Wins</a>
-      </nav>
+      <!-- Mobile menu toggle -->
+      <button
+        id="mobileMenuToggle"
+        type="button"
+        class="md:hidden inline-flex items-center gap-1.5 rounded-full border border-neutral-700/80 bg-black/60 px-3 py-1.5 text-[0.70rem] font-medium text-neutral-100 hover:border-neutral-400 hover:bg-neutral-900/90 focus-outline-yellow"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Sections
+        <span class="text-[0.8rem] text-neutral-400">v</span>
+      </button>
+    </div>
 
-      <!-- Hero / Intro -->
-      <section class="grid md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-6 md:gap-8 items-start">
-        <article class="section-card bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-50 border-slate-800">
-          <div class="flex items-center justify-between mb-4">
-            <h1 id="why-together" class="text-3xl md:text-4xl font-semibold leading-tight tracking-tight text-[#FFD101]">
-              IGEL + Lenovo | Secure, ready-to-ship hybrid work endpoints
-            </h1>
-          </div>
-          <p class="text-sm md:text-base text-slate-200 leading-relaxed mb-3">
-            Lenovo provides the world-class hardware. IGEL provides the hardened, secure, immutable endpoint OS.
-            Together they deliver a simple, secure, and cost-effective foundation for hybrid work, VDI, DaaS, and SaaS access.
-          </p>
-          <p class="text-sm md:text-base text-slate-300 leading-relaxed mb-4">
-            Customers boot day one into a known-good Lenovo device that is centrally managed, patch-light, and ready for any virtual
-            workspace stack you pair with it.
-          </p>
-            <p class="text-xs uppercase tracking-[0.14em] text-[#FFD101] font-semibold mb-2">Smarter Technology for All</p>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Lenovo and IGEL share a vision to deliver smarter technology for all&#8212;developing trusted, sustainable, and inclusive digital workspaces.
-              Together they lead an Intelligent Transformation: building world-changing technologies and secure infrastructure that create better
-              experiences and opportunities for millions of users worldwide.
-            </p>
-          
+    <!-- Mobile nav menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-neutral-800/80 bg-black/95">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-3">
+        <div class="grid grid-cols-2 gap-2 max-h-[60vh] overflow-y-auto">
+          <a href="#hook" class="igel-card-soft px-3 py-2.5 text-[0.72rem] hover:bg-neutral-900/95 transition focus-outline-yellow">
+            <span class="block text-[0.55rem] uppercase tracking-[0.18em] text-yellow-300/80">1</span>
+            <span class="font-medium text-neutral-50">Why IGEL + Lenovo</span>
+          </a>
+          <a href="#what-igel-is" class="igel-card-soft px-3 py-2.5 text-[0.72rem] hover:bg-neutral-900/95 transition focus-outline-yellow">
+            <span class="block text-[0.55rem] uppercase tracking-[0.18em] text-yellow-300/80">2</span>
+            <span class="font-medium text-neutral-50">What IGEL Is</span>
+          </a>
+          <a href="#stack-fit" class="igel-card-soft px-3 py-2.5 text-[0.72rem] hover:bg-neutral-900/95 transition focus-outline-yellow">
+            <span class="block text-[0.55rem] uppercase tracking-[0.18em] text-yellow-300/80">3</span>
+            <span class="font-medium text-neutral-50">Where It Fits</span>
+          </a>
+          <a href="#signals" class="igel-card-soft px-3 py-2.5 text-[0.72rem] hover:bg-neutral-900/95 transition focus-outline-yellow">
+            <span class="block text-[0.55rem] uppercase tracking-[0.18em] text-yellow-300/80">4</span>
+            <span class="font-medium text-neutral-50">Deal Signals</span>
+          </a>
+          <a href="#joint-value" class="igel-card-soft px-3 py-2.5 text-[0.72rem] hover:bg-neutral-900/95 transition focus-outline-yellow">
+            <span class="block text-[0.55rem] uppercase tracking-[0.18em] text-yellow-300/80">5</span>
+            <span class="font-medium text-neutral-50">Joint Value</span>
+          </a>
+          <a href="#architecture" class="igel-card-soft px-3 py-2.5 text-[0.72rem] hover:bg-neutral-900/95 transition focus-outline-yellow">
+            <span class="block text-[0.55rem] uppercase tracking-[0.18em] text-yellow-300/80">6</span>
+            <span class="font-medium text-neutral-50">Architecture</span>
+          </a>
+          <a href="#plays" class="igel-card-soft px-3 py-2.5 text-[0.72rem] hover:bg-neutral-900/95 transition focus-outline-yellow">
+            <span class="block text-[0.55rem] uppercase tracking-[0.18em] text-yellow-300/80">7</span>
+            <span class="font-medium text-neutral-50">Sales Plays</span>
+          </a>
+          <a href="#scenarios" class="igel-card-soft px-3 py-2.5 text-[0.72rem] hover:bg-neutral-900/95 transition focus-outline-yellow">
+            <span class="block text-[0.55rem] uppercase tracking-[0.18em] text-yellow-300/80">8</span>
+            <span class="font-medium text-neutral-50">Customer Scenarios</span>
+          </a>
+          <a href="#talk-track" class="igel-card-soft px-3 py-2.5 text-[0.72rem] hover:bg-neutral-900/95 transition focus-outline-yellow">
+            <span class="block text-[0.55rem] uppercase tracking-[0.18em] text-yellow-300/80">9</span>
+            <span class="font-medium text-neutral-50">30-Second Pitch</span>
+          </a>
+          <a href="#cta" class="igel-card-soft px-3 py-2.5 text-[0.72rem] hover:bg-neutral-900/95 transition focus-outline-yellow">
+            <span class="block text-[0.55rem] uppercase tracking-[0.18em] text-yellow-300/80">10</span>
+            <span class="font-medium text-neutral-50">Checklist & CTA</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-          <div class="mt-5 grid gap-4 md:grid-cols-3">
-            <div class="rounded-xl bg-slate-900/80 border border-slate-700/70 p-3">
-              <p class="text-xs font-semibold text-slate-400 uppercase tracking-[0.16em] mb-1">Soundbite</p>
-              <p class="text-sm leading-relaxed">
-                Lenovo hardware plus IGEL OS = secure, drift-free endpoints from boot to browser.
-              </p>
+  <!-- Main layout -->
+  <main class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+    <div class="grid grid-cols-1 md:grid-cols-[220px,minmax(0,1fr)] gap-6 lg:gap-10">
+
+      <!-- Desktop left nav rail -->
+      <aside class="hidden md:block">
+        <nav class="nav-rail igel-card-soft px-3.5 py-4 text-[0.75rem]">
+          <div class="flex items-center gap-2 pb-3 mb-3 border-b border-neutral-800/90">
+            <div class="nav-index-badge text-[0.6rem]">IG</div>
+            <div class="flex flex-col">
+              <span class="text-[0.60rem] uppercase tracking-[0.18em] text-neutral-400">Fast Index</span>
+              <span class="text-[0.75rem] text-neutral-100">Follow this flow with your customer</span>
             </div>
-            <div class="rounded-xl bg-slate-900/80 border border-slate-700/70 p-3">
-              <p class="text-xs font-semibold text-slate-400 uppercase tracking-[0.16em] mb-1">Who this helps</p>
-              <p class="text-sm">
-                Lenovo IDG and SSG sellers, and customers standardizing on VDI, DaaS, or SaaS who need secure, predictable endpoints.
-              </p>
-            </div>
-            <div class="rounded-xl bg-slate-900/80 border border-slate-700/70 p-3">
-              <p class="text-xs font-semibold text-slate-400 uppercase tracking-[0.16em] mb-1">Outcome</p>
-              <p class="text-sm">
-                Faster deployments, fewer tickets, and longer device life with a security story Windows cannot match.
-              </p>
-            </div>
-            
-
           </div>
-        </article>
+          <ol class="space-y-1.5 text-neutral-300">
+            <li>
+              <a href="#hook" class="group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-900/90 transition focus-outline-yellow">
+                <span class="nav-index-badge group-hover:scale-105 transition-transform">1</span>
+                <span class="text-[0.76rem] font-medium group-hover:text-neutral-50">Why IGEL + Lenovo now</span>
+              </a>
+            </li>
+            <li>
+              <a href="#what-igel-is" class="group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-900/90 transition focus-outline-yellow">
+                <span class="nav-index-badge group-hover:scale-105 transition-transform">2</span>
+                <span class="text-[0.76rem] font-medium group-hover:text-neutral-50">What IGEL actually is</span>
+              </a>
+            </li>
+            <li>
+              <a href="#stack-fit" class="group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-900/90 transition focus-outline-yellow">
+                <span class="nav-index-badge group-hover:scale-105 transition-transform">3</span>
+                <span class="text-[0.76rem] font-medium group-hover:text-neutral-50">Where it fits in the stack</span>
+              </a>
+            </li>
+            <li>
+              <a href="#signals" class="group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-900/90 transition focus-outline-yellow">
+                <span class="nav-index-badge group-hover:scale-105 transition-transform">4</span>
+                <span class="text-[0.76rem] font-medium group-hover:text-neutral-50">Deal signals & triggers</span>
+              </a>
+            </li>
+            <li>
+              <a href="#joint-value" class="group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-900/90 transition focus-outline-yellow">
+                <span class="nav-index-badge group-hover:scale-105 transition-transform">5</span>
+                <span class="text-[0.76rem] font-medium group-hover:text-neutral-50">Joint value snapshot</span>
+              </a>
+            </li>
+            <li>
+              <a href="#architecture" class="group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-900/90 transition focus-outline-yellow">
+                <span class="nav-index-badge group-hover:scale-105 transition-transform">6</span>
+                <span class="text-[0.76rem] font-medium group-hover:text-neutral-50">Technical & lifecycle architecture</span>
+              </a>
+            </li>
+            <li>
+              <a href="#plays" class="group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-900/90 transition focus-outline-yellow">
+                <span class="nav-index-badge group-hover:scale-105 transition-transform">7</span>
+                <span class="text-[0.76rem] font-medium group-hover:text-neutral-50">Top joint sales plays</span>
+              </a>
+            </li>
+            <li>
+              <a href="#scenarios" class="group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-900/90 transition focus-outline-yellow">
+                <span class="nav-index-badge group-hover:scale-105 transition-transform">8</span>
+                <span class="text-[0.76rem] font-medium group-hover:text-neutral-50">Real-world scenarios</span>
+              </a>
+            </li>
+            <li>
+              <a href="#talk-track" class="group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-900/90 transition focus-outline-yellow">
+                <span class="nav-index-badge group-hover:scale-105 transition-transform">9</span>
+                <span class="text-[0.76rem] font-medium group-hover:text-neutral-50">30-second talk track</span>
+              </a>
+            </li>
+            <li>
+              <a href="#cta" class="group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-900/90 transition focus-outline-yellow">
+                <span class="nav-index-badge group-hover:scale-105 transition-transform">10</span>
+                <span class="text-[0.76rem] font-medium group-hover:text-neutral-50">Before you leave</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </aside>
 
-        <!-- Quick Pitch / Cheat Card -->
-        <aside class="section-card bg-slate-900/70 border-slate-700/80 text-slate-50 space-y-4 sticky md:top-6">
-          <div class="flex items-center justify-between gap-3">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
-              Elevator pitch
-            </h2>
-            <span class="pill-label bg-emerald-500/15 text-emerald-300 border border-emerald-400/50 justify-center text-center">
-              20 sec talk track
-            </span>
-          </div>
-          <p class="text-xs uppercase tracking-[0.16em] text-slate-300">Smarter Technology for All</p>
-          <p class="text-sm leading-relaxed">
-            "Select Lenovo ThinkPad and ThinkCentre models ship with IGEL OS preloaded. Customers boot straight into a secure,
-            centrally managed workspace with no imaging or patch chaos. Lenovo delivers the device; IGEL keeps it hardened and
-            consistent for any VDI, DaaS, or SaaS stack."
-          </p>
-          <div class="border-t border-slate-700/80 pt-3 space-y-2">
-            <p class="text-xs tracking-[0.18em] uppercase text-slate-400 font-semibold">Use when...</p>
-            <ul class="text-xs text-slate-200 space-y-1.5">
-              <li>Customer is frustrated with VDI endpoint lag, patching, or service tickets.</li>
-              <li>They need secure remote or contractor access without Windows overhead.</li>
-              <li>They want to extend device life or support sustainability goals.</li>
-            </ul>
-          </div>
-        
-          
-        </aside>
-      </section>
+      <!-- Content column -->
+      <section class="space-y-8 md:space-y-10">
 
-      <!-- How the partnership works -->
-      <section id="partnership" class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
-            How the partnership works
-          </h2>
-          <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">Factory + GTM</span>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-4">
-          <div class="stack-card">
-            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-300">Factory integrated</p>
-            <p class="text-sm text-slate-100">
-              ThinkPad and ThinkCentre models ship with IGEL OS preloaded so customers boot directly into a secure workspace with no imaging.
-            </p>
-          </div>
-          <div class="stack-card">
-            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-300">Simplified licensing</p>
-            <p class="text-sm text-slate-100">
-              IGEL OS licenses are embedded into Lenovo part numbers to streamline procurement and renewals.
-            </p>
-          </div>
-          <div class="stack-card">
-            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-300">Unified management</p>
-            <p class="text-sm text-slate-100">
-              Universal Management Suite gives IT central control over every Lenovo IGEL endpoint across remote and hybrid environments.
-            </p>
-          </div>
-          <div class="stack-card">
-            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-300">Joint GTM power</p>
-            <p class="text-sm text-slate-100">
-              Lenovo IDG and SSG teams actively sell Lenovo plus IGEL as a single secure endpoint solution.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- What IGEL does -->
-      <section id="platform" class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
-            What IGEL does for Lenovo customers
-          </h2>
-          <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">Immutable OS</span>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6">
-          <ul class="text-sm md:text-base text-slate-200 space-y-2 leading-relaxed">
-            <li>Replaces Windows on endpoints with a hardened, immutable OS that cannot be modified or infected.</li>
-            <li>Boots fast and runs secure from RAM with no local apps or local data stored.</li>
-            <li>Integrates seamlessly with Omnissa, AVD, Horizon, and modern browsers.</li>
-            <li>Eliminates patch chaos and drastically reduces endpoint support tickets.</li>
-            <li>Extends hardware life by up to five years, perfect for sustainability initiatives.</li>
-            <li>Fully optimized for Microsoft Azure Stack HCI and Azure Virtual Desktop (AVD) on Lenovo ThinkAgile MX650 V3 systems, combining cloud-scale performance with on-prem data sovereignty.</li>
-            <li>IGEL OS enables secure, low-latency AVD access from Lenovo endpoints, accelerating hybrid and virtual workspace adoption.</li>
-
-          </ul>
-          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4 space-y-2">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Why Lenovo buyers care</p>
-            <ul class="text-sm text-slate-200 space-y-1.5">
-              <li>No drift: every device stays in a known-good state for VDI, DaaS, and SaaS access.</li>
-              <li>No local data: mitigates breach impact and simplifies compliance conversations.</li>
-              <li>No waste: repurpose existing Lenovo fleets with a secure, modern OS instead of replacing them.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Devices -->
-      <section id="devices" class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
-            IGEL certified Lenovo devices
-          </h2>
-          <span class="pill-label bg-emerald-500/10 text-emerald-200 border border-emerald-400/40">Ready to ship</span>
-                <p class="text-sm text-slate-300 mt-2">
-                    All devices are part of the IGEL Ready ecosystem—Lenovo is the leading IGEL OEM partner with the widest range of IGEL OS certified models globally.
+        <!-- Hook / Hero -->
+        <section id="hook" class="section-border pb-7 md:pb-9">
+          <div class="igel-card p-4 sm:p-6 lg:p-7">
+            <div class="flex flex-col md:flex-row gap-5 md:gap-8 items-start">
+              <div class="flex-1 space-y-2">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="igel-pill text-yellow-200 bg-neutral-950/70">Preventative Security ModelTM</span>
+                  <span class="igel-pill text-neutral-100 bg-neutral-900/80 border-yellow-500/60">Lenovo &middot; IGEL</span>
+                </div>
+                <h2 class="mt-3 text-2xl sm:text-[1.6rem] md:text-[1.8rem] font-extrabold leading-snug text-neutral-50">
+                  Sell Lenovo from <span class="igel-heading-highlight">silicon to session</span>, not just device to desk.
+                </h2>
+                <p class="mt-2 text-[0.9rem] text-neutral-300 max-w-2xl">
+                  When you pair Lenovo endpoints with IGEL OS, you turn every device into a
+                  <span class="font-semibold text-neutral-50">zero-trust, cloud-ready workspace</span> that's easier to sell,
+                  faster to deploy, and cheaper to run.
                 </p>
-        </div>
-
-
-        <div class="grid md:grid-cols-2 gap-4">
-          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4">
-            <h3 class="font-semibold text-lg text-slate-50 mb-2">ThinkPad L Series</h3>
-            <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-              <li>L13 Gen4 to Gen5 (Intel)</li>
-              <li>L14 Gen1 to Gen6 (Intel and AMD)</li>
-              <li>L15 Gen4 to Gen5 </li>
-              <li>L16 Gen1 to Gen2</li>
-            </ul>
-          </div>
-
-          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4">
-            <h3 class="font-semibold text-lg text-slate-50 mb-2">ThinkPad K14 Gen1</h3>
-            <p class="text-sm text-slate-200">Certified entry enterprise option for scale deployments.</p>
-          </div>
-
-          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4">
-            <h3 class="font-semibold text-lg text-slate-50 mb-2">ThinkCentre Tiny and Neo</h3>
-            <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-              <li>M70q Gen3 to Gen6</li>
-              <li>M75q Gen2 to Gen5</li>
-              <li>M625q</li>
-              <li>V100q</li>
-              <li>Neo 50q</li>
-            </ul>
-          </div>
-
-          <div class="rounded-xl bg-slate-900/80 border border-slate-700/80 p-4">
-            <h3 class="font-semibold text-lg text-slate-50 mb-2">Edge and Workstation</h3>
-            <ul class="text-sm text-slate-200 space-y-1 list-disc list-inside">
-                <li>P3 Tiny, P3 Ultra</li>
-                <li>ThinkEdge SE10 & SE10-I</li>
-                <li>SE30</li>
-                </ul>
+              </div>
+              <div class="w-full md:w-[14rem] lg:w-[15rem] space-y-3">
+                <div class="accent-wash rounded-2xl px-4 py-3.5">
+                  <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200 mb-1.5">
+                    For Lenovo sellers
+                  </p>
+                  <p class="text-[0.86rem] text-neutral-50 font-semibold">
+                    Use this as your quick-reference when you hear "VDI, W365, AVD, TruScale, or Zero Trust."
+                  </p>
+                </div>
+                <div class="igel-card-soft px-4 py-3 space-y-1.5">
+                  <p class="text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+                    Outcome in one line
+                  </p>
+                  <p class="text-[0.9rem] text-neutral-100 font-semibold">
+                    IGEL turns Lenovo into a <span class="igel-heading-highlight">preventative</span> security endpoint,
+                    not another patch project.
+                  </p>
+                </div>
+              </div>
             </div>
-        </div>
-      </section>
-
-      <!-- Joint sales plays -->
-      <section id="plays" class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
-        <div class="section-header-row mb-4">
-          <div>
-            <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
-              Top joint sales plays
-            </h2>
-            <p class="section-kicker mt-1">
-              Field-tested use cases that show the power of Lenovo + IGEL solutions.
-            </p>
           </div>
-          <div class="pill-row">
-            <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">Field-Validated</span>
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-5 text-slate-200">
-
-          <!-- VDI & DaaS Modernization -->
-          <div class="border border-slate-700/60 rounded-xl p-4 bg-slate-900/70 flex flex-col h-full">
-            <h3 class="font-semibold text-lg text-slate-50 mb-2">VDI & DaaS Modernization</h3>
-            <p class="text-sm mb-2 leading-relaxed">
-              Many customers are exiting costly, complex VDI footprints or re-platforming after vendor shifts.
-              Lenovo and IGEL offer a simpler modernization path — replacing aging thin clients or repurposing
-              Windows PCs as secure IGEL-powered endpoints.
-            </p>
-            <p class="text-sm text-slate-300">
-              Azure Stack HCI with AVD on Lenovo ThinkAgile MX systems and IGEL endpoints enables secure, high-performance hybrid desktops optimized for scale and compliance.
-            </p>
-            <p class="text-sm italic text-slate-400 mb-1">Example:</p>
-            <p class="text-sm text-slate-300 mb-2">
-              A global bank replaces 4,000 aging Citrix endpoints with Lenovo ThinkCentre M75q devices running
-              IGEL OS. Result: 60% fewer support tickets and $1.2M annual savings in endpoint maintenance.
-            </p>
-            <p class="text-xs uppercase tracking-[0.12em] text-amber-300 font-semibold mt-auto pt-3">
-              “Replace complexity with control.”
-            </p>
-          </div>
-
-          <!-- SaaS-First & Cloud Workforce Enablement -->
-          <div class="border border-slate-700/60 rounded-xl p-4 bg-slate-900/70 flex flex-col h-full">
-            <h3 class="font-semibold text-lg text-slate-50 mb-2">SaaS-First & Cloud Workforce Enablement</h3>
-            <p class="text-sm mb-2 leading-relaxed">
-              For SaaS-centric teams, full Windows endpoints add cost and risk. IGEL transforms Lenovo devices
-              into secure, stateless browser appliances for Office 365, Salesforce, or Workday access.
-            </p>
-            <p class="text-sm italic text-slate-400 mb-1">Example:</p>
-            <p class="text-sm text-slate-300 mb-2">
-              A BPO firm deploys 800 Lenovo K14 units running IGEL OS for call center agents. Boot to browser in
-              15 seconds — no imaging, no local data, no exposure.
-            </p>
-            <p class="text-xs uppercase tracking-[0.12em] text-amber-300 font-semibold mt-auto pt-3">
-              “Secure browser workspaces that scale.”
-            </p>
-          </div>
-
-          <!-- Hybrid & Remote Work -->
-          <div class="border border-slate-700/60 rounded-xl p-4 bg-slate-900/70 flex flex-col h-full">
-            <h3 class="font-semibold text-lg text-slate-50 mb-2">Hybrid & Remote Work</h3>
-            <p class="text-sm mb-2 leading-relaxed">
-              Remote access remains a top breach vector. IGEL on Lenovo ThinkPads delivers hardened, drift-free
-              endpoints that are cloud-ready and data-empty by design.
-            </p>
-            <p class="text-sm text-slate-300">
-              Optimized for Microsoft Teams, Zoom, WebEx, and Avaya to ensure crystal-clear collaboration experiences on Lenovo IGEL devices.
-            </p>
-            <p class="text-sm italic text-slate-400 mb-1">Example:</p>
-            <p class="text-sm text-slate-300 mb-2">
-              A pharmaceutical company issues Lenovo laptops booting IGEL from USB to 600 external researchers.
-              Secure access, zero data at rest, instant decommissioning after project close.
-            </p>
-            <p class="text-xs uppercase tracking-[0.12em] text-amber-300 font-semibold mt-auto pt-3">
-              “Work anywhere. Trust everywhere.”
-            </p>
-          </div>
-
-          <!-- Sustainability & Lifecycle Extension -->
-          <div class="border border-slate-700/60 rounded-xl p-4 bg-slate-900/70 flex flex-col h-full">
-            <h3 class="font-semibold text-lg text-slate-50 mb-2">Sustainability & Lifecycle Extension</h3>
-            <p class="text-sm mb-2 leading-relaxed">
-              Lenovo TruScale + IGEL extends device life, supports circular economy goals, and reduces refresh
-              frequency — converting existing hardware into secure cloud endpoints.
-            </p>
-            <p class="text-sm italic text-slate-400 mb-1">Example:</p>
-            <p class="text-sm text-slate-300 mb-2">
-              A retail chain reuses 2,500 Lenovo endpoints at end-of-Windows life with IGEL OS, reducing
-              e-waste by 9 tons and cutting refresh costs by 45%.
-            </p>
-            <p class="text-xs uppercase tracking-[0.12em] text-amber-300 font-semibold mt-auto pt-3">
-              “Make sustainability a service.”
-            </p>
-          </div>
-
-          <!-- Healthcare & Edge Operations -->
-          <div class="border border-slate-700/60 rounded-xl p-4 bg-slate-900/70 flex flex-col h-full">
-            <h3 class="font-semibold text-lg text-slate-50 mb-2">Healthcare & Edge Operations</h3>
-            <p class="text-sm mb-2 leading-relaxed">
-              For clinicians, technicians, and factory-floor users, IGEL ensures secure, fast, and friction-free
-              access. Lenovo hardware provides reliability from nurse stations to production lines.
-            </p>
-            <p class="text-sm italic text-slate-400 mb-1">Example:</p>
-            <p class="text-sm text-slate-300 mb-2">
-              Hospitals deploy Lenovo Tiny-in-One devices with IGEL OS for Imprivata badge SSO. Factories use
-              ThinkEdge SE30 with IGEL to monitor machines without tampering risk.
-            </p>
-            <p class="text-xs uppercase tracking-[0.12em] text-amber-300 font-semibold mt-auto pt-3">
-              “Operational resilience at the edge.”
-            </p>
-          </div>
-
-          <!-- Government & Zero Trust Environments -->
-          <div class="border border-slate-700/60 rounded-xl p-4 bg-slate-900/70 flex flex-col h-full">
-            <h3 class="font-semibold text-lg text-slate-50 mb-2">Government & Zero Trust Environments</h3>
-            <p class="text-sm mb-2 leading-relaxed">
-              Zero Trust mandates demand verifiable, tamper-resistant endpoints. Lenovo and IGEL deliver FIPS-ready,
-              smartcard-authenticated devices that integrate with secure on-prem or cloud infrastructure.
-            </p>
-            <p class="text-sm italic text-slate-400 mb-1">Example:</p>
-            <p class="text-sm text-slate-300 mb-2">
-              A defense integrator uses Lenovo ThinkPads with IGEL OS and smartcard authentication, connecting
-              securely to classified TruScale on-prem systems.
-            </p>
-            <p class="text-xs uppercase tracking-[0.12em] text-amber-300 font-semibold mt-auto pt-3">
-              “Trusted endpoints for trusted missions.”
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Resources -->
-     <section id="resources" class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
-            Lenovo and IGEL Resources to share
-            </h2>
-            <span class="pill-label bg-slate-900 text-slate-200 border border-slate-700/80">Resource links</span>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-4">
-            <div class="rounded-xl bg-slate-900/70 border border-slate-700/80 p-4 space-y-2">
-            <div class="flex items-center justify-between">
-                <p class="text-sm font-semibold text-slate-100">Lenovo and IGEL for hybrid work</p>
-                <span class="pill-label bg-slate-800 text-slate-200 border border-white/10">Whitepaper</span>
-            </div>
-            <a href="https://www.igel.com/wp-content/uploads/2024/07/Lenovo"
-                target="_blank" rel="noopener noreferrer"
-                class="text-[#FFD101] text-sm font-semibold hover:underline">Open</a>
-            </div>
-
-            <div class="rounded-xl bg-slate-900/70 border border-slate-700/80 p-4 space-y-2">
-            <div class="flex items-center justify-between">
-                <p class="text-sm font-semibold text-slate-100">Financial Services Whitepaper - Modernizing Endpoints for Success</p>
-                <span class="pill-label bg-slate-800 text-slate-200 border border-white/10">Whitepaper</span>
-            </div>
-            <a href="https://info.lenovosoftware.com/hubfs/IGEL/is-your-financial-institution-future-ready.pdf"
-                target="_blank" rel="noopener noreferrer"
-                class="text-[#FFD101] text-sm font-semibold hover:underline break-all">Open</a>
-            </div>
-
-            <div class="rounded-xl bg-slate-900/70 border border-slate-700/80 p-4 space-y-2">
-            <div class="flex items-center justify-between">
-                <p class="text-sm font-semibold text-slate-100">Healthcares #1 Endpoint for virtual workspaces</p>
-                <span class="pill-label bg-slate-800 text-slate-200 border border-white/10">Solution Brief</span>
-            </div>
-            <a href="https://www.igel.com/wp-content/uploads/2024/09/IGEL-Lenovo-Healthcare.pdf"
-                target="_blank" rel="noopener noreferrer"
-                class="text-[#FFD101] text-sm font-semibold hover:underline break-all">Open</a>
-            </div>
-
-            <div class="rounded-xl bg-slate-900/70 border border-slate-700/80 p-4 space-y-2">
-            <div class="flex items-center justify-between">
-                <p class="text-sm font-semibold text-slate-100">IGEL page on lenovo.com</p>
-                <span class="pill-label bg-slate-800 text-slate-200 border border-white/10">Webpage</span>
-            </div>
-            <a href="https://www.lenovo.com/us/en/software/igel"
-                target="_blank" rel="noopener noreferrer"
-                class="text-[#FFD101] text-sm font-semibold hover:underline break-all">Open</a>
-            </div>
-
-            <div class="rounded-xl bg-slate-900/70 border border-slate-700/80 p-4 space-y-2 md:col-span-2">
-            <div class="flex items-center justify-between">
-                <p class="text-sm font-semibold text-slate-100">AVD &amp; IGEL on ThinkAgile MX</p>
-                <span class="pill-label bg-slate-800 text-slate-200 border border-white/10">Solution Brief</span>
-            </div>
-            <a href="https://www.igel.com/wp-content/uploads/2024/05/IGEL_Lenovo_AVD_Final.pdf"
-                target="_blank" rel="noopener noreferrer"
-                class="text-[#FFD101] text-sm font-semibold hover:underline break-all">Open</a>
-            </div>
-        </div>
         </section>
 
+        <!-- What IGEL actually is -->
+        <section id="what-igel-is" class="section-border pb-7 md:pb-9 space-y-4">
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <div class="igel-section-number">1 &middot; What IGEL actually is</div>
+              <h3 class="igel-section-title mt-1.5">A modern, hardened OS for secure cloud workspaces</h3>
+            </div>
+            <p class="hidden sm:block text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+              Start here when customers ask "So... is IGEL a thin client?"
+            </p>
+          </div>
 
+          <div class="grid md:grid-cols-[minmax(0,1.4fr),minmax(0,1fr)] gap-4 md:gap-6">
+            <div class="igel-card-soft p-4 sm:p-5 space-y-3">
+              <h4 class="text-[0.9rem] font-semibold text-neutral-50">
+                IGEL in one sentence
+              </h4>
+              <p class="text-[0.9rem] text-neutral-300">
+                IGEL is an <span class="font-semibold text-neutral-50">immutable, centrally managed endpoint OS</span>
+                built to provide secure access to virtual, SaaS, and cloud workspaces&mdash;without storing data locally.
+              </p>
+              <ul class="mt-2 space-y-1.5 text-[0.9rem] text-neutral-300">
+                <li>- <span class="font-medium text-neutral-50">Immutable, read-only OS</span> &mdash; no configuration drift, no "image chaos."</li>
+                <li>- <span class="font-medium text-neutral-50">Preventative Security ModelTM</span> &mdash; block breaches by design, not after the fact.</li>
+                <li>- <span class="font-medium text-neutral-50">No local data</span> &mdash; lost/stolen devices don't expose apps, credentials, or files.</li>
+                <li>- <span class="font-medium text-neutral-50">Workspace-agnostic</span> &mdash; supports Citrix, Omnissa Horizon, AVD, Windows 365, and SaaS.</li>
+              </ul>
+              <p class="mt-3 text-[0.86rem] text-neutral-400">
+                <span class="font-semibold text-neutral-200">Simple frame for customers:</span>
+                Lenovo builds the trusted hardware; IGEL is the trusted software layer that makes it a zero-trust endpoint.
+              </p>
+            </div>
 
-      <!-- Seller value -->
-      <section id="seller-angle" class="section-card bg-slate-950/80 border-slate-800 text-slate-50">
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <h2 class="text-xl md:text-2xl font-semibold tracking-tight text-[#FFD101]">
-            Why Lenovo sellers win with IGEL
-          </h2>
-        </div>
+            <div class="space-y-3">
+              <div class="igel-card-soft p-4 space-y-2">
+                <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                  What it is &middot; What it isn't
+                </p>
+                <ul class="space-y-1.5 text-[0.85rem] text-neutral-200">
+                  <li>- <span class="font-medium">Is:</span> A secure OS for Lenovo endpoints.</li>
+                  <li>- <span class="font-medium">Is:</span> A way to simplify VDI, W365, and SaaS access.</li>
+                  <li>- <span class="font-medium">Isn't:</span> A hardware vendor or a competing thin client box.</li>
+                  <li>- <span class="font-medium">Isn't:</span> Another heavy Windows image to maintain.</li>
+                </ul>
+              </div>
+              <div class="igel-card-soft p-4 space-y-2">
+                <p class="text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+                  Use this line with customers
+                </p>
+                <p class="text-[0.88rem] text-neutral-50 font-semibold">
+                  "Think of IGEL as the locked-down, cloud-optimized OS that makes your Lenovo
+                  devices safe to use anywhere&mdash;even if the device walks out the door."
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <ul class="text-sm md:text-base text-slate-200 space-y-2.5 leading-relaxed">
-          <li>Faster deployments and lower support cost for customers.</li>
-          <li>Stronger security story than Windows-based endpoints.</li>
-          <li>Improved renewal rates with TruScale DaaS.</li>
-          <li>Customer lock-in through a unified endpoint architecture.</li>
-          <li>Differentiate with Azure-integrated EUC: position Lenovo + IGEL as the optimized client for Azure Stack HCI and AVD deployments.</li>
-        </ul>
+        <!-- Where IGEL fits in the Lenovo stack -->
+        <section id="stack-fit" class="section-border pb-7 md:pb-9 space-y-4">
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <div class="igel-section-number">2 &middot; Where IGEL fits in the Lenovo stack</div>
+              <h3 class="igel-section-title mt-1.5">From ThinkShield to workspace session</h3>
+            </div>
+            <p class="hidden sm:block text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+              Use this table when aligning with customer architecture teams.
+            </p>
+          </div>
+
+          <div class="igel-card-soft p-4 sm:p-5 space-y-3">
+            <div class="overflow-x-auto">
+              <table class="min-w-[780px] w-full text-left text-[0.78rem] md:text-[0.8rem] text-neutral-200">
+                <thead>
+                  <tr class="border-b border-neutral-800 text-neutral-400">
+                    <th class="py-2.5 pr-4 font-medium">Stack Layer</th>
+                    <th class="py-2.5 px-4 font-medium">Lenovo Role</th>
+                    <th class="py-2.5 px-4 font-medium">IGEL Role</th>
+                    <th class="py-2.5 pl-4 font-medium">Combined Outcome</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-neutral-800/80">
+                  <tr>
+                    <td class="py-2.5 pr-4 font-semibold text-neutral-50">Hardware Security</td>
+                    <td class="py-2.5 px-4">ThinkShield, firmware, BIOS Tools, TPM.</td>
+                    <td class="py-2.5 px-4">Secure Boot validation, signed OS, TPM enforcement.</td>
+                    <td class="py-2.5 pl-4">Verified chain of trust from silicon to OS.</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 pr-4 font-semibold text-neutral-50">OS Layer</td>
+                    <td class="py-2.5 px-4">Factory imaging via Lenovo Imaging Technology Center (LITC).</td>
+                    <td class="py-2.5 px-4">Immutable IGEL OS 12 image, modular components.</td>
+                    <td class="py-2.5 pl-4">Zero configuration drift; rapid, repeatable deployment.</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 pr-4 font-semibold text-neutral-50">Workspace Delivery</td>
+                    <td class="py-2.5 px-4">Citrix, AVD, Windows 365-ready platforms.</td>
+                    <td class="py-2.5 px-4">Built-in protocol clients and enterprise browser support.</td>
+                    <td class="py-2.5 pl-4">Optimized, consistent experience for VDI, W365, and SaaS.</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 pr-4 font-semibold text-neutral-50">Management & Governance</td>
+                    <td class="py-2.5 px-4">Lenovo Managed Workplace, TruScale, lifecycle services.</td>
+                    <td class="py-2.5 px-4">IGEL UMS, App Portal, Insight Services for telemetry and policy.</td>
+                    <td class="py-2.5 pl-4">Unified policy, lifecycle control, and compliance visibility.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-[0.86rem] text-neutral-400">
+              <span class="font-semibold text-neutral-100">Takeaway for customers:</span>
+              you're not buying a one-off thin client&mdash;you're standardizing a full endpoint stack
+              that is secure, compliant, and day-one ready for cloud workspaces.
+            </p>
+          </div>
+        </section>
+
+        <!-- Signals to bring IGEL into the deal (Accordion) -->
+        <section id="signals" class="section-border pb-7 md:pb-9 space-y-4">
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <div class="igel-section-number">3 &middot; Signals to bring IGEL into the deal</div>
+              <h3 class="igel-section-title mt-1.5">Listen for these "IGEL moments"</h3>
+            </div>
+            <p class="hidden sm:block text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+              Use this as your mental trigger list on discovery calls.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.2fr),minmax(0,1fr)] gap-4 md:gap-6">
+            <div class="igel-card-soft p-4 sm:p-5">
+              <button
+                type="button"
+                class="w-full flex items-center justify-between gap-3 text-left focus-outline-yellow"
+                data-accordion-toggle="signals"
+                aria-expanded="true"
+              >
+                <div>
+                  <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                    Deal triggers
+                  </p>
+                  <p class="mt-1 text-[0.95rem] font-semibold text-neutral-50">
+                    If you hear any of these, say "This is an IGEL + Lenovo opportunity."
+                  </p>
+                </div>
+                <span class="text-[0.85rem] text-neutral-400" data-accordion-icon="signals">v</span>
+              </button>
+              <div
+                class="accordion-body open mt-3 space-y-2.5"
+                id="signals-body"
+              >
+                <ul class="space-y-1.5 text-[0.9rem] text-neutral-300">
+                  <li>- Customer is <span class="font-medium text-neutral-50">modernizing VDI or moving to DaaS</span> (Citrix, AVD, Windows 365).</li>
+                  <li>- They complain about <span class="font-medium text-neutral-50">Windows patch fatigue</span> or configuration drift.</li>
+                  <li>- Zero Trust, NIS2, HIPAA, SOC2, or ISO 27001 compliance projects are underway.</li>
+                  <li>- They want to <span class="font-medium text-neutral-50">extend device lifespan</span> or avoid CAPEX-heavy refresh.</li>
+                  <li>- Lenovo TruScale DaaS or sustainability is being discussed as a key initiative.</li>
+                </ul>
+                <p class="pt-2 text-[0.86rem] text-neutral-400">
+                  <span class="font-semibold text-neutral-100">Next step:</span>
+                  position IGEL as the OS that turns Lenovo into a "zero-trust appliance" for those initiatives.
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="igel-card-soft p-4 space-y-2">
+                <p class="text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+                  Competitive landmines IGEL helps avoid
+                </p>
+                <ul class="space-y-1.5 text-[0.86rem] text-neutral-300">
+                  <li>- <span class="font-medium text-neutral-50">Windows fatigue:</span> endless patching, re-imaging, and data exposure.</li>
+                  <li>- <span class="font-medium text-neutral-50">Thin-client race to the bottom:</span> IGEL is a strategy, not a cheap box.</li>
+                  <li>- <span class="font-medium text-neutral-50">Agent overload:</span> prevention is in the OS, not 6+ agents.</li>
+                  <li>- <span class="font-medium text-neutral-50">OEM finger-pointing:</span> joint Lenovo-IGEL escalation keeps support clean.</li>
+                </ul>
+              </div>
+              <div class="accent-wash rounded-2xl p-4 space-y-1.5">
+                <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                  Quick redirect line
+                </p>
+                <p class="text-[0.86rem] text-neutral-50">
+                  "Instead of more Windows to manage, what if every Lenovo endpoint came up as
+                  a secure, disposable access device for your appsup"
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Joint value snapshot -->
+        <section id="joint-value" class="section-border pb-7 md:pb-9 space-y-4">
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <div class="igel-section-number">4 &middot; Joint value in one view</div>
+              <h3 class="igel-section-title mt-1.5">Why IGEL + Lenovo is different from "just another endpoint"</h3>
+            </div>
+            <p class="hidden sm:block text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+              Use this to anchor the value conversation with CIOs and CISOs.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+            <div class="igel-card-soft p-4 sm:p-5 space-y-3">
+              <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                Lenovo strengths &middot; IGEL enhancements
+              </p>
+              <div class="space-y-2.5 text-[0.86rem] text-neutral-200">
+                <div class="flex gap-2">
+                  <span class="mt-[0.2rem] text-yellow-300">- </span>
+                  <div>
+                    <p class="font-semibold text-neutral-50">Secure by design (ThinkShield)</p>
+                    <p class="text-neutral-300">
+                      IGEL adds OS-level immutability and TPM enforcement for BIOS-OS integrity.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <span class="mt-[0.2rem] text-yellow-300">- </span>
+                  <div>
+                    <p class="font-semibold text-neutral-50">Global supply chain & imaging</p>
+                    <p class="text-neutral-300">
+                      IGEL OS 12 can be factory-loaded via LITC so devices arrive "cloud-ready."
+                    </p>
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <span class="mt-[0.2rem] text-yellow-300">- </span>
+                  <div>
+                    <p class="font-semibold text-neutral-50">Lifecycle management & TruScale</p>
+                    <p class="text-neutral-300">
+                      IGEL extends device life by 3-5 years via modular OS updates and no local bloat.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <span class="mt-[0.2rem] text-yellow-300">- </span>
+                  <div>
+                    <p class="font-semibold text-neutral-50">Sustainability & ESG programs</p>
+                    <p class="text-neutral-300">
+                      IGEL enables secure reuse of older hardware and reduces e-waste exposure.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="igel-card-soft p-4 sm:p-5 space-y-3">
+              <p class="text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+                Business impact snapshot
+              </p>
+              <div class="space-y-3">
+                <div>
+                  <div class="flex justify-between text-[0.8rem] text-neutral-300 mb-1">
+                    <span>Endpoint TCO reduction</span>
+                    <span class="font-semibold text-neutral-100">20-35%</span>
+                  </div>
+                  <div class="stat-bar-track h-1.5 w-full">
+                    <div class="stat-bar-fill h-1.5 w-[70%]"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[0.8rem] text-neutral-300 mb-1">
+                    <span>Device lifespan extension</span>
+                    <span class="font-semibold text-neutral-100">+3-5 years</span>
+                  </div>
+                  <div class="stat-bar-track h-1.5 w-full">
+                    <div class="stat-bar-fill h-1.5 w-[60%]"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[0.8rem] text-neutral-300 mb-1">
+                    <span>Local data exposure</span>
+                    <span class="font-semibold text-emerald-400">Near zero</span>
+                  </div>
+                  <div class="stat-bar-track h-1.5 w-full">
+                    <div class="stat-bar-fill h-1.5 w-[5%] bg-emerald-500"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-[0.84rem] text-neutral-400 pt-2">
+                Use these as directional numbers to frame value; your IGEL + Lenovo team can supply formal ROI data.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Technical & operational architecture -->
+        <section id="architecture" class="section-border pb-7 md:pb-9 space-y-4">
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <div class="igel-section-number">5 &middot; Joint architecture</div>
+              <h3 class="igel-section-title mt-1.5">From BIOS posture to cloud workspace session</h3>
+            </div>
+            <p class="hidden sm:block text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+              Use this with architects, EUC leaders, and SecOps.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.3fr),minmax(0,1fr)] gap-4 md:gap-6">
+            <div class="igel-card-soft p-4 sm:p-5 space-y-3">
+              <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                Technical alignment
+              </p>
+              <ul class="space-y-1.8 text-[0.9rem] text-neutral-300">
+                <li>- <span class="font-medium text-neutral-50">Endpoint layer:</span> Lenovo ThinkCentre, ThinkPad, Neo, and ThinkEdge with factory-installed IGEL OS 12 boot into a secure, read-only environment.</li>
+                <li>- <span class="font-medium text-neutral-50">Middleware:</span> IGEL UMS manages policies and personas; App Portal delivers modular updates; Insight Services gives telemetry and compliance visibility.</li>
+                <li>- <span class="font-medium text-neutral-50">Workspaces:</span> Built-in clients for Citrix, Omnissa Horizon, AVD, W365 plus enterprise browser support for SaaS-heavy workflows.</li>
+                <li>- <span class="font-medium text-neutral-50">Security:</span> ThinkShield and Lenovo BIOS Tools are accessible from IGEL for BIOS governance, password control, and firmware posture.</li>
+              </ul>
+              <p class="text-[0.86rem] text-neutral-400">
+                Together, this forms an end-to-end <span class="font-semibold text-neutral-100">Preventative Security Architecture</span> anchored in hardware and expressed through an immutable OS.
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              <div class="igel-card-soft p-4 space-y-2">
+                <p class="text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+                  Operational alignment
+                </p>
+                <ul class="space-y-1.5 text-[0.86rem] text-neutral-300">
+                  <li>- <span class="font-medium text-neutral-50">Deployment:</span> Imaging performed at Lenovo's LITC&mdash;devices ship ready for user login.</li>
+                  <li>- <span class="font-medium text-neutral-50">Management:</span> Persona-based policies via UMS; Lenovo services for lifecycle & break/fix.</li>
+                  <li>- <span class="font-medium text-neutral-50">Support:</span> Joint escalation path between Lenovo and IGEL; no vendor ping-pong.</li>
+                  <li>- <span class="font-medium text-neutral-50">Commercial:</span> TruScale DaaS plus IGEL enable predictable OPEX and sustainability reporting.</li>
+                </ul>
+              </div>
+              <div class="accent-wash rounded-2xl p-4 space-y-1.5">
+                <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                  Architect line
+                </p>
+                <p class="text-[0.86rem] text-neutral-50">
+                  "BIOS-to-session integrity: Lenovo enforces it in hardware; IGEL enforces it in the OS and access path."
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Joint sales plays (interactive toggles or stacked accordions) -->
+        <section id="plays" class="section-border pb-7 md:pb-9 space-y-4">
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <div class="igel-section-number">6 &middot; Tier-one joint sales plays</div>
+              <h3 class="igel-section-title mt-1.5">Repeatable ways to win with IGEL + Lenovo</h3>
+            </div>
+            <p class="hidden sm:block text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+              Pick the play that matches the customer's initiative.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+            <!-- Play 1 -->
+            <article class="igel-card-soft p-4 sm:p-5 space-y-2.5">
+              <header class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                    Play 1 &middot; Secure hybrid work modernization
+                  </p>
+                  <p class="mt-1 text-[0.96rem] font-semibold text-neutral-50">
+                    From messy Windows fleets to cloud-ready Lenovo endpoints
+                  </p>
+                </div>
+              </header>
+              <p class="text-[0.8rem] text-neutral-300 mt-1">
+                <span class="font-semibold text-neutral-100">Target:</span> CIO, EUC Director, Head of Workspace Transformation
+              </p>
+              <ul class="mt-2 space-y-1.5 text-[0.86rem] text-neutral-300">
+                <li>- <span class="font-semibold text-neutral-50">Pain:</span> Patch fatigue, inconsistent UX, growing endpoint costs.</li>
+                <li>- <span class="font-semibold text-neutral-50">Promise:</span> Immutable IGEL OS 12 on Lenovo ThinkCentre/ThinkPad delivers a secure, zero-touch endpoint for VDI, AVD, and W365.</li>
+                <li>- <span class="font-semibold text-neutral-50">Joint Solution:</span> ThinkCentre M70q/M75q + IGEL OS 12 + UMS + Lenovo BIOS Tools.</li>
+              </ul>
+              <p class="mt-1 text-[0.82rem] text-neutral-400">
+                <span class="font-semibold text-neutral-100">Use this when:</span> the customer is planning a VDI/W365 refresh or hybrid-work expansion.
+              </p>
+            </article>
+
+            <!-- Play 2 -->
+            <article class="igel-card-soft p-4 sm:p-5 space-y-2.5">
+              <header class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                    Play 2 &middot; Zero Trust endpoint hardening
+                  </p>
+                  <p class="mt-1 text-[0.96rem] font-semibold text-neutral-50">
+                    Lock BIOS, OS, and data paths in one move
+                  </p>
+                </div>
+              </header>
+              <p class="text-[0.8rem] text-neutral-300 mt-1">
+                <span class="font-semibold text-neutral-100">Target:</span> CISO, SecOps, Compliance Officer
+              </p>
+              <ul class="mt-2 space-y-1.5 text-[0.86rem] text-neutral-300">
+                <li>- <span class="font-semibold text-neutral-50">Pain:</span> Local data exposure, inconsistent BIOS patching, audit gaps.</li>
+                <li>- <span class="font-semibold text-neutral-50">Promise:</span> IGEL's Preventative Security Architecture + ThinkShield enforce BIOS and OS integrity with no local data.</li>
+                <li>- <span class="font-semibold text-neutral-50">Joint Solution:</span> ThinkPad L13/L14 + IGEL OS 12 + Lenovo BIOS Tools + ThinkShield stack.</li>
+              </ul>
+              <p class="mt-1 text-[0.82rem] text-neutral-400">
+                <span class="font-semibold text-neutral-100">Use this when:</span> compliance (NIS2, HIPAA, SOC2, ISO 27001) is driving the project.
+              </p>
+            </article>
+
+            <!-- Play 3 -->
+            <article class="igel-card-soft p-4 sm:p-5 space-y-2.5">
+              <header class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                    Play 3 &middot; Sustainable lifecycle extension
+                  </p>
+                  <p class="mt-1 text-[0.96rem] font-semibold text-neutral-50">
+                    Turn refresh pressure into TruScale + IGEL opportunity
+                  </p>
+                </div>
+              </header>
+              <p class="text-[0.8rem] text-neutral-300 mt-1">
+                <span class="font-semibold text-neutral-100">Target:</span> CFO, ESG Officer, IT Asset Manager
+              </p>
+              <ul class="mt-2 space-y-1.5 text-[0.86rem] text-neutral-300">
+                <li>- <span class="font-semibold text-neutral-50">Pain:</span> Large refresh cycles conflict with cost and sustainability goals.</li>
+                <li>- <span class="font-semibold text-neutral-50">Promise:</span> IGEL OS 12 breathes 3-5 more years into Lenovo devices while TruScale converts CAPEX to OPEX.</li>
+                <li>- <span class="font-semibold text-neutral-50">Joint Solution:</span> Existing Think fleet + IGEL OS 12 + Lenovo TruScale.</li>
+              </ul>
+              <p class="mt-1 text-[0.82rem] text-neutral-400">
+                <span class="font-semibold text-neutral-100">Use this when:</span> ESG metrics or "delay refresh" conversations are on the table.
+              </p>
+            </article>
+
+            <!-- Play 4 -->
+            <article class="igel-card-soft p-4 sm:p-5 space-y-2.5">
+              <header class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                    Play 4 &middot; Branch and edge standardization
+                  </p>
+                  <p class="mt-1 text-[0.96rem] font-semibold text-neutral-50">
+                    One OS for every branch, globally
+                  </p>
+                </div>
+              </header>
+              <p class="text-[0.8rem] text-neutral-300 mt-1">
+                <span class="font-semibold text-neutral-100">Target:</span> Infra Architect, Retail/Branch Ops, EUC Lead
+              </p>
+              <ul class="mt-2 space-y-1.5 text-[0.86rem] text-neutral-300">
+                <li>- <span class="font-semibold text-neutral-50">Pain:</span> Inconsistent branch stacks, high support cost, unmanaged endpoints.</li>
+                <li>- <span class="font-semibold text-neutral-50">Promise:</span> ThinkCentre Tiny and ThinkEdge with IGEL OS deliver a centrally governed branch OS.</li>
+                <li>- <span class="font-semibold text-neutral-50">Joint Solution:</span> ThinkCentre M75q / ThinkEdge SE10 + IGEL OS 12 + UMS + Lenovo services.</li>
+              </ul>
+              <p class="mt-1 text-[0.82rem] text-neutral-400">
+                <span class="font-semibold text-neutral-100">Use this when:</span> the customer has many sites, few IT staff, and rising ticket volume.
+              </p>
+            </article>
+
+            <!-- Play 5 -->
+            <article class="igel-card-soft p-4 sm:p-5 space-y-2.5 md:col-span-2">
+              <header class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                    Play 5 &middot; Contact center replatforming
+                  </p>
+                  <p class="mt-1 text-[0.96rem] font-semibold text-neutral-50">
+                    Immutable agent endpoints for high-turnover environments
+                  </p>
+                </div>
+              </header>
+              <p class="text-[0.8rem] text-neutral-300 mt-1">
+                <span class="font-semibold text-neutral-100">Target:</span> Head of Operations, BPO IT Director, CIO
+              </p>
+              <div class="grid md:grid-cols-2 gap-3 mt-2">
+                <ul class="space-y-1.5 text-[0.86rem] text-neutral-300">
+                  <li>- <span class="font-semibold text-neutral-50">Pain:</span> Patch chaos, inconsistent agents, compliance risk with home/hybrid work.</li>
+                  <li>- <span class="font-semibold text-neutral-50">Promise:</span> Immutable IGEL OS on Lenovo ensures each login is clean, controlled, and compliant.</li>
+                  <li>- <span class="font-semibold text-neutral-50">Joint Solution:</span> ThinkCentre M70q + IGEL OS 12 + VDI/W365 + Lenovo Managed Services.</li>
+                </ul>
+                <div class="accent-wash rounded-2xl p-4 space-y-1.5">
+                  <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                    Soundbite for operations leaders
+                  </p>
+                  <p class="text-[0.86rem] text-neutral-50">
+                    "Every new agent gets a clean Lenovo endpoint. No build-up, no drift, no surprises after a year of logins."
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Real-world scenarios -->
+        <section id="scenarios" class="section-border pb-7 md:pb-9 space-y-4">
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <div class="igel-section-number">7 &middot; Real-world scenarios</div>
+              <h3 class="igel-section-title mt-1.5">How IGEL + Lenovo show up in customer environments</h3>
+            </div>
+            <p class="hidden sm:block text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+              Use these stories when customers ask "Who else is doing thisup"
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-4 md:gap-6">
+            <!-- Healthcare -->
+            <article class="igel-card-soft p-4 sm:p-5 space-y-2">
+              <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">Scenario 1 &middot; Healthcare</p>
+              <h4 class="text-[0.95rem] font-semibold text-neutral-50">
+                Clinical workstations without PHI risk
+              </h4>
+              <p class="text-[0.86rem] text-neutral-300">
+                <span class="font-semibold text-neutral-50">Pain:</span> PHI exposure, HIPAA gaps, long login times at shared stations.
+              </p>
+              <p class="text-[0.86rem] text-neutral-300">
+                <span class="font-semibold text-neutral-50">Solution:</span> Lenovo ThinkCentre + IGEL OS 12 + Citrix VDI -> fast logins, no local PHI, clean compliance story.
+              </p>
+            </article>
+
+            <!-- Financial services -->
+            <article class="igel-card-soft p-4 sm:p-5 space-y-2">
+              <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">Scenario 2 &middot; Financial services</p>
+              <h4 class="text-[0.95rem] font-semibold text-neutral-50">
+                Standardized trader desktops
+              </h4>
+              <p class="text-[0.86rem] text-neutral-300">
+                <span class="font-semibold text-neutral-50">Pain:</span> Device sprawl, firmware inconsistency, heavy regulatory oversight.
+              </p>
+              <p class="text-[0.86rem] text-neutral-300">
+                <span class="font-semibold text-neutral-50">Solution:</span> ThinkPad L14 with IGEL OS 12 and BIOS Tools -> consistent firmware posture, no local data, easy audit trail.
+              </p>
+            </article>
+
+            <!-- Retail & branch -->
+            <article class="igel-card-soft p-4 sm:p-5 space-y-2">
+              <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">Scenario 3 &middot; Retail & branch</p>
+              <h4 class="text-[0.95rem] font-semibold text-neutral-50">
+                Governed edge endpoints for every store
+              </h4>
+              <p class="text-[0.86rem] text-neutral-300">
+                <span class="font-semibold text-neutral-50">Pain:</span> Distributed store tech, ungoverned OS variants, high support costs.
+              </p>
+              <p class="text-[0.86rem] text-neutral-300">
+                <span class="font-semibold text-neutral-50">Solution:</span> ThinkEdge SE10 + IGEL OS 12 + UMS -> centrally managed, zero-data endpoints across the retail estate.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- How to talk about IGEL (30s pitch) -->
+        <section id="talk-track" class="section-border pb-7 md:pb-9 space-y-4">
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <div class="igel-section-number">8 &middot; What to say</div>
+              <h3 class="igel-section-title mt-1.5">Your 30-second IGEL + Lenovo pitch</h3>
+            </div>
+            <p class="hidden sm:block text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+              Memorize this. Adjust for your customer's language.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.2fr),minmax(0,1fr)] gap-4 md:gap-6">
+            <div class="igel-card-soft p-4 sm:p-5 space-y-3">
+              <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                Talk track
+              </p>
+              <blockquote class="text-[0.95rem] text-neutral-50 leading-relaxed border-l-2 border-yellow-400/70 pl-3.5">
+                "IGEL is a secure, cloud-optimized OS that turns Lenovo devices into
+                <span class="igel-heading-highlight">zero-trust endpoints</span>.
+                It removes local data, simplifies management, and delivers instant access to
+                any virtual or SaaS workspace.
+                <br class="hidden sm:block">
+                When you pair Lenovo hardware with IGEL, you get a plug-and-play endpoint that's
+                faster to deploy, cheaper to run, and safer by design."
+              </blockquote>
+            </div>
+            <div class="igel-card-soft p-4 sm:p-5 space-y-3">
+              <p class="text-[0.70rem] uppercase tracking-[0.18em] text-neutral-400">
+                Identity hooks for your stakeholder
+              </p>
+              <ul class="space-y-1.5 text-[0.86rem] text-neutral-300">
+                <li>- "If you care about collapsing endpoint risk without more agents, this matters."</li>
+                <li>- "If you're judged on uptime and compliance, this is a low-regret move."</li>
+                <li>- "If ESG and lifecycle are on your scorecard, this is an easy win."</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Checklist & CTA -->
+        <section id="cta" class="pb-2 md:pb-4 space-y-4">
+          <div class="flex items-baseline justify-between gap-3">
+            <div>
+              <div class="igel-section-number">9 &middot; Before you leave the meeting</div>
+              <h3 class="igel-section-title mt-1.5">Turn interest into a concrete IGEL + Lenovo next step</h3>
+            </div>
+          </div>
+
+          <div class="accent-wash rounded-2xl p-4 sm:p-5 lg:p-6 space-y-4">
+            <div class="grid md:grid-cols-[minmax(0,1.25fr),minmax(0,1fr)] gap-4 md:gap-6">
+              <div>
+                <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200 mb-2">
+                  Quick qualification checklist
+                </p>
+                <ul class="space-y-1.5 text-[0.9rem] text-neutral-100">
+                  <li>- Customer is using or planning Citrix, Horizon, AVD, or Windows 365.</li>
+                  <li>- They're talking about Zero Trust, compliance, or "too much endpoint noise."</li>
+                  <li>- They have a refresh horizon or TruScale interest in the next 12-36 months.</li>
+                  <li>- They care about ESG, sustainability, or extending device life.</li>
+                </ul>
+                <p class="mt-2 text-[0.86rem] text-neutral-300">
+                  If you tick <span class="font-semibold text-neutral-50">two or more</span>, IGEL should be in the opportunity.
+                </p>
+              </div>
+              <div class="space-y-2.5">
+                <p class="text-[0.70rem] uppercase tracking-[0.18em] text-yellow-200">
+                  Recommended next steps
+                </p>
+                <ol class="space-y-1.5 text-[0.88rem] text-neutral-100">
+                  <li>1. Propose a <span class="font-semibold">small pilot</span> on Lenovo endpoints with IGEL OS 12.</li>
+                  <li>2. Involve your <span class="font-semibold">IGEL partner contact</span> early for sizing and architecture.</li>
+                  <li>3. Use Lenovo's <span class="font-semibold">Imaging Technology Center</span> to ship pilot devices ready-to-run.</li>
+                </ol>
+              </div>
+            </div>
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-2 border-t border-yellow-500/30">
+              <p class="text-[0.86rem] text-neutral-100">
+                <span class="font-semibold">Bottom line:</span>
+                IGEL turns Lenovo endpoints into compliant, cloud-ready, Zero Trust devices&mdash;by design, not by patch.
+              </p>
+              <a
+                href="#hook"
+                class="inline-flex items-center justify-center rounded-full border border-yellow-400 bg-yellow-300/10 px-4 py-2 text-[0.8rem] font-semibold text-yellow-100 hover:bg-yellow-400/20 focus-outline-yellow"
+              >
+                Revisit the story from the top
+              </a>
+            </div>
+          </div>
+        </section>
+
       </section>
+    </div>
+  </main>
 
-    </main>
-  </div>
+  <script>
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+        mobileToggle.setAttribute('aria-expanded', String(!expanded));
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close menu on nav click (event delegation)
+      mobileMenu.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (link) {
+          mobileMenu.classList.add('hidden');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Simple accordion handler (for Signals section, can be reused)
+    const accordionButtons = document.querySelectorAll('[data-accordion-toggle]');
+    accordionButtons.forEach((btn) => {
+      const key = btn.getAttribute('data-accordion-toggle');
+      const icon = document.querySelector('[data-accordion-icon="' + key + '"]');
+      const body = document.getElementById(key + '-body');
+
+      if (!body) return;
+
+      // Initialize open state
+      if (body.classList.contains('open')) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+
+      btn.addEventListener('click', () => {
+        const isOpen = body.classList.contains('open');
+        if (isOpen) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            body.style.maxHeight = '0px';
+          });
+        } else {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+        body.classList.toggle('open');
+        if (icon) {
+          icon.textContent = isOpen ? 'v' : '^';
+        }
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  </script>
 </body>
 </html>
