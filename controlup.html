@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IGEL + ControlUp | Field Playbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IGEL + ControlUp joint value playbook for field sellers: what IGEL is, how the partnership works, where to position it, and how to talk about it with customers." />
+
+  <!-- Font: Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="IGEL + ControlUp | Field Playbook" />
+  <meta property="og:description" content="IGEL + ControlUp joint value playbook for field sellers: what IGEL is, how the partnership works, where to position it, and how to talk about it with customers." />
+  <meta property="og:type" content="article" />
+
+  <!-- TODO: Replace with the final live URL of this infographic -->
+  <meta property="og:url" content="[[SET_FINAL_URL_HERE]]" />
+
+  <!-- TODO: Replace with the full URL to your 1200x675 thumbnail -->
+  <meta property="og:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IGEL + ControlUp | Field Playbook" />
+  <meta name="twitter:description" content="IGEL + ControlUp joint value playbook for field sellers." />
+  <meta name="twitter:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
+
+  <style>
+    :root {
+      --igel-yellow: #ffd101;
+      --igel-black: #141414;
+      --igel-white: #ffffff;
+    }
+    body {
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #27272a 0, #020617 52%, #000000 100%);
+      color: #f4f4f5;
+    }
+    .igel-card {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(63, 63, 70, 0.9);
+      background: radial-gradient(circle at top left, rgba(63, 63, 70, 0.6), rgba(24, 24, 27, 0.96));
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(20px);
+    }
+    .igel-card-soft {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(39, 39, 42, 0.9);
+      background: radial-gradient(circle at top left, rgba(39, 39, 42, 0.8), rgba(9, 9, 11, 0.96));
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(16px);
+    }
+    .igel-card-hover {
+      transition: transform 160ms ease-out, box-shadow 160ms ease-out, border-color 160ms ease-out, background 160ms ease-out;
+    }
+    .igel-card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
+      border-color: rgba(250, 250, 250, 0.12);
+    }
+    .igel-section-number {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--igel-yellow);
+    }
+    .igel-section-title {
+      font-size: clamp(1.3rem, 1.1rem + 0.6vw, 1.6rem);
+      font-weight: 700;
+      color: #fafafa;
+    }
+    .igel-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(250, 250, 250, 0.16);
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      padding: 0.25rem 0.7rem;
+      color: #e4e4e7;
+    }
+    .nav-rail {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(63, 63, 70, 0.85);
+      background: radial-gradient(circle at top left, rgba(39, 39, 42, 0.85), rgba(9, 9, 11, 0.98));
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+    }
+    .nav-index {
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0%, #fff7cc, #ffd101 55%, #f97316 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #1f2933;
+      flex-shrink: 0;
+    }
+    .cta-highlight {
+      background: radial-gradient(circle at top left, rgba(250, 250, 250, 0.04), rgba(250, 250, 250, 0.02));
+      border-radius: 999px;
+    }
+    .stat-bar-track {
+      border-radius: 999px;
+      background: rgba(39, 39, 42, 0.9);
+    }
+    .stat-bar-fill {
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ffd101, #f97316);
+    }
+    .accordion-header button:focus-visible,
+    .nav-link:focus-visible,
+    .mobile-nav-toggle:focus-visible {
+      outline: 2px solid var(--igel-yellow);
+      outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-sm leading-relaxed text-neutral-200">
+  <!-- Background sparks -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-yellow-400/10 blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-sky-400/10 blur-3xl"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 border-b border-neutral-800/90 bg-black/70 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4">
+        <img
+          src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+          alt="IGEL logo"
+          class="h-9 w-auto"
+        />
+        <div class="flex flex-col gap-0.5">
+          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-neutral-300">
+            Partner Playbook · ControlUp
+          </p>
+          <h1 class="text-[1.1rem] font-semibold text-neutral-50 sm:text-[1.25rem]">
+            IGEL + ControlUp &mdash; Secure, Observable, Self-Healing Workspaces
+          </h1>
+        </div>
+      </div>
+      <div class="hidden text-right text-xs text-neutral-300 sm:block">
+        <p class="font-medium text-neutral-100">
+          ControlUp sees. IGEL secures.
+        </p>
+        <p class="text-neutral-400">Together, they deliver confidence at the edge.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto flex max-w-6xl gap-6 px-4 pb-12 pt-6 sm:px-6 lg:px-8">
+    <!-- Desktop nav rail -->
+    <aside class="hidden w-60 shrink-0 md:block">
+      <nav class="nav-rail max-h-[calc(100vh-7rem)] overflow-y-auto px-3 py-4">
+        <p class="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-neutral-400">
+          Quick sections
+        </p>
+        <ul class="space-y-1.5 text-xs text-neutral-200">
+          <li>
+            <a href="#overview" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 text-left transition hover:bg-neutral-800/80">
+              <span class="nav-index">0</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">Overview & Hero</span>
+                <span class="text-[0.7rem] text-neutral-400">Why IGEL matters for ControlUp reps</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#what-igel-is" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">1</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">What IGEL Actually Is</span>
+                <span class="text-[0.7rem] text-neutral-400">OS foundation for ControlUp</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#where-it-fits" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">2</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">Where IGEL Fits</span>
+                <span class="text-[0.7rem] text-neutral-400">Stack mapping & closed loop</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#signals" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">3</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">Signals to Pull IGEL In</span>
+                <span class="text-[0.7rem] text-neutral-400">Conversation cues</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#accelerate" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">4</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">How IGEL Accelerates ControlUp</span>
+                <span class="text-[0.7rem] text-neutral-400">From telemetry to assurance</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#landmines" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">5</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">Competitive Landmines</span>
+                <span class="text-[0.7rem] text-neutral-400">What IGEL neutralizes</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#talktrack" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">6</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">30-Second Talk Track</span>
+                <span class="text-[0.7rem] text-neutral-400">What to say</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#scenarios" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">7</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">3 Real-World Scenarios</span>
+                <span class="text-[0.7rem] text-neutral-400">Where we win together</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#architecture" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">8</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">Joint Value Architecture</span>
+                <span class="text-[0.7rem] text-neutral-400">Technical & operational alignment</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#outcomes" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">9</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">Customer Outcomes</span>
+                <span class="text-[0.7rem] text-neutral-400">Experience, security, cost</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#plays" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">10</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">Tier-One Sales Plays</span>
+                <span class="text-[0.7rem] text-neutral-400">Repeatable, monetizable motions</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#cta" class="nav-link group flex items-center gap-2 rounded-xl px-2.5 py-2 hover:bg-neutral-800/80">
+              <span class="nav-index">11</span>
+              <span class="flex flex-col">
+                <span class="font-semibold">Why It Matters & Next Step</span>
+                <span class="text-[0.7rem] text-neutral-400">Close & call to action</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="flex-1 space-y-8 md:space-y-10">
+      <!-- Mobile nav pills -->
+      <section class="mb-2 md:hidden">
+        <button
+          type="button"
+          class="mobile-nav-toggle inline-flex w-full items-center justify-between rounded-2xl border border-neutral-800 bg-black/60 px-3 py-2 text-xs font-medium text-neutral-100 shadow-lg shadow-black/60"
+          data-mobile-nav-toggle
+        >
+          <span class="flex items-center gap-2">
+            <span class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-neutral-700 text-[0.65rem]">
+              ☰
+            </span>
+            <span>Jump to section</span>
+          </span>
+          <span class="text-[0.7rem] text-neutral-400" data-mobile-nav-label>Tap to open</span>
+        </button>
+        <div
+          class="mt-2 hidden max-h-[65vh] space-y-1 overflow-y-auto rounded-2xl border border-neutral-800 bg-black/80 p-2 text-[0.7rem] shadow-xl shadow-black/70"
+          data-mobile-nav-panel
+        >
+          <a href="#overview" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Overview & Hero</a>
+          <a href="#what-igel-is" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">What IGEL Is</a>
+          <a href="#where-it-fits" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Where IGEL Fits</a>
+          <a href="#signals" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Signals & Cues</a>
+          <a href="#accelerate" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">IGEL Accelerates ControlUp</a>
+          <a href="#landmines" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Competitive Landmines</a>
+          <a href="#talktrack" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">30s Talk Track</a>
+          <a href="#scenarios" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Scenarios</a>
+          <a href="#architecture" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Joint Architecture</a>
+          <a href="#outcomes" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Outcomes</a>
+          <a href="#plays" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">Sales Plays</a>
+          <a href="#cta" class="block rounded-xl px-2 py-1.5 text-neutral-200 hover:bg-neutral-800/80">CTA</a>
+        </div>
+      </section>
+
+      <!-- 0 · Overview -->
+      <section id="overview" class="space-y-4">
+        <div class="igel-card igel-card-hover p-5 sm:p-6">
+          <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div class="max-w-xl space-y-3">
+              <p class="igel-section-number">Overview</p>
+              <h2 class="igel-section-title">
+                Confidence at the Edge: <span class="text-yellow-300">How IGEL and ControlUp Win Together</span>
+              </h2>
+              <p class="text-xs uppercase tracking-[0.18em] text-neutral-400">
+                Hook → Problem → Joint Value → How It Works → Outcomes → CTA
+              </p>
+              <p class="text-[0.86rem] text-neutral-300">
+                IGEL is a modern, hardened endpoint operating system built for secure, managed, cost-efficient access to digital workspaces.
+                It replaces traditional endpoint chaos with a <span class="font-semibold text-neutral-50">Preventative Security Model™</span>:
+                no local data, only trusted signed apps, and immutable, centrally managed devices.
+              </p>
+              <p class="text-[0.86rem] text-neutral-300">
+                For ControlUp, IGEL is the foundation that keeps endpoints <span class="font-semibold">stable, secure, and predictable.</span>
+                So your platform can <span class="font-semibold">see, measure, and optimize everything on top</span> without noise.
+              </p>
+            </div>
+            <div class="mt-1 md:mt-0">
+              <div class="igel-card-soft igel-card-hover flex h-full flex-col justify-between gap-3 p-4 text-xs">
+                <p class="igel-pill w-max border-yellow-500/80 text-[0.68rem] text-yellow-200">
+                  TL;DR for ControlUp reps
+                </p>
+                <ul class="space-y-1.5 text-[0.8rem] text-neutral-200">
+                  <li>• IGEL standardizes the edge. ControlUp makes it observable and self-healing.</li>
+                  <li>• IGEL removes endpoint noise so ControlUp telemetry is clean and trustworthy.</li>
+                  <li>• Together, you move customers from reactive troubleshooting to proactive assurance.</li>
+                </ul>
+                <div class="cta-highlight mt-1 flex items-center justify-between gap-3 border border-yellow-500/40 px-3 py-2 text-[0.78rem]">
+                  <span class="text-neutral-100">
+                    <span class="font-semibold">ControlUp sees. IGEL secures.</span> Together, they deliver confidence.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1 · What IGEL Actually Is -->
+      <section id="what-igel-is" class="space-y-3">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">1 · What IGEL Actually Is</p>
+            <h3 class="igel-section-title">The hardened endpoint OS that makes ControlUp data better</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            Foundation layer · No drift · No local data
+          </p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-[minmax(0,1.35fr),minmax(0,1fr)]">
+          <article class="igel-card igel-card-hover p-5">
+            <p class="text-[0.85rem] text-neutral-300">
+              IGEL is a <span class="font-semibold text-neutral-50">modern, hardened endpoint OS</span> designed for secure digital workspaces.
+              It delivers a Preventative Security Model™ where:
+            </p>
+            <ul class="mt-3 space-y-1.5 text-[0.83rem] text-neutral-200">
+              <li>• <span class="font-semibold">No local data</span> is ever stored on the endpoint.</li>
+              <li>• Only <span class="font-semibold">trusted, cryptographically signed apps</span> are allowed to execute.</li>
+              <li>• Devices behave as <span class="font-semibold">immutable endpoints</span>, locked down, policy-driven, centrally managed.</li>
+            </ul>
+            <p class="mt-3 text-[0.83rem] text-neutral-300">
+              IGEL OS is controlled via the <span class="font-semibold text-neutral-50">Universal Management Suite (UMS)</span> and extended through the
+              <span class="font-semibold text-neutral-50">IGEL App Portal</span>, where ControlUp components are pre-validated and ready to deploy.
+            </p>
+          </article>
+          <article class="igel-card-soft igel-card-hover p-5 text-[0.83rem]">
+            <p class="font-semibold text-neutral-100">
+              For ControlUp, think of IGEL as:
+            </p>
+            <ul class="mt-2 space-y-1.5 text-neutral-200">
+              <li>• The <span class="font-semibold">standardized device baseline</span> your telemetry relies on.</li>
+              <li>• A way to <span class="font-semibold">eliminate rogue apps and inconsistent OS states</span>.</li>
+              <li>• A security layer that <span class="font-semibold">makes Zero Trust and DEX stories land</span>.</li>
+            </ul>
+            <p class="mt-3 text-neutral-300">
+              When IGEL locks the edge, ControlUp can focus on what it does best:
+              <span class="font-semibold">real-time visibility, diagnostics, and automation.</span>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 2 · Where IGEL Fits -->
+      <section id="where-it-fits" class="space-y-3">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">2 · Where IGEL Fits in the ControlUp Stack</p>
+            <h3 class="igel-section-title">From standardized edge to closed-loop experience</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            Standardize → Monitor → Diagnose → Remediate → Verify
+          </p>
+        </div>
+
+        <div class="igel-card igel-card-hover overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="min-w-[720px] w-full border-separate border-spacing-y-1.5 text-left text-[0.8rem]">
+              <thead class="text-[0.7rem] uppercase tracking-[0.16em] text-neutral-400">
+                <tr>
+                  <th class="px-4 pb-2">Layer</th>
+                  <th class="px-4 pb-2">Technology</th>
+                  <th class="px-4 pb-2">Function</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="align-top">
+                  <td class="px-4 py-3 text-[0.8rem] font-semibold text-neutral-100">
+                    Edge (Device)
+                  </td>
+                  <td class="px-4 py-3 text-[0.8rem] text-neutral-100">
+                    IGEL OS 12 / App Portal
+                  </td>
+                  <td class="px-4 py-3 text-[0.8rem] text-neutral-300">
+                    Secure, standardized endpoint layer with no drift and no local data.
+                  </td>
+                </tr>
+                <tr class="align-top">
+                  <td class="px-4 py-3 text-[0.8rem] font-semibold text-neutral-100">
+                    Experience / Telemetry
+                  </td>
+                  <td class="px-4 py-3 text-[0.8rem] text-neutral-100">
+                    ControlUp Edge DX + Remote DX
+                  </td>
+                  <td class="px-4 py-3 text-[0.8rem] text-neutral-300">
+                    Captures endpoint, session, and network performance metrics, including home networks and UC quality.
+                  </td>
+                </tr>
+                <tr class="align-top">
+                  <td class="px-4 py-3 text-[0.8rem] font-semibold text-neutral-100">
+                    Analytics &amp; Automation
+                  </td>
+                  <td class="px-4 py-3 text-[0.8rem] text-neutral-100">
+                    ControlUp ONE
+                  </td>
+                  <td class="px-4 py-3 text-[0.8rem] text-neutral-300">
+                    Correlates telemetry across sessions, apps, endpoints, and networks with automation and alerting.
+                  </td>
+                </tr>
+                <tr class="align-top">
+                  <td class="px-4 py-3 text-[0.8rem] font-semibold text-neutral-100">
+                    Management &amp; Policy
+                  </td>
+                  <td class="px-4 py-3 text-[0.8rem] text-neutral-100">
+                    UMS + ControlUp Dashboards
+                  </td>
+                  <td class="px-4 py-3 text-[0.8rem] text-neutral-300">
+                    Unified device configuration and policy, with live insight into experience and compliance.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="border-t border-neutral-800/80 px-4 py-3 text-[0.8rem] text-neutral-300 sm:px-5">
+            Together, this forms a <span class="font-semibold text-neutral-50">closed-loop system</span>:
+            <span class="font-semibold">Standardize → Monitor → Diagnose → Remediate → Verify.</span>
+            IGEL locks the baseline; ControlUp proves and improves it in real time.
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 · Signals -->
+      <section id="signals" class="space-y-3">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">3 · Signals That IGEL Should Enter the Deal</p>
+            <h3 class="igel-section-title">What to listen for in customer conversations</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            Turn reactive visibility into proactive assurance
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="igel-card igel-card-hover p-5 text-[0.83rem]">
+            <p class="font-semibold text-neutral-100 mb-2">
+              Environmental / technical cues
+            </p>
+            <ul class="space-y-1.5 text-neutral-200">
+              <li>• “We can’t tell if it’s the endpoint or the VDI causing the issue.”</li>
+              <li>• “Our remote users complain about Teams/Zoom quality.”</li>
+              <li>• “We’re facing a Windows 11 hardware refresh.”</li>
+              <li>• “Our branches are too expensive to manage and troubleshoot.”</li>
+              <li>• “We need stronger Zero Trust validation at the endpoint.”</li>
+            </ul>
+          </article>
+          <article class="igel-card-soft igel-card-hover p-5 text-[0.83rem]">
+            <p class="font-semibold text-neutral-100 mb-2">
+              How to pivot the story when you hear these
+            </p>
+            <ul class="space-y-1.5 text-neutral-200">
+              <li>• Position IGEL as the way to <span class="font-semibold">standardize and harden</span> all edge devices.</li>
+              <li>• Show how ControlUp + IGEL turns “we can’t see” into
+                <span class="font-semibold">complete endpoint–session–network visibility</span>.</li>
+              <li>• Tie Windows 11 refresh to a <span class="font-semibold">“convert, don’t replace”</span> story using IGEL.</li>
+              <li>• Use Zero Trust and compliance requirements to justify immutable endpoints plus live telemetry.</li>
+            </ul>
+            <p class="mt-3 text-neutral-300">
+              When in doubt, ask: <span class="italic">“How confident are you that it’s not the endpoint?”</span>
+              If they hesitate, it’s time to bring IGEL into the conversation.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4 · Accelerate -->
+      <section id="accelerate" class="space-y-3">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">4 · How IGEL Accelerates ControlUp’s Value</p>
+            <h3 class="igel-section-title">Cleaner data in → Faster answers out</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            From “we think” to “we know”
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-[minmax(0,1.35fr),minmax(0,1fr)]">
+          <article class="igel-card igel-card-hover p-5 text-[0.83rem]">
+            <ul class="space-y-1.75 text-neutral-200">
+              <li>
+                <span class="font-semibold text-neutral-100">Eliminates noise:</span>
+                No local installs, rogue apps, or unmanaged baselines competing with your telemetry.
+              </li>
+              <li>
+                <span class="font-semibold text-neutral-100">Standardizes the fleet:</span>
+                Every endpoint runs the same hardened image, so your metrics are apples-to-apples.
+              </li>
+              <li>
+                <span class="font-semibold text-neutral-100">Pre-validated deployment:</span>
+                ControlUp Edge DX and Remote DX are available via the
+                <span class="font-semibold">IGEL App Portal</span> for one-click deployment.
+              </li>
+              <li>
+                <span class="font-semibold text-neutral-100">Boosts ROI:</span>
+                Fewer incidents, extended hardware life, and faster MTTR drive measurable savings.
+              </li>
+            </ul>
+            <p class="mt-3 text-neutral-300">
+              ControlUp gives visibility. IGEL guarantees that visibility is
+              <span class="font-semibold">accurate, secure, and sustainable</span>.
+            </p>
+          </article>
+
+          <article class="igel-card-soft igel-card-hover p-5">
+            <p class="mb-2 text-[0.8rem] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+              Typical impact profile
+            </p>
+            <div class="space-y-3 text-[0.78rem] text-neutral-200">
+              <div>
+                <div class="flex items-center justify-between text-[0.76rem]">
+                  <span>Faster issue resolution (MTTR)</span>
+                  <span class="font-semibold text-yellow-300">50–70%</span>
+                </div>
+                <div class="mt-1 stat-bar-track h-1.5 w-full">
+                  <div class="stat-bar-fill h-1.5 w-3/4"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between text-[0.76rem]">
+                  <span>Fewer escalations to infra teams</span>
+                  <span class="font-semibold text-yellow-300">~40%</span>
+                </div>
+                <div class="mt-1 stat-bar-track h-1.5 w-full">
+                  <div class="stat-bar-fill h-1.5 w-2/3"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between text-[0.76rem]">
+                  <span>Device lifetime extension</span>
+                  <span class="font-semibold text-yellow-300">+3–5 years</span>
+                </div>
+                <div class="mt-1 stat-bar-track h-1.5 w-full">
+                  <div class="stat-bar-fill h-1.5 w-[70%]"></div>
+                </div>
+              </div>
+            </div>
+            <p class="mt-3 text-[0.78rem] text-neutral-400">
+              Figures represent common joint-customer outcomes; confirm with your latest references and case studies.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 5 · Landmines -->
+      <section id="landmines" class="space-y-3">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">5 · Competitive Landmines IGEL Helps You Avoid</p>
+            <h3 class="igel-section-title">Position with confidence, not overlap</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            Use IGEL to sharpen the ControlUp story
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="igel-card igel-card-hover p-5 text-[0.83rem]">
+            <h4 class="mb-2 text-[0.9rem] font-semibold text-neutral-100">
+              Common “good enough” tools
+            </h4>
+            <ul class="space-y-1.5 text-neutral-200">
+              <li>
+                <span class="font-semibold">Microsoft Intune / Endpoint Manager</span><br />
+                Great for patching and compliance checks, weak for real-time telemetry or immutable control.
+              </li>
+              <li>
+                <span class="font-semibold">Director-only (Citrix Unicon, etc.)</span><br />
+                Reactive and session-centric. IGEL + ControlUp deliver <span class="italic">proactive</span> end-to-end visibility.
+              </li>
+              <li>
+                <span class="font-semibold">Legacy thin clients</span><br />
+                Lockdown without intelligence; IGEL adds modern security and telemetry readiness.
+              </li>
+              <li>
+                <span class="font-semibold">Other DEX vendors</span><br />
+                Rely on noisy, inconsistent OS data. IGEL ensures data quality at the source.
+              </li>
+            </ul>
+          </article>
+          <article class="igel-card-soft igel-card-hover p-5 text-[0.83rem]">
+            <h4 class="mb-2 text-[0.9rem] font-semibold text-neutral-100">
+              How to differentiate with IGEL + ControlUp
+            </h4>
+            <ul class="space-y-1.5 text-neutral-200">
+              <li>• Move from “we monitor Windows” to <span class="font-semibold">“we assure experiences on hardened, immutable endpoints.”</span></li>
+              <li>• Tie DEX not just to comfort but to <span class="font-semibold">compliance, Zero Trust posture, and cost avoidance.</span></li>
+              <li>• Emphasize joint validation in the IGEL App Portal and proven scale in regulated industries.</li>
+              <li>• Reframe the conversation as <span class="font-semibold">confidence as a service</span> at the edge.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- 6 · Talk track -->
+      <section id="talktrack" class="space-y-3">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">6 · How to Talk About IGEL in 30 Seconds</p>
+            <h3 class="igel-section-title">Memorize this and you’re dangerous</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            Use as your default intro
+          </p>
+        </div>
+
+        <article class="igel-card igel-card-hover border-yellow-500/40 bg-gradient-to-br from-neutral-900/90 via-neutral-900 to-neutral-950/95 p-5 sm:p-6">
+          <p class="text-[0.8rem] uppercase tracking-[0.18em] text-yellow-200">
+            Field-ready talk track
+          </p>
+          <blockquote class="mt-3 border-l-2 border-yellow-400/60 pl-4 text-[0.9rem] text-neutral-50">
+            “IGEL is a secure, lightweight endpoint OS that turns any x86 device into a managed, hardened workspace.
+            It ensures every device is consistent, compliant, and simple to control.
+            When paired with ControlUp, you get a fully visible, self-healing endpoint ecosystem, one that costs less to run,
+            performs better, and never loses data.”
+          </blockquote>
+          <p class="mt-3 text-[0.8rem] text-neutral-300">
+            Tip: Use this early, then branch into <span class="font-semibold">cost</span> (refresh deferral), <span class="font-semibold">experience</span> (Teams/Zoom, logon),
+            or <span class="font-semibold">compliance</span> (Zero Trust, audits) based on the stakeholder.
+          </p>
+        </article>
+      </section>
+
+      <!-- 7 · Scenarios -->
+      <section id="scenarios" class="space-y-3">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">7 · 3 Real-World Scenarios</p>
+            <h3 class="igel-section-title">Where IGEL + ControlUp reliably win together</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            Use these as proof stories
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3">
+          <article class="igel-card-soft igel-card-hover flex flex-col p-4 text-[0.83rem]">
+            <p class="igel-pill mb-2 border-yellow-500/70 text-[0.65rem] text-yellow-200">
+              Healthcare · Clinician Experience
+            </p>
+            <p class="mb-1 text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+              Problem
+            </p>
+            <p class="text-neutral-200">
+              EHR sessions lag, carts disconnect, and audits expose control gaps.
+            </p>
+            <p class="mt-2 text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+              Solution
+            </p>
+            <p class="text-neutral-200">
+              IGEL OS hardens and standardizes clinical endpoints; ControlUp Edge DX monitors and remediates performance in real time.
+            </p>
+            <p class="mt-2 text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+              Outcome
+            </p>
+            <p class="text-neutral-200">
+              ~50% fewer help desk calls, compliant access, and continuous uptime during peak shifts.
+            </p>
+          </article>
+
+          <article class="igel-card-soft igel-card-hover flex flex-col p-4 text-[0.83rem]">
+            <p class="igel-pill mb-2 border-yellow-500/70 text-[0.65rem] text-yellow-200">
+              Financial Services · Branch Optimization
+            </p>
+            <p class="mb-1 text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+              Problem
+            </p>
+            <p class="text-neutral-200">
+              Branch devices are slow, fragile, and expensive to support remotely.
+            </p>
+            <p class="mt-2 text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+              Solution
+            </p>
+            <p class="text-neutral-200">
+              IGEL locks endpoints and enforces consistent policy. ControlUp provides live endpoint and network insight.
+            </p>
+            <p class="mt-2 text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+              Outcome
+            </p>
+            <p class="text-neutral-200">
+              Faster transactions, fewer truck rolls, and extended use of existing hardware.
+            </p>
+          </article>
+
+          <article class="igel-card-soft igel-card-hover flex flex-col p-4 text-[0.83rem]">
+            <p class="igel-pill mb-2 border-yellow-500/70 text-[0.65rem] text-yellow-200">
+              Retail &amp; Manufacturing · Frontline Continuity
+            </p>
+            <p class="mb-1 text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+              Problem
+            </p>
+            <p class="text-neutral-200">
+              POS and kiosk downtime directly hits revenue and brand trust.
+            </p>
+            <p class="mt-2 text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+              Solution
+            </p>
+            <p class="text-neutral-200">
+              IGEL delivers a secure, clean-boot OS for frontline devices; ControlUp predicts failure through telemetry before outages occur.
+            </p>
+            <p class="mt-2 text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+              Outcome
+            </p>
+            <p class="text-neutral-200">
+              ~40% fewer on-site repairs, no local data loss, and measurable uptime gains.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 8 · Architecture -->
+      <section id="architecture" class="space-y-3">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">8 · Joint Value Architecture</p>
+            <h3 class="igel-section-title">Zero Trust from cloud to endpoint</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            Technical + operational alignment
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-[minmax(0,1.3fr),minmax(0,1fr)]">
+          <article class="igel-card igel-card-hover p-5 text-[0.83rem]">
+            <h4 class="mb-1 text-[0.9rem] font-semibold text-neutral-100">Technical alignment</h4>
+            <p class="text-neutral-300">
+              IGEL and ControlUp form a continuous, intelligent loop of
+              <span class="font-semibold">standardize → monitor → diagnose → remediate</span>.
+            </p>
+            <ul class="mt-2 space-y-1.5 text-neutral-200">
+              <li>• IGEL provides the immutable, policy-driven endpoint OS, centrally managed via UMS.</li>
+              <li>• ControlUp Edge DX and Remote DX stream real-time metrics (CPU, Wi-Fi, latency, UC quality, etc.).</li>
+              <li>• ControlUp ONE correlates endpoint, session, and network data across VDI/DaaS and SaaS.</li>
+              <li>• Telemetry flows outbound-only, supporting secure, internet-facing architectures and Zero Trust principles.</li>
+            </ul>
+            <p class="mt-3 text-neutral-300">
+              The result is <span class="font-semibold">true end-to-end visibility</span> from hardened device to virtual session and back.
+            </p>
+          </article>
+
+          <article class="igel-card-soft igel-card-hover p-5 text-[0.83rem]">
+            <h4 class="mb-1 text-[0.9rem] font-semibold text-neutral-100">Operational alignment</h4>
+            <ul class="space-y-1.5 text-neutral-200">
+              <li>• Zero-touch updates via IGEL App Portal and UMS packaging.</li>
+              <li>• Proven scalability from hundreds to tens of thousands of endpoints.</li>
+              <li>• Joint support model that reduces POC friction and speeds production deployment.</li>
+              <li>• Works across hybrid OS estates and branch/remote environments.</li>
+            </ul>
+            <p class="mt-3 text-neutral-300">
+              Practically, this removes silos between EUC, network, and endpoint teams and shifts IT
+              from <span class="font-semibold">firefighting</span> to <span class="font-semibold">proactive assurance.</span>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 9 · Outcomes -->
+      <section id="outcomes" class="space-y-3">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">9 · Customer Outcomes</p>
+            <h3 class="igel-section-title">Value that only exists in combination</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            Experience · Security · Cost · Compliance
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="igel-card igel-card-hover p-5 text-[0.83rem]">
+            <h4 class="mb-2 text-[0.9rem] font-semibold text-neutral-100">Business & experience outcomes</h4>
+            <ul class="space-y-1.5 text-neutral-200">
+              <li>• 50–70% faster issue resolution and reduced ticket volume.</li>
+              <li>• Deferred hardware refresh through IGEL conversion and ControlUp health monitoring.</li>
+              <li>• Fewer truck rolls and on-site visits for branch and frontline environments.</li>
+              <li>• Fewer dropped Teams/Zoom calls and more consistent logon experiences.</li>
+            </ul>
+          </article>
+          <article class="igel-card-soft igel-card-hover p-5 text-[0.83rem]">
+            <h4 class="mb-2 text-[0.9rem] font-semibold text-neutral-100">Security & compliance outcomes</h4>
+            <ul class="space-y-1.5 text-neutral-200">
+              <li>• Immutable baselines and live telemetry for continuous compliance.</li>
+              <li>• Stronger Zero Trust posture via device state and session visibility.</li>
+              <li>• Easier audit readiness for HIPAA, NIS2, SOC2, PCI-DSS, and similar frameworks.</li>
+              <li>• Better cyber insurance posture through measurable controls at the endpoint layer.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- 10 · Sales Plays (accordion) -->
+      <section id="plays" class="space-y-3">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">10 · Tier-One Joint Sales Plays (2025)</p>
+            <h3 class="igel-section-title">Monetizable, repeatable motions for ControlUp + IGEL</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            Tap each play to expand
+          </p>
+        </div>
+
+        <div class="igel-card igel-card-hover p-4 sm:p-5">
+          <p class="text-[0.8rem] text-neutral-300 mb-3">
+            Use these plays to anchor your joint story. Each one aligns a specific pain with a crisp Promise → Proof → Joint Solution.
+            Tap or click to reveal details.
+          </p>
+          <div class="space-y-2" data-accordion-group>
+            <!-- Play 1 -->
+            <div class="accordion-item overflow-hidden rounded-2xl border border-neutral-800/90 bg-neutral-950/70">
+              <div class="accordion-header">
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-[0.82rem] hover:bg-neutral-900/80"
+                  data-accordion-toggle
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <span class="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-yellow-300">
+                      Play 1 &mdash; The Visibility Gap Closer
+                    </span>
+                    <span class="text-[0.8rem] text-neutral-200">
+                      Fix “we don’t know if it’s endpoint, network, or VDI.”
+                    </span>
+                  </div>
+                  <span class="ml-2 text-[0.9rem] text-neutral-400" aria-hidden="true">+</span>
+                </button>
+              </div>
+              <div class="accordion-panel hidden border-t border-neutral-800/90 px-3 pb-3 pt-2 text-[0.8rem] text-neutral-200">
+                <p class="mb-1.5">
+                  <span class="font-semibold">Target:</span> CIO, EUC Architect, Service Desk Lead.
+                </p>
+                <p class="mb-1.5">
+                  <span class="font-semibold">Pain:</span> Session slowness, fragmented telemetry, and MTTR &gt; 2 hours.
+                </p>
+                <p class="mb-1.5">
+                  <span class="font-semibold">Promise:</span> Full endpoint–session–network visibility with standardized devices.
+                </p>
+                <p class="mb-1.5">
+                  <span class="font-semibold">Joint solution:</span> IGEL OS + ControlUp Edge DX + Remote DX via the App Portal,
+                  feeding ControlUp ONE for live correlation and diagnostics.
+                </p>
+                <p>
+                  <span class="font-semibold">Value:</span> 50–70% faster MTTR, ~40% fewer escalations, and clear root cause every time.
+                </p>
+              </div>
+            </div>
+
+            <!-- Play 2 -->
+            <div class="accordion-item overflow-hidden rounded-2xl border border-neutral-800/90 bg-neutral-950/70">
+              <div class="accordion-header">
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-[0.82rem] hover:bg-neutral-900/80"
+                  data-accordion-toggle
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <span class="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-yellow-300">
+                      Play 2 &mdash; Extend Device Life, Shrink Device Spend
+                    </span>
+                    <span class="text-[0.8rem] text-neutral-200">
+                      Turn a hardware refresh into a conversion opportunity.
+                    </span>
+                  </div>
+                  <span class="ml-2 text-[0.9rem] text-neutral-400" aria-hidden="true">+</span>
+                </button>
+              </div>
+              <div class="accordion-panel hidden border-t border-neutral-800/90 px-3 pb-3 pt-2 text-[0.8rem] text-neutral-200">
+                <p class="mb-1.5">
+                  <span class="font-semibold">Target:</span> CIO, CFO, Infrastructure Director.
+                </p>
+                <p class="mb-1.5">
+                  <span class="font-semibold">Trigger:</span> Windows 11 refresh, ESG initiatives, aging device fleets.
+                </p>
+                <p class="mb-1.5">
+                  <span class="font-semibold">Joint solution:</span> Convert existing hardware with IGEL OS 12 and monitor
+                  performance with ControlUp Edge DX.
+                </p>
+                <p>
+                  <span class="font-semibold">Value:</span> Extend device life by 3–5 years, reduce CAPEX up to ~60%, and keep user experience modern.
+                </p>
+              </div>
+            </div>
+
+            <!-- Play 3 -->
+            <div class="accordion-item overflow-hidden rounded-2xl border border-neutral-800/90 bg-neutral-950/70">
+              <div class="accordion-header">
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-[0.82rem] hover:bg-neutral-900/80"
+                  data-accordion-toggle
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <span class="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-yellow-300">
+                      Play 3 &mdash; Zero Trust at the Edge
+                    </span>
+                    <span class="text-[0.8rem] text-neutral-200">
+                      Continuous endpoint posture + live compliance telemetry.
+                    </span>
+                  </div>
+                  <span class="ml-2 text-[0.9rem] text-neutral-400" aria-hidden="true">+</span>
+                </button>
+              </div>
+              <div class="accordion-panel hidden border-t border-neutral-800/90 px-3 pb-3 pt-2 text-[0.8rem] text-neutral-200">
+                <p class="mb-1.5">
+                  <span class="font-semibold">Target:</span> CISO, SecOps, Risk Officer.
+                </p>
+                <p class="mb-1.5">
+                  <span class="font-semibold">Joint solution:</span> IGEL OS 12 + TPM Secure Boot on endpoints,
+                  with ControlUp ONE dashboards for posture and compliance validation.
+                </p>
+                <p>
+                  <span class="font-semibold">Value:</span> Continuous compliance reporting and a self-auditing edge that proves security controls in real time.
+                </p>
+              </div>
+            </div>
+
+            <!-- Play 4 -->
+            <div class="accordion-item overflow-hidden rounded-2xl border border-neutral-800/90 bg-neutral-950/70">
+              <div class="accordion-header">
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-[0.82rem] hover:bg-neutral-900/80"
+                  data-accordion-toggle
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <span class="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-yellow-300">
+                      Play 4 &mdash; Hybrid Work Assurance
+                    </span>
+                    <span class="text-[0.8rem] text-neutral-200">
+                      Stabilize WFH experience and crush remote tickets.
+                    </span>
+                  </div>
+                  <span class="ml-2 text-[0.9rem] text-neutral-400" aria-hidden="true">+</span>
+                </button>
+              </div>
+              <div class="accordion-panel hidden border-t border-neutral-800/90 px-3 pb-3 pt-2 text-[0.8rem] text-neutral-200">
+                <p class="mb-1.5">
+                  <span class="font-semibold">Target:</span> Digital Workplace, IT Ops, EUC Manager.
+                </p>
+                <p class="mb-1.5">
+                  <span class="font-semibold">Joint solution:</span> IGEL OS endpoints with ControlUp Remote DX and Edge DX
+                  to visualize home networks, UC quality, and endpoint health.
+                </p>
+                <p>
+                  <span class="font-semibold">Value:</span> Predictable user experience anywhere, plus 30–50% fewer remote-worker tickets.
+                </p>
+              </div>
+            </div>
+
+            <!-- Play 5 -->
+            <div class="accordion-item overflow-hidden rounded-2xl border border-neutral-800/90 bg-neutral-950/70">
+              <div class="accordion-header">
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-[0.82rem] hover:bg-neutral-900/80"
+                  data-accordion-toggle
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <span class="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-yellow-300">
+                      Play 5 &mdash; Modern Workspace Transformation
+                    </span>
+                    <span class="text-[0.8rem] text-neutral-200">
+                      Guide VDI/DaaS to browser-first journeys with fewer surprises.
+                    </span>
+                  </div>
+                  <span class="ml-2 text-[0.9rem] text-neutral-400" aria-hidden="true">+</span>
+                </button>
+              </div>
+              <div class="accordion-panel hidden border-t border-neutral-800/90 px-3 pb-3 pt-2 text-[0.8rem] text-neutral-200">
+                <p class="mb-1.5">
+                  <span class="font-semibold">Target:</span> Workspace Strategist, Modernization Lead.
+                </p>
+                <p class="mb-1.5">
+                  <span class="font-semibold">Joint solution:</span> IGEL OS 12 + Adaptive Secure Desktop with ControlUp ONE
+                  across VDI/DaaS and SaaS layers during migration.
+                </p>
+                <p>
+                  <span class="font-semibold">Value:</span> Smooth, measurable transformation with visibility across old and new delivery models.
+                </p>
+              </div>
+            </div>
+
+            <!-- Play 6 -->
+            <div class="accordion-item overflow-hidden rounded-2xl border border-neutral-800/90 bg-neutral-950/70">
+              <div class="accordion-header">
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-[0.82rem] hover:bg-neutral-900/80"
+                  data-accordion-toggle
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <span class="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-yellow-300">
+                      Play 6 &mdash; Frontline Continuity
+                    </span>
+                    <span class="text-[0.8rem] text-neutral-200">
+                      Protect carts, kiosks, and POS where downtime hurts most.
+                    </span>
+                  </div>
+                  <span class="ml-2 text-[0.9rem] text-neutral-400" aria-hidden="true">+</span>
+                </button>
+              </div>
+              <div class="accordion-panel hidden border-t border-neutral-800/90 px-3 pb-3 pt-2 text-[0.8rem] text-neutral-200">
+                <p class="mb-1.5">
+                  <span class="font-semibold">Target:</span> Operations Manager, OT/Edge IT.
+                </p>
+                <p class="mb-1.5">
+                  <span class="font-semibold">Joint solution:</span> Immutable IGEL endpoints with ControlUp Edge DX and UMS policy orchestration.
+                </p>
+                <p>
+                  <span class="font-semibold">Value:</span> Edge uptime assurance, predictive maintenance, and no local data loss if a device fails.
+                </p>
+              </div>
+            </div>
+
+            <!-- Play 7 -->
+            <div class="accordion-item overflow-hidden rounded-2xl border border-neutral-800/90 bg-neutral-950/70">
+              <div class="accordion-header">
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left text-[0.82rem] hover:bg-neutral-900/80"
+                  data-accordion-toggle
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <span class="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-yellow-300">
+                      Play 7 &mdash; Regulated Industry Resilience
+                    </span>
+                    <span class="text-[0.8rem] text-neutral-200">
+                      Prove continuous compliance on every endpoint.
+                    </span>
+                  </div>
+                  <span class="ml-2 text-[0.9rem] text-neutral-400" aria-hidden="true">+</span>
+                </button>
+              </div>
+              <div class="accordion-panel hidden border-t border-neutral-800/90 px-3 pb-3 pt-2 text-[0.8rem] text-neutral-200">
+                <p class="mb-1.5">
+                  <span class="font-semibold">Target:</span> Compliance, Risk, IT Security Officers.
+                </p>
+                <p class="mb-1.5">
+                  <span class="font-semibold">Joint solution:</span> IGEL OS 12 + TPM Secure Boot plus ControlUp compliance dashboards and reporting.
+                </p>
+                <p>
+                  <span class="font-semibold">Value:</span> Continuous audit readiness and faster audit cycles, with clear evidence of endpoint controls.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 · CTA -->
+      <section id="cta" class="space-y-3 pb-4">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <p class="igel-section-number">11 · Why This Partnership Matters</p>
+            <h3 class="igel-section-title">From visibility to operational foresight</h3>
+          </div>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400 sm:block">
+            One line to close the loop
+          </p>
+        </div>
+
+        <div class="igel-card igel-card-hover flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+          <div class="max-w-xl space-y-2 text-[0.83rem]">
+            <p class="text-neutral-200">
+              When IGEL and ControlUp operate together, customers get something neither can provide alone:
+              a <span class="font-semibold">secure, observable, self-healing digital workspace</span>.
+            </p>
+            <p class="text-neutral-300">
+              IGEL locks the door. ControlUp shows what’s happening inside, and helps fix it in real time.
+              This is more than visibility; it’s <span class="font-semibold">operational foresight</span> built on preventative design.
+            </p>
+            <p class="text-neutral-300">
+              As a ControlUp seller, you’re not just selling a monitoring tool. You’re selling
+              <span class="font-semibold">predictable performance, compliance assurance, and cost efficiency from edge to cloud</span>.
+            </p>
+          </div>
+          <div class="mt-2 w-full max-w-xs sm:mt-0">
+            <div class="igel-card-soft igel-card-hover border-yellow-500/60 p-4 text-[0.8rem]">
+              <p class="mb-2 text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-yellow-200">
+                Before you leave this account...
+              </p>
+              <ul class="space-y-1.5 text-neutral-200">
+                <li>□ Ask: “How confident are you in your endpoint layer today?”</li>
+                <li>□ Position IGEL as the hardened foundation for your visibility story.</li>
+                <li>□ Map at least one joint sales play to their reality.</li>
+                <li>□ Offer a POC where IGEL + ControlUp <span class="font-semibold">prove</span> the outcome, not just promise it.</li>
+              </ul>
+              <p class="mt-3 text-center text-[0.78rem] font-semibold text-neutral-50">
+                ControlUp sees.<br />IGEL secures.<br />Together &mdash; they deliver confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Mobile nav toggle
+    (function () {
+      const toggle = document.querySelector("[data-mobile-nav-toggle]");
+      const panel = document.querySelector("[data-mobile-nav-panel]");
+      const label = document.querySelector("[data-mobile-nav-label]");
+      if (!toggle || !panel) return;
+      toggle.addEventListener("click", () => {
+        const isOpen = !panel.classList.contains("hidden");
+        panel.classList.toggle("hidden", isOpen);
+        if (label) {
+          label.textContent = isOpen ? "Tap to open" : "Tap to close";
+        }
+      });
+    })();
+
+    // Accordion behavior for sales plays
+    (function () {
+      const group = document.querySelector("[data-accordion-group]");
+      if (!group) return;
+      const items = group.querySelectorAll(".accordion-item");
+      items.forEach((item) => {
+        const btn = item.querySelector("[data-accordion-toggle]");
+        const panel = item.querySelector(".accordion-panel");
+        if (!btn || !panel) return;
+        btn.addEventListener("click", () => {
+          const isOpen = !panel.classList.contains("hidden");
+          // Close others for cleaner UX
+          items.forEach((other) => {
+            const otherPanel = other.querySelector(".accordion-panel");
+            const otherLabel = other.querySelector("[data-accordion-toggle] span[aria-hidden='true']");
+            if (otherPanel && otherPanel !== panel) {
+              otherPanel.classList.add("hidden");
+              if (otherLabel) otherLabel.textContent = "+";
+            }
+          });
+          panel.classList.toggle("hidden", isOpen);
+          const label = btn.querySelector("span[aria-hidden='true']");
+          if (label) label.textContent = isOpen ? "+" : "–";
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
