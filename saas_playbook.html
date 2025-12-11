@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="IGEL SaaS & Web App Sales Playbook — a field-ready, IGEL-branded guide to selling secure, managed SaaS and web app access to modern digital workplaces."
+    content="IGEL SaaS & Web App Sales Playbook - a field-ready, IGEL-branded guide to selling secure, managed SaaS and web app access to modern digital workplaces."
   />
 
   <!-- Tailwind -->
@@ -20,7 +20,7 @@
     rel="stylesheet"
   />
 
-  <style>
+    <style type="text/tailwindcss">
     :root {
       --igel-yellow: #ffd101;
       --igel-black: #141414;
@@ -34,27 +34,57 @@
     body {
       font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top left, #292929 0, #050505 40%, #000000 100%);
-      color: var(--igel-white);
+    }
+
+    .igel-bg {
+      background: radial-gradient(circle at top left, rgba(255, 209, 1, 0.08), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(148, 163, 184, 0.12), transparent 55%),
+        linear-gradient(135deg, #020617, #020617 35%, #0b0b0f 100%);
     }
 
     .igel-card {
-      @apply rounded-2xl bg-neutral-900/80 border border-neutral-800 shadow-lg;
-      backdrop-filter: blur(10px);
+      @apply rounded-2xl border border-neutral-800/80 bg-neutral-900/80 shadow-lg shadow-black/40 backdrop-blur;
     }
 
     .igel-pill {
-      @apply inline-flex items-center rounded-full border border-yellow-300/40 px-3 py-1 text-xs font-semibold uppercase tracking-wide;
-      background: rgba(255, 209, 1, 0.06);
-      letter-spacing: 0.1em;
+      @apply inline-flex items-center gap-2 rounded-full border border-yellow-400/70 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.16em] uppercase text-neutral-100;
+      background: linear-gradient(90deg, rgba(255, 209, 1, 0.12), rgba(255, 209, 1, 0.02));
     }
 
     .igel-section-kicker {
-      @apply text-xs font-semibold tracking-[0.18em] uppercase text-yellow-300;
+      @apply text-[0.65rem] font-semibold tracking-[0.18em] uppercase text-yellow-300;
+    }
+
+    .igel-section-number {
+      @apply text-sm font-semibold uppercase tracking-[0.18em] text-yellow-400;
     }
 
     .igel-section-title {
-      @apply text-2xl sm:text-3xl font-extrabold tracking-tight text-white;
+      @apply text-xl md:text-2xl font-semibold text-neutral-50;
+    }
+
+    .section-hint {
+      @apply text-[0.65rem] uppercase tracking-[0.16em] text-neutral-400;
+    }
+
+    .nav-rail {
+      max-height: calc(100vh - 112px);
+    }
+
+    .nav-pill {
+      @apply flex items-center gap-3 rounded-full border border-neutral-700/80 bg-neutral-900/70 px-3 py-2 text-xs font-medium text-neutral-200 transition hover:border-yellow-400/80 hover:text-yellow-300;
+    }
+
+    .nav-index {
+      @apply flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-yellow-300 to-amber-400 text-[0.7rem] font-bold text-black;
+    }
+
+    .section-header {
+      @apply flex flex-wrap items-start justify-between gap-3 border-b border-neutral-800 pb-3;
+    }
+
+    .igel-heading-highlight {
+      color: var(--igel-yellow);
     }
 
     .igel-badge {
@@ -62,250 +92,9 @@
       color: #141414;
     }
 
-    .spark {
-      position: absolute;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(255, 209, 1, 0.15), transparent 70%);
-      filter: blur(2px);
-      pointer-events: none;
-    }
-
-    /* subtle hover for cards */
-    .hover-lift {
-      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out,
-        background 0.18s ease-out;
-    }
-
-    .hover-lift:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
-      border-color: rgba(255, 209, 1, 0.4);
-      background: rgba(24, 24, 27, 0.95);
-    }
-
-    /* nav scroll shadow */
-    .nav-shadow {
-      box-shadow: 0 1px 0 rgba(250, 250, 250, 0.03);
-    }
-
-    .nav-shell {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.4rem 0.6rem;
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(14, 14, 14, 0.92));
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(12px);
-    }
-
-    .nav-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.45rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #f4f4f5;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.3));
-      transition: all 0.18s ease-out;
-      white-space: nowrap;
-    }
-
-    .nav-chip:hover {
-      color: #ffe999;
-      border-color: rgba(255, 209, 1, 0.6);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    .nav-chip:focus-visible {
-      outline: 2px solid rgba(255, 209, 1, 0.7);
-      outline-offset: 2px;
-    }
-
-    .nav-chip .nav-index {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, #ffd101, #ffb526);
-      color: #141414;
-      font-weight: 800;
-      font-size: 11px;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
-    }
-
-    .nav-chip .nav-label {
-      letter-spacing: 0.06em;
-    }
-
-    .nav-chip.is-primary {
-      background: linear-gradient(90deg, rgba(255, 209, 1, 0.14), rgba(255, 209, 1, 0.05));
-      border-color: rgba(255, 209, 1, 0.65);
-      color: #fff9db;
-    }
-
-    .nav-chip.nav-chip-mobile {
-      width: 100%;
-      justify-content: flex-start;
-      border-color: rgba(255, 255, 255, 0.12);
-      background: rgba(18, 18, 18, 0.92);
-    }
-
-    .nav-rail {
-      position: sticky;
-      top: 88px;
-      align-self: start;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 1rem;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: linear-gradient(145deg, rgba(16, 16, 16, 0.92), rgba(20, 20, 20, 0.92));
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
-    }
-
-    @media (max-height: 900px) {
-      .nav-rail {
-        max-height: calc(100vh - 120px);
-        overflow-y: auto;
-      }
-
-      .nav-rail::-webkit-scrollbar {
-        width: 8px;
-      }
-
-    .nav-rail::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 999px;
-    }
-    }
-
-    .page-shell {
-      transform-origin: top left;
-    }
-
-    @media (max-width: 1500px) {
-      .page-shell {
-        transform: scale(0.94);
-        width: 106%;
-      }
-    }
-
-    @media (max-width: 1350px) {
-      .page-shell {
-        transform: scale(0.9);
-        width: 112%;
-      }
-    }
-
-    .nav-rail-title {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: 0.25rem;
-    }
-
-    .nav-rail a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 0.65rem;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #f4f4f5;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: all 0.18s ease-out;
-    }
-
-    .nav-rail a:hover {
-      border-color: rgba(255, 209, 1, 0.65);
-      color: #fff9db;
-      transform: translateX(2px);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4);
-    }
-
-    .nav-rail .nav-index {
-      width: 26px;
-      height: 26px;
-      border-radius: 9999px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #ffd101, #ffb703);
-      color: #141414;
-      font-weight: 800;
-      font-size: 12px;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
-    }
-
-    .section-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 0.75rem;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      margin-bottom: 1rem;
-    }
-
-    .igel-section-number {
-      font-size: 1.45rem;
-      line-height: 1.25;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      color: #ffd101;
-    }
-
-    .igel-heading-highlight {
-      color: var(--igel-yellow);
-    }
-
-    .igel-section-title {
-      @apply text-2xl sm:text-3xl font-extrabold tracking-tight;
-      color: #ffffff;
-      font-size: clamp(1.9rem, 1.6vw + 1rem, 2.6rem);
-      line-height: 1.22;
-    }
-
-    .section-hint {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: rgba(255, 255, 255, 0.62);
-    }
-
-    .section-hint::before {
-      content: "";
-      width: 18px;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 209, 1, 0.6));
-      border-radius: 9999px;
-    }
-
     .accent-block {
-      position: relative;
-      padding: 1rem;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      @apply relative rounded-2xl border border-neutral-800 bg-neutral-900/80 p-4 shadow-lg shadow-black/40;
       background: radial-gradient(circle at 20% 20%, rgba(255, 209, 1, 0.08), rgba(18, 18, 18, 0.95));
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
     }
 
     .icon-bubble {
@@ -336,7 +125,15 @@
       background: linear-gradient(90deg, #ffd101, #ff7a00);
     }
 
-    /* mobile nav */
+    .hover-lift {
+      @apply transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/40;
+    }
+
+    #primaryNav {
+      max-height: 65vh;
+      overflow-y: auto;
+    }
+
     #primaryNav a {
       transition: background 0.15s ease-out, color 0.15s ease-out, transform 0.15s ease-out;
     }
@@ -345,19 +142,20 @@
       transform: translateY(-1px);
     }
 
-    #primaryNav {
-      max-height: 65vh;
-      overflow-y: auto;
+    .spark {
+      position: absolute;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255, 209, 1, 0.14), transparent 70%);
+      filter: blur(2px);
+      pointer-events: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .hover-lift,
-      #primaryNav a {
-        transition: none;
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
       }
     }
   </style>
@@ -366,7 +164,7 @@
   <meta property="og:title" content="IGEL SaaS &amp; Web App Sales Playbook" />
   <meta
     property="og:description"
-    content="A field-ready IGEL sales playbook for secure, managed SaaS and web app access — built for cloud-first, hybrid work customers."
+    content="A field-ready IGEL sales playbook for secure, managed SaaS and web app access - built for cloud-first, hybrid work customers."
   />
   <meta property="og:type" content="article" />
 
@@ -381,206 +179,231 @@
   <meta name="twitter:title" content="IGEL SaaS &amp; Web App Sales Playbook" />
   <meta
     name="twitter:description"
-    content="A field-ready IGEL sales playbook for secure, managed SaaS and web app access — built for cloud-first, hybrid work customers."
+    content="A field-ready IGEL sales playbook for secure, managed SaaS and web app access - built for cloud-first, hybrid work customers."
   />
   <meta name="twitter:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
 </head>
 
-  <body class="min-h-screen text-sm sm:text-base">
+  <body class="igel-bg min-h-screen text-neutral-100 text-sm sm:text-base">
     <!-- Decorative sparks -->
-    <div class="spark w-64 h-64 -top-10 -left-10 opacity-80"></div>
-    <div class="spark w-80 h-80 top-1/3 -right-16 opacity-70"></div>
-    <div class="spark w-56 h-56 bottom-10 left-1/4 opacity-60"></div>
+    <div class="spark pointer-events-none w-64 h-64 -top-10 -left-10 opacity-70"></div>
+    <div class="spark pointer-events-none w-80 h-80 top-1/3 -right-16 opacity-60"></div>
+    <div class="spark pointer-events-none w-56 h-56 bottom-10 left-1/4 opacity-50"></div>
 
     <!-- Header & Nav -->
-    <header
-      class="sticky top-0 z-40 border-b border-neutral-800/80 bg-gradient-to-r from-black/95 via-neutral-950/95 to-black/95 backdrop-blur nav-shadow">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-wrap items-center justify-between gap-4 py-3">
-          <div class="flex items-center gap-3">
-            <img
-              src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
-              alt="IGEL logo" class="h-9 w-auto" />
-            <div class="flex flex-col leading-tight">
-              <span class="text-[10px] font-semibold tracking-[0.22em] uppercase text-yellow-300">
-                SaaS &amp; Web App
-              </span>
-              <span class="text-sm font-semibold text-white">
-                IGEL Seller Playbook
-              </span>
-            </div>
+    <header class="sticky top-0 z-40 border-b border-neutral-800/80 bg-black/70 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
+        <div class="flex items-center gap-3">
+          <img
+            src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+            alt="IGEL logo"
+            class="h-9 w-auto"
+          />
+          <div class="leading-tight">
+            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-yellow-400">
+              SaaS &amp; Web Apps
+            </p>
+            <p class="text-sm font-semibold text-neutral-100">IGEL Seller Playbook</p>
           </div>
-
-          <div class="hidden flex-1 justify-end text-right sm:flex">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-lg font-semibold text-white">SaaS &amp; Web App | IGEL seller playbook</span>
-              <span class="text-xs text-neutral-400">Secure • Managed • Browser-first • Cost down</span>
-            </div>
-          </div>
-
-          <button id="navToggle"
-            class="inline-flex items-center justify-center rounded-full border border-neutral-700 px-3 py-1 text-xs font-medium text-neutral-100 sm:hidden"
-            aria-expanded="false" aria-controls="primaryNav">
-            Menu
-            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
         </div>
+        <div class="hidden text-right md:block">
+          <p class="text-[0.65rem] uppercase tracking-[0.16em] text-neutral-400">
+            Secure - Managed - Browser-first
+          </p>
+          <p class="text-xs text-neutral-300">Position IGEL as the SaaS-first endpoint OS.</p>
+        </div>
+        <button
+          id="navToggle"
+          class="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1.5 text-xs font-medium text-neutral-100 md:hidden"
+          aria-expanded="false"
+          aria-controls="primaryNav"
+        >
+          <span class="text-[0.65rem] uppercase tracking-[0.16em] text-neutral-300">Sections</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
 
-      <!-- Mobile nav -->
-      <nav id="primaryNav" class="hidden border-t border-neutral-800/70 bg-black/95 sm:hidden">
-        <div class="mx-auto max-w-6xl px-4 py-3 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-2 gap-2">
-            <a href="#exec-summary" class="nav-chip nav-chip-mobile"><span class="nav-index">1</span><span
-                class="nav-label">Summary</span></a>
-            <a href="#value-prop" class="nav-chip nav-chip-mobile"><span class="nav-index">2</span><span
-                class="nav-label">Value Prop</span></a>
-            <a href="#pain-points" class="nav-chip nav-chip-mobile"><span class="nav-index">3</span><span
-                class="nav-label">Pain &amp; Fix</span></a>
-            <a href="#icp" class="nav-chip nav-chip-mobile"><span class="nav-index">4</span><span
-                class="nav-label">ICP</span></a>
-            <a href="#discovery" class="nav-chip nav-chip-mobile"><span class="nav-index">5</span><span
-                class="nav-label">Discovery</span></a>
-            <a href="#messaging" class="nav-chip nav-chip-mobile"><span class="nav-index">6</span><span
-                class="nav-label">Messaging</span></a>
-            <a href="#competitive" class="nav-chip nav-chip-mobile"><span class="nav-index">7</span><span
-                class="nav-label">Competitive</span></a>
-            <a href="#objections" class="nav-chip nav-chip-mobile"><span class="nav-index">8</span><span
-                class="nav-label">Objections</span></a>
-            <a href="#sales-motion" class="nav-chip nav-chip-mobile"><span class="nav-index">9</span><span
-                class="nav-label">Sales Motion</span></a>
-            <a href="#roi" class="nav-chip nav-chip-mobile"><span class="nav-index">10</span><span
-                class="nav-label">ROI</span></a>
-            <a href="#deployment" class="nav-chip nav-chip-mobile"><span class="nav-index">11</span><span
-                class="nav-label">Deployment</span></a>
-            <a href="#toolkit" class="nav-chip nav-chip-mobile"><span class="nav-index">12</span><span
-                class="nav-label">Toolkit</span></a>
-            <a href="#add-ons" class="nav-chip nav-chip-mobile"><span class="nav-index">13</span><span
-                class="nav-label">Add-ons</span></a>
-            <a href="#final-summary" class="nav-chip nav-chip-mobile"><span class="nav-index">14</span><span
-                class="nav-label">Final</span></a>
-          </div>
+      <nav
+        id="primaryNav"
+        class="mx-auto hidden max-h-[65vh] max-w-6xl overflow-y-auto border-t border-neutral-800/70 bg-black/85 px-4 pb-3 pt-2 md:hidden"
+      >
+        <div class="grid grid-cols-2 gap-2 text-[0.72rem]">
+          <a href="#exec-summary" class="nav-pill justify-start"><span class="nav-index">1</span>Summary</a>
+          <a href="#value-prop" class="nav-pill justify-start"><span class="nav-index">2</span>Value Prop</a>
+          <a href="#pain-points" class="nav-pill justify-start"><span class="nav-index">3</span>Pain &amp; Fix</a>
+          <a href="#icp" class="nav-pill justify-start"><span class="nav-index">4</span>ICP</a>
+          <a href="#discovery" class="nav-pill justify-start"><span class="nav-index">5</span>Discovery</a>
+          <a href="#messaging" class="nav-pill justify-start"><span class="nav-index">6</span>Messaging</a>
+          <a href="#competitive" class="nav-pill justify-start"><span class="nav-index">7</span>Competitive</a>
+          <a href="#objections" class="nav-pill justify-start"><span class="nav-index">8</span>Objections</a>
+          <a href="#sales-motion" class="nav-pill justify-start"><span class="nav-index">9</span>Sales Motion</a>
+          <a href="#roi" class="nav-pill justify-start"><span class="nav-index">10</span>ROI</a>
+          <a href="#deployment" class="nav-pill justify-start"><span class="nav-index">11</span>Deployment</a>
+          <a href="#toolkit" class="nav-pill justify-start"><span class="nav-index">12</span>Toolkit</a>
+          <a href="#add-ons" class="nav-pill justify-start"><span class="nav-index">13</span>Add-ons</a>
+          <a href="#final-summary" class="nav-pill justify-start"><span class="nav-index">14</span>Final</a>
         </div>
       </nav>
-  </header>
+    </header>
 
-  <!-- Layout -->
-  <div class="page-shell mx-auto max-w-6xl grid gap-6 px-4 pb-16 pt-6 sm:px-6 lg:grid-cols-[230px,1fr] lg:px-8">
-    <!-- Desktop left rail nav -->
-    <aside class="nav-rail hidden lg:flex">
-      <div class="nav-rail-title">Navigate</div>
-      <a href="#exec-summary"><span class="nav-index">1</span><span>Summary</span></a>
-      <a href="#value-prop"><span class="nav-index">2</span><span>Value Prop</span></a>
-      <a href="#pain-points"><span class="nav-index">3</span><span>Pain &amp; Fix</span></a>
-      <a href="#icp"><span class="nav-index">4</span><span>ICP</span></a>
-      <a href="#discovery"><span class="nav-index">5</span><span>Discovery</span></a>
-      <a href="#messaging"><span class="nav-index">6</span><span>Messaging</span></a>
-      <a href="#competitive"><span class="nav-index">7</span><span>Competitive</span></a>
-      <a href="#objections"><span class="nav-index">8</span><span>Objections</span></a>
-      <a href="#sales-motion"><span class="nav-index">9</span><span>Sales Motion</span></a>
-      <a href="#roi"><span class="nav-index">10</span><span>ROI</span></a>
-      <a href="#deployment"><span class="nav-index">11</span><span>Deployment</span></a>
-      <a href="#toolkit"><span class="nav-index">12</span><span>Toolkit</span></a>
-      <a href="#add-ons"><span class="nav-index">13</span><span>Add-ons</span></a>
-      <a href="#final-summary"><span class="nav-index">14</span><span>Final</span></a>
-    </aside>
-
-    <!-- Main -->
-    <main class="w-full">
-    <!-- Hero / Executive Summary -->
-    <section id="exec-summary" class="mb-10 sm:mb-14">
-      <div
-        class="igel-card relative overflow-hidden border-neutral-800 bg-gradient-to-br from-neutral-950/95 via-neutral-900/90 to-neutral-950/95 px-5 py-6 sm:px-8 sm:py-8">
-        <!-- Accent bar -->
-        <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-yellow-400 via-yellow-500 to-amber-400">
+    <main class="mx-auto flex max-w-6xl gap-6 px-4 pb-16 pt-6 md:px-8 lg:pt-8">
+      <aside class="nav-rail sticky top-24 hidden w-56 shrink-0 lg:block">
+        <div class="igel-card flex h-full flex-col gap-3 overflow-y-auto border-neutral-800/90 bg-neutral-950/80 px-3 py-4">
+          <p class="mb-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neutral-400">
+            Navigate
+          </p>
+          <nav class="flex flex-col gap-2 text-[0.72rem]">
+            <a href="#exec-summary" class="nav-pill">
+              <span class="nav-index">1</span>
+              Summary
+            </a>
+            <a href="#value-prop" class="nav-pill">
+              <span class="nav-index">2</span>
+              Value Prop
+            </a>
+            <a href="#pain-points" class="nav-pill">
+              <span class="nav-index">3</span>
+              Pain &amp; Fix
+            </a>
+            <a href="#icp" class="nav-pill">
+              <span class="nav-index">4</span>
+              ICP
+            </a>
+            <a href="#discovery" class="nav-pill">
+              <span class="nav-index">5</span>
+              Discovery
+            </a>
+            <a href="#messaging" class="nav-pill">
+              <span class="nav-index">6</span>
+              Messaging
+            </a>
+            <a href="#competitive" class="nav-pill">
+              <span class="nav-index">7</span>
+              Competitive
+            </a>
+            <a href="#objections" class="nav-pill">
+              <span class="nav-index">8</span>
+              Objections
+            </a>
+            <a href="#sales-motion" class="nav-pill">
+              <span class="nav-index">9</span>
+              Sales Motion
+            </a>
+            <a href="#roi" class="nav-pill">
+              <span class="nav-index">10</span>
+              ROI
+            </a>
+            <a href="#deployment" class="nav-pill">
+              <span class="nav-index">11</span>
+              Deployment
+            </a>
+            <a href="#toolkit" class="nav-pill">
+              <span class="nav-index">12</span>
+              Toolkit
+            </a>
+            <a href="#add-ons" class="nav-pill">
+              <span class="nav-index">13</span>
+              Add-ons
+            </a>
+            <a href="#final-summary" class="nav-pill">
+              <span class="nav-index">14</span>
+              Final
+            </a>
+          </nav>
         </div>
+      </aside>
 
-          <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-            <div class="sm:max-w-xl">
-            <h1 class="igel-heading-highlight text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">
-              A sales playbook to help position IGEL for SaaS and Web App Scenarios
-            </h1>
-            <p class="mt-4 text-sm text-neutral-200 sm:text-base">
-              IGEL gives SaaS-first, browser-first organizations a secure, centrally managed endpoint
-              OS that turns any device into a fast, compliant SaaS terminal — without buying new
-              hardware or running heavy desktop stacks.
-            </p>
-            <p class="mt-3 text-sm text-neutral-300">
-              Use this playbook to position IGEL, qualify the right customers, speak to their pain,
-              neutralize common objections, and run a repeatable SaaS/web app sales motion end to
-              end.
-            </p>
-          </div>
-
-          <div
-            class="mt-2 flex flex-col gap-3 rounded-2xl border border-yellow-400/40 bg-yellow-300/10 p-4 text-xs text-yellow-50 sm:mt-0 sm:w-64">
-            <div class="igel-badge inline-flex items-center justify-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]">
-              IGEL Seller Cheat Sheet
+      <div class="flex-1 space-y-10 lg:space-y-12">
+        <!-- Hero / Executive Summary -->
+        <section id="exec-summary" class="space-y-4">
+          <header class="flex flex-wrap items-baseline justify-between gap-4">
+            <div>
+              <div class="igel-section-number">1 - Executive Overview</div>
+              <h2 class="igel-section-title mt-1">SaaS &amp; Web App IGEL seller playbook</h2>
             </div>
-            <ul class="mt-2 space-y-2">
-              <li class="flex gap-2">
-                <span class="mt-0.5 h-4 w-4 flex-none rounded-full bg-yellow-300/90 text-[10px] font-black text-neutral-900 flex items-center justify-center">1</span>
-                <span><span class="font-semibold">Lead with SaaS reality.</span> Most work now lives in
-                  browsers and cloud apps.</span>
-              </li>
-              <li class="flex gap-2">
-                <span class="mt-0.5 h-4 w-4 flex-none rounded-full bg-yellow-300/90 text-[10px] font-black text-neutral-900 flex items-center justify-center">2</span>
-                <span><span class="font-semibold">Sell security + simplicity.</span> Read-only OS, no local
-                  data, one way to manage everything.</span>
-              </li>
-              <li class="flex gap-2">
-                <span class="mt-0.5 h-4 w-4 flex-none rounded-full bg-yellow-300/90 text-[10px] font-black text-neutral-900 flex items-center justify-center">3</span>
-                <span><span class="font-semibold">Land on cost.</span> Extend device life 3–5 years and
-                  slash endpoint complexity.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mt-6 grid gap-3 sm:grid-cols-3">
-          <div class="accent-block">
-            <div class="flex items-center gap-3">
-              <span class="icon-bubble">Sec</span>
-              <div>
-                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
-                  Lock down fast
+            <span class="section-hint hidden sm:inline">Start here</span>
+          </header>
+          <article class="igel-card relative overflow-hidden border-neutral-800/80 bg-gradient-to-br from-neutral-950/95 via-neutral-900/85 to-neutral-950/95 p-5 sm:p-7">
+            <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+              <div class="sm:max-w-xl">
+                <p class="text-xl font-extrabold leading-tight text-white sm:text-2xl lg:text-[1.9rem]">
+                  A sales playbook to help position IGEL for SaaS and web app scenarios
                 </p>
-                <p class="text-sm font-semibold text-white">Read-only OS, no local data, policy-led browsers.</p>
+                <p class="mt-4 text-sm text-neutral-200 sm:text-base">
+                  IGEL gives SaaS-first, browser-first organizations a secure, centrally managed endpoint
+                  OS that turns any device into a fast, compliant SaaS terminal - without buying new
+                  hardware or running heavy desktop stacks.
+                </p>
+                <p class="mt-3 text-sm text-neutral-300">
+                  Use this playbook to position IGEL, qualify the right customers, speak to their pain,
+                  neutralize common objections, and run a repeatable SaaS/web app sales motion end to
+                  end.
+                </p>
+              </div>
+
+              <div class="mt-2 flex flex-col gap-3 rounded-2xl border border-yellow-400/40 bg-yellow-300/10 p-4 text-xs text-yellow-50 sm:mt-0 sm:w-64">
+                <div class="igel-badge inline-flex items-center justify-center rounded-full bg-yellow-300 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-900">
+                  IGEL Seller Cheat Sheet
+                </div>
+                <ul class="mt-2 space-y-2 text-left">
+                  <li class="flex gap-2">
+                    <span class="mt-0.5 flex h-4 w-4 flex-none items-center justify-center rounded-full bg-yellow-300/90 text-[10px] font-black text-neutral-900">1</span>
+                    <span><span class="font-semibold">Lead with SaaS reality.</span> Most work now lives in browsers and cloud apps.</span>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="mt-0.5 flex h-4 w-4 flex-none items-center justify-center rounded-full bg-yellow-300/90 text-[10px] font-black text-neutral-900">2</span>
+                    <span><span class="font-semibold">Sell security + simplicity.</span> Read-only OS, no local data, one way to manage everything.</span>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="mt-0.5 flex h-4 w-4 flex-none items-center justify-center rounded-full bg-yellow-300/90 text-[10px] font-black text-neutral-900">3</span>
+                    <span><span class="font-semibold">Land on cost.</span> Extend device life 3-5 years and slash endpoint complexity.</span>
+                  </li>
+                </ul>
               </div>
             </div>
-          </div>
-          <div class="accent-block">
-            <div class="flex items-center gap-3">
-              <span class="icon-bubble">Ops</span>
-              <div>
-                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
-                  Manage once
-                </p>
-                <p class="text-sm font-semibold text-white">Central console, zero-touch rollout, consistent UX.</p>
-              </div>
-            </div>
-          </div>
-          <div class="accent-block">
-            <div class="flex items-center gap-3">
-              <span class="icon-bubble">ROI</span>
-              <div>
-                <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
-                  Spend smarter
-                </p>
-                <p class="text-sm font-semibold text-white">Extend devices 3-5 years and shrink refresh spend.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- 2. Value Proposition -->
-    <section id="value-prop" class="mb-10 sm:mb-14">
+            <div class="mt-6 grid gap-3 sm:grid-cols-3">
+              <div class="accent-block">
+                <div class="flex items-center gap-3">
+                  <span class="icon-bubble">Sec</span>
+                  <div>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+                      Lock down fast
+                    </p>
+                    <p class="text-sm font-semibold text-white">Read-only OS, no local data, policy-led browsers.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accent-block">
+                <div class="flex items-center gap-3">
+                  <span class="icon-bubble">Ops</span>
+                  <div>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+                      Manage once
+                    </p>
+                    <p class="text-sm font-semibold text-white">Central console, zero-touch rollout, consistent UX.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accent-block">
+                <div class="flex items-center gap-3">
+                  <span class="icon-bubble">ROI</span>
+                  <div>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-300">
+                      Spend smarter
+                    </p>
+                    <p class="text-sm font-semibold text-white">Extend devices 3-5 years and shrink refresh spend.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- 2. Value Proposition -->
+        <section id="value-prop" class="space-y-4">
       <div class="grid gap-6 lg:grid-cols-[1.3fr,1fr]">
         <article class="igel-card hover-lift p-5 sm:p-7">
           <div class="section-header">
@@ -591,8 +414,8 @@
             <span class="section-hint">Core positioning</span>
           </div>
           <p class="mt-4 text-sm text-neutral-200 sm:text-[15px]">
-            IGEL delivers secure, high-performance access to SaaS and web apps on any endpoint —
-            via a lightweight, centrally managed OS built for cloud-first, distributed workforces.
+            IGEL delivers secure, high-performance access to SaaS and web apps on any endpoint via
+            a lightweight, centrally managed OS built for cloud-first, distributed workforces.
           </p>
 
           <div class="mt-5 grid gap-4 sm:grid-cols-2">
@@ -615,7 +438,7 @@
                 <li><span class="font-semibold text-yellow-300">Superior UX.</span> Fast boot, consistent UI,
                   responsive web sessions.</li>
                 <li><span class="font-semibold text-yellow-300">Lower TCO.</span> Extend device lifespan by
-                  3–5 years and cut endpoint overhead.</li>
+                  3-5 years and cut endpoint overhead.</li>
               </ul>
             </div>
           </div>
@@ -627,16 +450,16 @@
             One-line value story
           </h3>
           <p class="mt-3 text-sm text-neutral-200">
-            <span class="font-semibold text-yellow-300">“IGEL turns any endpoint into a secure SaaS
-              terminal</span> — with one OS to manage, no local data, and performance that makes the browser
-            feel native.”</p>
+            <span class="font-semibold text-yellow-300">"IGEL turns any endpoint into a secure SaaS
+              terminal</span> with one OS to manage, no local data, and performance that makes the browser
+            feel native."</p>
 
           <div class="mt-5 space-y-3 text-xs text-neutral-300">
             <p class="font-semibold text-neutral-100">Use this when:</p>
             <ul class="space-y-1.5">
-              <li>• IT complains about browser chaos and OS sprawl.</li>
-              <li>• Security cares about unmanaged or home devices.</li>
-              <li>• Finance is pushing back on refresh cycles and licenses.</li>
+              <li>- IT complains about browser chaos and OS sprawl.</li>
+              <li>- Security cares about unmanaged or home devices.</li>
+              <li>- Finance is pushing back on refresh cycles and licenses.</li>
             </ul>
           </div>
         </aside>
@@ -670,7 +493,7 @@
     </section>
 
     <!-- 3. Pain Points & How IGEL Solves Them -->
-    <section id="pain-points" class="mb-10 sm:mb-14">
+    <section id="pain-points" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">Customer Pain &amp; Resolution</h1>
@@ -682,90 +505,90 @@
       <div class="grid gap-5 md:grid-cols-2">
         <!-- Pain 1 -->
         <article class="igel-card hover-lift p-5 sm:p-6">
-          <span class="igel-pill mb-3">Pain 1 · SaaS risk explosion</span>
+          <span class="igel-pill mb-3">Pain 1 - SaaS risk explosion</span>
           <h3 class="text-base font-semibold text-white sm:text-lg">
             Growing SaaS usage is increasing security risk
           </h3>
           <ul class="mt-3 space-y-1.5 text-xs text-neutral-300 sm:text-sm">
-            <li>• Unmanaged browsers everywhere.</li>
-            <li>• Endpoints exposed to malware and data exfiltration.</li>
-            <li>• Users accessing SaaS from personal or insecure devices.</li>
+            <li>- Unmanaged browsers everywhere.</li>
+            <li>- Endpoints exposed to malware and data exfiltration.</li>
+            <li>- Users accessing SaaS from personal or insecure devices.</li>
           </ul>
           <div class="mt-4 rounded-2xl bg-neutral-900/90 p-3.5">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
               How IGEL solves it
             </p>
             <ul class="mt-2 space-y-1.5 text-xs text-neutral-200 sm:text-sm">
-              <li>• Locked-down, read-only OS eliminates local attack surface.</li>
-              <li>• Enforce secure browser configurations by policy.</li>
-              <li>• Prevent data persistence on the endpoint by design.</li>
+              <li>- Locked-down, read-only OS eliminates local attack surface.</li>
+              <li>- Enforce secure browser configurations by policy.</li>
+              <li>- Prevent data persistence on the endpoint by design.</li>
             </ul>
           </div>
         </article>
 
         <!-- Pain 2 -->
         <article class="igel-card hover-lift p-5 sm:p-6">
-          <span class="igel-pill mb-3">Pain 2 · Support overload</span>
+          <span class="igel-pill mb-3">Pain 2 - Support overload</span>
           <h3 class="text-base font-semibold text-white sm:text-lg">
             Support teams are drowning in inconsistent devices
           </h3>
           <ul class="mt-3 space-y-1.5 text-xs text-neutral-300 sm:text-sm">
-            <li>• Multiple OS versions across the fleet.</li>
-            <li>• Unpatched or misconfigured endpoints.</li>
-            <li>• Helpdesk tickets tied to browser and setup inconsistencies.</li>
+            <li>- Multiple OS versions across the fleet.</li>
+            <li>- Unpatched or misconfigured endpoints.</li>
+            <li>- Helpdesk tickets tied to browser and setup inconsistencies.</li>
           </ul>
           <div class="mt-4 rounded-2xl bg-neutral-900/90 p-3.5">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
               How IGEL solves it
             </p>
             <ul class="mt-2 space-y-1.5 text-xs text-neutral-200 sm:text-sm">
-              <li>• Centralized endpoint management from a single console.</li>
-              <li>• Zero-touch provisioning at scale.</li>
-              <li>• One standardized web-access experience across devices.</li>
+              <li>- Centralized endpoint management from a single console.</li>
+              <li>- Zero-touch provisioning at scale.</li>
+              <li>- One standardized web-access experience across devices.</li>
             </ul>
           </div>
         </article>
 
         <!-- Pain 3 -->
         <article class="igel-card hover-lift p-5 sm:p-6">
-          <span class="igel-pill mb-3">Pain 3 · Aging hardware</span>
+          <span class="igel-pill mb-3">Pain 3 - Aging hardware</span>
           <h3 class="text-base font-semibold text-white sm:text-lg">
-            Outdated hardware can’t run modern OS securely
+            Outdated hardware can't run modern OS securely
           </h3>
           <ul class="mt-3 space-y-1.5 text-xs text-neutral-300 sm:text-sm">
-            <li>• Legacy Windows slows down SaaS apps and browser performance.</li>
-            <li>• Forced refresh cycles to keep OS supported.</li>
+            <li>- Legacy Windows slows down SaaS apps and browser performance.</li>
+            <li>- Forced refresh cycles to keep OS supported.</li>
           </ul>
           <div class="mt-4 rounded-2xl bg-neutral-900/90 p-3.5">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
               How IGEL solves it
             </p>
             <ul class="mt-2 space-y-1.5 text-xs text-neutral-200 sm:text-sm">
-              <li>• Repurpose existing hardware as secure SaaS endpoints.</li>
-              <li>• Lightweight OS optimized for browser-based performance.</li>
-              <li>• Reduce CAPEX and e-waste by extending device life 3–5 years.</li>
+              <li>- Repurpose existing hardware as secure SaaS endpoints.</li>
+              <li>- Lightweight OS optimized for browser-based performance.</li>
+              <li>- Reduce CAPEX and e-waste by extending device life 3-5 years.</li>
             </ul>
           </div>
         </article>
 
         <!-- Pain 4 -->
         <article class="igel-card hover-lift p-5 sm:p-6">
-          <span class="igel-pill mb-3">Pain 4 · Hybrid chaos</span>
+          <span class="igel-pill mb-3">Pain 4 - Hybrid chaos</span>
           <h3 class="text-base font-semibold text-white sm:text-lg">
             Hybrid &amp; remote workers need simple, secure SaaS access
           </h3>
           <ul class="mt-3 space-y-1.5 text-xs text-neutral-300 sm:text-sm">
-            <li>• Remote onboarding is slow and inconsistent.</li>
-            <li>• Corporate apps accessed from unmanaged or personal devices.</li>
+            <li>- Remote onboarding is slow and inconsistent.</li>
+            <li>- Corporate apps accessed from unmanaged or personal devices.</li>
           </ul>
           <div class="mt-4 rounded-2xl bg-neutral-900/90 p-3.5">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
               How IGEL solves it
             </p>
             <ul class="mt-2 space-y-1.5 text-xs text-neutral-200 sm:text-sm">
-              <li>• Secure SaaS access from any location, any repurposed device.</li>
-              <li>• Remote devices always remain compliant by policy.</li>
-              <li>• Supports Zero Trust Access initiatives at the endpoint layer.</li>
+              <li>- Secure SaaS access from any location, any repurposed device.</li>
+              <li>- Remote devices always remain compliant by policy.</li>
+              <li>- Supports Zero Trust Access initiatives at the endpoint layer.</li>
             </ul>
           </div>
         </article>
@@ -773,7 +596,7 @@
     </section>
 
     <!-- 4. ICP -->
-    <section id="icp" class="mb-10 sm:mb-14">
+    <section id="icp" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">Ideal Customer Profiles</h1>
@@ -792,9 +615,9 @@
             Heavy on Google Workspace, Microsoft 365, Salesforce, ServiceNow, etc.
           </p>
           <ul class="mt-3 space-y-1.5 text-xs text-neutral-200 sm:text-sm">
-            <li>• 1,000+ employees.</li>
-            <li>• Distributed / hybrid workforce.</li>
-            <li>• Moving off legacy VDI or full Windows desktops.</li>
+            <li>- 1,000+ employees.</li>
+            <li>- Distributed / hybrid workforce.</li>
+            <li>- Moving off legacy VDI or full Windows desktops.</li>
           </ul>
         </article>
 
@@ -807,9 +630,9 @@
             Web-based CRM, agent desktops, and call handling tools.
           </p>
           <ul class="mt-3 space-y-1.5 text-xs text-neutral-200 sm:text-sm">
-            <li>• High agent/device turnover.</li>
-            <li>• Cost-sensitive environments; refresh costs matter.</li>
-            <li>• Need a consistent browser-based experience at scale.</li>
+            <li>- High agent/device turnover.</li>
+            <li>- Cost-sensitive environments; refresh costs matter.</li>
+            <li>- Need a consistent browser-based experience at scale.</li>
           </ul>
         </article>
 
@@ -822,9 +645,9 @@
             Web-based EHR and clinical portals with strict compliance needs.
           </p>
           <ul class="mt-3 space-y-1.5 text-xs text-neutral-200 sm:text-sm">
-            <li>• Strong demands for secure, policy-driven endpoints.</li>
-            <li>• Shared clinical devices and nursing stations.</li>
-            <li>• Need predictable, locked-down browser workflows.</li>
+            <li>- Strong demands for secure, policy-driven endpoints.</li>
+            <li>- Shared clinical devices and nursing stations.</li>
+            <li>- Need predictable, locked-down browser workflows.</li>
           </ul>
         </article>
 
@@ -837,16 +660,16 @@
             Browser-based trading, CRM, POS, or kiosk-style experiences.
           </p>
           <ul class="mt-3 space-y-1.5 text-xs text-neutral-200 sm:text-sm">
-            <li>• Regulatory and audit requirements.</li>
-            <li>• Kiosk and branch endpoints needing repeatable deployment.</li>
-            <li>• Expect locked-down browsers and strong security posture.</li>
+            <li>- Regulatory and audit requirements.</li>
+            <li>- Kiosk and branch endpoints needing repeatable deployment.</li>
+            <li>- Expect locked-down browsers and strong security posture.</li>
           </ul>
         </article>
       </div>
     </section>
 
     <!-- 5. Discovery Questions -->
-    <section id="discovery" class="mb-10 sm:mb-14">
+    <section id="discovery" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">Discovery</h1>
@@ -862,9 +685,9 @@
             Business-level questions
           </h3>
           <ul class="mt-3 space-y-2 text-xs text-neutral-200 sm:text-sm">
-            <li>• “Which mission-critical applications are now SaaS or web-based?”</li>
-            <li>• “What challenges are you seeing with endpoint security or management?”</li>
-            <li>• “How important is a consistent user experience across devices?”</li>
+            <li>- "Which mission-critical applications are now SaaS or web-based?"</li>
+            <li>- "What challenges are you seeing with endpoint security or management?"</li>
+            <li>- "How important is a consistent user experience across devices?"</li>
           </ul>
         </article>
 
@@ -874,9 +697,9 @@
             Technical-level questions
           </h3>
           <ul class="mt-3 space-y-2 text-xs text-neutral-200 sm:text-sm">
-            <li>• “How do you manage browser versions and configurations today?”</li>
-            <li>• “What’s your patching strategy for remote endpoints?”</li>
-            <li>• “Are users accessing SaaS apps from unmanaged or home devices?”</li>
+            <li>- "How do you manage browser versions and configurations today?"</li>
+            <li>- "What's your patching strategy for remote endpoints?"</li>
+            <li>- "Are users accessing SaaS apps from unmanaged or home devices?"</li>
           </ul>
         </article>
 
@@ -886,16 +709,16 @@
             Financial-level questions
           </h3>
           <ul class="mt-3 space-y-2 text-xs text-neutral-200 sm:text-sm">
-            <li>• “How often do you refresh endpoints?”</li>
-            <li>• “What does device downtime or helpdesk volume cost you?”</li>
-            <li>• “Would extending device lifespan improve budget flexibility?”</li>
+            <li>- "How often do you refresh endpoints?"</li>
+            <li>- "What does device downtime or helpdesk volume cost you?"</li>
+            <li>- "Would extending device lifespan improve budget flexibility?"</li>
           </ul>
         </article>
       </div>
     </section>
 
     <!-- 6. Messaging Framework -->
-    <section id="messaging" class="mb-10 sm:mb-14">
+    <section id="messaging" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">Messaging Framework</h1>
@@ -911,7 +734,7 @@
           </h3>
           <p class="mt-3 text-sm text-neutral-200 sm:text-[15px]">
             IGEL delivers a secure, manageable, and cost-efficient platform optimized for SaaS and
-            web-based applications — ideal for modern, distributed workforces.
+            web-based applications - ideal for modern, distributed workforces.
           </p>
 
           <div class="mt-5 overflow-x-auto">
@@ -960,16 +783,16 @@
             Quick positioning lines
           </h3>
           <ul class="mt-3 space-y-2 text-xs text-neutral-200 sm:text-sm">
-            <li>• “IGEL is the OS built for SaaS and web apps, not legacy desktops.”</li>
-            <li>• “We secure the browser and the device that runs it — at scale.”</li>
-            <li>• “You keep your hardware. We give it a modern, secure SaaS life.”</li>
+            <li>- "IGEL is the OS built for SaaS and web apps, not legacy desktops."</li>
+            <li>- "We secure the browser and the device that runs it - at scale."</li>
+            <li>- "You keep your hardware. We give it a modern, secure SaaS life."</li>
           </ul>
         </article>
       </div>
     </section>
 
     <!-- 7. Competitive Positioning -->
-    <section id="competitive" class="mb-10 sm:mb-14">
+    <section id="competitive" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">Competitive Positioning</h1>
@@ -985,21 +808,21 @@
             IGEL vs. Windows
           </h3>
           <ul class="mt-3 space-y-2 text-xs text-neutral-200 sm:text-sm">
-            <li>• Windows is powerful but heavy and high-maintenance for simple SaaS workflows.</li>
-            <li>• IGEL is lightweight, secure, and purpose-built for SaaS access.</li>
-            <li>• Eliminates patching complexity and reduces malware exposure at the endpoint.</li>
+            <li>- Windows is powerful but heavy and high-maintenance for simple SaaS workflows.</li>
+            <li>- IGEL is lightweight, secure, and purpose-built for SaaS access.</li>
+            <li>- Eliminates patching complexity and reduces malware exposure at the endpoint.</li>
           </ul>
         </article>
 
         <!-- ChromeOS -->
         <article class="igel-card hover-lift p-5 sm:p-6">
           <h3 class="text-sm font-semibold text-yellow-300">
-            IGEL vs. ChromeOS (not seem much in Fed accounts)
+            IGEL vs. ChromeOS (not seen much in Federal accounts)
           </h3>
           <ul class="mt-3 space-y-2 text-xs text-neutral-200 sm:text-sm">
-            <li>• IGEL runs on existing hardware — no full device refresh required.</li>
-            <li>• Offers more flexible enterprise management and integration.</li>
-            <li>• Supports richer authentication and control scenarios than a pure browser OS.</li>
+            <li>- IGEL runs on existing hardware - no full device refresh required.</li>
+            <li>- Offers more flexible enterprise management and integration.</li>
+            <li>- Supports richer authentication and control scenarios than a pure browser OS.</li>
           </ul>
         </article>
 
@@ -1009,16 +832,16 @@
             SaaS | Web App vs. VDI / DaaS
           </h3>
           <ul class="mt-3 space-y-2 text-xs text-neutral-200 sm:text-sm">
-            <li>• For SaaS-first roles, full virtual desktops add cost and complexity.</li>
-            <li>• IGEL + SaaS delivers needed apps without VDI licensing overhead.</li>
-            <li>• Great fit where only occasional legacy Windows apps are required.</li>
+            <li>- For SaaS-first roles, full virtual desktops add cost and complexity.</li>
+            <li>- IGEL + SaaS delivers needed apps without VDI licensing overhead.</li>
+            <li>- Great fit where only occasional legacy Windows apps are required.</li>
           </ul>
         </article>
       </div>
     </section>
 
     <!-- 8. Objections -->
-    <section id="objections" class="mb-10 sm:mb-14">
+    <section id="objections" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">Common Objections</h1>
@@ -1034,15 +857,15 @@
             Objection
           </p>
           <h3 class="mt-1 text-sm font-semibold text-white sm:text-base">
-            “We manage everything through Windows today.”
+            "We manage everything through Windows today."
           </h3>
           <div class="mt-3 rounded-2xl bg-neutral-900/95 p-3.5">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
               Rebuttal
             </p>
             <p class="mt-2 text-xs text-neutral-200 sm:text-sm">
-              Windows is powerful — but often overkill for simple SaaS workflows. IGEL reduces the
-              attack surface, simplifies management, and cuts cost while keeping the user’s day-to-day
+              Windows is powerful - but often overkill for simple SaaS workflows. IGEL reduces the
+              attack surface, simplifies management, and cuts cost while keeping the user's day-to-day
               SaaS workflow unchanged.
             </p>
           </div>
@@ -1054,7 +877,7 @@
             Objection
           </p>
           <h3 class="mt-1 text-sm font-semibold text-white sm:text-base">
-            “Our hardware is too old.”
+            "Our hardware is too old."
           </h3>
           <div class="mt-3 rounded-2xl bg-neutral-900/95 p-3.5">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
@@ -1062,7 +885,7 @@
             </p>
             <p class="mt-2 text-xs text-neutral-200 sm:text-sm">
               IGEL is designed to repurpose older hardware and still deliver high performance for
-              browser-based work. Many customers extend device life 3–5 years using IGEL instead of
+              browser-based work. Many customers extend device life 3-5 years using IGEL instead of
               refreshing to run a heavy desktop OS.
             </p>
           </div>
@@ -1074,7 +897,7 @@
             Objection
           </p>
           <h3 class="mt-1 text-sm font-semibold text-white sm:text-base">
-            “We already use MDM.”
+            "We already use MDM."
           </h3>
           <div class="mt-3 rounded-2xl bg-neutral-900/95 p-3.5">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
@@ -1094,7 +917,7 @@
             Objection
           </p>
           <h3 class="mt-1 text-sm font-semibold text-white sm:text-base">
-            “We need logging and audit trails.”
+            "We need logging and audit trails."
           </h3>
           <div class="mt-3 rounded-2xl bg-neutral-900/95 p-3.5">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
@@ -1102,7 +925,7 @@
             </p>
             <p class="mt-2 text-xs text-neutral-200 sm:text-sm">
               IGEL integrates with enterprise logging, monitoring, and SIEM tools so security teams
-              get full auditability across IGEL-managed devices — aligned with their existing stacks.
+              get full auditability across IGEL-managed devices - aligned with their existing stacks.
             </p>
           </div>
         </article>
@@ -1110,7 +933,7 @@
     </section>
 
     <!-- 9. Sales Motion -->
-    <section id="sales-motion" class="mb-10 sm:mb-14">
+    <section id="sales-motion" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">Sales Motion</h1>
@@ -1123,7 +946,7 @@
         <ol class="grid gap-4 text-xs text-neutral-200 sm:grid-cols-3 sm:text-sm">
           <li class="rounded-2xl bg-neutral-900/90 p-4">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
-              1 · Discovery &amp; qualification
+              1 - Discovery &amp; qualification
             </p>
             <p class="mt-2">
               Understand SaaS workflows, endpoint sprawl, and security concerns. Confirm they are
@@ -1132,7 +955,7 @@
           </li>
           <li class="rounded-2xl bg-neutral-900/90 p-4">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
-              2 · IGEL value overview
+              2 - IGEL value overview
             </p>
             <p class="mt-2">
               Deliver a tight pitch around secure SaaS access, simplified endpoint management, and
@@ -1141,7 +964,7 @@
           </li>
           <li class="rounded-2xl bg-neutral-900/90 p-4">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
-              3 · Tailored demo
+              3 - Tailored demo
             </p>
             <p class="mt-2">
               Show secure browser sessions, policy enforcement, and centralized control via UMS or IGEL
@@ -1150,16 +973,16 @@
           </li>
           <li class="rounded-2xl bg-neutral-900/90 p-4">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
-              4 · Pilot / PoC
+              4 - Pilot / PoC
             </p>
             <p class="mt-2">
-              Convert 5–10 devices, run key SaaS apps (Salesforce, M365, etc.), and validate
+              Convert 5-10 devices, run key SaaS apps (Salesforce, M365, etc.), and validate
               performance, UX, and management simplicity.
             </p>
           </li>
           <li class="rounded-2xl bg-neutral-900/90 p-4">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
-              5 · ROI &amp; business case
+              5 - ROI &amp; business case
             </p>
             <p class="mt-2">
               Quantify cost avoidance from Windows licensing and hardware refresh, ticket reduction,
@@ -1168,7 +991,7 @@
           </li>
           <li class="rounded-2xl bg-neutral-900/90 p-4">
             <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow-300">
-              6 · Contract &amp; scale-out
+              6 - Contract &amp; scale-out
             </p>
             <p class="mt-2">
               Propose per-device subscription, rollout plan, and training for IT and support teams to
@@ -1180,7 +1003,7 @@
     </section>
 
     <!-- 10. ROI Messaging -->
-    <section id="roi" class="mb-10 sm:mb-14">
+    <section id="roi" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">ROI &amp; Financial Impact</h1>
@@ -1195,10 +1018,10 @@
             ROI levers
           </h3>
           <ul class="mt-3 space-y-2 text-xs text-neutral-200 sm:text-sm">
-            <li>• Reduce endpoint OS patching: up to 50–70% fewer support tickets.</li>
-            <li>• Extend hardware lifespan by 3–5 years.</li>
-            <li>• Cut device costs: up to 50% reduction in endpoint CAPEX.</li>
-            <li>• Reduce security incidents by materially lowering malware exposure.</li>
+            <li>- Reduce endpoint OS patching: up to 50-70% fewer support tickets.</li>
+            <li>- Extend hardware lifespan by 3-5 years.</li>
+            <li>- Cut device costs: up to 50% reduction in endpoint CAPEX.</li>
+            <li>- Reduce security incidents by materially lowering malware exposure.</li>
           </ul>
         </article>
 
@@ -1207,11 +1030,11 @@
             Outcome examples
           </h3>
           <ul class="mt-3 space-y-2 text-xs text-neutral-200 sm:text-sm">
-            <li>• <span class="font-semibold">Contact center (2,000 agents):</span> saved ≈$1M by avoiding
+            <li>- <span class="font-semibold">Contact center (2,000 agents):</span> saved ~$1M by avoiding
               hardware refresh.</li>
-            <li>• <span class="font-semibold">Healthcare org:</span> reduced endpoint security incidents by
+            <li>- <span class="font-semibold">Healthcare org:</span> reduced endpoint security incidents by
               ~80%.</li>
-            <li>• <span class="font-semibold">Financial services firm:</span> standardized SaaS access and
+            <li>- <span class="font-semibold">Financial services firm:</span> standardized SaaS access and
               significantly cut IT workload.</li>
           </ul>
         </aside>
@@ -1219,7 +1042,7 @@
     </section>
 
     <!-- 11. Deployment Patterns -->
-    <section id="deployment" class="mb-10 sm:mb-14">
+    <section id="deployment" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">Deployment Patterns</h1>
@@ -1231,50 +1054,50 @@
       <div class="grid gap-5 md:grid-cols-3">
         <article class="igel-card hover-lift p-5 sm:p-6">
           <h3 class="text-sm font-semibold text-yellow-300">
-            Mode 1 · Browser-only endpoint
+            Mode 1 - Browser-only endpoint
           </h3>
           <p class="mt-3 text-xs text-neutral-200 sm:text-sm">
             Users live fully in the browser:
           </p>
           <ul class="mt-2 space-y-1.5 text-xs text-neutral-300 sm:text-sm">
-            <li>• Salesforce and CRM.</li>
-            <li>• Teams / Zoom web clients.</li>
-            <li>• Google Workspace, ServiceNow, Workday, etc.</li>
+            <li>- Salesforce and CRM.</li>
+            <li>- Teams / Zoom web clients.</li>
+            <li>- Google Workspace, ServiceNow, Workday, etc.</li>
           </ul>
         </article>
 
         <article class="igel-card hover-lift p-5 sm:p-6">
           <h3 class="text-sm font-semibold text-yellow-300">
-            Mode 2 · Kiosk / shared devices
+            Mode 2 - Kiosk / shared devices
           </h3>
           <p class="mt-3 text-xs text-neutral-200 sm:text-sm">
             Branch, retail, and shared station endpoints:
           </p>
           <ul class="mt-2 space-y-1.5 text-xs text-neutral-300 sm:text-sm">
-            <li>• Locked-down kiosk browser experiences.</li>
-            <li>• Browser-based POS and check-in.</li>
-            <li>• Simple, repeatable deployments across many locations.</li>
+            <li>- Locked-down kiosk browser experiences.</li>
+            <li>- Browser-based POS and check-in.</li>
+            <li>- Simple, repeatable deployments across many locations.</li>
           </ul>
         </article>
 
         <article class="igel-card hover-lift p-5 sm:p-6">
           <h3 class="text-sm font-semibold text-yellow-300">
-            Mode 3 · Hybrid SaaS + VDI
+            Mode 3 - Hybrid SaaS + VDI
           </h3>
           <p class="mt-3 text-xs text-neutral-200 sm:text-sm">
             For users who mostly live in SaaS but occasionally need legacy Windows apps:
           </p>
           <ul class="mt-2 space-y-1.5 text-xs text-neutral-300 sm:text-sm">
-            <li>• IGEL as primary SaaS endpoint.</li>
-            <li>• VDI / DaaS only when necessary.</li>
-            <li>• Lower overall cost &amp; simpler day-to-day operations.</li>
+            <li>- IGEL as primary SaaS endpoint.</li>
+            <li>- VDI / DaaS only when necessary.</li>
+            <li>- Lower overall cost &amp; simpler day-to-day operations.</li>
           </ul>
         </article>
       </div>
     </section>
 
     <!-- 12. Sales Toolkit -->
-    <section id="toolkit" class="mb-10 sm:mb-14">
+    <section id="toolkit" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">Sales Toolkit</h1>
@@ -1291,15 +1114,15 @@
           </h3>
           <p class="mt-3 text-sm text-neutral-200 sm:text-[15px]">
             IGEL is a secure, lightweight endpoint OS that delivers fast, consistent access to SaaS
-            and web applications — while reducing management overhead and extending hardware life.
+            and web applications - while reducing management overhead and extending hardware life.
           </p>
 
           <h3 class="mt-5 text-sm font-semibold text-yellow-300">
             30-second value statement
           </h3>
           <p class="mt-3 text-xs text-neutral-200 sm:text-sm">
-            If you’re shifting toward SaaS and cloud applications, IGEL ensures every user, on any
-            device, gets a secure, reliable, centrally managed experience — without the cost and
+            If you're shifting toward SaaS and cloud applications, IGEL ensures every user, on any
+            device, gets a secure, reliable, centrally managed experience - without the cost and
             complexity of traditional desktop OS management.
           </p>
         </article>
@@ -1307,7 +1130,7 @@
         <!-- Email outreach -->
         <article class="igel-card hover-lift p-5 sm:p-6">
           <h3 class="text-sm font-semibold text-yellow-300">
-            Email outreach — starter template
+            Email outreach - starter template
           </h3>
           <div class="mt-3 rounded-2xl bg-neutral-900/95 p-4 text-xs text-neutral-100 sm:text-sm">
             <p><span class="font-semibold">Subject:</span> Simplifying SaaS Access &amp; Endpoint
@@ -1318,7 +1141,7 @@
             <p class="mt-2">
               Organizations shifting to SaaS apps often struggle with endpoint security, patching, and
               hardware refresh cycles. IGEL solves this by delivering a secure, managed OS optimized
-              specifically for SaaS and web access — without requiring new hardware or complex desktop
+              specifically for SaaS and web access - without requiring new hardware or complex desktop
               images.
             </p>
             <p class="mt-2">
@@ -1335,7 +1158,7 @@
     </section>
 
     <!-- 13. Add-ons & Integrations -->
-    <section id="add-ons" class="mb-10 sm:mb-14">
+    <section id="add-ons" class="space-y-4">
       <div class="section-header">
         <div>
           <h1 class="igel-section-number mb-1">Add-ons &amp; Integrations</h1>
@@ -1351,9 +1174,9 @@
               Access &amp; identity
             </h3>
             <ul class="mt-2 space-y-1.5">
-              <li>• SSO (Okta, Azure AD).</li>
-              <li>• Secure web gateways.</li>
-              <li>• SASE platforms.</li>
+              <li>- SSO (Okta, Azure AD).</li>
+              <li>- Secure web gateways.</li>
+              <li>- SASE platforms.</li>
             </ul>
           </div>
           <div>
@@ -1361,8 +1184,8 @@
               Browser &amp; session security
             </h3>
             <ul class="mt-2 space-y-1.5">
-              <li>• Browser isolation solutions.</li>
-              <li>• Policy-driven configuration management.</li>
+              <li>- Browser isolation solutions.</li>
+              <li>- Policy-driven configuration management.</li>
             </ul>
           </div>
           <div>
@@ -1370,8 +1193,8 @@
               Analytics &amp; insight
             </h3>
             <ul class="mt-2 space-y-1.5">
-              <li>• Endpoint analytics integrations.</li>
-              <li>• SIEM / logging pipelines for audit trails.</li>
+              <li>- Endpoint analytics integrations.</li>
+              <li>- SIEM / logging pipelines for audit trails.</li>
             </ul>
           </div>
         </div>
@@ -1379,7 +1202,7 @@
     </section>
 
     <!-- 14. Final Summary -->
-    <section id="final-summary" class="mb-4 sm:mb-6">
+    <section id="final-summary" class="space-y-4">
       <div class="igel-card hover-lift flex flex-col gap-5 p-5 sm:p-6">
         <div class="section-header">
           <div>
@@ -1417,16 +1240,16 @@
     <div class="flex justify-end">
       <a href="#exec-summary"
         class="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-900/90 px-3 py-1.5 text-[11px] font-medium text-neutral-200 hover:border-yellow-300/60 hover:text-yellow-100">
-        ↑ Back to top
+        ^ Back to top
       </a>
     </div>
+      </div>
     </main>
-  </div>
 
   <!-- Footer -->
   <footer class="border-t border-neutral-900 bg-black/95 py-4 text-[11px] text-neutral-500">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-      <span>IGEL · SaaS &amp; Web App Sales Playbook</span>
+      <span>IGEL - SaaS &amp; Web App Sales Playbook</span>
       <span class="hidden sm:inline">Built by Broadwood.</span>
     </div>
   </footer>
@@ -1437,14 +1260,16 @@
 
     if (navToggle && primaryNav) {
       navToggle.addEventListener("click", () => {
-        const isOpen = primaryNav.classList.contains("hidden") === false;
-        if (isOpen) {
+        const isOpen = !primaryNav.classList.contains("hidden");
+        primaryNav.classList.toggle("hidden");
+        navToggle.setAttribute("aria-expanded", (!isOpen).toString());
+      });
+
+      primaryNav.querySelectorAll("a[href^='#']").forEach((link) => {
+        link.addEventListener("click", () => {
           primaryNav.classList.add("hidden");
           navToggle.setAttribute("aria-expanded", "false");
-        } else {
-          primaryNav.classList.remove("hidden");
-          navToggle.setAttribute("aria-expanded", "true");
-        }
+        });
       });
     }
   </script>
