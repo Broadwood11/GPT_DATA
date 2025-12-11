@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IGEL + Omnissa Joint Sales Playbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A dark-glass IGEL + Omnissa sales playbook that helps Omnissa reps position IGEL as the immutable, secure endpoint layer for Horizon and Workspace ONE deals." />
+
+  <!-- Google Fonts: Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2...family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Manrope', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            igel: {
+              yellow: '#FFD101',
+              black: '#141414',
+            }
+          },
+          boxShadow: {
+            'igel-card': '0 18px 45px rgba(0,0,0,0.65)',
+          },
+          borderRadius: {
+            'igel': '22px',
+          },
+          backgroundImage: {
+            'igel-radial': 'radial-gradient(circle at top, rgba(255,209,1,0.10), transparent 60%)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style type="text/tailwindcss">
+    body {
+      font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .igel-bg {
+      background: radial-gradient(circle at top left, rgba(255, 209, 1, 0.07), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(148, 163, 184, 0.12), transparent 55%),
+        linear-gradient(135deg, #020617, #020617 35%, #0b0b0f 100%);
+    }
+
+    .igel-card {
+      @apply rounded-2xl border border-neutral-800/80 bg-neutral-900/80 shadow-lg shadow-black/40 backdrop-blur;
+    }
+
+    .igel-pill {
+      @apply inline-flex items-center gap-2 rounded-full border border-yellow-400/70 bg-neutral-900/70 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-neutral-100;
+    }
+
+    .igel-section-number {
+      @apply text-sm font-semibold uppercase tracking-[0.18em] text-yellow-400;
+    }
+
+    .igel-section-title {
+      @apply text-xl md:text-2xl font-semibold text-neutral-50;
+    }
+
+    .section-hint {
+      @apply text-[0.65rem] uppercase tracking-[0.16em] text-neutral-400;
+    }
+
+    .nav-rail {
+      max-height: calc(100vh - 120px);
+    }
+
+    .nav-pill {
+      @apply flex items-center gap-3 rounded-full border border-neutral-800/80 bg-neutral-900/70 px-3 py-2 text-[0.75rem] font-medium text-neutral-200 transition hover:border-yellow-400/80 hover:text-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300;
+    }
+
+    .nav-index {
+      @apply flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-yellow-300 to-amber-400 text-[0.7rem] font-bold text-black shadow-sm shadow-amber-300/40;
+    }
+
+    .hover-lift {
+      @apply transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/40;
+    }
+
+    .igel-stat-bar-track {
+      @apply h-1.5 w-full rounded-full bg-neutral-800/80;
+    }
+
+    .igel-stat-bar-fill {
+      background: linear-gradient(90deg, #ffd101, #fb923c);
+    }
+
+    details.igel-accordion > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.igel-accordion[open] .accordion-chevron {
+      transform: rotate(90deg);
+    }
+
+    .nav-link-active {
+      @apply border-yellow-400/80 text-yellow-200 bg-neutral-900;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+
+  <!-- Open Graph + Twitter Meta (placeholders for URL & thumbnail) -->
+  <!-- TODO: Replace with the final live URL of this infographic -->
+  <meta property="og:title" content="IGEL + Omnissa Joint Sales Playbook" />
+  <meta property="og:description" content="A dark-glass IGEL + Omnissa field guide that shows Omnissa reps how IGEL hardens endpoints, cuts TCO, and accelerates Horizon and Workspace ONE wins." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="[[SET_FINAL_URL_HERE]]" />
+  <!-- TODO: Replace with the full URL to your 1200x675 thumbnail -->
+  <meta property="og:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Optional: set your handle -->
+  <meta name="twitter:site" content="" />
+  <meta name="twitter:title" content="IGEL + Omnissa Joint Sales Playbook" />
+  <meta name="twitter:description" content="Help Omnissa customers modernize workspaces without risky endpoints: IGEL secures the edge, Omnissa orchestrates the digital workspace." />
+  <meta name="twitter:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
+</head>
+<body class="igel-bg min-h-screen text-neutral-100">
+  <header class="sticky top-0 z-30 border-b border-neutral-800/80 bg-black/60 backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
+      <div class="flex items-center gap-3">
+        <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" alt="IGEL logo" class="h-9 w-auto" />
+        <div class="leading-tight">
+          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-igel-yellow">Field Playbook</p>
+          <p class="text-sm font-semibold text-neutral-100">IGEL + Omnissa - Workspace edge multiplier</p>
+        </div>
+      </div>
+      <div class="hidden text-right md:block">
+        <p class="text-[0.7rem] uppercase tracking-[0.18em] text-neutral-400">For Horizon and Workspace ONE sellers</p>
+        <p class="text-xs text-neutral-300">Pair IGEL's immutable edge with Omnissa's workspace fabric.</p>
+      </div>
+      <button id="mobileMenuToggle" class="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1.5 text-xs font-medium text-neutral-100 md:hidden">
+        <span class="text-[0.65rem] uppercase tracking-[0.16em] text-neutral-300">Sections</span>
+        <svg class="h-3 w-3 text-neutral-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
+    </div>
+
+    <nav id="mobileMenu" class="mx-auto hidden max-h-[65vh] max-w-6xl overflow-y-auto border-t border-neutral-800/70 bg-black/85 px-4 pb-3 pt-2 md:hidden">
+      <div class="grid grid-cols-2 gap-2 text-[0.7rem]">
+        <a href="#overview" class="nav-pill nav-link justify-start"><span class="nav-index">1</span>Overview</a>
+        <a href="#problem" class="nav-pill nav-link justify-start"><span class="nav-index">2</span>Problem</a>
+        <a href="#joint-value" class="nav-pill nav-link justify-start"><span class="nav-index">3</span>Joint Value</a>
+        <a href="#how-it-works" class="nav-pill nav-link justify-start"><span class="nav-index">4</span>How It Works</a>
+        <a href="#sales-plays" class="nav-pill nav-link justify-start"><span class="nav-index">5</span>Sales Plays</a>
+        <a href="#talk-tracks" class="nav-pill nav-link justify-start"><span class="nav-index">6</span>Talk Tracks</a>
+        <a href="#outcomes" class="nav-pill nav-link justify-start"><span class="nav-index">7</span>Outcomes</a>
+        <a href="#objections" class="nav-pill nav-link justify-start"><span class="nav-index">8</span>Objections</a>
+        <a href="#cta" class="nav-pill nav-link justify-start"><span class="nav-index">9</span>Next Steps</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="mx-auto flex max-w-6xl gap-6 px-4 pb-16 pt-6 md:px-8 lg:pt-8">
+    <aside class="nav-rail sticky top-24 hidden w-56 shrink-0 md:block">
+      <div class="igel-card flex max-h-[calc(100vh-120px)] flex-col gap-3 overflow-y-auto border-neutral-800/90 bg-neutral-950/80 px-3 py-4">
+        <p class="mb-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neutral-400">Navigate</p>
+        <nav class="flex flex-col gap-2 text-[0.72rem]">
+          <a href="#overview" class="nav-pill nav-link">
+            <span class="nav-index">1</span>
+            Overview
+          </a>
+          <a href="#problem" class="nav-pill nav-link">
+            <span class="nav-index">2</span>
+            Problem
+          </a>
+          <a href="#joint-value" class="nav-pill nav-link">
+            <span class="nav-index">3</span>
+            Joint Value
+          </a>
+          <a href="#how-it-works" class="nav-pill nav-link">
+            <span class="nav-index">4</span>
+            How It Works
+          </a>
+          <a href="#sales-plays" class="nav-pill nav-link">
+            <span class="nav-index">5</span>
+            Sales Plays
+          </a>
+          <a href="#talk-tracks" class="nav-pill nav-link">
+            <span class="nav-index">6</span>
+            Talk Tracks
+          </a>
+          <a href="#outcomes" class="nav-pill nav-link">
+            <span class="nav-index">7</span>
+            Outcomes
+          </a>
+          <a href="#objections" class="nav-pill nav-link">
+            <span class="nav-index">8</span>
+            Objections
+          </a>
+          <a href="#cta" class="nav-pill nav-link">
+            <span class="nav-index">9</span>
+            Next Steps
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="flex-1 space-y-8">
+      <!-- Hero -->
+      <header id="overview" class="igel-card p-6 sm:p-7 lg:p-8 relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none opacity-70" aria-hidden="true">
+          <div class="w-72 h-72 rounded-full bg-igel-yellow/10 blur-3xl -top-20 -right-10 absolute"></div>
+          <div class="w-64 h-64 rounded-full bg-igel-yellow/5 blur-3xl bottom-[-5rem] left-[-3rem] absolute"></div>
+        </div>
+        <div class="relative flex flex-col gap-5">
+          <div class="flex flex-col gap-2 border-b border-neutral-800/70 pb-3">
+            <div class="flex items-center justify-between gap-3">
+              <h1 class="igel-section-number">01. Overview</h1>
+              <span class="section-hint hidden sm:block">For Omnissa sellers</span>
+            </div>
+            <h3 class="igel-section-title">
+              IGEL for Omnissa reps:
+              <span class="text-igel-yellow">the hidden multiplier</span> in every workspace deal.
+            </h3>
+            <p class="text-sm text-neutral-300 max-w-3xl">
+              Lead with IGEL as the immutable edge layer that makes Horizon and Workspace ONE easier to buy, safer to run, and faster to scale.
+            </p>
+          </div>
+
+          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <div class="space-y-3 max-w-2xl">
+              <span class="inline-flex items-center gap-2 rounded-full border border-amber-400/70 bg-amber-400/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-amber-200">
+                <span class="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                Workspace ONE + Horizon
+              </span>
+              <p class="text-sm sm:text-base text-neutral-300 max-w-xl">
+                If you sell <span class="font-semibold text-neutral-100">Workspace ONE</span> or
+                <span class="font-semibold text-neutral-100">Horizon 8 / Horizon Cloud</span>,
+                IGEL is not another endpoint vendor. It is the <span class="font-semibold">immutable edge layer</span>
+                that makes your solution more secure, cheaper to deploy, and harder to displace.
+              </p>
+            </div>
+            <div class="shrink-0">
+              <div class="rounded-igel border border-neutral-700/80 bg-neutral-900/60 px-4 py-3 text-xs text-neutral-300 max-w-xs">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="h-7 w-7 rounded-full bg-neutral-950 border border-neutral-700 flex items-center justify-center overflow-hidden">
+                    <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" alt="IGEL logo" class="h-5 w-auto object-contain" />
+                  </div>
+                  <div class="text-[11px] uppercase tracking-[0.2em] text-neutral-400">
+                    30s joint pitch
+                  </div>
+                </div>
+                <p class="text-[11px] leading-relaxed">
+                  <span class="font-semibold text-neutral-100">"Together, IGEL and Omnissa deliver the most secure, manageable, and cost-effective hybrid workspace.</span>
+                  Omnissa orchestrates the digital workspace. IGEL hardens and simplifies the endpoint.
+                  The result: <span class="font-semibold text-amber-300">zero data risk, lower TCO, and faster hybrid work at scale.</span>"
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <dl class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-neutral-300">
+            <div class="igel-pill px-3 py-2.5 flex flex-col gap-1">
+              <dt class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">What IGEL is</dt>
+              <dd class="text-sm text-neutral-100">A hardened, read-only endpoint OS for VDI, DaaS, SaaS &amp; secure browsers.</dd>
+            </div>
+            <div class="igel-pill px-3 py-2.5 flex flex-col gap-1">
+              <dt class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">What Omnissa gets</dt>
+              <dd class="text-sm">Immutable, low-risk endpoints that make Horizon &amp; Workspace ONE shine.</dd>
+            </div>
+            <div class="igel-pill px-3 py-2.5 flex flex-col gap-1">
+              <dt class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">What customers feel</dt>
+              <dd class="text-sm">Simpler hybrid work, fewer incidents, lower endpoint TCO.</dd>
+            </div>
+          </dl>
+        </div>
+      </header>
+
+      <!-- Problem Section -->
+      <section id="problem" class="igel-card p-6 sm:p-7 lg:p-8">
+        <div class="mb-4 flex items-center justify-between gap-3 border-b border-neutral-800/70 pb-3">
+          <div>
+            <h1 class="igel-section-number">02. Problem</h1>
+            <h3 class="igel-section-title">
+              The gap: modern workspaces, <span class="text-igel-yellow">old &amp; risky endpoints</span>.
+            </h3>
+          </div>
+          <span class="section-hint hidden sm:block">Where deals stall</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-5 text-sm text-neutral-200">
+          <div class="space-y-2">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">What customers are trying to do</h3>
+            <ul class="space-y-1.5 list-disc list-inside text-neutral-300">
+              <li>Migrate to <span class="font-medium">Horizon 8 / Horizon Cloud</span> or expand VDI/DaaS.</li>
+              <li>Roll out <span class="font-medium">Workspace ONE UEM</span> for unified management.</li>
+              <li>Support huge <span class="font-medium">hybrid / remote workforces</span> without chaos.</li>
+              <li>Pass compliance (NIS2, HIPAA, PCI, SOC2) <span class="font-medium">without exploding cost.</span></li>
+            </ul>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Where deals stall or shrink</h3>
+            <ul class="space-y-1.5 list-disc list-inside text-neutral-300">
+              <li>Windows 10/11 refresh <span class="font-medium">tied to hardware spend.</span></li>
+              <li>Branch / clinic endpoints <span class="font-medium">keep getting compromised.</span></li>
+              <li>Security teams say: "We can't <span class="font-medium">prove device compliance</span> before access."</li>
+              <li>IT can't patch or manage <span class="font-medium">1,000+ disparate PCs and laptops.</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-5 grid md:grid-cols-3 gap-3 text-xs">
+          <div class="border border-red-500/40 bg-red-500/5 rounded-igel px-3 py-2.5">
+            <div class="text-[11px] uppercase tracking-[0.16em] text-red-300 mb-1">Risk</div>
+            <p class="text-neutral-200">Omnissa gets blamed when endpoints are breached or unreliable.</p>
+          </div>
+          <div class="border border-amber-400/40 bg-amber-400/5 rounded-igel px-3 py-2.5">
+            <div class="text-[11px] uppercase tracking-[0.16em] text-amber-200 mb-1">Constraint</div>
+            <p class="text-neutral-200">Budget for Horizon / Workspace ONE is <span class="font-medium">tied up in PC refresh.</span></p>
+          </div>
+          <div class="border border-emerald-400/40 bg-emerald-400/5 rounded-igel px-3 py-2.5">
+            <div class="text-[11px] uppercase tracking-[0.16em] text-emerald-200 mb-1">Opportunity</div>
+            <p class="text-neutral-200">Decouple the workspace win from endpoint cost &amp; risk with IGEL.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Joint Value Section -->
+      <section id="joint-value" class="igel-card p-6 sm:p-7 lg:p-8">
+        <div class="mb-4 flex items-center justify-between gap-3 border-b border-neutral-800/70 pb-3">
+          <div>
+            <h1 class="igel-section-number">03. Joint Value</h1>
+            <h3 class="igel-section-title">
+              IGEL + Omnissa: <span class="text-igel-yellow">secure, adaptive workspace continuum</span>.
+            </h3>
+          </div>
+          <span class="section-hint hidden sm:block">Why together</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5 text-sm">
+          <div class="space-y-3">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">What IGEL actually is</h3>
+            <p class="text-neutral-300">
+              <span class="font-semibold">IGEL is a modern, hardened endpoint OS</span> designed for VDI, DaaS, SaaS, and secure browser use cases.
+              It replaces Windows at the edge with a <span class="font-semibold text-igel-yellow">Preventative Security Model (TM)</span> - built to stop threats before they start.
+            </p>
+            <ul class="space-y-1.5 list-disc list-inside text-neutral-300 text-sm">
+              <li><span class="font-medium text-neutral-100">Immutable Endpoint OS</span>: read-only, tamper-proof, self-healing at reboot.</li>
+              <li><span class="font-medium text-neutral-100">No Local Data</span>: nothing on the endpoint to exfiltrate, encrypt, or ransom.</li>
+              <li><span class="font-medium text-neutral-100">Firmware -> OS -> Client chain of trust</span> attested on every boot.</li>
+              <li><span class="font-medium text-neutral-100">Universal Management Suite (UMS)</span> for centralized, policy-based control.</li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">How it amplifies Omnissa</h3>
+            <div class="grid grid-cols-1 gap-2">
+              <div class="border border-neutral-700 rounded-igel px-3 py-2.5 text-xs sm:text-sm">
+                <div class="font-semibold text-neutral-100 mb-1">Workspace Promise -> Edge Reality</div>
+                <p class="text-neutral-300">
+                  Omnissa orchestrates secure digital workspaces.
+                  IGEL guarantees that only <span class="font-medium">known-good, immutable endpoints</span> ever reach those workspaces.
+                </p>
+              </div>
+              <div class="border border-neutral-700 rounded-igel px-3 py-2.5 text-xs sm:text-sm">
+                <div class="font-semibold text-neutral-100 mb-1">Zero Trust in practice</div>
+                <p class="text-neutral-300">
+                  IGEL enforces trusted boot and no local data; Workspace ONE applies conditional access and posture.
+                  Together they deliver a <span class="font-medium">preventative security model</span>, not reactive clean-up.
+                </p>
+              </div>
+              <div class="border border-neutral-700 rounded-igel px-3 py-2.5 text-xs sm:text-sm">
+                <div class="font-semibold text-neutral-100 mb-1">Cost &amp; lifecycle</div>
+                <p class="text-neutral-300">
+                  IGEL extends device life by <span class="font-medium">3-5 years</span> and cuts endpoint TCO by up to <span class="font-medium">60%</span>,
+                  making larger Omnissa deals easier to fund.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simple stack table -->
+        <div class="mt-6 text-xs sm:text-sm">
+          <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-2">Where IGEL sits in the Omnissa stack</h3>
+          <div class="overflow-hidden rounded-2xl border border-neutral-700/80 bg-neutral-900/70">
+            <div class="grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-neutral-700/80">
+              <div class="p-3 sm:p-4">
+                <div class="text-[11px] uppercase tracking-[0.14em] text-neutral-400 mb-1">Workspace &amp; Apps</div>
+                <div class="font-semibold text-neutral-100 mb-1">Omnissa Horizon / App Volumes</div>
+                <p class="text-[11px] text-neutral-300">Desktops and apps from cloud or datacenter.</p>
+              </div>
+              <div class="p-3 sm:p-4">
+                <div class="text-[11px] uppercase tracking-[0.14em] text-neutral-400 mb-1">Access &amp; Identity</div>
+                <div class="font-semibold text-neutral-100 mb-1">Workspace ONE Access</div>
+                <p class="text-[11px] text-neutral-300">Conditional access, SSO, policy engine.</p>
+              </div>
+              <div class="p-3 sm:p-4">
+                <div class="text-[11px] uppercase tracking-[0.14em] text-neutral-400 mb-1">Management &amp; Analytics</div>
+                <div class="font-semibold text-neutral-100 mb-1">Workspace ONE UEM</div>
+                <p class="text-[11px] text-neutral-300">Unified endpoint management and telemetry.</p>
+              </div>
+              <div class="p-3 sm:p-4 bg-gradient-to-tr from-amber-400/10 via-neutral-900 to-neutral-900">
+                <div class="text-[11px] uppercase tracking-[0.14em] text-amber-200 mb-1">Endpoint OS &amp; Edge Security</div>
+                <div class="font-semibold text-igel-yellow mb-1">IGEL OS</div>
+                <p class="text-[11px] text-neutral-100">
+                  Read-only, hardened OS with no local data, plus chain-of-trust from firmware to session.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it Works Section -->
+      <section id="how-it-works" class="igel-card p-6 sm:p-7 lg:p-8">
+        <div class="mb-4 flex items-center justify-between gap-3 border-b border-neutral-800/70 pb-3">
+          <div>
+            <h1 class="igel-section-number">04. How It Works</h1>
+            <h3 class="igel-section-title">
+              From hardware to Horizon session: <span class="text-igel-yellow">the secure path</span>.
+            </h3>
+          </div>
+          <span class="section-hint hidden sm:block">Edge-to-workspace path</span>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-5 text-sm">
+          <div class="space-y-2">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">1. IGEL OS at the edge</h3>
+            <ul class="space-y-1.5 list-disc list-inside text-neutral-300">
+              <li>Convert existing x86 PCs / laptops / thin clients to <span class="font-medium">IGEL OS</span>.</li>
+              <li>Immutable, read-only image; updates delivered as small, signed modules.</li>
+              <li>No local apps or data; everything runs in Horizon or browser.</li>
+            </ul>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">2. Omnissa workspace fabric</h3>
+            <ul class="space-y-1.5 list-disc list-inside text-neutral-300">
+              <li>IGEL endpoints launch <span class="font-medium">Horizon 8 / Horizon Cloud</span> sessions using Blast / PCoIP / RDP.</li>
+              <li><span class="font-medium">Workspace ONE UEM</span> sees IGEL endpoints for policy and inventory.</li>
+              <li>Workspace ONE Access enforces <span class="font-medium">Conditional Access &amp; MFA</span>.</li>
+            </ul>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">3. Security &amp; operations</h3>
+            <ul class="space-y-1.5 list-disc list-inside text-neutral-300">
+              <li>Chain-of-trust from firmware -> IGEL OS -> Horizon client validated at boot.</li>
+              <li>Patching happens once in the Horizon images; IGEL endpoints simply reconnect.</li>
+              <li>Most "device issues" are resolved by <span class="font-medium">reimaging in under 5 minutes.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sales Plays with Persona Filter (Toy) -->
+      <section id="sales-plays" class="igel-card p-6 sm:p-7 lg:p-8">
+        <div class="mb-4 flex flex-col gap-2 border-b border-neutral-800/70 pb-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h1 class="igel-section-number">05. Sales Plays</h1>
+            <h3 class="igel-section-title">
+              Top 5 joint plays: <span class="text-igel-yellow">pick your persona</span>.
+            </h3>
+            <p class="text-sm text-neutral-300 mt-1">
+              Use the persona filter to see which plays to lead with in each conversation.
+            </p>
+          </div>
+          <span class="section-hint hidden sm:block">Persona-first</span>
+        </div>
+
+        <!-- Persona Filter Buttons -->
+        <div class="mb-4">
+          <div class="text-[11px] uppercase tracking-[0.18em] text-neutral-400 mb-2">Filter by buying persona</div>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <button type="button" data-persona-filter="all"
+              class="persona-btn igel-pill px-3 py-1.5 flex items-center gap-1 text-neutral-100 bg-amber-400/10 border-amber-400/60">
+              <span class="h-1.5 w-1.5 rounded-full bg-amber-400"></span> All plays
+            </button>
+            <button type="button" data-persona-filter="cio"
+              class="persona-btn igel-pill px-3 py-1.5 flex items-center gap-1 text-neutral-200">
+              CIO / EUC Director
+            </button>
+            <button type="button" data-persona-filter="ciso"
+              class="persona-btn igel-pill px-3 py-1.5 flex items-center gap-1 text-neutral-200">
+              CISO / SecOps
+            </button>
+            <button type="button" data-persona-filter="architect"
+              class="persona-btn igel-pill px-3 py-1.5 flex items-center gap-1 text-neutral-200">
+              Workspace Architect
+            </button>
+            <button type="button" data-persona-filter="compliance"
+              class="persona-btn igel-pill px-3 py-1.5 flex items-center gap-1 text-neutral-200">
+              Compliance / Regulated
+            </button>
+            <button type="button" data-persona-filter="infra"
+              class="persona-btn igel-pill px-3 py-1.5 flex items-center gap-1 text-neutral-200">
+              Infra / App Delivery
+            </button>
+          </div>
+        </div>
+
+        <!-- Plays as native accordions -->
+        <div class="space-y-3 text-sm">
+          <!-- Play 1 -->
+          <details class="play-card group border border-neutral-700/90 rounded-igel bg-neutral-900/70 px-4 py-3 open" data-play-personas="cio,architect,infra">
+            <summary class="flex items-start justify-between gap-3 cursor-pointer list-none">
+              <div>
+                <div class="text-[11px] uppercase tracking-[0.18em] text-neutral-400 mb-1">Play #1</div>
+                <div class="font-semibold text-neutral-50">
+                  Modernize Without Refresh
+                  <span class="inline-flex text-[10px] ml-2 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/40">
+                    Budget unlock
+                  </span>
+                </div>
+                <p class="text-xs text-neutral-300 mt-1">
+                  Target: CIO, EUC Director, Workspace Modernization Lead.
+                </p>
+              </div>
+              <div class="mt-1 text-neutral-400 group-open:rotate-180 transition-transform">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-3 border-t border-neutral-700/70 pt-3 grid md:grid-cols-3 gap-3 text-xs sm:text-sm">
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Trigger</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>Windows 10/11 refresh looming.</li>
+                  <li>Aging PC fleet; rising support cost.</li>
+                  <li>Existing Horizon or Workspace ONE footprint.</li>
+                </ul>
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400 mt-2">Pain -> Promise</h4>
+                <p class="text-neutral-300">
+                  <span class="font-medium">Pain:</span> "Our Windows rollout is shackled to hardware and compliance cost."<br/>
+                  <span class="font-medium">Promise:</span> Reuse existing x86 devices with IGEL + Omnissa to deliver secure cloud desktops in days.
+                </p>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Joint solution</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>IGEL OS 12 on existing PCs / laptops.</li>
+                  <li>Workspace ONE UEM for unified management.</li>
+                  <li>Horizon 8 or Horizon Cloud for desktops.</li>
+                  <li>Optional: App Volumes for app delivery.</li>
+                </ul>
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400 mt-2">Value props</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>Extend device life by 3-5 years.</li>
+                  <li>Cut endpoint TCO by 50-70%.</li>
+                  <li>Patch once in Horizon, not 10,000 times at the edge.</li>
+                </ul>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Where to use</h4>
+                <p class="text-neutral-300">
+                  Healthcare, finance, retail, manufacturing-anywhere a PC refresh is blocking Horizon or UEM expansion.
+                </p>
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400 mt-2">Talk track</h4>
+                <p class="text-neutral-300">
+                  "We can deliver your Horizon roadmap <span class="font-medium">without buying a new PC fleet</span>.
+                  IGEL turns what you already own into secure Horizon endpoints."
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Play 2 -->
+          <details class="play-card group border border-neutral-700/90 rounded-igel bg-neutral-900/70 px-4 py-3" data-play-personas="ciso,compliance,cio">
+            <summary class="flex items-start justify-between gap-3 cursor-pointer list-none">
+              <div>
+                <div class="text-[11px] uppercase tracking-[0.18em] text-neutral-400 mb-1">Play #2</div>
+                <div class="font-semibold text-neutral-50">
+                  Zero Trust at the Edge
+                  <span class="inline-flex text-[10px] ml-2 px-2 py-0.5 rounded-full bg-red-500/10 text-red-200 border border-red-500/40">
+                    Risk &amp; compliance
+                  </span>
+                </div>
+                <p class="text-xs text-neutral-300 mt-1">
+                  Target: CISO, SecOps Director, Compliance Officer.
+                </p>
+              </div>
+              <div class="mt-1 text-neutral-400 group-open:rotate-180 transition-transform">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-3 border-t border-neutral-700/70 pt-3 grid md:grid-cols-3 gap-3 text-xs sm:text-sm">
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Trigger</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>NIS2, HIPAA, PCI-DSS, or SOC2 audits.</li>
+                  <li>Remote / BYOD expansion with unmanaged devices.</li>
+                  <li>Incidents tied to compromised endpoints.</li>
+                </ul>
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400 mt-2">Pain -> Promise</h4>
+                <p class="text-neutral-300">
+                  <span class="font-medium">Pain:</span> "We can't prove endpoint compliance before access."<br/>
+                  <span class="font-medium">Promise:</span> IGEL + Workspace ONE ensure only attested, compliant endpoints ever reach the workspace.
+                </p>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Joint solution</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>IGEL OS with TPM-backed chain-of-trust.</li>
+                  <li>Workspace ONE Access + UEM for posture and policy.</li>
+                  <li>Horizon 8 / Cloud as the controlled execution environment.</li>
+                  <li>Optional: SASE partners (Zscaler, Netskope) for network layer.</li>
+                </ul>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Value props</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>Zero data at rest at the endpoint.</li>
+                  <li>Zero local code execution on IGEL devices.</li>
+                  <li>Clear, auditable attestation story for regulators.</li>
+                </ul>
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400 mt-2">Talk track</h4>
+                <p class="text-neutral-300">
+                  "We're not asking you to detect every breach-we're designing the endpoint so that <span class="font-medium">there's nothing valuable to steal</span>,
+                  and every device is verified before it connects."
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Play 3 -->
+          <details class="play-card group border border-neutral-700/90 rounded-igel bg-neutral-900/70 px-4 py-3" data-play-personas="architect,cio">
+            <summary class="flex items-start justify-between gap-3 cursor-pointer list-none">
+              <div>
+                <div class="text-[11px] uppercase tracking-[0.18em] text-neutral-400 mb-1">Play #3</div>
+                <div class="font-semibold text-neutral-50">
+                  Hybrid Work Made Simple
+                </div>
+                <p class="text-xs text-neutral-300 mt-1">
+                  Target: Workspace Architect, HR Digital Experience Lead.
+                </p>
+              </div>
+              <div class="mt-1 text-neutral-400 group-open:rotate-180 transition-transform">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-3 border-t border-neutral-700/70 pt-3 grid md:grid-cols-3 gap-3 text-xs sm:text-sm">
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Trigger</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>Hybrid users complaining about inconsistent login / performance.</li>
+                  <li>Mix of on-prem Horizon and cloud desktops.</li>
+                  <li>Too many device types to manage cleanly.</li>
+                </ul>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Joint solution</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>IGEL OS as a unified, lightweight edge on all devices.</li>
+                  <li>Horizon 8 / Cloud for consistent desktops.</li>
+                  <li>Workspace ONE for policy and DEX.</li>
+                </ul>
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400 mt-2">Value props</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>35% fewer workspace-related support tickets.</li>
+                  <li>Faster onboarding of remote / contract workers.</li>
+                  <li>Same experience from any location or device.</li>
+                </ul>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Talk track</h4>
+                <p class="text-neutral-300">
+                  "IGEL gives you a <span class="font-medium">single, predictable edge</span>.
+                  Omnissa gives you a single, predictable workspace. Your hybrid users stop caring where they log in from-because it just works."
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Play 4 -->
+          <details class="play-card group border border-neutral-700/90 rounded-igel bg-neutral-900/70 px-4 py-3" data-play-personas="compliance,ciso">
+            <summary class="flex items-start justify-between gap-3 cursor-pointer list-none">
+              <div>
+                <div class="text-[11px] uppercase tracking-[0.18em] text-neutral-400 mb-1">Play #4</div>
+                <div class="font-semibold text-neutral-50">
+                  Regulated Workspace Resilience
+                </div>
+                <p class="text-xs text-neutral-300 mt-1">
+                  Target: Compliance Lead, IT Director (Healthcare, Finance, Public Sector, Manufacturing Edge).
+                </p>
+              </div>
+              <div class="mt-1 text-neutral-400 group-open:rotate-180 transition-transform">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-3 border-t border-neutral-700/70 pt-3 grid md:grid-cols-3 gap-3 text-xs sm:text-sm">
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Trigger</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>Strict sector compliance requirements.</li>
+                  <li>Clinic or branch endpoints mixing OT and IT.</li>
+                  <li>Audit-driven modernization project.</li>
+                </ul>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Joint solution</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>IGEL OS on clinical / branch endpoints.</li>
+                  <li>Horizon 8 / Cloud delivering apps and desktops.</li>
+                  <li>Workspace ONE for access control and logging.</li>
+                  <li>Imprivata + smartcard SSO, IGEL BC&amp;DR USB for continuity.</li>
+                </ul>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Value props &amp; talk track</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>Audit-ready access trails and immutable endpoints.</li>
+                  <li>PHI / PII never stored locally on the device.</li>
+                  <li>"Tap-and-go" clinician login in under 5 seconds.</li>
+                </ul>
+                <p class="text-neutral-300">
+                  "We separate the messy world of clinic devices from the clean world of compliant apps.
+                  IGEL neutralizes the endpoint; Omnissa governs the access."
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Play 5 -->
+          <details class="play-card group border border-neutral-700/90 rounded-igel bg-neutral-900/70 px-4 py-3" data-play-personas="infra,architect">
+            <summary class="flex items-start justify-between gap-3 cursor-pointer list-none">
+              <div>
+                <div class="text-[11px] uppercase tracking-[0.18em] text-neutral-400 mb-1">Play #5</div>
+                <div class="font-semibold text-neutral-50">
+                  App Delivery Simplified
+                </div>
+                <p class="text-xs text-neutral-300 mt-1">
+                  Target: IT Infrastructure Manager, Cloud Architect.
+                </p>
+              </div>
+              <div class="mt-1 text-neutral-400 group-open:rotate-180 transition-transform">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                </svg>
+              </div>
+            </summary>
+            <div class="mt-3 border-t border-neutral-700/70 pt-3 grid md:grid-cols-3 gap-3 text-xs sm:text-sm">
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Trigger</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>Too many golden images to maintain.</li>
+                  <li>Mix of legacy and modern app packaging.</li>
+                  <li>Desire to standardize on App Volumes.</li>
+                </ul>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Joint solution</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>Omnissa App Volumes for just-in-time app delivery to Horizon.</li>
+                  <li>IGEL App Portal for signed, modular OS apps at the edge.</li>
+                  <li>Optional IGEL Managed Hypervisor for local fall-back apps.</li>
+                </ul>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-[11px] uppercase tracking-[0.16em] text-neutral-400">Value props &amp; talk track</h4>
+                <ul class="list-disc list-inside text-neutral-300">
+                  <li>Reduce image count by up to 70%.</li>
+                  <li>Faster app rollout and rollback.</li>
+                  <li>Coherent "one app store, two directions" story.</li>
+                </ul>
+                <p class="text-neutral-300">
+                  "App Volumes feeds the Horizon desktops. IGEL App Portal feeds the endpoints.
+                  Together, you get <span class="font-medium">a unified, secure app ecosystem</span> across edge and cloud."
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Talk Tracks Section -->
+      <section id="talk-tracks" class="igel-card p-6 sm:p-7 lg:p-8">
+        <div class="mb-4 flex items-center justify-between gap-3 border-b border-neutral-800/70 pb-3">
+          <div>
+            <h1 class="igel-section-number">06. Talk Tracks</h1>
+            <h3 class="igel-section-title">
+              What to say when IGEL enters the deal.
+            </h3>
+          </div>
+          <span class="section-hint hidden sm:block">Message fast</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5 text-sm text-neutral-200">
+          <div class="space-y-3">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Explain IGEL in 30 seconds</h3>
+            <div class="border border-neutral-700 rounded-igel px-3 py-2.5 text-xs sm:text-sm bg-neutral-900/80">
+              <p class="text-neutral-200">
+                "<span class="font-semibold">IGEL turns any device into a secure, managed Horizon endpoint.</span>
+                It's a hardened OS that can't be tampered with, stores no local data, and extends the life of existing hardware -
+                all while integrating natively with Workspace ONE and Horizon.
+                Think of it as the <span class="font-semibold text-igel-yellow">security and simplicity layer</span> that makes your Omnissa solution unstoppable."
+              </p>
+            </div>
+
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400 mt-4">Signals that scream "Bring IGEL"</h3>
+            <ul class="space-y-1.5 list-disc list-inside text-neutral-300 text-sm">
+              <li>"We're delaying Windows 11 refresh to manage cost."</li>
+              <li>"Our remote or clinic endpoints keep getting compromised."</li>
+              <li>"We can't prove device compliance before workspace login."</li>
+              <li>"We need to repurpose old PCs for Horizon Cloud."</li>
+              <li>"We don't have the people to patch 1,000+ endpoints."</li>
+            </ul>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Competitive landmines IGEL helps you defuse</h3>
+            <div class="grid grid-cols-1 gap-2 text-xs sm:text-sm">
+              <div class="border border-neutral-700 rounded-igel px-3 py-2.5">
+                <div class="font-semibold text-neutral-100 mb-1">"Just run Windows on the endpoint."</div>
+                <p class="text-neutral-300">
+                  IGEL eliminates the local Windows attack surface and patch chaos, while still delivering Windows from Horizon.
+                </p>
+              </div>
+              <div class="border border-neutral-700 rounded-igel px-3 py-2.5">
+                <div class="font-semibold text-neutral-100 mb-1">Low-cost thin clients / Stratodesk-style plays</div>
+                <p class="text-neutral-300">
+                  IGEL brings a full <span class="font-medium">Preventative Security Model</span>, signed modular apps, and deep Omnissa integrations -
+                  not just a cheaper OS.
+                </p>
+              </div>
+              <div class="border border-neutral-700 rounded-igel px-3 py-2.5">
+                <div class="font-semibold text-neutral-100 mb-1">Microsoft AVD / W365 bypass</div>
+                <p class="text-neutral-300">
+                  IGEL supports AVD / W365 natively, so customers can still standardize on IGEL at the edge while keeping Omnissa for advanced control,
+                  app strategy, and DEX.
+                </p>
+              </div>
+            </div>
+
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400 mt-4">Identity-alignment one-liners</h3>
+            <ul class="space-y-1.5 list-disc list-inside text-neutral-300 text-xs sm:text-sm">
+              <li>"If you care about <span class="font-medium">endpoint risk actually going to zero</span>, not just being monitored, you should look at IGEL."</li>
+              <li>"If your job is <span class="font-medium">workspace experience</span>, IGEL is the way to keep endpoints from undermining Horizon."</li>
+              <li>"If you want <span class="font-medium">bigger Omnissa wins without bigger budgets</span>, IGEL is how you fund the project."</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Outcomes & Use Cases -->
+      <section id="outcomes" class="igel-card p-6 sm:p-7 lg:p-8">
+        <div class="mb-4 flex items-center justify-between gap-3 border-b border-neutral-800/70 pb-3">
+          <div>
+            <h1 class="igel-section-number">07. Customer Outcomes</h1>
+            <h3 class="igel-section-title">
+              Proof points: what IGEL + Omnissa look like in the wild.
+            </h3>
+          </div>
+          <span class="section-hint hidden sm:block">Proof points</span>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 text-sm text-neutral-200">
+          <div class="border border-neutral-700 rounded-igel px-3 py-3 bg-neutral-900/70">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-2">Healthcare: follow-me workspaces</h3>
+            <p class="text-neutral-300 mb-2">
+              IGEL endpoints + Horizon 8 + Imprivata smartcard SSO.
+              Clinicians tap-in, tap-out in seconds; PHI never touches the device.
+            </p>
+            <ul class="list-disc list-inside text-xs text-neutral-300">
+              <li>Sub-5-second re-authentication.</li>
+              <li>HIPAA / HITRUST alignment.</li>
+              <li>No local PHI on clinic PCs.</li>
+            </ul>
+          </div>
+          <div class="border border-neutral-700 rounded-igel px-3 py-3 bg-neutral-900/70">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-2">Financial branches</h3>
+            <p class="text-neutral-300 mb-2">
+              IGEL repurposes out-of-support branch PCs; Horizon Cloud delivers desktops; Workspace ONE enforces policy.
+            </p>
+            <ul class="list-disc list-inside text-xs text-neutral-300">
+              <li>60% endpoint TCO reduction.</li>
+              <li>No branch downtime for PC refresh.</li>
+              <li>SOC2 / FIPS-friendly posture.</li>
+            </ul>
+          </div>
+          <div class="border border-neutral-700 rounded-igel px-3 py-3 bg-neutral-900/70">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-2">Hybrid workforce at scale</h3>
+            <p class="text-neutral-300 mb-2">
+              IGEL OS USB (BC&amp;DR) + Horizon Cloud + Workspace ONE.
+              Any compatible device can boot into a compliant Horizon endpoint.
+            </p>
+            <ul class="list-disc list-inside text-xs text-neutral-300">
+              <li>Fully managed, compliant workspaces on any x86 hardware.</li>
+              <li>Great for contractors and BYOD.</li>
+              <li>Clear separation between personal OS and corporate workspace.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Objections & Landmines -->
+      <section id="objections" class="igel-card p-6 sm:p-7 lg:p-8">
+        <div class="mb-4 flex items-center justify-between gap-3 border-b border-neutral-800/70 pb-3">
+          <div>
+            <h1 class="igel-section-number">08. Objections</h1>
+            <h3 class="igel-section-title">
+              Common objections &amp; how to steer them.
+            </h3>
+          </div>
+          <span class="section-hint hidden sm:block">Steer the risks</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 text-sm">
+          <div class="border border-neutral-700 rounded-igel px-3 py-3 bg-neutral-900/80">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-2">"We're already standardizing on Windows endpoints."</h3>
+            <p class="text-neutral-300">
+              <span class="font-medium">Reframe:</span> "This isn't Windows vs IGEL. It's <span class="font-medium">local Windows vs data-center Windows.</span>
+              Horizon still delivers Windows; IGEL just ensures the endpoint is not the weakest link."
+            </p>
+          </div>
+          <div class="border border-neutral-700 rounded-igel px-3 py-3 bg-neutral-900/80">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-2">"Thin clients are cheaper; why IGEL..."</h3>
+            <p class="text-neutral-300">
+              <span class="font-medium">Reframe:</span> "Thin hardware is only part of the story.
+              IGEL brings <span class="font-medium">immutable OS, chain-of-trust, signed modular apps, and Omnissa-validated integrations.</span>
+              That's what protects your Horizon investment."
+            </p>
+          </div>
+          <div class="border border-neutral-700 rounded-igel px-3 py-3 bg-neutral-900/80">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-2">"Does this overlap with our SASE / IAM stack..."</h3>
+            <p class="text-neutral-300">
+              <span class="font-medium">Reframe:</span> "SASE and IAM secure the path and identity.
+              IGEL secures the <span class="font-medium">device state</span>.
+              They're complementary layers in the same Zero Trust story."
+            </p>
+          </div>
+          <div class="border border-neutral-700 rounded-igel px-3 py-3 bg-neutral-900/80">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-2">"Will this slow down our Horizon project..."</h3>
+            <p class="text-neutral-300">
+              <span class="font-medium">Reframe:</span> "Most customers deploy IGEL in parallel with Horizon.
+              Converting devices is <span class="font-medium">faster than replacing them</span>, and IGEL often unblocks stalled workspace projects."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="cta" class="igel-card p-6 sm:p-7 lg:p-8">
+        <div class="mb-4 flex flex-col gap-2 border-b border-neutral-800/70 pb-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h1 class="igel-section-number">09. Next Steps</h1>
+            <h3 class="igel-section-title">
+              Make IGEL a standard move in Omnissa deals.
+            </h3>
+          </div>
+          <span class="section-hint hidden sm:block">Act now</span>
+        </div>
+
+        <ol class="space-y-3 text-sm text-neutral-200 list-decimal list-inside">
+          <li>
+            <span class="font-semibold">Qualify for IGEL signals.</span>
+            Anytime you hear refresh pressure, endpoint risk, or compliance anxiety, flag the account for an IGEL conversation.
+          </li>
+          <li>
+            <span class="font-semibold">Position IGEL as a multiplier, not a competitor.</span>
+            Frame it as the <span class="font-medium">secure zero layer</span> that makes Horizon and Workspace ONE easier to buy and safer to run.
+          </li>
+          <li>
+            <span class="font-semibold">Pull in IGEL early.</span>
+            Invite IGEL into joint discovery and design workshops so they can help you shape the endpoint and compliance story.
+          </li>
+          <li>
+            <span class="font-semibold">Co-demo the experience.</span>
+            Show an IGEL-booted device logging into Horizon with Workspace ONE policies applied, and contrast it with a traditional Windows endpoint.
+          </li>
+        </ol>
+
+        <div class="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs sm:text-sm">
+          <p class="text-neutral-300 max-w-xl">
+            Every Omnissa deal that includes IGEL is:
+            <span class="font-medium text-igel-yellow">stickier</span> (fewer endpoint-driven churn risks),
+            <span class="font-medium text-igel-yellow">bigger</span> (more license surface),
+            <span class="font-medium text-igel-yellow">safer</span> (IGEL absorbs endpoint blame),
+            and <span class="font-medium text-igel-yellow">faster</span> (no waiting on PC refresh).
+          </p>
+          <div>
+            <button
+              class="inline-flex items-center gap-2 rounded-full bg-igel-yellow text-black text-xs font-semibold px-4 py-2 shadow-igel-card hover:bg-amber-300 transition-colors">
+              Add IGEL to my next Horizon / Workspace ONE deal
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5 19.5 4.5M19.5 4.5H8.25M19.5 4.5V15.75"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Mobile nav toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden', isOpen);
+        mobileMenuToggle.setAttribute('aria-expanded', (!isOpen).toString());
+      });
+    }
+
+    if (mobileMenu && navLinks.length) {
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 768) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+      });
+    }
+
+    // Persona filter behavior
+    const personaButtons = document.querySelectorAll('.persona-btn[data-persona-filter]');
+    const playCards = document.querySelectorAll('.play-card[data-play-personas]');
+
+    function setPersonaFilter(persona) {
+      personaButtons.forEach(btn => {
+        btn.classList.remove('bg-amber-400/10', 'border-amber-400/60', 'text-neutral-100');
+        if (btn.getAttribute('data-persona-filter') === persona) {
+          btn.classList.add('bg-amber-400/10', 'border-amber-400/60', 'text-neutral-100');
+        } else {
+          btn.classList.add('text-neutral-200');
+        }
+      });
+
+      playCards.forEach(card => {
+        const personas = card.getAttribute('data-play-personas') || '';
+        if (persona === 'all') {
+          card.classList.remove('opacity-40');
+        } else {
+          const list = personas.split(',').map(p => p.trim().toLowerCase());
+          if (list.includes(persona)) {
+            card.classList.remove('opacity-40');
+          } else {
+            card.classList.add('opacity-40');
+          }
+        }
+      });
+    }
+
+    if (personaButtons.length && playCards.length) {
+      personaButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const persona = btn.getAttribute('data-persona-filter') || 'all';
+          setPersonaFilter(persona);
+        });
+      });
+      // default state
+      setPersonaFilter('all');
+    }
+
+    // Simple nav active state on scroll
+    const sections = Array.from(document.querySelectorAll('main section, main header')).filter(sec => sec.id);
+
+    function updateNavActive() {
+      const scrollPos = window.scrollY + 140;
+      let currentId = sections[0]....id;
+      sections.forEach(sec => {
+        if (sec.offsetTop <= scrollPos) {
+          currentId = sec.id;
+        }
+      });
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href') || '';
+        const targetId = href.replace('#', '');
+        link.classList.toggle('nav-link-active', targetId === currentId);
+      });
+    }
+
+    window.addEventListener('scroll', updateNavActive);
+    window.addEventListener('load', updateNavActive);
+    window.addEventListener('resize', updateNavActive);
+  </script>
+</body>
+</html>
