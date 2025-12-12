@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IGEL + Nutanix Sales Playbook — Preventative Security from Edge to Core</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A dark-glass, IGEL-branded enablement playbook for Nutanix sellers: what IGEL is, how IGEL + Nutanix integrate (Frame/AHV/Flow), why it matters, and what to say to customers — with interactive plays, talk-tracks, and simple ROI explorers." />
+
+  <!-- Google Fonts: Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Manrope", "ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial"] },
+          colors: {
+            igel: {
+              black: "#141414",
+              white: "#ffffff",
+              yellow: "#ffd101"
+            }
+          },
+          borderRadius: {
+            igel: "20px"
+          },
+          boxShadow: {
+            glass: "0 18px 60px rgba(0,0,0,.55)",
+            lift: "0 12px 28px rgba(0,0,0,.45)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="IGEL + Nutanix Sales Playbook — Preventative Security from Edge to Core" />
+  <meta property="og:description" content="What IGEL is, how IGEL + Nutanix integrate, why it matters, and what to say — built for Nutanix sellers." />
+  <meta property="og:type" content="article" />
+  <!-- TODO: Replace with the final live URL of this infographic -->
+  <meta property="og:url" content="[[SET_FINAL_URL_HERE]]" />
+  <!-- TODO: Replace with the full URL to your 1200×675 thumbnail -->
+  <meta property="og:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IGEL + Nutanix Sales Playbook — Preventative Security from Edge to Core" />
+  <meta name="twitter:description" content="Enablement for Nutanix sellers: IGEL in 60 seconds, integration map, six tier-one plays, talk-tracks, and quick ROI explorers." />
+  <meta name="twitter:image" content="[[SET_THUMBNAIL_URL_HERE]]" />
+
+  <style>
+    :root{
+      --igel-black:#141414;
+      --igel-yellow:#ffd101;
+      --glass: rgba(17,17,17,.55);
+      --glass2: rgba(17,17,17,.35);
+      --stroke: rgba(255,255,255,.10);
+      --stroke2: rgba(255,255,255,.14);
+      --muted: rgba(244,244,245,.78);
+      --muted2: rgba(244,244,245,.62);
+    }
+    html{ scroll-behavior:smooth; }
+    body{
+      background:
+        radial-gradient(1200px 800px at 10% 10%, rgba(255,209,1,.12), rgba(0,0,0,0) 60%),
+        radial-gradient(900px 600px at 92% 18%, rgba(255,209,1,.08), rgba(0,0,0,0) 55%),
+        radial-gradient(800px 520px at 70% 92%, rgba(255,255,255,.06), rgba(0,0,0,0) 60%),
+        linear-gradient(180deg, #0b0b0b 0%, var(--igel-black) 30%, #0b0b0b 100%);
+      color: #f4f4f5;
+    }
+    .glass{
+      background: linear-gradient(180deg, var(--glass) 0%, rgba(17,17,17,.35) 100%);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+    }
+    .glass-soft{
+      background: linear-gradient(180deg, var(--glass2) 0%, rgba(17,17,17,.28) 100%);
+      border: 1px solid var(--stroke);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+    }
+    .stroke-strong{ border-color: var(--stroke2); }
+    .sparkline{
+      background-image:
+        radial-gradient(circle at 20% 0%, rgba(255,209,1,.22), rgba(0,0,0,0) 35%),
+        radial-gradient(circle at 90% 30%, rgba(255,255,255,.08), rgba(0,0,0,0) 40%);
+    }
+    .igel-pill{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.35);
+    }
+    .igel-pill:hover{ border-color: rgba(255,209,1,.38); }
+    .igel-dot{
+      background: linear-gradient(180deg, rgba(255,209,1,1) 0%, rgba(255,209,1,.72) 100%);
+      box-shadow: 0 10px 30px rgba(255,209,1,.14);
+    }
+    .igel-underline{
+      background: linear-gradient(90deg, rgba(255,209,1,.0) 0%, rgba(255,209,1,.95) 20%, rgba(255,209,1,.0) 100%);
+      height: 1px;
+    }
+    .kbd{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.45);
+      border-bottom-color: rgba(255,255,255,.22);
+    }
+    .focus-ring:focus{ outline:none; box-shadow: 0 0 0 3px rgba(255,209,1,.25); border-color: rgba(255,209,1,.35)!important; }
+
+    /* tooltip */
+    .tt { position: relative; }
+    .tt [data-tip]{
+      opacity: 0;
+      pointer-events:none;
+      transform: translateY(6px);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .tt:hover [data-tip], .tt:focus-within [data-tip]{
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    /* motion respect */
+    @media (prefers-reduced-motion: reduce) {
+      html{ scroll-behavior:auto; }
+      .tt [data-tip]{ transition:none; }
+      .anim-lift{ transition:none!important; transform:none!important; }
+    }
+  </style>
+</head>
+
+<body class="font-sans">
+  <!-- Top Bar -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-black/45 backdrop-blur-xl">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3 min-w-0">
+        <img
+          src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png"
+          alt="IGEL logo"
+          class="h-8 w-auto"
+          loading="lazy"
+        />
+        <div class="min-w-0">
+          <div class="text-sm text-white/80 leading-tight truncate">Sales Playbook</div>
+          <div class="text-base sm:text-lg font-extrabold tracking-tight truncate">
+            IGEL <span class="text-white/60">+</span> Nutanix
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button id="copyPitchBtn" class="focus-ring kbd text-xs sm:text-sm px-3 py-2 rounded-xl text-white/85 hover:text-white transition">
+          Copy 30-sec pitch
+        </button>
+        <button id="navToggle" class="focus-ring igel-pill text-xs sm:text-sm px-3 py-2 rounded-xl text-white/85 hover:text-white transition md:hidden" aria-expanded="false" aria-controls="mobileNav">
+          Menu
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-black/35">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 py-3 grid grid-cols-2 gap-2">
+        <a href="#hook" class="igel-pill rounded-xl px-3 py-2 text-sm">01 • Why Now</a>
+        <a href="#what-is-igel" class="igel-pill rounded-xl px-3 py-2 text-sm">02 • IGEL 101</a>
+        <a href="#integration" class="igel-pill rounded-xl px-3 py-2 text-sm">03 • How It Works</a>
+        <a href="#value" class="igel-pill rounded-xl px-3 py-2 text-sm">04 • Joint Value</a>
+        <a href="#plays" class="igel-pill rounded-xl px-3 py-2 text-sm">05 • Sales Plays</a>
+        <a href="#talk-track" class="igel-pill rounded-xl px-3 py-2 text-sm">06 • What to Say</a>
+        <a href="#objections" class="igel-pill rounded-xl px-3 py-2 text-sm">07 • Objections</a>
+        <a href="#cta" class="igel-pill rounded-xl px-3 py-2 text-sm">08 • Next Steps</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+    <div class="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-6 lg:gap-10">
+      <!-- Desktop Sticky Rail -->
+      <aside class="hidden md:block">
+        <div class="sticky top-24">
+          <div class="glass-soft p-4 sparkline">
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-xs uppercase tracking-widest text-white/55">Navigate</div>
+              <div class="text-xs text-white/50">Playbook</div>
+            </div>
+
+            <nav class="space-y-2">
+              <a class="group igel-pill rounded-xl px-3 py-2 flex items-center gap-3" href="#hook">
+                <span class="igel-dot w-7 h-7 rounded-xl flex items-center justify-center text-black font-extrabold text-xs">01</span>
+                <span class="text-sm text-white/85 group-hover:text-white">Why now</span>
+              </a>
+              <a class="group igel-pill rounded-xl px-3 py-2 flex items-center gap-3" href="#what-is-igel">
+                <span class="igel-dot w-7 h-7 rounded-xl flex items-center justify-center text-black font-extrabold text-xs">02</span>
+                <span class="text-sm text-white/85 group-hover:text-white">IGEL 101</span>
+              </a>
+              <a class="group igel-pill rounded-xl px-3 py-2 flex items-center gap-3" href="#integration">
+                <span class="igel-dot w-7 h-7 rounded-xl flex items-center justify-center text-black font-extrabold text-xs">03</span>
+                <span class="text-sm text-white/85 group-hover:text-white">How it works</span>
+              </a>
+              <a class="group igel-pill rounded-xl px-3 py-2 flex items-center gap-3" href="#value">
+                <span class="igel-dot w-7 h-7 rounded-xl flex items-center justify-center text-black font-extrabold text-xs">04</span>
+                <span class="text-sm text-white/85 group-hover:text-white">Joint value</span>
+              </a>
+              <a class="group igel-pill rounded-xl px-3 py-2 flex items-center gap-3" href="#plays">
+                <span class="igel-dot w-7 h-7 rounded-xl flex items-center justify-center text-black font-extrabold text-xs">05</span>
+                <span class="text-sm text-white/85 group-hover:text-white">Sales plays</span>
+              </a>
+              <a class="group igel-pill rounded-xl px-3 py-2 flex items-center gap-3" href="#talk-track">
+                <span class="igel-dot w-7 h-7 rounded-xl flex items-center justify-center text-black font-extrabold text-xs">06</span>
+                <span class="text-sm text-white/85 group-hover:text-white">What to say</span>
+              </a>
+              <a class="group igel-pill rounded-xl px-3 py-2 flex items-center gap-3" href="#objections">
+                <span class="igel-dot w-7 h-7 rounded-xl flex items-center justify-center text-black font-extrabold text-xs">07</span>
+                <span class="text-sm text-white/85 group-hover:text-white">Objections</span>
+              </a>
+              <a class="group igel-pill rounded-xl px-3 py-2 flex items-center gap-3" href="#cta">
+                <span class="igel-dot w-7 h-7 rounded-xl flex items-center justify-center text-black font-extrabold text-xs">08</span>
+                <span class="text-sm text-white/85 group-hover:text-white">Next steps</span>
+              </a>
+            </nav>
+
+            <div class="mt-4 pt-4 border-t border-white/10">
+              <div class="text-xs text-white/55">Quick mantra</div>
+              <div class="mt-1 text-sm font-semibold">
+                <span class="text-igel-yellow">Immutable edge</span> + <span class="text-white">simplified core</span>
+              </div>
+              <div class="mt-2 text-xs text-white/55">
+                “Windows delivered from anywhere, securely consumed on anything.”
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="space-y-8 lg:space-y-10">
+        <!-- HERO -->
+        <section id="hook" class="glass p-6 sm:p-8 sparkline">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div class="max-w-2xl">
+              <div class="inline-flex items-center gap-2 igel-pill rounded-full px-3 py-1 text-xs text-white/80">
+                <span class="w-2 h-2 rounded-full bg-igel-yellow"></span>
+                Enablement for Nutanix sellers • Frame / AHV / Flow
+              </div>
+
+              <h1 class="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                Preventative security from <span class="text-igel-yellow">cloud</span> to <span class="text-igel-yellow">endpoint</span>.
+              </h1>
+
+              <p class="mt-3 text-white/75 text-base sm:text-lg leading-relaxed">
+                Nutanix simplifies the <span class="font-semibold">core</span>. IGEL secures the <span class="font-semibold">edge</span>.
+                Together you deliver Windows desktops & apps that are <span class="font-semibold">centralized to control</span> and <span class="font-semibold">decentralized to use</span>.
+              </p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">No data at rest on endpoints</span>
+                <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">Frame via WebRTC over HTTPS</span>
+                <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">Flow micro-segmentation aligned</span>
+                <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">100k+ endpoints manageable</span>
+              </div>
+
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <button id="jumpPlays" class="focus-ring rounded-2xl bg-igel-yellow text-black font-extrabold px-5 py-3 text-sm sm:text-base hover:opacity-95 transition">
+                  Open Tier-One Plays
+                </button>
+                <button id="copyTalkTrackBtn" class="focus-ring rounded-2xl igel-pill text-white font-semibold px-5 py-3 text-sm sm:text-base hover:border-white/25 transition">
+                  Copy talk-track bullets
+                </button>
+              </div>
+            </div>
+
+            <div class="glass-soft p-5 sm:p-6 lg:w-[380px]">
+              <div class="text-xs uppercase tracking-widest text-white/55">Why this lands</div>
+              <div class="mt-3 space-y-3">
+                <div class="flex gap-3">
+                  <div class="igel-dot w-9 h-9 rounded-2xl flex items-center justify-center text-black font-extrabold">✓</div>
+                  <div>
+                    <div class="font-bold">Faster pilots</div>
+                    <div class="text-sm text-white/65">UD Pocket / App Portal → deploy endpoints in hours, not weeks.</div>
+                  </div>
+                </div>
+                <div class="flex gap-3">
+                  <div class="igel-dot w-9 h-9 rounded-2xl flex items-center justify-center text-black font-extrabold">✓</div>
+                  <div>
+                    <div class="font-bold">Lower risk</div>
+                    <div class="text-sm text-white/65">Read-only OS, signed apps, Secure Boot → reduces drift + attack surface.</div>
+                  </div>
+                </div>
+                <div class="flex gap-3">
+                  <div class="igel-dot w-9 h-9 rounded-2xl flex items-center justify-center text-black font-extrabold">✓</div>
+                  <div>
+                    <div class="font-bold">Bigger deal</div>
+                    <div class="text-sm text-white/65">Pulls endpoint lifecycle + security spend into the Nutanix conversation.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 pt-4 border-t border-white/10">
+                <div class="text-xs text-white/55">One-liner</div>
+                <div class="mt-2 text-sm font-semibold text-white/85">
+                  “You sell <span class="text-igel-yellow">simplicity</span>. IGEL makes sure it lands <span class="text-igel-yellow">safely</span>.”
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- IGEL 101 -->
+        <section id="what-is-igel" class="glass p-6 sm:p-8">
+          <div class="flex items-center gap-3">
+            <div class="igel-dot w-10 h-10 rounded-2xl flex items-center justify-center text-black font-extrabold">02</div>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">IGEL in plain English</h2>
+              <div class="igel-underline mt-2"></div>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <article class="glass-soft p-5 anim-lift transition-transform duration-200 hover:-translate-y-1">
+              <div class="text-xs uppercase tracking-widest text-white/55">What it is</div>
+              <h3 class="mt-2 text-lg font-extrabold">A hardened endpoint OS</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">
+                IGEL OS replaces the traditional PC stack with a <span class="font-semibold">read-only</span>, centrally managed OS designed for secure access to virtual and cloud workspaces.
+              </p>
+            </article>
+
+            <article class="glass-soft p-5 anim-lift transition-transform duration-200 hover:-translate-y-1">
+              <div class="text-xs uppercase tracking-widest text-white/55">What it changes</div>
+              <h3 class="mt-2 text-lg font-extrabold">No data at the edge</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">
+                Reduce breach blast-radius by keeping apps/data in the datacenter or cloud — not on endpoints that drift, get lost, or get patched inconsistently.
+              </p>
+            </article>
+
+            <article class="glass-soft p-5 anim-lift transition-transform duration-200 hover:-translate-y-1">
+              <div class="text-xs uppercase tracking-widest text-white/55">How it’s managed</div>
+              <h3 class="mt-2 text-lg font-extrabold">UMS / Cloud Gateway</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">
+                One-to-many policies. Atomic updates. Fast recovery by reflash/reset. Manage globally at scale with a consistent “golden” posture.
+              </p>
+            </article>
+          </div>
+
+          <div class="mt-6 glass-soft p-5">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-white/55">Customer-friendly translation</div>
+                <p class="mt-2 text-sm text-white/75 leading-relaxed">
+                  IGEL turns any compatible device (PC / laptop / thin client) into a <span class="font-semibold">stateless, secure access terminal</span> for Nutanix Frame or VDI —
+                  with <span class="font-semibold">less patching</span>, <span class="font-semibold">less drift</span>, and <span class="font-semibold">less risk</span>.
+                </p>
+              </div>
+              <button id="copyIgel60Btn" class="focus-ring rounded-2xl bg-white/5 border border-white/10 px-4 py-3 text-sm font-semibold hover:border-white/25 transition">
+                Copy “IGEL in 60s”
+              </button>
+            </div>
+          </div>
+
+          <!-- Tooltip glossary -->
+          <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="tt glass-soft p-4">
+              <div class="flex items-center justify-between">
+                <div class="font-bold">Preventative Security Model™</div>
+                <div class="text-xs text-white/55">Hover / tap</div>
+              </div>
+              <p class="mt-1 text-sm text-white/65">Design out the failure modes: no local data, reduced attack surface, enforced integrity.</p>
+              <div data-tip class="absolute left-4 right-4 top-[70px] glass p-4 text-sm text-white/75">
+                <span class="text-igel-yellow font-bold">Translation:</span> fewer things to patch, fewer places to hide malware, faster to recover.
+              </div>
+            </div>
+
+            <div class="tt glass-soft p-4">
+              <div class="flex items-center justify-between">
+                <div class="font-bold">Trusted App Platform</div>
+                <div class="text-xs text-white/55">Hover / tap</div>
+              </div>
+              <p class="mt-1 text-sm text-white/65">Only trusted/signed components run — helps keep endpoint posture consistent.</p>
+              <div data-tip class="absolute left-4 right-4 top-[70px] glass p-4 text-sm text-white/75">
+                <span class="text-igel-yellow font-bold">Use this line:</span> “It reduces endpoint drift and prevents ‘random software’ from becoming your new attack surface.”
+              </div>
+            </div>
+
+            <div class="tt glass-soft p-4">
+              <div class="flex items-center justify-between">
+                <div class="font-bold">Atomic Updates</div>
+                <div class="text-xs text-white/55">Hover / tap</div>
+              </div>
+              <p class="mt-1 text-sm text-white/65">Update the OS as a single unit → fewer broken states and easier rollbacks.</p>
+              <div data-tip class="absolute left-4 right-4 top-[70px] glass p-4 text-sm text-white/75">
+                <span class="text-igel-yellow font-bold">Customer benefit:</span> less time chasing patch regressions across thousands of endpoints.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- How it works -->
+        <section id="integration" class="glass p-6 sm:p-8">
+          <div class="flex items-center gap-3">
+            <div class="igel-dot w-10 h-10 rounded-2xl flex items-center justify-center text-black font-extrabold">03</div>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">How IGEL + Nutanix work together</h2>
+              <div class="igel-underline mt-2"></div>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <article class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">Integration map</div>
+              <div class="mt-3 space-y-3 text-sm text-white/75 leading-relaxed">
+                <div class="flex gap-3">
+                  <div class="igel-dot w-9 h-9 rounded-2xl flex items-center justify-center text-black font-extrabold">F</div>
+                  <div>
+                    <div class="font-extrabold">Nutanix Frame → IGEL OS</div>
+                    <div class="text-white/65">Streams desktops/apps via <span class="font-semibold">WebRTC over HTTPS</span> to IGEL endpoints (Frame Ready validated).</div>
+                  </div>
+                </div>
+
+                <div class="flex gap-3">
+                  <div class="igel-dot w-9 h-9 rounded-2xl flex items-center justify-center text-black font-extrabold">A</div>
+                  <div>
+                    <div class="font-extrabold">AHV / HCI & existing EUC</div>
+                    <div class="text-white/65">Supports Citrix and Horizon on AHV — keeps current investments while standardizing the endpoint layer.</div>
+                  </div>
+                </div>
+
+                <div class="flex gap-3">
+                  <div class="igel-dot w-9 h-9 rounded-2xl flex items-center justify-center text-black font-extrabold">ℹ</div>
+                  <div>
+                    <div class="font-extrabold">UMS / Cloud Gateway</div>
+                    <div class="text-white/65">Central policy + templates for kiosk, SSO, managed modes; rapid pilots via UD Pocket / App Portal.</div>
+                  </div>
+                </div>
+
+                <div class="flex gap-3">
+                  <div class="igel-dot w-9 h-9 rounded-2xl flex items-center justify-center text-black font-extrabold">Z</div>
+                  <div>
+                    <div class="font-extrabold">Zero Trust alignment</div>
+                    <div class="text-white/65">Frame RBAC/MFA + Flow micro-segmentation + IGEL immutable endpoints → “continuum of trust.”</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">Stack placement (simple)</div>
+              <div class="mt-3 glass p-4 text-xs sm:text-sm leading-relaxed font-mono text-white/80 overflow-x-auto">
+<pre class="whitespace-pre">
+┌──────────────────────────────────────────────┐
+│ Edge: User Experience                         │
+│  IGEL OS + Frame App + UMS/Cloud Gateway      │
+│  (immutable, centrally managed endpoints)     │
+├──────────────────────────────────────────────┤
+│ Delivery: Desktops & Apps                      │
+│  Nutanix Frame / Citrix / Horizon on AHV      │
+│  (secure streaming, brokering, policies)      │
+├──────────────────────────────────────────────┤
+│ Core: Infrastructure & Security                │
+│  Nutanix HCI + Prism + Flow                    │
+│  (compute/storage/network segmentation)        │
+└──────────────────────────────────────────────┘
+</pre>
+              </div>
+
+              <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="glass-soft p-4">
+                  <div class="text-sm font-extrabold">Secure session protocols</div>
+                  <div class="mt-1 text-xs text-white/65">WebRTC, HDX, Blast, RDP — TLS encrypted.</div>
+                </div>
+                <div class="glass-soft p-4">
+                  <div class="text-sm font-extrabold">Ecosystem validated</div>
+                  <div class="mt-1 text-xs text-white/65">Teams/Zoom, USB peripherals, multi-monitor fidelity.</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Joint Value -->
+        <section id="value" class="glass p-6 sm:p-8">
+          <div class="flex items-center gap-3">
+            <div class="igel-dot w-10 h-10 rounded-2xl flex items-center justify-center text-black font-extrabold">04</div>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Why the partnership matters</h2>
+              <div class="igel-underline mt-2"></div>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <article class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">Business</div>
+              <h3 class="mt-2 text-lg font-extrabold">Reduce TCO + extend device life</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">
+                Reuse endpoints 3–5 years longer, avoid re-imaging churn, and shift spend toward delivery + security outcomes.
+              </p>
+            </article>
+
+            <article class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">Security</div>
+              <h3 class="mt-2 text-lg font-extrabold">Centralize risk, not endpoints</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">
+                Keep data in Frame/AHV workloads, segment with Flow, and enforce endpoint integrity with read-only OS + Secure Boot.
+              </p>
+            </article>
+
+            <article class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">Operations</div>
+              <h3 class="mt-2 text-lg font-extrabold">Patch once. Propagate globally.</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">
+                One-to-many policy control reduces helpdesk tickets and accelerates rollouts across branches, contractors, and kiosks.
+              </p>
+            </article>
+          </div>
+
+
+        <!-- Sales Plays -->
+        <section id="plays" class="glass p-6 sm:p-8">
+          <div class="flex items-center gap-3">
+            <div class="igel-dot w-10 h-10 rounded-2xl flex items-center justify-center text-black font-extrabold">05</div>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Tier-One Sales Plays</h2>
+              <div class="igel-underline mt-2"></div>
+            </div>
+          </div>
+
+          <p class="mt-4 text-sm sm:text-base text-white/75 leading-relaxed">
+            Pick a play. Grab the talk-track. Run a fast pilot. Close with confidence.
+          </p>
+
+          <!-- Play Selector -->
+          <div class="mt-5 flex flex-wrap gap-2">
+            <button class="playTab focus-ring igel-pill rounded-2xl px-4 py-2 text-sm font-semibold" data-play="p1">01 • Hybrid Work. Zero Risk.</button>
+            <button class="playTab focus-ring igel-pill rounded-2xl px-4 py-2 text-sm font-semibold" data-play="p2">02 • Healthcare Without Headaches</button>
+            <button class="playTab focus-ring igel-pill rounded-2xl px-4 py-2 text-sm font-semibold" data-play="p3">03 • Windows 11 Without Hardware Pain</button>
+            <button class="playTab focus-ring igel-pill rounded-2xl px-4 py-2 text-sm font-semibold" data-play="p4">04 • Secure Finance, Simplified</button>
+            <button class="playTab focus-ring igel-pill rounded-2xl px-4 py-2 text-sm font-semibold" data-play="p5">05 • OT Edge. Central Control</button>
+            <button class="playTab focus-ring igel-pill rounded-2xl px-4 py-2 text-sm font-semibold" data-play="p6">06 • Rapid DR. Zero Downtime</button>
+          </div>
+
+          <!-- Play Panels (single active at a time) -->
+          <div class="mt-6 space-y-4">
+            <!-- Shared panel shell -->
+            <div id="playPanel" class="glass-soft p-6">
+              <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
+                <div class="min-w-0">
+                  <div id="playKicker" class="text-xs uppercase tracking-widest text-white/55">Play</div>
+                  <h3 id="playTitle" class="mt-2 text-xl sm:text-2xl font-extrabold">—</h3>
+                  <p id="playSummary" class="mt-2 text-sm text-white/75 leading-relaxed">—</p>
+
+                  <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="glass p-4">
+                      <div class="text-xs text-white/55">Target persona</div>
+                      <div id="playPersona" class="mt-1 text-sm font-bold">—</div>
+                    </div>
+                    <div class="glass p-4">
+                      <div class="text-xs text-white/55">Trigger conditions</div>
+                      <div id="playTriggers" class="mt-1 text-sm font-bold">—</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lg:w-[360px] glass p-5 stroke-strong">
+                  <div class="text-xs uppercase tracking-widest text-white/55">Copy-ready talk track</div>
+                  <div id="playTalkTrack" class="mt-3 text-sm text-white/80 leading-relaxed whitespace-pre-line"></div>
+                  <div class="mt-4 flex gap-2">
+                    <button id="copyPlayBtn" class="focus-ring rounded-2xl bg-igel-yellow text-black font-extrabold px-4 py-3 text-sm hover:opacity-95 transition">
+                      Copy this play
+                    </button>
+                    <button id="expandDetailsBtn" class="focus-ring rounded-2xl igel-pill px-4 py-3 text-sm font-semibold hover:border-white/25 transition" aria-expanded="false" aria-controls="playDetails">
+                      Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Collapsible details -->
+              <div id="playDetails" class="mt-5 hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+                  <div class="glass p-4">
+                    <div class="text-xs text-white/55">Joint solution</div>
+                    <div id="playSolution" class="mt-1 text-sm font-semibold text-white/85">—</div>
+                  </div>
+                  <div class="glass p-4">
+                    <div class="text-xs text-white/55">Value props</div>
+                    <ul id="playValueProps" class="mt-1 text-sm text-white/75 list-disc pl-5 space-y-1"></ul>
+                  </div>
+                  <div class="glass p-4">
+                    <div class="text-xs text-white/55">Risks / fit notes</div>
+                    <div id="playRisks" class="mt-1 text-sm text-white/75">—</div>
+                  </div>
+                </div>
+
+                <div class="mt-3 grid grid-cols-1 lg:grid-cols-2 gap-3">
+                  <div class="glass p-4">
+                    <div class="text-xs text-white/55">Use cases</div>
+                    <ul id="playUseCases" class="mt-1 text-sm text-white/75 list-disc pl-5 space-y-1"></ul>
+                  </div>
+                  <div class="glass p-4">
+                    <div class="text-xs text-white/55">Enablement assets</div>
+                    <ul id="playEnablement" class="mt-1 text-sm text-white/75 list-disc pl-5 space-y-1"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini “Why these plays win” -->
+            <div class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">Why these plays win (2025–2026 buyer gravity)</div>
+              <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="glass p-4">
+                  <div class="font-extrabold text-white">Zero Trust + compliance</div>
+                  <div class="text-sm text-white/65 mt-1">Confidence for audits and cyber insurers.</div>
+                </div>
+                <div class="glass p-4">
+                  <div class="font-extrabold text-white">OpEx predictability</div>
+                  <div class="text-sm text-white/65 mt-1">CFO alignment without sacrificing UX.</div>
+                </div>
+                <div class="glass p-4">
+                  <div class="font-extrabold text-white">Sustainability</div>
+                  <div class="text-sm text-white/65 mt-1">Reuse fleets, reduce e-waste, extend refresh cycles.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- What to say -->
+        <section id="talk-track" class="glass p-6 sm:p-8">
+          <div class="flex items-center gap-3">
+            <div class="igel-dot w-10 h-10 rounded-2xl flex items-center justify-center text-black font-extrabold">06</div>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">What to say to customers</h2>
+              <div class="igel-underline mt-2"></div>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <article class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">30-second elevator pitch</div>
+              <p id="elevatorPitch" class="mt-3 text-sm sm:text-base text-white/80 leading-relaxed">
+                “With Nutanix and IGEL, customers can stream secure, high-performance Windows desktops and apps from any cloud to any device —
+                without endpoint risk, hardware refresh pain, or operational complexity. IGEL secures the user edge with an immutable OS and centralized policy.
+                Nutanix powers delivery with Frame/AHV and protects workloads with Flow. Together, you get control without friction.”
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <button id="copyElevatorBtn" class="focus-ring rounded-2xl bg-igel-yellow text-black font-extrabold px-4 py-3 text-sm hover:opacity-95 transition">Copy pitch</button>
+                <button id="copyDiscoveryBtn" class="focus-ring rounded-2xl igel-pill px-4 py-3 text-sm font-semibold hover:border-white/25 transition">Copy discovery questions</button>
+              </div>
+            </article>
+
+            <article class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">Discovery questions (high yield)</div>
+              <ul class="mt-3 text-sm text-white/80 list-disc pl-5 space-y-2">
+                <li>How many endpoints are you patching/re-imaging monthly — and how consistent is the posture?</li>
+                <li>Is Windows 11 readiness forcing a refresh, or are budgets frozen?</li>
+                <li>Where do you see the most drift: remote users, branches, contractors, kiosks, or OT?</li>
+                <li>Are audits pushing Zero Trust, micro-segmentation, or “no data at rest” controls?</li>
+                <li>If you could pilot in <span class="font-semibold">48 hours</span>, what use case would you start with?</li>
+              </ul>
+              <div class="mt-4 text-xs text-white/55">
+                Tip: when they answer, map the pain to one of the six plays above and open the talk-track.
+              </div>
+            </article>
+          </div>
+
+          <div class="mt-4 glass-soft p-5">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-white/55">Signals to bring IGEL into a deal</div>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">Windows 11 migration</span>
+                  <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">Endpoint patch chaos</span>
+                  <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">Audit / compliance pressure</span>
+                  <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">Contractors / BYOD scale</span>
+                  <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">Branches / kiosks</span>
+                  <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">OT / plant endpoints</span>
+                  <span class="igel-pill rounded-full px-3 py-1 text-xs text-white/80">DR / ransomware planning</span>
+                </div>
+              </div>
+              <button id="copySignalsBtn" class="focus-ring rounded-2xl igel-pill px-4 py-3 text-sm font-semibold hover:border-white/25 transition">
+                Copy signal list
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Objection handling -->
+        <section id="objections" class="glass p-6 sm:p-8">
+          <div class="flex items-center gap-3">
+            <div class="igel-dot w-10 h-10 rounded-2xl flex items-center justify-center text-black font-extrabold">07</div>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Objections & crisp answers</h2>
+              <div class="igel-underline mt-2"></div>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="glass-soft p-5">
+              <button class="obq w-full text-left focus-ring igel-pill rounded-2xl px-4 py-3" data-target="o1" aria-expanded="false">
+                <div class="flex items-center justify-between">
+                  <div class="font-extrabold">“We already have VDI — why IGEL?”</div>
+                  <div class="text-white/50 text-sm">+</div>
+                </div>
+              </button>
+              <div id="o1" class="hidden mt-3 glass p-4 text-sm text-white/80 leading-relaxed">
+                IGEL doesn’t replace your delivery stack — it <span class="font-semibold">stabilizes the endpoint layer</span>.
+                You get fewer tickets from patch drift, faster rollout, better security posture, and easier recovery — while continuing Frame/Citrix/Horizon on AHV.
+              </div>
+
+              <button class="obq w-full text-left focus-ring igel-pill rounded-2xl px-4 py-3 mt-3" data-target="o2" aria-expanded="false">
+                <div class="flex items-center justify-between">
+                  <div class="font-extrabold">“Is this just thin clients?”</div>
+                  <div class="text-white/50 text-sm">+</div>
+                </div>
+              </button>
+              <div id="o2" class="hidden mt-3 glass p-4 text-sm text-white/80 leading-relaxed">
+                It’s an <span class="font-semibold">enterprise endpoint OS</span> that can run on many device types — PCs, laptops, and thin clients —
+                with centralized policy and a preventative security model. It’s about posture and control, not a hardware category.
+              </div>
+
+              <button class="obq w-full text-left focus-ring igel-pill rounded-2xl px-4 py-3 mt-3" data-target="o3" aria-expanded="false">
+                <div class="flex items-center justify-between">
+                  <div class="font-extrabold">“What about Teams/Zoom + peripherals?”</div>
+                  <div class="text-white/50 text-sm">+</div>
+                </div>
+              </button>
+              <div id="o3" class="hidden mt-3 glass p-4 text-sm text-white/80 leading-relaxed">
+                The joint solution is validated with common collaboration tools and peripherals.
+                The right next step is a quick pilot on <span class="font-semibold">your</span> top devices + workflows (multi-monitor, USB, cameras) to confirm UX.
+              </div>
+            </div>
+
+            <div class="glass-soft p-5">
+              <button class="obq w-full text-left focus-ring igel-pill rounded-2xl px-4 py-3" data-target="o4" aria-expanded="false">
+                <div class="flex items-center justify-between">
+                  <div class="font-extrabold">“We need offline / air-gapped.”</div>
+                  <div class="text-white/50 text-sm">+</div>
+                </div>
+              </button>
+              <div id="o4" class="hidden mt-3 glass p-4 text-sm text-white/80 leading-relaxed">
+                These plays are strongest when users can reach the delivery layer (Frame/AHV/VDI).
+                For fully offline environments, treat this as a <span class="font-semibold">fit check</span> and align on constraints early.
+              </div>
+
+              <button class="obq w-full text-left focus-ring igel-pill rounded-2xl px-4 py-3 mt-3" data-target="o5" aria-expanded="false">
+                <div class="flex items-center justify-between">
+                  <div class="font-extrabold">“Isn’t this more change?”</div>
+                  <div class="text-white/50 text-sm">+</div>
+                </div>
+              </button>
+              <div id="o5" class="hidden mt-3 glass p-4 text-sm text-white/80 leading-relaxed">
+                It’s less change where it hurts most: endpoints. IGEL can run on existing hardware, with fast recovery (reflash/reset),
+                and centralized policy. Net effect: fewer moving parts across the fleet.
+              </div>
+
+              <button class="obq w-full text-left focus-ring igel-pill rounded-2xl px-4 py-3 mt-3" data-target="o6" aria-expanded="false">
+                <div class="flex items-center justify-between">
+                  <div class="font-extrabold">“How do we justify ROI?”</div>
+                  <div class="text-white/50 text-sm">+</div>
+                </div>
+              </button>
+              <div id="o6" class="hidden mt-3 glass p-4 text-sm text-white/80 leading-relaxed">
+                Anchor on three levers: <span class="font-semibold">device reuse</span> (capex avoidance),
+                <span class="font-semibold">reduced support load</span> (patch/drift tickets), and <span class="font-semibold">risk reduction</span> (no data at rest).
+                Start with a fast pilot and baseline current ticket + refresh costs.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="cta" class="glass p-6 sm:p-8">
+          <div class="flex items-center gap-3">
+            <div class="igel-dot w-10 h-10 rounded-2xl flex items-center justify-center text-black font-extrabold">08</div>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Next steps (simple field motion)</h2>
+              <div class="igel-underline mt-2"></div>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <article class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">Step 1</div>
+              <h3 class="mt-2 text-lg font-extrabold">Pick a play</h3>
+              <p class="mt-2 text-sm text-white/70">Choose the closest trigger match. Use the copy button to paste talk-track into notes/email.</p>
+            </article>
+
+            <article class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">Step 2</div>
+              <h3 class="mt-2 text-lg font-extrabold">Run a fast pilot</h3>
+              <p class="mt-2 text-sm text-white/70">Validate Teams/Zoom, USB, multi-monitor, and latency. Keep scope tight: 20–200 users.</p>
+            </article>
+
+            <article class="glass-soft p-5">
+              <div class="text-xs uppercase tracking-widest text-white/55">Step 3</div>
+              <h3 class="mt-2 text-lg font-extrabold">Close on outcomes</h3>
+              <p class="mt-2 text-sm text-white/70">Lead with security posture + operational simplicity; quantify reuse + ticket reduction.</p>
+            </article>
+          </div>
+
+          <div class="mt-6 glass-soft p-5">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-white/55">Field checklist</div>
+                <ul class="mt-2 text-sm text-white/80 list-disc pl-5 space-y-1">
+                  <li>Confirm target delivery: Frame / Citrix / Horizon on AHV</li>
+                  <li>Identify endpoint types + OS sprawl today</li>
+                  <li>Pick the “first workflow” (Teams, EHR, call center app, SCADA, trading tools)</li>
+                  <li>Define success metrics (login time, tickets, audit controls, reuse %) </li>
+                </ul>
+              </div>
+              <button id="copyChecklistBtn" class="focus-ring rounded-2xl bg-igel-yellow text-black font-extrabold px-5 py-3 text-sm hover:opacity-95 transition">
+                Copy checklist
+              </button>
+            </div>
+          </div>
+
+          <footer class="mt-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+
+            <div class="text-xs text-white/55">
+              Built by Broadwood
+            </div>
+          </footer>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-[999] hidden">
+    <div class="glass px-4 py-3 rounded-2xl text-sm text-white/90 border border-white/10">
+      <span class="text-igel-yellow font-bold">Copied</span> to clipboard.
+    </div>
+  </div>
+
+  <script>
+    // ---------- Helpers ----------
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+    function showToast(msg="Copied to clipboard.") {
+      const t = $("#toast");
+      t.querySelector("div").innerHTML = `<span class="text-igel-yellow font-bold">Done</span> — ${msg}`;
+      t.classList.remove("hidden");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => t.classList.add("hidden"), 1400);
+    }
+    async function copyText(text, msg) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(msg || "Copied to clipboard.");
+      } catch (e) {
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast(msg || "Copied to clipboard.");
+      }
+    }
+
+    // ---------- Mobile nav toggle ----------
+    const navToggle = $("#navToggle");
+    const mobileNav = $("#mobileNav");
+    if (navToggle) {
+      navToggle.addEventListener("click", () => {
+        const isOpen = !mobileNav.classList.contains("hidden");
+        mobileNav.classList.toggle("hidden");
+        navToggle.setAttribute("aria-expanded", String(!isOpen));
+      });
+    }
+    $$("#mobileNav a").forEach(a => a.addEventListener("click", () => mobileNav.classList.add("hidden")));
+
+    // ---------- Quick jump ----------
+    $("#jumpPlays").addEventListener("click", () => location.hash = "#plays");
+
+    // ---------- Copy buttons ----------
+    const elevatorPitch = $("#elevatorPitch").innerText.trim();
+    const pitch60 = [
+      "IGEL in 60 seconds:",
+      "• IGEL is a hardened, read-only endpoint OS built for secure access to virtual/cloud workspaces.",
+      "• It keeps data off the device, reduces attack surface, and eliminates endpoint drift.",
+      "• It’s centrally managed via UMS / Cloud Gateway with one-to-many policies and atomic updates.",
+      "• For Nutanix: it makes Frame/AHV desktop delivery land securely on any device — fast to pilot, easy to scale."
+    ].join("\n");
+
+    const talkTrackBullets = [
+      "Customer talk-track (core bullets):",
+      "• Nutanix simplifies delivery (Frame/AHV) and workload security (Flow).",
+      "• IGEL secures the endpoint with an immutable OS and centralized policy.",
+      "• Outcome: secure Windows anywhere, with less patching, less drift, and no data at rest on endpoints.",
+      "• Start with a fast pilot on the top workflow (Teams/EHR/call center/OT) and baseline ticket+refresh costs."
+    ].join("\n");
+
+    const discoveryQuestions = [
+      "High-yield discovery questions:",
+      "1) How many endpoints are you patching/re-imaging monthly — and how consistent is posture?",
+      "2) Is Windows 11 readiness forcing a refresh, or are budgets frozen?",
+      "3) Where is drift worst: remote users, branches, contractors, kiosks, OT?",
+      "4) Are audits pushing Zero Trust, micro-segmentation, or 'no data at rest' controls?",
+      "5) If you could pilot in 48 hours, what use case would you start with?"
+    ].join("\n");
+
+    const signals = [
+      "Signals to bring IGEL into the deal:",
+      "• Windows 11 migration / hardware refresh pressure",
+      "• Endpoint patch chaos / image drift / high helpdesk load",
+      "• Audit & compliance sensitivity (HIPAA/PCI/FedRAMP/NIS2-style mandates)",
+      "• Branch/kiosk/contractor-heavy operations",
+      "• OT endpoints and industrial/plant environments (online use cases)",
+      "• BC/DR planning, ransomware resilience, rapid recovery goals"
+    ].join("\n");
+
+
+    $("#copyPitchBtn").addEventListener("click", () => copyText(elevatorPitch, "30-sec pitch copied."));
+    $("#copyElevatorBtn").addEventListener("click", () => copyText(elevatorPitch, "Elevator pitch copied."));
+    $("#copyTalkTrackBtn").addEventListener("click", () => copyText(talkTrackBullets, "Talk-track bullets copied."));
+    $("#copyDiscoveryBtn").addEventListener("click", () => copyText(discoveryQuestions, "Discovery questions copied."));
+    $("#copyIgel60Btn").addEventListener("click", () => copyText(pitch60, "IGEL in 60 seconds copied."));
+    $("#copySignalsBtn").addEventListener("click", () => copyText(signals, "Signal list copied."));
+
+    $("#copyChecklistBtn").addEventListener("click", () => {
+      const checklist = [
+        "Next steps checklist:",
+        "• Confirm target delivery: Frame / Citrix / Horizon on AHV",
+        "• Identify endpoint types + OS sprawl today",
+        "• Pick the first workflow (Teams/EHR/call center/SCADA/trading tools)",
+        "• Define success metrics (login time, tickets, audit controls, reuse %)",
+        "• Run a tight pilot (20–200 users) and baseline costs"
+      ].join("\n");
+      copyText(checklist, "Checklist copied.");
+    });
+
+    // ---------- Objection accordions ----------
+    $$(".obq").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-target");
+        const panel = document.getElementById(id);
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!expanded));
+        panel.classList.toggle("hidden");
+        // swap icon
+        const icon = btn.querySelector("div div:last-child");
+        if (icon) icon.textContent = panel.classList.contains("hidden") ? "+" : "–";
+      });
+    });
+
+    // ---------- Plays data ----------
+    const plays = {
+      p1: {
+        kicker: "Play 01 • Hybrid Work. Zero Risk.",
+        title: "Hybrid Work. Zero Risk.",
+        summary: "Deliver high-performance Windows desktops from Frame/AHV to IGEL endpoints — no data at the edge, no endpoint drift, no VPN drama.",
+        persona: "CIO • Workspace Transformation Lead • SecOps",
+        triggers: "Hybrid expansion • VPN fatigue • audit findings • inconsistent endpoint posture",
+        talkTrack: [
+          "Pain: Remote users slow IT with inconsistent devices + insecure endpoints.",
+          "Promise: Stream Windows from Frame/AHV to IGEL OS — no local data, centralized control.",
+          "Proof point style: Faster pilots + fewer endpoint tickets when posture is standardized."
+        ].join("\n"),
+        solution: "Nutanix Frame DaaS + AHV + Prism • IGEL OS + UMS + Cloud Gateway",
+        valueProps: [
+          "Zero Trust-aligned hybrid workspace",
+          "Multi-region continuity with stateless endpoints",
+          "Central policy, minimal local patching"
+        ],
+        risks: "Lower fit for offline / fully air-gapped needs.",
+        useCases: ["Contractor onboarding", "BYOD hybrid fleets", "Secure branch operations"],
+        enablement: ["Frame Ready validation", "UMS templates (kiosk/SSO/managed)", "IGEL App Portal & UD Pocket for pilots"]
+      },
+      p2: {
+        kicker: "Play 02 • Healthcare Without Headaches",
+        title: "Healthcare Without Headaches.",
+        summary: "No PHI on endpoints. EHRs streamed via Frame to IGEL-secured devices with strong identity controls and segmented workloads.",
+        persona: "CISO • Clinical IT • Infrastructure Director",
+        triggers: "HIPAA alignment • telehealth expansion • EHR refresh • clinical endpoint patch risk",
+        talkTrack: [
+          "Pain: Clinical endpoints are hard to patch and prone to exposure.",
+          "Promise: EHRs delivered from Frame/AHV; IGEL endpoints stay stateless and recover fast.",
+          "Proof point style: Ticket reduction + audit posture improvement when endpoints hold no data."
+        ].join("\n"),
+        solution: "Nutanix HCI + Frame + Flow • IGEL OS + UMS + Secure Chain of Trust",
+        valueProps: [
+          "Immutable endpoints + micro-segmented workloads",
+          "Smart card / tap-to-resume patterns (where used)",
+          "Simplified compliance narrative"
+        ],
+        risks: "Validate GPU needs and node sizing for heavier imaging/graphics workflows.",
+        useCases: ["Clinician roaming workstations", "Telehealth terminals", "Contractor access"],
+        enablement: ["Healthcare reference architecture", "Frame for IGEL OS PoC pack", "Device/workflow validation checklist"]
+      },
+      p3: {
+        kicker: "Play 03 • Windows 11 Without Hardware Pain",
+        title: "Windows 11 Without Hardware Pain.",
+        summary: "Extend device life by converting aging PCs into IGEL endpoints while Windows 11 runs securely from Nutanix infrastructure.",
+        persona: "CIO • EUC Program Manager • Procurement",
+        triggers: "Windows 11 migration • CAPEX freeze • unsupported device fleet",
+        talkTrack: [
+          "Pain: Refresh drains budget; many endpoints fail readiness checks.",
+          "Promise: Reuse devices 3–5 years — Windows 11 delivered from Frame/AHV; IGEL standardizes the edge.",
+          "Proof point style: Faster rollout and capex avoidance through reuse + centralized policy."
+        ].join("\n"),
+        solution: "Nutanix AHV + Frame (vTPM-enabled VMs) • IGEL OS + UD Pocket + UMS",
+        valueProps: [
+          "Cut CapEx and accelerate timelines",
+          "Compliance-ready Windows delivery from the core",
+          "Reduce e-waste and refresh cycles"
+        ],
+        risks: "Requires proper Windows 11 VM configuration (e.g., vTPM where applicable).",
+        useCases: ["Fleet modernization", "Rapid pilots on legacy hardware", "Branch refresh deferral"],
+        enablement: ["Windows 11 validation guide", "ROI baseline worksheet", "UMS policy templates"]
+      },
+      p4: {
+        kicker: "Play 04 • Secure Finance, Simplified",
+        title: "Secure Finance, Simplified.",
+        summary: "Reduce credential/data exposure risk at branches and desks with Flow segmentation + immutable IGEL endpoints for compliance-forward posture.",
+        persona: "CISO • Branch IT • Trading Floor Ops",
+        triggers: "SOC2 / PCI-DSS • cyber audit findings • endpoint management overhead",
+        talkTrack: [
+          "Pain: Data + credentials risk on branch PCs; patch drift creates audit exposure.",
+          "Promise: Virtual desktops on Nutanix + Flow segmentation; IGEL ensures no data at rest on endpoints.",
+          "Proof point style: Fewer tickets + cleaner audit narrative with standardized endpoint posture."
+        ].join("\n"),
+        solution: "Nutanix Flow + Frame or Citrix on AHV • IGEL OS + UMS + Secure Boot posture",
+        valueProps: [
+          "Zero data at rest on endpoints",
+          "Compliance-ready posture (PCI/SOC2 narratives)",
+          "Rapid DR + branch scale-out patterns"
+        ],
+        risks: "Latency-sensitive workflows may require performance validation (network, GPU where applicable).",
+        useCases: ["Bank branches", "Financial call centers", "Secure back-office desktops"],
+        enablement: ["Compliance brief", "Joint ROI story template", "Pilot validation checklist"]
+      },
+      p5: {
+        kicker: "Play 05 • OT Edge. Central Control",
+        title: "OT Edge. Central Control.",
+        summary: "Harden HMIs with IGEL OS while centralizing SCADA/OT apps on Nutanix clusters — unify visibility and reduce maintenance downtime.",
+        persona: "OT Security Architect • Industrial IT • Plant Ops",
+        triggers: "Manufacturing digitization • NIS2/NIST alignment • SCADA virtualization",
+        talkTrack: [
+          "Pain: OT endpoints are insecure, unmanaged, and hard to patch.",
+          "Promise: Centralize OT apps on Nutanix; IGEL hardens the endpoint surface and simplifies recovery.",
+          "Proof point style: Reduced maintenance windows and improved visibility across sites."
+        ].join("\n"),
+        solution: "Nutanix AHV + Prism + Flow • IGEL OS + UMS + USB policy governance",
+        valueProps: [
+          "Central control plane, decentralized resilience",
+          "Simplified IT/OT convergence story",
+          "Reduced endpoint attack surface in plants"
+        ],
+        risks: "Limited fit for offline zones without reliable backhaul to the delivery layer.",
+        useCases: ["HMI terminals", "Virtualized SCADA access", "Multi-site OT standardization"],
+        enablement: ["OT demo pack (Frame + SCADA sim)", "USB/peripheral governance templates", "Security posture checklist"]
+      },
+      p6: {
+        kicker: "Play 06 • Rapid DR. Zero Downtime",
+        title: "Rapid DR. Zero Downtime.",
+        summary: "When outages hit, stateless endpoints + elastic delivery let users resume fast — reduce RPO/RTO pressure without endpoint chaos.",
+        persona: "CIO • BC/DR Lead • IT Ops",
+        triggers: "DR modernization • ransomware mandates • insurer requirements • multi-site resilience",
+        talkTrack: [
+          "Pain: DR is expensive and recovery is slow.",
+          "Promise: Stateless endpoints recover themselves; Nutanix multi-region delivery scales quickly.",
+          "Proof point style: Faster recovery windows when endpoints don’t need rebuilds."
+        ].join("\n"),
+        solution: "IGEL BC&DR + UMS • Nutanix HCI + Frame multi-region or AHV DR patterns",
+        valueProps: [
+          "Fast recovery with low endpoint operational burden",
+          "Zero local data reduces breach blast-radius",
+          "Elastic delivery model for continuity"
+        ],
+        risks: "Plan for network resiliency and bandwidth redundancy between sites.",
+        useCases: ["DR failover for critical teams", "Ransomware recovery playbooks", "Burst capacity during incidents"],
+        enablement: ["DR test templates", "BC&DR checklist", "Joint demo storyline"]
+      }
+    };
+
+    function setActivePlay(key) {
+      const p = plays[key];
+      if (!p) return;
+
+      $("#playKicker").innerText = p.kicker;
+      $("#playTitle").innerText = p.title;
+      $("#playSummary").innerText = p.summary;
+      $("#playPersona").innerText = p.persona;
+      $("#playTriggers").innerText = p.triggers;
+      $("#playTalkTrack").innerText = p.talkTrack;
+      $("#playSolution").innerText = p.solution;
+      $("#playRisks").innerText = p.risks;
+
+      const vp = $("#playValueProps");
+      vp.innerHTML = "";
+      p.valueProps.forEach(x => {
+        const li = document.createElement("li");
+        li.textContent = x;
+        vp.appendChild(li);
+      });
+
+      const uc = $("#playUseCases");
+      uc.innerHTML = "";
+      p.useCases.forEach(x => {
+        const li = document.createElement("li");
+        li.textContent = x;
+        uc.appendChild(li);
+      });
+
+      const en = $("#playEnablement");
+      en.innerHTML = "";
+      p.enablement.forEach(x => {
+        const li = document.createElement("li");
+        li.textContent = x;
+        en.appendChild(li);
+      });
+
+      // Close details when switching plays
+      $("#playDetails").classList.add("hidden");
+      $("#expandDetailsBtn").setAttribute("aria-expanded", "false");
+
+      // Tab styling
+      $$(".playTab").forEach(b => {
+        const active = b.getAttribute("data-play") === key;
+        b.style.borderColor = active ? "rgba(255,209,1,.45)" : "rgba(255,255,255,.12)";
+        b.style.background = active ? "rgba(255,209,1,.10)" : "rgba(0,0,0,.35)";
+        b.style.color = active ? "#ffffff" : "rgba(244,244,245,.85)";
+      });
+
+      // copy payload for this play
+      $("#copyPlayBtn").onclick = () => {
+        const payload = [
+          p.kicker,
+          "",
+          "Summary:",
+          p.summary,
+          "",
+          "Target persona:",
+          p.persona,
+          "",
+          "Trigger conditions:",
+          p.triggers,
+          "",
+          "Talk track:",
+          p.talkTrack,
+          "",
+          "Joint solution:",
+          p.solution,
+          "",
+          "Value props:",
+          ...p.valueProps.map(v => `• ${v}`),
+          "",
+          "Use cases:",
+          ...p.useCases.map(v => `• ${v}`),
+          "",
+          "Enablement assets:",
+          ...p.enablement.map(v => `• ${v}`),
+          "",
+          "Risks / fit notes:",
+          p.risks
+        ].join("\n");
+        copyText(payload, "Play copied.");
+      };
+    }
+
+    $$(".playTab").forEach(btn => {
+      btn.addEventListener("click", () => setActivePlay(btn.getAttribute("data-play")));
+    });
+
+    // Details accordion
+    $("#expandDetailsBtn").addEventListener("click", () => {
+      const details = $("#playDetails");
+      const expanded = $("#expandDetailsBtn").getAttribute("aria-expanded") === "true";
+      details.classList.toggle("hidden");
+      $("#expandDetailsBtn").setAttribute("aria-expanded", String(!expanded));
+    });
+
+    // Initialize first play
+    setActivePlay("p1");
+
+    // Talk-track copy
+    $("#copyPlayBtn").addEventListener("click", () => {}); // replaced dynamically per play
+
+    // ---------- ROI Explorer (illustrative) ----------
+    function calcLegacyIndex(n) {
+      // Non-linear drag: grows faster than linear
+      return Math.round(12 + 18 * Math.log10(n) + 0.00035 * n);
+    }
+    function calcIgelIndex(n) {
+      // Flatter curve: still grows, but slower
+      return Math.round(10 + 12 * Math.log10(n) + 0.00014 * n);
+    }
+
+    const slider = $("#endpointSlider");
+    const endpointLabel = $("#endpointCountLabel");
+    const legacyScore = $("#legacyScore");
+    const igelScore = $("#igelScore");
+
+    function fmt(n) { return n.toLocaleString(); }
+
+    // Build chart data across endpoint sizes
+    const sizes = [1000, 5000, 10000, 25000, 50000, 75000, 100000];
+    const legacySeries = sizes.map(calcLegacyIndex);
+    const igelSeries = sizes.map(calcIgelIndex);
+
+    const ctx = $("#roiChart");
+    const roiChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: sizes.map(fmt),
+        datasets: [
+          {
+            label: "Legacy endpoint overhead (index)",
+            data: legacySeries,
+            tension: 0.35,
+            borderWidth: 2,
+            pointRadius: 3
+          },
+          {
+            label: "Preventative model (index)",
+            data: igelSeries,
+            tension: 0.35,
+            borderWidth: 2,
+            pointRadius: 3
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        plugins: {
+          legend: {
+            labels: { color: "rgba(244,244,245,.85)", boxWidth: 12, boxHeight: 12 }
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y}`
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: "rgba(244,244,245,.65)" },
+            grid: { color: "rgba(255,255,255,.08)" }
+          },
+          y: {
+            ticks: { color: "rgba(244,244,245,.65)" },
+            grid: { color: "rgba(255,255,255,.08)" }
+          }
+        }
+      }
+    });
+
+    // Make the chart container height stable
+    ctx.parentElement.style.height = "320px";
+
+    function refreshExplorer(n) {
+      endpointLabel.textContent = fmt(n);
+      const L = calcLegacyIndex(n);
+      const I = calcIgelIndex(n);
+      legacyScore.textContent = L;
+      igelScore.textContent = I;
+
+      // highlight nearest point
+      const idx = sizes.reduce((bestIdx, val, i) => (Math.abs(val - n) < Math.abs(sizes[bestIdx] - n) ? i : bestIdx), 0);
+      roiChart.setActiveElements([
+        { datasetIndex: 0, index: idx },
+        { datasetIndex: 1, index: idx }
+      ]);
+      roiChart.update();
+    }
+
+    slider.addEventListener("input", e => refreshExplorer(parseInt(e.target.value, 10)));
+    refreshExplorer(parseInt(slider.value, 10));
+  </script>
+</body>
+</html>
