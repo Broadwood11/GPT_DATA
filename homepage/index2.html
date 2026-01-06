@@ -4,57 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IGEL Sales Playbooks - Use Cases & Ecosystem Partners</title>
-    
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Manrope font (IGEL primary) -->
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
-        :root {
-            --igel-yellow: #ffd101;
-            --igel-black: #141414;
-            --igel-white: #ffffff;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
-
-        .igel-bg {
-            background: radial-gradient(circle at top left, rgba(255, 209, 1, 0.08), transparent 55%),
-                radial-gradient(circle at bottom right, rgba(148, 163, 184, 0.12), transparent 55%),
-                linear-gradient(135deg, #020617, #020617 35%, #0b0b0f 100%);
-            min-height: 100vh;
-        }
-
-        .header-glass {
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.9));
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .igel-card {
-            @apply rounded-2xl border border-neutral-800/80 bg-neutral-900/80 shadow-lg shadow-black/40 backdrop-blur;
-            transition: all 0.3s ease;
-        }
-
-        .igel-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 209, 1, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 209, 1, 0.1);
+        /* Additional styles for use case cards */
+        .use-cases-section {
+            padding: 8rem 0;
+            background: var(--dark-bg);
         }
 
         .use-case-card {
             position: relative;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(255, 209, 1, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
+            cursor: pointer;
+            display: block;
         }
 
         .use-case-card::before {
@@ -62,9 +35,9 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
+            width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--igel-yellow), #f3b300);
+            background: linear-gradient(90deg, var(--primary-yellow), #FFA500);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -73,429 +46,491 @@
             transform: scaleX(1);
         }
 
-        .partner-badge {
-            @apply inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-900/70 px-3 py-1.5 text-xs font-medium text-neutral-200;
-            transition: all 0.2s ease;
+        .use-case-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-yellow);
+            box-shadow: 0 20px 60px var(--shadow-medium);
         }
 
-        .partner-badge:hover {
-            border-color: var(--igel-yellow);
-            color: var(--igel-yellow);
-            background: rgba(255, 209, 1, 0.1);
+        .use-case-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(255, 209, 1, 0.15), rgba(255, 209, 1, 0.05));
+            border: 1px solid rgba(255, 209, 1, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .use-case-card:hover .use-case-icon {
+            transform: scale(1.1);
+        }
+
+        .use-case-icon i {
+            font-size: 2rem;
+            color: var(--primary-yellow);
+        }
+
+        .use-case-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .use-case-card:hover .use-case-title {
+            color: var(--primary-yellow);
+        }
+
+        .use-case-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .use-case-cta {
+            display: flex;
+            align-items: center;
+            color: var(--primary-yellow);
+            font-weight: 600;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .use-case-card:hover .use-case-cta {
+            gap: 1rem;
+        }
+
+        .coming-soon-card {
+            background: rgba(20, 27, 61, 0.5);
+            border: 1px solid rgba(255, 209, 1, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-yellow);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
         }
 
         .section-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 209, 1, 0.3), transparent);
+            margin: 4rem 0;
         }
 
-        .hero-glow {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 209, 1, 0.15), transparent 70%);
-            filter: blur(80px);
-            pointer-events: none;
-            animation: float 8s ease-in-out infinite;
+        .partner-badge-link {
+            text-decoration: none;
+            color: inherit;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, -30px); }
+        .resources-section {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, var(--dark-secondary) 0%, var(--dark-bg) 100%);
         }
 
-        .nav-link {
-            @apply text-neutral-300 hover:text-yellow-400 transition-colors text-sm font-medium;
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .category-badge {
-            @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold tracking-wider uppercase;
-            background: linear-gradient(135deg, rgba(255, 209, 1, 0.2), rgba(255, 209, 1, 0.05));
-            border: 1px solid rgba(255, 209, 1, 0.3);
-            color: var(--igel-yellow);
+        .resource-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 209, 1, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-yellow);
+            box-shadow: 0 15px 40px var(--shadow-medium);
         }
 
-        .mobile-menu.active {
-            max-height: 500px;
-        }
-
-        /* Icon styles */
-        .icon-box {
-            @apply flex items-center justify-center w-12 h-12 rounded-xl;
+        .resource-icon {
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, rgba(255, 209, 1, 0.15), rgba(255, 209, 1, 0.05));
             border: 1px solid rgba(255, 209, 1, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
         }
 
-        .stats-number {
-            @apply text-4xl font-bold;
-            background: linear-gradient(135deg, var(--igel-yellow), #f3b300);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .resource-icon i {
+            font-size: 1.5rem;
+            color: var(--primary-yellow);
+        }
+
+        .resource-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .resource-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .resource-link {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: #FFA500;
         }
     </style>
 </head>
-<body class="igel-bg text-neutral-100">
-    <!-- Header -->
-    <header class="header-glass sticky top-0 z-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <div class="flex items-center gap-3">
-                    <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" alt="IGEL Logo" class="h-9">
-                    <div class="hidden sm:block h-6 w-px bg-neutral-700"></div>
-                    <span class="hidden sm:inline text-sm font-semibold text-neutral-300">Sales Playbooks</span>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" alt="IGEL Logo" class="logo">
                 </div>
-                
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center gap-8">
+                <nav class="nav">
                     <a href="#use-cases" class="nav-link">Use Cases</a>
-                    <a href="#partners" class="nav-link">Partners</a>
+                    <a href="#playbooks" class="nav-link">Partners</a>
                     <a href="#resources" class="nav-link">Resources</a>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-neutral-300 hover:text-yellow-400 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="mobile-menu md:hidden pb-4">
-                <nav class="flex flex-col gap-3">
-                    <a href="#use-cases" class="nav-link py-2">Use Cases</a>
-                    <a href="#partners" class="nav-link py-2">Partners</a>
-                    <a href="#resources" class="nav-link py-2">Resources</a>
                 </nav>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative py-20 sm:py-28 overflow-hidden">
-        <div class="hero-glow" style="top: -200px; left: -100px;"></div>
-        <div class="hero-glow" style="bottom: -200px; right: -100px; animation-delay: 4s;"></div>
-        
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-yellow-400/30 bg-yellow-400/5">
-                    <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
-                    <span class="text-xs font-semibold tracking-wider uppercase text-yellow-400">Sales Enablement Hub</span>
-                </div>
-                
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                    <span class="text-neutral-100">IGEL Sales Playbooks</span>
-                    <br>
-                    <span style="background: linear-gradient(135deg, var(--igel-yellow), #f3b300); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                        Drive Success Together
-                    </span>
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-title-main">IGEL Sales Playbooks</span>
+                    <span class="hero-title-sub">Drive Success Together</span>
                 </h1>
-                
-                <p class="text-lg sm:text-xl text-neutral-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                <p class="hero-description">
                     Comprehensive sales enablement resources for IGEL use cases and ecosystem partnerships. 
                     Everything you need to accelerate deals and win together.
                 </p>
-
-                <!-- Stats -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
-                    <div class="igel-card p-6">
-                        <div class="stats-number">3</div>
-                        <div class="text-xs text-neutral-400 uppercase tracking-wider mt-2">Use Cases</div>
+                <div class="hero-cta">
+                    <a href="#use-cases" class="btn btn-primary">
+                        Explore Use Cases <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#playbooks" class="btn btn-secondary">
+                        View Partners
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Use Cases</div>
                     </div>
-                    <div class="igel-card p-6">
-                        <div class="stats-number">9+</div>
-                        <div class="text-xs text-neutral-400 uppercase tracking-wider mt-2">Partners</div>
+                    <div class="stat-item">
+                        <div class="stat-number">9+</div>
+                        <div class="stat-label">Partners</div>
                     </div>
-                    <div class="igel-card p-6">
-                        <div class="stats-number">24/7</div>
-                        <div class="text-xs text-neutral-400 uppercase tracking-wider mt-2">Access</div>
-                    </div>
-                    <div class="igel-card p-6">
-                        <div class="stats-number">100%</div>
-                        <div class="text-xs text-neutral-400 uppercase tracking-wider mt-2">Ready</div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Access</div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll to explore</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
     <!-- Use Cases Section -->
-    <section id="use-cases" class="py-16 sm:py-20">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-6xl mx-auto">
-                <!-- Section Header -->
-                <div class="text-center mb-12">
-                    <div class="category-badge mb-4">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
-                        Use Case Playbooks
+    <section id="use-cases" class="use-cases-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Use Case Playbooks</h2>
+                <p class="section-subtitle">Deep-dive playbooks tailored to specific use cases and industry scenarios</p>
+            </div>
+
+            <div class="playbooks-grid">
+                <!-- IT-OT Convergence -->
+                <a href="https://www.channelnerd.wiki/it-ot" class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-network-wired"></i>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-neutral-100 mb-4">Solution-Specific Guidance</h2>
-                    <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
-                        Deep-dive playbooks tailored to specific use cases and industry scenarios
+                    <h3 class="use-case-title">IT-OT Convergence</h3>
+                    <p class="use-case-description">
+                        Bridge the gap between IT and operational technology with secure, managed endpoints for industrial environments.
                     </p>
-                </div>
-
-                <!-- Use Cases Grid -->
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                    <!-- IT-OT Convergence -->
-                    <a href="https://www.channelnerd.wiki/it-ot" class="igel-card use-case-card p-6 block group">
-                        <div class="icon-box mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-neutral-100 mb-2 group-hover:text-yellow-400 transition-colors">IT-OT Convergence</h3>
-                        <p class="text-neutral-400 text-sm leading-relaxed mb-4">
-                            Bridge the gap between IT and operational technology with secure, managed endpoints for industrial environments.
-                        </p>
-                        <div class="flex items-center text-yellow-400 text-sm font-medium group-hover:gap-2 transition-all">
-                            <span>View Playbook</span>
-                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </a>
-
-                    <!-- BCDR (Business Continuity & Disaster Recovery) -->
-                    <a href="https://www.channelnerd.wiki/bcdr" class="igel-card use-case-card p-6 block group">
-                        <div class="icon-box mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-neutral-100 mb-2 group-hover:text-yellow-400 transition-colors">BCDR</h3>
-                        <p class="text-neutral-400 text-sm leading-relaxed mb-4">
-                            Ensure business continuity with resilient endpoint strategies that keep operations running through any disruption.
-                        </p>
-                        <div class="flex items-center text-yellow-400 text-sm font-medium group-hover:gap-2 transition-all">
-                            <span>View Playbook</span>
-                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </a>
-
-                    <!-- SaaS & Web Apps -->
-                    <a href="https://www.channelnerd.wiki/saas" class="igel-card use-case-card p-6 block group">
-                        <div class="icon-box mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-neutral-100 mb-2 group-hover:text-yellow-400 transition-colors">SaaS & Web Apps</h3>
-                        <p class="text-neutral-400 text-sm leading-relaxed mb-4">
-                            Optimize SaaS and web application delivery with secure, high-performance endpoint management solutions.
-                        </p>
-                        <div class="flex items-center text-yellow-400 text-sm font-medium group-hover:gap-2 transition-all">
-                            <span>View Playbook</span>
-                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Coming Soon Notice -->
-                <div class="igel-card p-6 text-center">
-                    <div class="inline-flex items-center gap-2 text-yellow-400 mb-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                        </svg>
-                        <span class="text-sm font-semibold">More Use Cases Coming Soon</span>
+                    <div class="use-case-cta">
+                        <span>View Playbook</span>
+                        <i class="fas fa-arrow-right"></i>
                     </div>
-                    <p class="text-neutral-400 text-sm">
-                        Additional playbooks are in development. Check back regularly for new content.
+                </a>
+
+                <!-- BCDR -->
+                <a href="https://www.channelnerd.wiki/bcdr" class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="use-case-title">BCDR</h3>
+                    <p class="use-case-description">
+                        Ensure business continuity with resilient endpoint strategies that keep operations running through any disruption.
                     </p>
+                    <div class="use-case-cta">
+                        <span>View Playbook</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- SaaS & Web Apps -->
+                <a href="https://www.channelnerd.wiki/saas" class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="use-case-title">SaaS & Web Apps</h3>
+                    <p class="use-case-description">
+                        Optimize SaaS and web application delivery with secure, high-performance endpoint management solutions.
+                    </p>
+                    <div class="use-case-cta">
+                        <span>View Playbook</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Coming Soon Notice -->
+            <div class="coming-soon-card">
+                <div class="coming-soon-badge">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>More Use Cases Coming Soon</span>
                 </div>
+                <p style="color: var(--text-secondary);">
+                    Additional playbooks are in development. Check back regularly for new content.
+                </p>
             </div>
         </div>
     </section>
 
     <!-- Section Divider -->
-    <div class="section-divider"></div>
+    <div class="container">
+        <div class="section-divider"></div>
+    </div>
 
-    <!-- Partners Section -->
-    <section id="partners" class="py-16 sm:py-20">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-6xl mx-auto">
-                <!-- Section Header -->
-                <div class="text-center mb-12">
-                    <div class="category-badge mb-4">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-                        Ecosystem Partners
+    <!-- Partner Playbooks Section -->
+    <section id="playbooks" class="playbooks-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Partner Playbooks</h2>
+                <p class="section-subtitle">Strategic alliances and co-selling resources with leading technology partners</p>
+            </div>
+
+            <div class="playbooks-grid">
+                <!-- Lenovo -->
+                <a href="https://www.channelnerd.wiki/lenovo" class="playbook-card">
+                    <div class="playbook-card-inner">
+                        <div class="playbook-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3 class="playbook-title">Lenovo</h3>
+                        <p class="playbook-description">End-to-end device and infrastructure solutions</p>
+                        <div class="playbook-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-neutral-100 mb-4">Joint Selling Playbooks</h2>
-                    <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
-                        Strategic alliances and co-selling resources with leading technology partners
-                    </p>
-                </div>
+                    <div class="playbook-shine"></div>
+                </a>
 
-                <!-- Partners Grid -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-                    <a href="https://www.channelnerd.wiki/lenovo" class="partner-badge justify-center p-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                        Lenovo
-                    </a>
-                    
-                    <a href="https://www.channelnerd.wiki/omnissa" class="partner-badge justify-center p-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                        </svg>
-                        Omnissa
-                    </a>
-                    
-                    <a href="https://www.channelnerd.wiki/nutanix" class="partner-badge justify-center p-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-                        </svg>
-                        Nutanix
-                    </a>
-                    
-                    <a href="https://www.channelnerd.wiki/controlup" class="partner-badge justify-center p-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                        ControlUp
-                    </a>
-                    
-                    <a href="https://www.channelnerd.wiki/zscaler" class="partner-badge justify-center p-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                        Zscaler
-                    </a>
-                    
-                    <a href="https://www.channelnerd.wiki/crowdstrike" class="partner-badge justify-center p-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                        </svg>
-                        CrowdStrike
-                    </a>
-                    
-                    <a href="https://www.channelnerd.wiki/island" class="partner-badge justify-center p-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Island
-                    </a>
-                    
-                    <a href="https://www.channelnerd.wiki/microsoft" class="partner-badge justify-center p-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                        </svg>
-                        Microsoft
-                    </a>
-                </div>
+                <!-- Omnissa -->
+                <a href="https://www.channelnerd.wiki/omnissa" class="playbook-card">
+                    <div class="playbook-card-inner">
+                        <div class="playbook-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="playbook-title">Omnissa</h3>
+                        <p class="playbook-description">Digital workspace and employee experience</p>
+                        <div class="playbook-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="playbook-shine"></div>
+                </a>
 
-                <div class="igel-card p-8 text-center">
-                    <h3 class="text-xl font-bold text-neutral-100 mb-3">Growing Partner Ecosystem</h3>
-                    <p class="text-neutral-400 max-w-2xl mx-auto">
-                        Our partner network continues to expand. Each playbook is designed to accelerate joint selling motions 
-                        and help you win together with IGEL's ecosystem partners.
-                    </p>
-                </div>
+                <!-- Nutanix -->
+                <a href="https://www.channelnerd.wiki/nutanix" class="playbook-card">
+                    <div class="playbook-card-inner">
+                        <div class="playbook-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="playbook-title">Nutanix</h3>
+                        <p class="playbook-description">Hyperconverged infrastructure solutions</p>
+                        <div class="playbook-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="playbook-shine"></div>
+                </a>
+
+                <!-- ControlUp -->
+                <a href="https://www.channelnerd.wiki/controlup" class="playbook-card">
+                    <div class="playbook-card-inner">
+                        <div class="playbook-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="playbook-title">ControlUp</h3>
+                        <p class="playbook-description">Digital experience monitoring and optimization</p>
+                        <div class="playbook-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="playbook-shine"></div>
+                </a>
+
+                <!-- Zscaler -->
+                <a href="https://www.channelnerd.wiki/zscaler" class="playbook-card">
+                    <div class="playbook-card-inner">
+                        <div class="playbook-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="playbook-title">Zscaler</h3>
+                        <p class="playbook-description">Cloud security and zero trust architecture</p>
+                        <div class="playbook-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="playbook-shine"></div>
+                </a>
+
+                <!-- CrowdStrike -->
+                <a href="https://www.channelnerd.wiki/crowdstrike" class="playbook-card">
+                    <div class="playbook-card-inner">
+                        <div class="playbook-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3 class="playbook-title">CrowdStrike</h3>
+                        <p class="playbook-description">Endpoint protection and threat intelligence</p>
+                        <div class="playbook-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="playbook-shine"></div>
+                </a>
+
+                <!-- Island Browser -->
+                <a href="https://www.channelnerd.wiki/island" class="playbook-card">
+                    <div class="playbook-card-inner">
+                        <div class="playbook-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="playbook-title">Island Browser</h3>
+                        <p class="playbook-description">Enterprise browser security platform</p>
+                        <div class="playbook-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="playbook-shine"></div>
+                </a>
+
+                <!-- Microsoft -->
+                <a href="https://www.channelnerd.wiki/microsoft" class="playbook-card">
+                    <div class="playbook-card-inner">
+                        <div class="playbook-icon">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <h3 class="playbook-title">Microsoft</h3>
+                        <p class="playbook-description">Azure cloud and productivity solutions</p>
+                        <div class="playbook-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="playbook-shine"></div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Section Divider -->
-    <div class="section-divider"></div>
+    <div class="container">
+        <div class="section-divider"></div>
+    </div>
 
     <!-- Resources Section -->
-    <section id="resources" class="py-16 sm:py-20">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-12">
-                    <div class="category-badge mb-4">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
-                        Resources & Support
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Resources & Support</h2>
+                <p class="section-subtitle">Get in touch with our team for support, questions, or additional resources</p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-envelope"></i>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-neutral-100 mb-4">Need Help?</h2>
-                    <p class="text-neutral-400 text-lg max-w-2xl mx-auto">
-                        Get in touch with our team for support, questions, or additional resources
+                    <h3 class="resource-title">Email Support</h3>
+                    <p class="resource-description">
+                        Reach out to our partner team for assistance with playbooks and sales enablement
                     </p>
+                    <a href="/cdn-cgi/l/email-protection#cdbdacbfb9a3a8bfbe8da4aaa8a1e3aea2a0" class="resource-link">
+                        <span class="__cf_email__" data-cfemail="74041506001a110607341d1311185a171b19">[email&#160;protected]</span> →
+                    </a>
                 </div>
 
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div class="igel-card p-8">
-                        <div class="icon-box mb-4">
-                            <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-neutral-100 mb-2">Email Support</h3>
-                        <p class="text-neutral-400 text-sm mb-4">
-                            Reach out to our partner team for assistance with playbooks and sales enablement
-                        </p>
-                        <a href="/cdn-cgi/l/email-protection#ee9e8f9c9a808b9c9dae87898b82c08d8183" class="text-yellow-400 hover:text-yellow-300 transition-colors text-sm font-medium">
-                            <span class="__cf_email__" data-cfemail="11617063657f746362517876747d3f727e7c">[email&#160;protected]</span> →
-                        </a>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-globe"></i>
                     </div>
-
-                    <div class="igel-card p-8">
-                        <div class="icon-box mb-4">
-                            <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-neutral-100 mb-2">Partner Portal</h3>
-                        <p class="text-neutral-400 text-sm mb-4">
-                            Access the full IGEL partner ecosystem and additional resources
-                        </p>
-                        <a href="https://www.igel.com/partners" target="_blank" rel="noopener" class="text-yellow-400 hover:text-yellow-300 transition-colors text-sm font-medium">
-                            Visit Portal →
-                        </a>
-                    </div>
+                    <h3 class="resource-title">Partner Portal</h3>
+                    <p class="resource-description">
+                        Access the full IGEL partner ecosystem and additional resources
+                    </p>
+                    <a href="https://www.igel.com/partners" target="_blank" rel="noopener" class="resource-link">
+                        Visit Portal →
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-neutral-800 py-8 mt-20">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-3">
-                    <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" alt="IGEL Logo" class="h-8">
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com/Broadwood11/images/main/IGEL_logo_yellow.png" alt="IGEL Logo" class="logo-footer">
                 </div>
-                <div class="text-neutral-400 text-sm text-center sm:text-right">
+                <div class="footer-text">
                     <p>&copy; 2025 IGEL Technology. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile Menu Toggle Script -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('mobile-menu').classList.remove('active');
-            });
-        });
-
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
